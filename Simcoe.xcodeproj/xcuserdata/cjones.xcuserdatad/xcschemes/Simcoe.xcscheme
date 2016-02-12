@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "F902ED111C68FA07007975F5"
-               BuildableName = "Pandalytics.framework"
-               BlueprintName = "Pandalytics"
-               ReferencedContainer = "container:Pandalytics.xcodeproj">
+               BuildableName = "Simcoe.framework"
+               BlueprintName = "Simcoe"
+               ReferencedContainer = "container:Simcoe.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -46,9 +46,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "F902ED111C68FA07007975F5"
-            BuildableName = "Pandalytics.framework"
-            BlueprintName = "Pandalytics"
-            ReferencedContainer = "container:Pandalytics.xcodeproj">
+            BuildableName = "Simcoe.framework"
+            BlueprintName = "Simcoe"
+            ReferencedContainer = "container:Simcoe.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -64,9 +64,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "F902ED111C68FA07007975F5"
-            BuildableName = "Pandalytics.framework"
-            BlueprintName = "Pandalytics"
-            ReferencedContainer = "container:Pandalytics.xcodeproj">
+            BuildableName = "Simcoe.framework"
+            BlueprintName = "Simcoe"
+            ReferencedContainer = "container:Simcoe.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </ProfileAction>
