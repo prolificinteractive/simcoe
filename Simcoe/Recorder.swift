@@ -7,24 +7,24 @@
 //
 
 /// A recorder for SimcoeEvents
-internal final class SimcoeRecorder {
+internal final class Recorder {
 
     /// Whether the recorder should log all new events to the output or not.
     var writesToOutput = true
 
-    private var events = [SimcoeEvent]()
+    private var events = [Event]()
 
     /**
      Records the event.
 
      - parameter event: The event to record.
      */
-    func record(event event: SimcoeEvent) {
+    func record(event event: Event) {
         events.append(event)
         write(event)
     }
 
-    private func write(event: SimcoeEvent) {
+    private func write(event: Event) {
         guard writesToOutput else {
             return
         }

@@ -9,7 +9,7 @@
 /**
 A Simcoe Event.
 */
-internal struct SimcoeEvent {
+internal struct Event {
 
  /// The names of all providers involved in the specific event.
     let providerNames: [String]

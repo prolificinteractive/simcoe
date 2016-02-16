@@ -10,7 +10,7 @@ import CoreLocation
 
 public final class Simcoe {
 
-    let recorder = SimcoeRecorder()
+    let recorder = Recorder()
 
     private var providers = [AnalyticsTracking]() {
         didSet {
@@ -43,7 +43,7 @@ public final class Simcoe {
             pageTrackingProvider.trackPageView(pageView)
         }
 
-        let event = SimcoeEvent(providerNames: providers.map({ provider in return provider.name }),
+        let event = Event(providerNames: providers.map({ provider in return provider.name }),
             description: "Page View: \(pageView)")
         engine.recorder.record(event: event)
     }
@@ -57,7 +57,7 @@ public final class Simcoe {
         }
 
         let propertiesString = properties != nil ? "=> \(properties!.description)" : ""
-        let event = SimcoeEvent(providerNames: providers.map({ provider in return provider.name }),
+        let event = Event(providerNames: providers.map({ provider in return provider.name }),
             description: "Event: \(event) \(propertiesString)")
         engine.recorder.record(event: event)
     }
