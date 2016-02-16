@@ -7,10 +7,10 @@
 //
 
 /// A recorder for SimcoeEvents
-internal final class Recorder {
+public final class Recorder {
 
-    /// Whether the recorder should log all new events to the output or not.
-    var writesToOutput = true
+    /// The output option for the recorder. Defaults to .Verbose
+    public var outputOption: OutputOptions = .Verbose
 
     private var events = [Event]()
 
@@ -25,12 +25,20 @@ internal final class Recorder {
     }
 
     private func write(event: Event) {
-        guard writesToOutput else {
+        guard outputOption != .None else {
             return
         }
 
-        for provider in event.providerNames {
+        let writeOut = { (provider: String) in
             print("[\(provider)] \(event.description)")
+        }
+
+        if outputOption == .Verbose {
+            for provider in event.providerNames {
+                writeOut(provider)
+            }
+        } else {
+            writeOut("Analytics")
         }
     }
 

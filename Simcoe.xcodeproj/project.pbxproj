@@ -11,6 +11,7 @@
 		F93814571C736D8A00678BA2 /* EventTracking.swift in Sources */ = {isa = PBXBuildFile; fileRef = F93814561C736D8A00678BA2 /* EventTracking.swift */; };
 		F93814591C736D9D00678BA2 /* LifetimeValueIncreasing.swift in Sources */ = {isa = PBXBuildFile; fileRef = F93814581C736D9D00678BA2 /* LifetimeValueIncreasing.swift */; };
 		F938145B1C736DAF00678BA2 /* LocationTracking.swift in Sources */ = {isa = PBXBuildFile; fileRef = F938145A1C736DAF00678BA2 /* LocationTracking.swift */; };
+		F938145D1C736E6600678BA2 /* OutputOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F938145C1C736E6600678BA2 /* OutputOptions.swift */; };
 		F93DF0441C6E7E0D007B3928 /* AnalyticsTracking.swift in Sources */ = {isa = PBXBuildFile; fileRef = F93DF03E1C6E7E0D007B3928 /* AnalyticsTracking.swift */; };
 		F93DF0471C6E7E0D007B3928 /* Simcoe.swift in Sources */ = {isa = PBXBuildFile; fileRef = F93DF0411C6E7E0D007B3928 /* Simcoe.swift */; };
 		F93DF0491C6E8009007B3928 /* Simcoe.h in Headers */ = {isa = PBXBuildFile; fileRef = F93DF0481C6E8009007B3928 /* Simcoe.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -24,6 +25,7 @@
 		F93814561C736D8A00678BA2 /* EventTracking.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventTracking.swift; sourceTree = "<group>"; };
 		F93814581C736D9D00678BA2 /* LifetimeValueIncreasing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LifetimeValueIncreasing.swift; sourceTree = "<group>"; };
 		F938145A1C736DAF00678BA2 /* LocationTracking.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationTracking.swift; sourceTree = "<group>"; };
+		F938145C1C736E6600678BA2 /* OutputOptions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OutputOptions.swift; sourceTree = "<group>"; };
 		F93DF03E1C6E7E0D007B3928 /* AnalyticsTracking.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnalyticsTracking.swift; sourceTree = "<group>"; };
 		F93DF03F1C6E7E0D007B3928 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F93DF0411C6E7E0D007B3928 /* Simcoe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Simcoe.swift; sourceTree = "<group>"; };
@@ -65,14 +67,15 @@
 			children = (
 				F93DF0481C6E8009007B3928 /* Simcoe.h */,
 				F93DF03E1C6E7E0D007B3928 /* AnalyticsTracking.swift */,
-				F93814581C736D9D00678BA2 /* LifetimeValueIncreasing.swift */,
 				F93814541C736D7C00678BA2 /* PageViewTracking.swift */,
-				F938145A1C736DAF00678BA2 /* LocationTracking.swift */,
 				F93814561C736D8A00678BA2 /* EventTracking.swift */,
+				F93814581C736D9D00678BA2 /* LifetimeValueIncreasing.swift */,
+				F938145A1C736DAF00678BA2 /* LocationTracking.swift */,
 				F93DF03F1C6E7E0D007B3928 /* Info.plist */,
 				F93DF0411C6E7E0D007B3928 /* Simcoe.swift */,
 				F94E7CC31C723D4F007E7873 /* Recorder.swift */,
 				F94E7CC51C723D95007E7873 /* Event.swift */,
+				F938145C1C736E6600678BA2 /* OutputOptions.swift */,
 				F94E7CCC1C725D89007E7873 /* Adobe */,
 			);
 			path = Simcoe;
@@ -168,6 +171,7 @@
 				F94E7CC41C723D4F007E7873 /* Recorder.swift in Sources */,
 				F93DF0441C6E7E0D007B3928 /* AnalyticsTracking.swift in Sources */,
 				F93814591C736D9D00678BA2 /* LifetimeValueIncreasing.swift in Sources */,
+				F938145D1C736E6600678BA2 /* OutputOptions.swift in Sources */,
 				F93DF0471C6E7E0D007B3928 /* Simcoe.swift in Sources */,
 				F938145B1C736DAF00678BA2 /* LocationTracking.swift in Sources */,
 				F93814551C736D7C00678BA2 /* PageViewTracking.swift in Sources */,

@@ -6,8 +6,17 @@
 //  Copyright © 2016 Prolific Interactive. All rights reserved.
 //
 
+/**
+Defines methods for increasing a lifetime value of an analytics key.
+*/
 public protocol LifetimeValueIncreasing: AnalyticsTracking {
 
-    func increaseLifetimeValue(forKey key: String, amount: Int)
+    /**
+     Increases the lifetime value of the key by the specified amount.
+
+     - parameter key:    The key.
+     - parameter amount: The amount.
+     */
+    func increaseLifetimeValue(forKey key: String, amount: Float)
     
 }

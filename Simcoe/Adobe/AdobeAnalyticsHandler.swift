@@ -41,8 +41,8 @@ extension AdobeAnalyticsHandler: EventTracking {
 
 extension AdobeAnalyticsHandler: LifetimeValueIncreasing {
 
-    public func increaseLifetimeValue(forKey key: String, amount: Int) {
-        ADBMobile.trackLifetimeValueIncrease(NSDecimalNumber(int: 1), data: [key: ""])
+    public func increaseLifetimeValue(forKey key: String, amount: Float) {
+        ADBMobile.trackLifetimeValueIncrease(NSDecimalNumber(float: 1), data: [key: ""])
     }
 
 }
