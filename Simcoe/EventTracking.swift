@@ -11,12 +11,6 @@ Defines methods for tracking analytics events.
 */
 public protocol EventTracking: AnalyticsTracking {
 
-    /**
-     <#Description#>
-
-     - parameter event:      <#event description#>
-     - parameter properties: <#properties description#>
-     */
-    func trackEvent(event: String, withAdditionalProperties properties: [String: String]?)
+    func trackEvent(event: String, withAdditionalProperties properties: Properties?)
     
 }

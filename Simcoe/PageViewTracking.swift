@@ -16,6 +16,6 @@ public protocol PageViewTracking: AnalyticsTracking {
 
      - parameter pageView: The page view to track.
      */
-    func trackPageView(pageView: String)
+    func trackPageView(pageView: String, withAdditionalProperties properties: Properties?)
     
 }

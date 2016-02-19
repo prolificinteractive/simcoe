@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F93043D61C77BFC900A90AFD /* Properties.swift in Sources */ = {isa = PBXBuildFile; fileRef = F93043D51C77BFC900A90AFD /* Properties.swift */; };
 		F93814551C736D7C00678BA2 /* PageViewTracking.swift in Sources */ = {isa = PBXBuildFile; fileRef = F93814541C736D7C00678BA2 /* PageViewTracking.swift */; };
 		F93814571C736D8A00678BA2 /* EventTracking.swift in Sources */ = {isa = PBXBuildFile; fileRef = F93814561C736D8A00678BA2 /* EventTracking.swift */; };
 		F93814591C736D9D00678BA2 /* LifetimeValueIncreasing.swift in Sources */ = {isa = PBXBuildFile; fileRef = F93814581C736D9D00678BA2 /* LifetimeValueIncreasing.swift */; };
@@ -21,6 +22,11 @@
 
 /* Begin PBXFileReference section */
 		F902ED121C68FA07007975F5 /* Simcoe.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Simcoe.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F90A13A81C737F620074AC98 /* Simcoe.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Simcoe.podspec; sourceTree = "<group>"; };
+		F90A13AA1C738BC10074AC98 /* Adobe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Adobe.swift; sourceTree = "<group>"; };
+		F90A13AC1C738BC60074AC98 /* mParticle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = mParticle.swift; sourceTree = "<group>"; };
+		F90A13B01C7397440074AC98 /* MPEvent+Simcoe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MPEvent+Simcoe.swift"; sourceTree = "<group>"; };
+		F93043D51C77BFC900A90AFD /* Properties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Properties.swift; sourceTree = "<group>"; };
 		F93814541C736D7C00678BA2 /* PageViewTracking.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageViewTracking.swift; sourceTree = "<group>"; };
 		F93814561C736D8A00678BA2 /* EventTracking.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventTracking.swift; sourceTree = "<group>"; };
 		F93814581C736D9D00678BA2 /* LifetimeValueIncreasing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LifetimeValueIncreasing.swift; sourceTree = "<group>"; };
@@ -32,7 +38,6 @@
 		F93DF0481C6E8009007B3928 /* Simcoe.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Simcoe.h; sourceTree = "<group>"; };
 		F94E7CC31C723D4F007E7873 /* Recorder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Recorder.swift; sourceTree = "<group>"; };
 		F94E7CC51C723D95007E7873 /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
-		F94E7CCD1C725D89007E7873 /* AdobeAnalyticsHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdobeAnalyticsHandler.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -49,6 +54,7 @@
 		F902ED081C68FA07007975F5 = {
 			isa = PBXGroup;
 			children = (
+				F90A13A81C737F620074AC98 /* Simcoe.podspec */,
 				F93DF03C1C6E7E0D007B3928 /* Simcoe */,
 				F902ED131C68FA07007975F5 /* Products */,
 			);
@@ -62,9 +68,19 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		F90A13A51C737F050074AC98 /* mParticle */ = {
+			isa = PBXGroup;
+			children = (
+				F90A13AC1C738BC60074AC98 /* mParticle.swift */,
+				F90A13B01C7397440074AC98 /* MPEvent+Simcoe.swift */,
+			);
+			path = mParticle;
+			sourceTree = "<group>";
+		};
 		F93DF03C1C6E7E0D007B3928 /* Simcoe */ = {
 			isa = PBXGroup;
 			children = (
+				F93043D51C77BFC900A90AFD /* Properties.swift */,
 				F93DF0481C6E8009007B3928 /* Simcoe.h */,
 				F93DF03E1C6E7E0D007B3928 /* AnalyticsTracking.swift */,
 				F93814541C736D7C00678BA2 /* PageViewTracking.swift */,
@@ -77,6 +93,7 @@
 				F94E7CC51C723D95007E7873 /* Event.swift */,
 				F938145C1C736E6600678BA2 /* OutputOptions.swift */,
 				F94E7CCC1C725D89007E7873 /* Adobe */,
+				F90A13A51C737F050074AC98 /* mParticle */,
 			);
 			path = Simcoe;
 			sourceTree = "<group>";
@@ -84,7 +101,7 @@
 		F94E7CCC1C725D89007E7873 /* Adobe */ = {
 			isa = PBXGroup;
 			children = (
-				F94E7CCD1C725D89007E7873 /* AdobeAnalyticsHandler.swift */,
+				F90A13AA1C738BC10074AC98 /* Adobe.swift */,
 			);
 			path = Adobe;
 			sourceTree = "<group>";
@@ -175,6 +192,7 @@
 				F93DF0471C6E7E0D007B3928 /* Simcoe.swift in Sources */,
 				F938145B1C736DAF00678BA2 /* LocationTracking.swift in Sources */,
 				F93814551C736D7C00678BA2 /* PageViewTracking.swift in Sources */,
+				F93043D61C77BFC900A90AFD /* Properties.swift in Sources */,
 				F93814571C736D8A00678BA2 /* EventTracking.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

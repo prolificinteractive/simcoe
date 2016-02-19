@@ -49,13 +49,13 @@ public final class Simcoe {
 
      - parameter pageView: The page view event.
      */
-    public static func trackPageView(pageView: String) {
+    public static func trackPageView(pageView: String, withAdditionalProperties properties: Properties? = nil) {
         let providers = engine.providers
             .map({ provider in return provider as? PageViewTracking })
             .flatMap({ $0 })
 
         providers.forEach { pageTrackingProvider in
-            pageTrackingProvider.trackPageView(pageView)
+            pageTrackingProvider.trackPageView(pageView, withAdditionalProperties: properties)
         }
 
         let event = Event(providerNames: providers.map({ provider in return provider.name }),
@@ -69,7 +69,7 @@ public final class Simcoe {
      - parameter event:      The event that occurred.
      - parameter properties: The event properties.
      */
-    public static func trackEvent(event: String, withAdditionalProperties properties: [String: String]? = nil) {
+    public static func trackEvent(event: String, withAdditionalProperties properties: Properties? = nil) {
         let providers = engine.providers.map({ provider in return provider as? EventTracking })
             .flatMap({ $0 })
 
@@ -89,11 +89,12 @@ public final class Simcoe {
      - parameter value:  The value whose lifetime value is to be increased.
      - parameter amount: The amount to increase that lifetime value for.
      */
-    public static func trackLifetimeIncrease(forValue value: String, byAmount amount: Float = 1) {
+    public static func trackLifetimeIncrease(byAmount amount: Double = 1, forItem item: String? = nil,
+        withAdditionalProperties properties: Properties? = nil) {
         engine.providers.map({ provider in return provider as? LifetimeValueIncreasing })
             .flatMap({ $0 })
             .forEach { lifeTimeValueIncreaser in
-                lifeTimeValueIncreaser.increaseLifetimeValue(forKey: value, amount: amount)
+                lifeTimeValueIncreaser.increaseLifetimeValue(byAmount: amount, forItem: item, withAdditionalProperties: properties)
         }
     }
 
@@ -102,11 +103,11 @@ public final class Simcoe {
 
      - parameter location: The user's location.
      */
-    public static func trackLocation(location: CLLocation) {
+    public static func trackLocation(location: CLLocation, withAdditionalProperties properties: Properties?) {
         engine.providers.map({ provider in return provider as? LocationTracking })
             .flatMap({ $0 })
             .forEach { locationTracker in
-                locationTracker.trackLocation(location)
+                locationTracker.trackLocation(location, withAdditionalProperties: properties)
         }
     }
 

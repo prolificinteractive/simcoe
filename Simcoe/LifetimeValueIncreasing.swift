@@ -17,6 +17,6 @@ public protocol LifetimeValueIncreasing: AnalyticsTracking {
      - parameter key:    The key.
      - parameter amount: The amount.
      */
-    func increaseLifetimeValue(forKey key: String, amount: Float)
+    func increaseLifetimeValue(byAmount amount: Double, forItem item: String?, withAdditionalProperties properties: Properties?)
     
 }
