@@ -9,7 +9,7 @@
 import CoreLocation
 import AdobeMobileSDK
 
-public final class Adobe {
+public class Adobe {
 
     public let name = "Adobe Omniture"
 

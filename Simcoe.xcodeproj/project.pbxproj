@@ -7,7 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BFB180029276D6A19213D152 /* Pods_mParticleTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E0635B9404692DA868367EA /* Pods_mParticleTests.framework */; };
 		F93043D61C77BFC900A90AFD /* Properties.swift in Sources */ = {isa = PBXBuildFile; fileRef = F93043D51C77BFC900A90AFD /* Properties.swift */; };
+		F93043E01C77C29700A90AFD /* Simcoe.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F902ED121C68FA07007975F5 /* Simcoe.framework */; };
+		F93043E71C77C33000A90AFD /* MPEventTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F93043E61C77C33000A90AFD /* MPEventTests.swift */; };
 		F93814551C736D7C00678BA2 /* PageViewTracking.swift in Sources */ = {isa = PBXBuildFile; fileRef = F93814541C736D7C00678BA2 /* PageViewTracking.swift */; };
 		F93814571C736D8A00678BA2 /* EventTracking.swift in Sources */ = {isa = PBXBuildFile; fileRef = F93814561C736D8A00678BA2 /* EventTracking.swift */; };
 		F93814591C736D9D00678BA2 /* LifetimeValueIncreasing.swift in Sources */ = {isa = PBXBuildFile; fileRef = F93814581C736D9D00678BA2 /* LifetimeValueIncreasing.swift */; };
@@ -20,13 +23,30 @@
 		F94E7CC61C723D95007E7873 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = F94E7CC51C723D95007E7873 /* Event.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		F93043E11C77C29700A90AFD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F902ED091C68FA07007975F5 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F902ED111C68FA07007975F5;
+			remoteInfo = Simcoe;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
+		253F40E5BD1AF3BACF1EC067 /* Pods-mParticleTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mParticleTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-mParticleTests/Pods-mParticleTests.debug.xcconfig"; sourceTree = "<group>"; };
+		8E0635B9404692DA868367EA /* Pods_mParticleTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_mParticleTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C29C5AD3C473D1AF367AFAF1 /* Pods-mParticleTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mParticleTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-mParticleTests/Pods-mParticleTests.release.xcconfig"; sourceTree = "<group>"; };
 		F902ED121C68FA07007975F5 /* Simcoe.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Simcoe.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F90A13A81C737F620074AC98 /* Simcoe.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Simcoe.podspec; sourceTree = "<group>"; };
 		F90A13AA1C738BC10074AC98 /* Adobe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Adobe.swift; sourceTree = "<group>"; };
 		F90A13AC1C738BC60074AC98 /* mParticle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = mParticle.swift; sourceTree = "<group>"; };
 		F90A13B01C7397440074AC98 /* MPEvent+Simcoe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MPEvent+Simcoe.swift"; sourceTree = "<group>"; };
 		F93043D51C77BFC900A90AFD /* Properties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Properties.swift; sourceTree = "<group>"; };
+		F93043DB1C77C29700A90AFD /* mParticleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = mParticleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		F93043DF1C77C29700A90AFD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F93043E61C77C33000A90AFD /* MPEventTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MPEventTests.swift; sourceTree = "<group>"; };
+		F93043E81C77D0A700A90AFD /* MPEventKeys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MPEventKeys.swift; sourceTree = "<group>"; };
 		F93814541C736D7C00678BA2 /* PageViewTracking.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageViewTracking.swift; sourceTree = "<group>"; };
 		F93814561C736D8A00678BA2 /* EventTracking.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventTracking.swift; sourceTree = "<group>"; };
 		F93814581C736D9D00678BA2 /* LifetimeValueIncreasing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LifetimeValueIncreasing.swift; sourceTree = "<group>"; };
@@ -48,15 +68,44 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		F93043D81C77C29700A90AFD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F93043E01C77C29700A90AFD /* Simcoe.framework in Frameworks */,
+				BFB180029276D6A19213D152 /* Pods_mParticleTests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		37CE4D0DC0F2D4340035D886 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				8E0635B9404692DA868367EA /* Pods_mParticleTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		4B7DB2042A4357F196BE5466 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				253F40E5BD1AF3BACF1EC067 /* Pods-mParticleTests.debug.xcconfig */,
+				C29C5AD3C473D1AF367AFAF1 /* Pods-mParticleTests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		F902ED081C68FA07007975F5 = {
 			isa = PBXGroup;
 			children = (
 				F90A13A81C737F620074AC98 /* Simcoe.podspec */,
 				F93DF03C1C6E7E0D007B3928 /* Simcoe */,
+				F93043DC1C77C29700A90AFD /* mParticleTests */,
 				F902ED131C68FA07007975F5 /* Products */,
+				4B7DB2042A4357F196BE5466 /* Pods */,
+				37CE4D0DC0F2D4340035D886 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -64,6 +113,7 @@
 			isa = PBXGroup;
 			children = (
 				F902ED121C68FA07007975F5 /* Simcoe.framework */,
+				F93043DB1C77C29700A90AFD /* mParticleTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -73,8 +123,18 @@
 			children = (
 				F90A13AC1C738BC60074AC98 /* mParticle.swift */,
 				F90A13B01C7397440074AC98 /* MPEvent+Simcoe.swift */,
+				F93043E81C77D0A700A90AFD /* MPEventKeys.swift */,
 			);
 			path = mParticle;
+			sourceTree = "<group>";
+		};
+		F93043DC1C77C29700A90AFD /* mParticleTests */ = {
+			isa = PBXGroup;
+			children = (
+				F93043E61C77C33000A90AFD /* MPEventTests.swift */,
+				F93043DF1C77C29700A90AFD /* Info.plist */,
+			);
+			path = mParticleTests;
 			sourceTree = "<group>";
 		};
 		F93DF03C1C6E7E0D007B3928 /* Simcoe */ = {
@@ -138,17 +198,43 @@
 			productReference = F902ED121C68FA07007975F5 /* Simcoe.framework */;
 			productType = "com.apple.product-type.framework";
 		};
+		F93043DA1C77C29700A90AFD /* mParticleTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F93043E51C77C29700A90AFD /* Build configuration list for PBXNativeTarget "mParticleTests" */;
+			buildPhases = (
+				F770A41D786D7B5E35012906 /* Check Pods Manifest.lock */,
+				F93043D71C77C29700A90AFD /* Sources */,
+				F93043D81C77C29700A90AFD /* Frameworks */,
+				F93043D91C77C29700A90AFD /* Resources */,
+				5EC434FB3596E10F0873D6B2 /* Embed Pods Frameworks */,
+				B9E409C47E20848B4C876457 /* Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F93043E21C77C29700A90AFD /* PBXTargetDependency */,
+			);
+			name = mParticleTests;
+			productName = mParticleTests;
+			productReference = F93043DB1C77C29700A90AFD /* mParticleTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		F902ED091C68FA07007975F5 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0720;
 				LastUpgradeCheck = 0720;
 				ORGANIZATIONNAME = "Prolific Interactive";
 				TargetAttributes = {
 					F902ED111C68FA07007975F5 = {
 						CreatedOnToolsVersion = 7.2;
+					};
+					F93043DA1C77C29700A90AFD = {
+						CreatedOnToolsVersion = 7.2.1;
+						DevelopmentTeam = 3GP6UAQ3Q3;
 					};
 				};
 			};
@@ -165,6 +251,7 @@
 			projectRoot = "";
 			targets = (
 				F902ED111C68FA07007975F5 /* Simcoe */,
+				F93043DA1C77C29700A90AFD /* mParticleTests */,
 			);
 		};
 /* End PBXProject section */
@@ -177,7 +264,62 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		F93043D91C77C29700A90AFD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		5EC434FB3596E10F0873D6B2 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-mParticleTests/Pods-mParticleTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B9E409C47E20848B4C876457 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-mParticleTests/Pods-mParticleTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F770A41D786D7B5E35012906 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		F902ED0D1C68FA07007975F5 /* Sources */ = {
@@ -197,7 +339,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		F93043D71C77C29700A90AFD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F93043E71C77C33000A90AFD /* MPEventTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		F93043E21C77C29700A90AFD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F902ED111C68FA07007975F5 /* Simcoe */;
+			targetProxy = F93043E11C77C29700A90AFD /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		F902ED181C68FA07007975F5 /* Debug */ = {
@@ -297,9 +455,11 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_TESTABILITY = YES;
 				INFOPLIST_FILE = Simcoe/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULE_NAME = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.prolificinteractive.Simcoe;
 				PRODUCT_NAME = Simcoe;
 				SKIP_INSTALL = YES;
@@ -316,13 +476,40 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_TESTABILITY = NO;
 				INFOPLIST_FILE = Simcoe/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULE_NAME = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.prolificinteractive.Simcoe;
 				PRODUCT_NAME = Simcoe;
 				SKIP_INSTALL = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "";
+			};
+			name = Release;
+		};
+		F93043E31C77C29700A90AFD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 253F40E5BD1AF3BACF1EC067 /* Pods-mParticleTests.debug.xcconfig */;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				INFOPLIST_FILE = mParticleTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.prolificinteractive.mParticleTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		F93043E41C77C29700A90AFD /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = C29C5AD3C473D1AF367AFAF1 /* Pods-mParticleTests.release.xcconfig */;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				INFOPLIST_FILE = mParticleTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.prolificinteractive.mParticleTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
 		};
@@ -343,6 +530,15 @@
 			buildConfigurations = (
 				F902ED1B1C68FA07007975F5 /* Debug */,
 				F902ED1C1C68FA07007975F5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F93043E51C77C29700A90AFD /* Build configuration list for PBXNativeTarget "mParticleTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F93043E31C77C29700A90AFD /* Debug */,
+				F93043E41C77C29700A90AFD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
