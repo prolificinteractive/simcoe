@@ -12,9 +12,6 @@ public class mParticle {
 
     public let name = "mParticle"
 
-    private let key: String
-    private let secret: String
-
     public init(key: String, secret: String) {
         MParticle.sharedInstance().startWithKey(key, secret:secret)
     }
@@ -29,6 +26,14 @@ extension mParticle: PageViewTracking {
         let event = toEvent(usingData: data, usingSpecificName: pageView)!
 
         MParticle.sharedInstance().logScreenEvent(event)
+    }
+
+}
+
+extension mParticle: EventTracking {
+
+    public func trackEvent(event: String, withAdditionalProperties properties: Properties?) {
+        
     }
 
 }

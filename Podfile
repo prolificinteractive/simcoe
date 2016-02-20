@@ -2,9 +2,18 @@ platform :ios, '8.0'
 use_frameworks!
 inhibit_all_warnings!
 
+workspace 'Simcoe'
+
 target 'mParticleTests', :exclusive => true do
     pod 'Simcoe', :path => './', :subspecs => ['mParticle']
 end
+
+target 'mParticleExample', :exclusive => true do
+    xcodeproj 'mParticleExample/mParticleExample'
+    pod 'Simcoe', :path => './', :subspecs => ['mParticle']
+end
+
+
 
 post_install do |installer|
     installer.pods_project.targets.each do |target|

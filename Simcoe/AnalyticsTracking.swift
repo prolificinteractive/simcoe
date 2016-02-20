@@ -31,7 +31,7 @@ public protocol AnalyticsTracking {
 
 extension AnalyticsTracking {
 
-    func start() {
+    public func start() {
 
     }
 
