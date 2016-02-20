@@ -50,17 +50,18 @@ extension mParticle: EventTracking {
      - parameter properties: The properties of the event.
      */
     public func trackEvent(event: String, withAdditionalProperties properties: Properties?) {
-        guard let properties = properties else {
+        guard var properties = properties else {
             return // TODO: handle errors
         }
 
-        guard let rawValue  = properties[MPEventKeys.EventType.rawValue] as? UInt,
-         eventType = MPEventType(rawValue: rawValue) else {
-            return // TODO: handle errors
-        }
+        properties[MPEventKeys.Name.rawValue] = event
 
-        let eventProperties = eventData(type: eventType, name: event)
-        let event = toEvent(usingData: eventProperties)
+        let event: MPEvent
+        do {
+            event = try toEvent(usingData: properties)
+        } catch {
+            return //TODO: Error Handling
+        }
 
         MParticle.sharedInstance().logEvent(event)
     }
@@ -88,7 +89,12 @@ extension mParticle: LocationTracking {
         eventProperties["latitude"] = location.coordinate.latitude
         eventProperties["longitude"] = location.coordinate.longitude
 
-        let event = toEvent(usingData: eventProperties)
+        let event: MPEvent
+        do {
+            event = try toEvent(usingData: eventProperties)
+        } catch {
+            return // TODO: Error Handling
+        }
 
         MParticle.sharedInstance().logEvent(event)
     }

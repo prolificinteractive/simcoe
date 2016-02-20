@@ -30,7 +30,7 @@ import mParticle_iOS_SDK
 
  - returns: A dictionary containing the information for generating an MPEvent.
  */
-public func evzentData(type type: MPEventType, name: String, category: String? = nil,
+public func eventData(type type: MPEventType, name: String, category: String? = nil,
     duration: Float? = nil, startTime: NSDate? = nil,
     endTime: NSDate? = nil, customFlags: [String: [String]]? = nil,
     info: [String: AnyObject]? = nil) -> [String: AnyObject] {
@@ -68,14 +68,19 @@ public func evzentData(type type: MPEventType, name: String, category: String? =
         return dictionary
 }
 
-internal func toEvent(usingData data: [String: AnyObject]) -> MPEvent {
-    guard let eventValue = data[MPEventKeys.EventType.rawValue] as? UInt,
-        type = MPEventType(rawValue: eventValue),
-        name = data[MPEventKeys.Name.rawValue] as? String else {
-            fatalError("Cannot parse MPEvent data without an event type or name.")
+internal func toEvent(usingData data: [String: AnyObject]) throws -> MPEvent {
+    guard let name = data[MPEventKeys.Name.rawValue] as? String else {
+        throw MPEventGenerationError.NameMissing
     }
 
-    let event = MPEvent(name: name, type: type)!
+    guard let eventValue = data[MPEventKeys.EventType.rawValue] as? UInt,
+        type = MPEventType(rawValue: eventValue) else {
+            throw MPEventGenerationError.TypeMissing
+    }
+
+    guard let event = MPEvent(name: name, type: type) else {
+        throw MPEventGenerationError.EventInitFailed
+    }
 
     if let category = data[MPEventKeys.Category.rawValue] as? String {
         event.category = category
