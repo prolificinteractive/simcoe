@@ -8,13 +8,13 @@
 
 internal enum MPEventKeys: String {
 
-    case EventType = "eventType"
-    case Category = "category"
-    case Duration = "duration"
-    case StartTime = "startTime"
-    case EndTime = "endTime"
-    case Name = "name"
-    case CustomFlags = "customFlags"
+    case EventType = "SimcoeInternalMPEventType"
+    case Category = "SimcoeInternalMPCategory"
+    case Duration = "SimcoeInternalMPDuration"
+    case StartTime = "SimcoeInternalMPStartTime"
+    case EndTime = "SimcoeInternalMPEndTime"
+    case Name = "SimcoeInternalName"
+    case CustomFlags = "SimcoeInternalCustomFlags"
 
     static let allEvents: [MPEventKeys] = [.EventType, .Category, .Duration, .StartTime, .EndTime, .Name, .CustomFlags]
     
