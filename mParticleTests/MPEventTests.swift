@@ -12,71 +12,64 @@ import mParticle_iOS_SDK
 
 class MPEventTests: XCTestCase {
 
-    func test_that_MPEvent_input_name_supercedes_dictionary_value() {
-        let inputName = "mParticle Name"
-        let dictionaryName = "mParticle Input Value Name"
+    func test_that_MPEvent_has_type() {
+        let type = MPEventType.Media
 
-        let data = eventData(.Other, name: dictionaryName)
-        let result = toEvent(usingData: data, usingSpecificName: inputName)
+        let data = eventData(type: type, name: "Event Type")
+        let result = toEvent(usingData: data)
 
-        let nonNil = checkNil(result)
-        XCTAssertEqual(inputName, nonNil.name,
-            "Expected result = \(inputName); got \(nonNil.name)")
+        XCTAssertEqual(result.type, type,
+            "Expected result = \(type); got \(result.type)")
     }
 
     func test_that_MPEvent_has_name() {
         let name = "Hello, World"
 
-        let data = eventData(.Other, name: name)
+        let data = eventData(type: .Other, name: name)
         let result = toEvent(usingData: data)
 
-        let nonNil = checkNil(result)
-        XCTAssertEqual(nonNil.name, name,
-            "Expected result = \(name); got \(nonNil.name)")
+        XCTAssertEqual(result.name, name,
+            "Expected result = \(name); got \(result.name)")
     }
 
     func test_that_MPEvent_has_category() {
         let category = "A Cool Category"
 
-        let data = eventData(.Other, category: category)
-        let result = toEvent(usingData: data, usingSpecificName: "Category")
+        let data = eventData(type: .Other, name: "Category", category: category)
+        let result = toEvent(usingData: data)
 
-        let nonNil = checkNil(result)
-        XCTAssertEqual(category, nonNil.category,
-            "Expected result = \(category); got \(nonNil.category)")
+        XCTAssertEqual(category, result.category,
+            "Expected result = \(category); got \(result.category)")
     }
 
     func test_that_MPEvent_has_duration() {
         let duration: Float = 40
 
-        let data = eventData(.Other, duration: duration)
-        let result = toEvent(usingData: data, usingSpecificName: "Duration")
+        let data = eventData(type: .Other, name: "Duration", duration: duration)
+        let result = toEvent(usingData: data)
 
-        let nonNil = checkNil(result)
-        XCTAssertEqual(duration, nonNil.duration,
-            "Expected result = \(duration); got \(nonNil.duration)")
+        XCTAssertEqual(duration, result.duration,
+            "Expected result = \(duration); got \(result.duration)")
     }
 
     func test_that_MPEvent_has_startTime() {
         let startTime = NSDate(timeIntervalSinceReferenceDate: 1000)
 
-        let data = eventData(.Other, startTime: startTime)
-        let result = toEvent(usingData: data, usingSpecificName: "Start Time")
+        let data = eventData(type: .Other, name: "Start Time", startTime: startTime)
+        let result = toEvent(usingData: data)
 
-        let nonNil = checkNil(result)
-        XCTAssertEqual(startTime.timeIntervalSinceReferenceDate, nonNil.startTime?.timeIntervalSinceReferenceDate,
-            "Expected result = \(startTime.timeIntervalSinceReferenceDate); got \(nonNil.startTime?.timeIntervalSinceReferenceDate)")
+        XCTAssertEqual(startTime.timeIntervalSinceReferenceDate, result.startTime?.timeIntervalSinceReferenceDate,
+            "Expected result = \(startTime.timeIntervalSinceReferenceDate); got \(result.startTime?.timeIntervalSinceReferenceDate)")
     }
 
     func test_that_MPEvent_has_endTime() {
         let endTime = NSDate(timeIntervalSinceReferenceDate: 1424)
 
-        let data = eventData(.Other, endTime: endTime)
-        let result = toEvent(usingData: data, usingSpecificName: "End Time")
+        let data = eventData(type: .Other, name: "End Time", endTime: endTime)
+        let result = toEvent(usingData: data)
 
-        let nonNil = checkNil(result)
-        XCTAssertEqual(endTime.timeIntervalSinceReferenceDate, nonNil.endTime?.timeIntervalSinceReferenceDate,
-        "Expected result = \(endTime.timeIntervalSinceReferenceDate); got \(nonNil.endTime?.timeIntervalSinceReferenceDate)")
+        XCTAssertEqual(endTime.timeIntervalSinceReferenceDate, result.endTime?.timeIntervalSinceReferenceDate,
+        "Expected result = \(endTime.timeIntervalSinceReferenceDate); got \(result.endTime?.timeIntervalSinceReferenceDate)")
     }
 
     func test_that_MPEvent_has_customFlags() {
@@ -84,14 +77,13 @@ class MPEventTests: XCTestCase {
         let values = ["Excellent", "Tubular"]
         let customFlags = [key: values]
 
-        let data = eventData(.Other, customFlags: customFlags)
-        let result = toEvent(usingData: data, usingSpecificName: "Custom Flags")
+        let data = eventData(type: .Other, name: "Custom Flags", customFlags: customFlags)
+        let result = toEvent(usingData: data)
 
-        let nonNil = checkNil(result)
-        XCTAssertEqual(key, nonNil.customFlags.keys.first!,
-            "Expected result = \(key); got \(nonNil.customFlags.keys.first!)")
-        XCTAssertEqual(nonNil.customFlags[key]!, values,
-            "Expected result = \(values); got \(nonNil.customFlags[key]!)")
+        XCTAssertEqual(key, result.customFlags.keys.first!,
+            "Expected result = \(key); got \(result.customFlags.keys.first!)")
+        XCTAssertEqual(result.customFlags[key]!, values,
+            "Expected result = \(values); got \(result.customFlags[key]!)")
     }
 
     func test_that_MPEvent_has_info() {
@@ -99,14 +91,12 @@ class MPEventTests: XCTestCase {
         let key = "Stuff"
         let value = 42
 
-        let data = eventData(.Other, name: name, info: [key: value])
+        let data = eventData(type: .Other, name: name, info: [key: value])
         let result = toEvent(usingData: data)
 
-        let nonNil = checkNil(result)
-
-        XCTAssertNotNil(nonNil.info,
+        XCTAssertNotNil(result.info,
             "Expected info to not be nil; got nil.")
-        let resultValue = nonNil.info?[key] as? Int
+        let resultValue = result.info?[key] as? Int
 
         XCTAssertNotNil(resultValue,
             "Expected key value to not be nil; got nil.")
@@ -114,8 +104,4 @@ class MPEventTests: XCTestCase {
             "Expected result = \(value); got \(resultValue!)")
     }
 
-    private func checkNil(result: MPEvent?) -> MPEvent {
-        XCTAssertNotNil(result, "Expected result: result not nil.")
-        return result!
-    }
 }

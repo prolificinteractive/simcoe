@@ -22,8 +22,8 @@ extension mParticle: PageViewTracking {
 
     public func trackPageView(pageView: String, withAdditionalProperties properties: Properties?) {
         let defaultEvents = properties ?? [String: AnyObject]()
-        let data = eventData(.Navigation, info: defaultEvents)
-        let event = toEvent(usingData: data, usingSpecificName: pageView)!
+        let data = eventData(type: .Navigation, name: pageView, info: defaultEvents)
+        let event = toEvent(usingData: data)
 
         MParticle.sharedInstance().logScreenEvent(event)
     }
@@ -33,7 +33,19 @@ extension mParticle: PageViewTracking {
 extension mParticle: EventTracking {
 
     public func trackEvent(event: String, withAdditionalProperties properties: Properties?) {
-        
+        guard let properties = properties else {
+            return // TODO: handle errors
+        }
+
+        guard let rawValue  = properties[MPEventKeys.EventType.rawValue] as? UInt,
+         eventType = MPEventType(rawValue: rawValue) else {
+            return // TODO: handle errors
+        }
+
+        let eventProperties = eventData(type: eventType, name: event)
+        let event = toEvent(usingData: eventProperties)
+
+        MParticle.sharedInstance().logEvent(event)
     }
 
 }
@@ -45,8 +57,8 @@ extension mParticle: LocationTracking {
         eventProperties["latitude"] = location.coordinate.latitude
         eventProperties["longitude"] = location.coordinate.longitude
 
-        let rawEvent = eventData(.Location, info: eventProperties)
-        let event = toEvent(usingData: rawEvent)!
+        let rawEvent = eventData(type: .Location, name: "", info: eventProperties)
+        let event = toEvent(usingData: rawEvent)
 
         MParticle.sharedInstance().logEvent(event)
     }
@@ -55,7 +67,8 @@ extension mParticle: LocationTracking {
 
 extension mParticle: LifetimeValueIncreasing {
 
-    public func increaseLifetimeValue(byAmount amount: Double, forItem item: String?, withAdditionalProperties properties: Properties?) {
+    public func increaseLifetimeValue(byAmount amount: Double, forItem item: String?,
+        withAdditionalProperties properties: Properties?) {
         MParticle.sharedInstance().logLTVIncrease(amount, eventName: (item ?? ""), eventInfo: properties)
     }
 

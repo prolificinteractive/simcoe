@@ -8,15 +8,14 @@
 
 import mParticle_iOS_SDK
 
-public func eventData(type: MPEventType, name: String? = nil, category: String? = nil,
+public func eventData(type type: MPEventType, name: String, category: String? = nil,
     duration: Float? = nil, startTime: NSDate? = nil,
     endTime: NSDate? = nil, customFlags: [String: [String]]? = nil,
     info: [String: AnyObject]? = nil) -> [String: AnyObject] {
         var dictionary: [String: AnyObject] = [MPEventKeys.EventType.rawValue: type.rawValue]
 
-        if let name = name {
-            dictionary[MPEventKeys.Name.rawValue] = name
-        }
+        dictionary[MPEventKeys.EventType.rawValue] = type.rawValue
+        dictionary[MPEventKeys.Name.rawValue] = name
 
         if let category = category {
             dictionary[MPEventKeys.Category.rawValue] = category
@@ -47,11 +46,11 @@ public func eventData(type: MPEventType, name: String? = nil, category: String? 
         return dictionary
 }
 
-internal func toEvent(usingData data: [String: AnyObject], usingSpecificName name: String? = nil) -> MPEvent? {
+internal func toEvent(usingData data: [String: AnyObject]) -> MPEvent {
     guard let eventValue = data[MPEventKeys.EventType.rawValue] as? UInt,
         type = MPEventType(rawValue: eventValue),
-        name = name ?? data[MPEventKeys.Name.rawValue] as? String else {
-            return nil
+        name = data[MPEventKeys.Name.rawValue] as? String else {
+            fatalError("Cannot parse MPEvent data without an event type or name.")
     }
 
     let event = MPEvent(name: name, type: type)!
