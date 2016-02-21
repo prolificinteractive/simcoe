@@ -12,7 +12,7 @@ public final class Recorder {
     /// The output option for the recorder. Defaults to .Verbose
     public var outputOption: OutputOptions = .Verbose
 
-    private var events = [Event]()
+    var events = [Event]()
 
     /**
      Records the event.

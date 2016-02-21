@@ -11,18 +11,23 @@ import CoreLocation
 /// The root analytics engine.
 public final class Simcoe {
 
-    /// The analytics data recorder.
-    public let recorder = Recorder()
+    public static var recorder: Recorder {
+        return engine.recorder
+    }
 
-    private var providers = [AnalyticsTracking]() {
+    /// The default analytics logging engine.
+    private static let engine = Simcoe()
+
+    /// The analytics data recorder.
+    let recorder = Recorder()
+
+    var providers = [AnalyticsTracking]() {
         didSet {
             for provider in providers {
                 provider.start()
             }
         }
     }
-    
-    private static let engine = Simcoe()
 
     /**
      Retrieves the provider based on its kind from the current list of providers.
@@ -50,17 +55,7 @@ public final class Simcoe {
      - parameter pageView: The page view event.
      */
     public static func trackPageView(pageView: String, withAdditionalProperties properties: Properties? = nil) {
-        let providers = engine.providers
-            .map({ provider in return provider as? PageViewTracking })
-            .flatMap({ $0 })
-
-        providers.forEach { pageTrackingProvider in
-            pageTrackingProvider.trackPageView(pageView, withAdditionalProperties: properties)
-        }
-
-        let event = Event(providerNames: providers.map({ provider in return provider.name }),
-            description: "Page View: \(pageView)")
-        engine.recorder.record(event: event)
+        engine.trackPageView(pageView, withAdditionalProperties: properties)
     }
 
     /**
@@ -70,17 +65,7 @@ public final class Simcoe {
      - parameter properties: The event properties.
      */
     public static func trackEvent(event: String, withAdditionalProperties properties: Properties? = nil) {
-        let providers = engine.providers.map({ provider in return provider as? EventTracking })
-            .flatMap({ $0 })
-
-        providers.forEach { eventTracker in
-            eventTracker.trackEvent(event, withAdditionalProperties: properties)
-        }
-
-        let propertiesString = properties != nil ? "=> \(properties!.description)" : ""
-        let event = Event(providerNames: providers.map({ provider in return provider.name }),
-            description: "Event: \(event) \(propertiesString)")
-        engine.recorder.record(event: event)
+        engine.trackEvent(event, withAdditionalProperties: properties)
     }
 
     /**
@@ -91,11 +76,7 @@ public final class Simcoe {
      */
     public static func trackLifetimeIncrease(byAmount amount: Double = 1, forItem item: String? = nil,
         withAdditionalProperties properties: Properties? = nil) {
-        engine.providers.map({ provider in return provider as? LifetimeValueIncreasing })
-            .flatMap({ $0 })
-            .forEach { lifeTimeValueIncreaser in
-                lifeTimeValueIncreaser.increaseLifetimeValue(byAmount: amount, forItem: item, withAdditionalProperties: properties)
-        }
+            engine.trackLifetimeIncrease(byAmount: amount, forItem: item, withAdditionalProperties: properties)
     }
 
     /**
@@ -104,11 +85,60 @@ public final class Simcoe {
      - parameter location: The user's location.
      */
     public static func trackLocation(location: CLLocation, withAdditionalProperties properties: Properties?) {
-        engine.providers.map({ provider in return provider as? LocationTracking })
-            .flatMap({ $0 })
-            .forEach { locationTracker in
-                locationTracker.trackLocation(location, withAdditionalProperties: properties)
+        engine.trackLocation(location, withAdditionalProperties: properties)
+    }
+
+    init() {
+
+    }
+
+    func trackPageView(pageView: String, withAdditionalProperties properties: Properties? = nil) {
+        let providers: [PageViewTracking] = findProviders()
+
+        providers.forEach { pageTrackingProvider in
+            pageTrackingProvider.trackPageView(pageView, withAdditionalProperties: properties)
         }
+
+        let event = Event(providerNames: providers.map({ provider in return provider.name }),
+            description: "Page View: \(pageView)")
+        recorder.record(event: event)
+    }
+
+    func trackEvent(event: String, withAdditionalProperties properties: Properties? = nil) {
+        let providers: [EventTracking] = findProviders()
+
+        providers.forEach { eventTracker in
+            eventTracker.trackEvent(event, withAdditionalProperties: properties)
+        }
+
+        let propertiesString = properties != nil ? "=> \(properties!.description)" : ""
+        let event = Event(providerNames: providers.map({ provider in return provider.name }),
+            description: "Event: \(event) \(propertiesString)")
+        recorder.record(event: event)
+    }
+
+    func trackLifetimeIncrease(byAmount amount: Double = 1, forItem item: String? = nil,
+        withAdditionalProperties properties: Properties? = nil) {
+            let providers: [LifetimeValueIncreasing] = findProviders()
+
+            providers.forEach { lifeTimeValueIncreaser in
+                lifeTimeValueIncreaser
+                    .increaseLifetimeValue(byAmount: amount, forItem: item, withAdditionalProperties: properties)
+            }
+    }
+
+     func trackLocation(location: CLLocation, withAdditionalProperties properties: Properties?) {
+        let providers: [LocationTracking] = findProviders()
+
+        providers.forEach { locationTracker in
+            locationTracker.trackLocation(location, withAdditionalProperties: properties)
+        }
+    }
+
+    private func findProviders<T>() -> [T] {
+        return providers
+            .map({ provider in return provider as? T })
+            .flatMap({ $0 })
     }
 
 }

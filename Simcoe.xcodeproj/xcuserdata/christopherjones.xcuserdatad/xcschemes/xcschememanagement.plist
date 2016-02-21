@@ -9,9 +9,19 @@
 			<key>orderHint</key>
 			<integer>0</integer>
 		</dict>
+		<key>SimcoeTests.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>6</integer>
+		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>72897FDC1C79E25800393482</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>F902ED111C68FA07007975F5</key>
 		<dict>
 			<key>primary</key>

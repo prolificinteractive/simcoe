@@ -7,7 +7,9 @@
 //
 
 internal enum MPEventGenerationError: ErrorType {
+
     case NameMissing
     case TypeMissing
     case EventInitFailed
+    
 }

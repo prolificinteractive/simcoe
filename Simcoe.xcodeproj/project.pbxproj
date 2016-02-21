@@ -7,9 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		72897FE01C79E25800393482 /* SimcoeLoggingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72897FDF1C79E25800393482 /* SimcoeLoggingTests.swift */; };
+		72897FE21C79E25800393482 /* Simcoe.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F902ED121C68FA07007975F5 /* Simcoe.framework */; };
+		72897FEA1C79E2BC00393482 /* PageViewTrackingFake.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72897FE91C79E2BC00393482 /* PageViewTrackingFake.swift */; };
+		72897FEC1C79E52300393482 /* EventTrackingFake.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72897FEB1C79E52300393482 /* EventTrackingFake.swift */; };
+		72897FEE1C7A8ECA00393482 /* LifetimeValueIncreasingFake.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72897FED1C7A8ECA00393482 /* LifetimeValueIncreasingFake.swift */; };
+		72897FF01C7A8F9900393482 /* LocationTrackingFake.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72897FEF1C7A8F9900393482 /* LocationTrackingFake.swift */; };
+		72897FF21C7A922C00393482 /* RecorderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72897FF11C7A922C00393482 /* RecorderTests.swift */; };
 		BFB180029276D6A19213D152 /* Pods_mParticleTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E0635B9404692DA868367EA /* Pods_mParticleTests.framework */; };
 		F93043D61C77BFC900A90AFD /* Properties.swift in Sources */ = {isa = PBXBuildFile; fileRef = F93043D51C77BFC900A90AFD /* Properties.swift */; };
-		F93043E01C77C29700A90AFD /* Simcoe.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F902ED121C68FA07007975F5 /* Simcoe.framework */; };
 		F93043E71C77C33000A90AFD /* MPEventTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F93043E61C77C33000A90AFD /* MPEventTests.swift */; };
 		F93814551C736D7C00678BA2 /* PageViewTracking.swift in Sources */ = {isa = PBXBuildFile; fileRef = F93814541C736D7C00678BA2 /* PageViewTracking.swift */; };
 		F93814571C736D8A00678BA2 /* EventTracking.swift in Sources */ = {isa = PBXBuildFile; fileRef = F93814561C736D8A00678BA2 /* EventTracking.swift */; };
@@ -24,6 +30,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		72897FE31C79E25800393482 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F902ED091C68FA07007975F5 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F902ED111C68FA07007975F5;
+			remoteInfo = Simcoe;
+		};
 		F93043E11C77C29700A90AFD /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = F902ED091C68FA07007975F5 /* Project object */;
@@ -36,6 +49,14 @@
 /* Begin PBXFileReference section */
 		253F40E5BD1AF3BACF1EC067 /* Pods-mParticleTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mParticleTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-mParticleTests/Pods-mParticleTests.debug.xcconfig"; sourceTree = "<group>"; };
 		72897FC81C79321F00393482 /* MPEventGenerationError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MPEventGenerationError.swift; sourceTree = "<group>"; };
+		72897FDD1C79E25800393482 /* SimcoeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SimcoeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		72897FDF1C79E25800393482 /* SimcoeLoggingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimcoeLoggingTests.swift; sourceTree = "<group>"; };
+		72897FE11C79E25800393482 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		72897FE91C79E2BC00393482 /* PageViewTrackingFake.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageViewTrackingFake.swift; sourceTree = "<group>"; };
+		72897FEB1C79E52300393482 /* EventTrackingFake.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventTrackingFake.swift; sourceTree = "<group>"; };
+		72897FED1C7A8ECA00393482 /* LifetimeValueIncreasingFake.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LifetimeValueIncreasingFake.swift; sourceTree = "<group>"; };
+		72897FEF1C7A8F9900393482 /* LocationTrackingFake.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationTrackingFake.swift; sourceTree = "<group>"; };
+		72897FF11C7A922C00393482 /* RecorderTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecorderTests.swift; sourceTree = "<group>"; };
 		8E0635B9404692DA868367EA /* Pods_mParticleTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_mParticleTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C29C5AD3C473D1AF367AFAF1 /* Pods-mParticleTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mParticleTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-mParticleTests/Pods-mParticleTests.release.xcconfig"; sourceTree = "<group>"; };
 		F902ED121C68FA07007975F5 /* Simcoe.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Simcoe.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -62,6 +83,14 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		72897FDA1C79E25800393482 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				72897FE21C79E25800393482 /* Simcoe.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F902ED0E1C68FA07007975F5 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -73,7 +102,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F93043E01C77C29700A90AFD /* Simcoe.framework in Frameworks */,
 				BFB180029276D6A19213D152 /* Pods_mParticleTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -98,11 +126,34 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		72897FDE1C79E25800393482 /* SimcoeTests */ = {
+			isa = PBXGroup;
+			children = (
+				72897FE81C79E2A900393482 /* Mocks */,
+				72897FDF1C79E25800393482 /* SimcoeLoggingTests.swift */,
+				72897FF11C7A922C00393482 /* RecorderTests.swift */,
+				72897FE11C79E25800393482 /* Info.plist */,
+			);
+			path = SimcoeTests;
+			sourceTree = "<group>";
+		};
+		72897FE81C79E2A900393482 /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				72897FE91C79E2BC00393482 /* PageViewTrackingFake.swift */,
+				72897FEB1C79E52300393482 /* EventTrackingFake.swift */,
+				72897FED1C7A8ECA00393482 /* LifetimeValueIncreasingFake.swift */,
+				72897FEF1C7A8F9900393482 /* LocationTrackingFake.swift */,
+			);
+			path = Mocks;
+			sourceTree = "<group>";
+		};
 		F902ED081C68FA07007975F5 = {
 			isa = PBXGroup;
 			children = (
 				F90A13A81C737F620074AC98 /* Simcoe.podspec */,
 				F93DF03C1C6E7E0D007B3928 /* Simcoe */,
+				72897FDE1C79E25800393482 /* SimcoeTests */,
 				F93043DC1C77C29700A90AFD /* mParticleTests */,
 				F902ED131C68FA07007975F5 /* Products */,
 				4B7DB2042A4357F196BE5466 /* Pods */,
@@ -115,6 +166,7 @@
 			children = (
 				F902ED121C68FA07007975F5 /* Simcoe.framework */,
 				F93043DB1C77C29700A90AFD /* mParticleTests.xctest */,
+				72897FDD1C79E25800393482 /* SimcoeTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -182,6 +234,24 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		72897FDC1C79E25800393482 /* SimcoeTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 72897FE71C79E25800393482 /* Build configuration list for PBXNativeTarget "SimcoeTests" */;
+			buildPhases = (
+				72897FD91C79E25800393482 /* Sources */,
+				72897FDA1C79E25800393482 /* Frameworks */,
+				72897FDB1C79E25800393482 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				72897FE41C79E25800393482 /* PBXTargetDependency */,
+			);
+			name = SimcoeTests;
+			productName = SimcoeTests;
+			productReference = 72897FDD1C79E25800393482 /* SimcoeTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		F902ED111C68FA07007975F5 /* Simcoe */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = F902ED1A1C68FA07007975F5 /* Build configuration list for PBXNativeTarget "Simcoe" */;
@@ -231,6 +301,9 @@
 				LastUpgradeCheck = 0720;
 				ORGANIZATIONNAME = "Prolific Interactive";
 				TargetAttributes = {
+					72897FDC1C79E25800393482 = {
+						CreatedOnToolsVersion = 7.2;
+					};
 					F902ED111C68FA07007975F5 = {
 						CreatedOnToolsVersion = 7.2;
 					};
@@ -254,11 +327,19 @@
 			targets = (
 				F902ED111C68FA07007975F5 /* Simcoe */,
 				F93043DA1C77C29700A90AFD /* mParticleTests */,
+				72897FDC1C79E25800393482 /* SimcoeTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		72897FDB1C79E25800393482 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F902ED101C68FA07007975F5 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -324,6 +405,19 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		72897FD91C79E25800393482 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				72897FE01C79E25800393482 /* SimcoeLoggingTests.swift in Sources */,
+				72897FEA1C79E2BC00393482 /* PageViewTrackingFake.swift in Sources */,
+				72897FF01C7A8F9900393482 /* LocationTrackingFake.swift in Sources */,
+				72897FF21C7A922C00393482 /* RecorderTests.swift in Sources */,
+				72897FEE1C7A8ECA00393482 /* LifetimeValueIncreasingFake.swift in Sources */,
+				72897FEC1C79E52300393482 /* EventTrackingFake.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F902ED0D1C68FA07007975F5 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -352,6 +446,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		72897FE41C79E25800393482 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F902ED111C68FA07007975F5 /* Simcoe */;
+			targetProxy = 72897FE31C79E25800393482 /* PBXContainerItemProxy */;
+		};
 		F93043E21C77C29700A90AFD /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = F902ED111C68FA07007975F5 /* Simcoe */;
@@ -360,6 +459,26 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		72897FE51C79E25800393482 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = SimcoeTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.prolificinteractive.SimcoeTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		72897FE61C79E25800393482 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = SimcoeTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.prolificinteractive.SimcoeTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 		F902ED181C68FA07007975F5 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -518,6 +637,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		72897FE71C79E25800393482 /* Build configuration list for PBXNativeTarget "SimcoeTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				72897FE51C79E25800393482 /* Debug */,
+				72897FE61C79E25800393482 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		F902ED0C1C68FA07007975F5 /* Build configuration list for PBXProject "Simcoe" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
