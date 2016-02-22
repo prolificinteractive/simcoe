@@ -2,19 +2,17 @@
 Pod::Spec.new do |s|
 
   s.name         = "Simcoe"
-  s.version      = "0.0.1"
+  s.version      = "0.1.0"
   s.summary      = "A short description of Simcoe."
   s.description  = <<-DESC
                    DESC
-
   s.license      = "MIT (example)"
-  # s.license      = { :type => "MIT", :file => "FILE_LICENSE" }
-  s.author             = { "Christopher Jones" => "c.jones@prolificinteractive.com" }
+  s.author       = { "Christopher Jones" => "c.jones@prolificinteractive.com" }
 
   #  When using multiple platforms
   s.ios.deployment_target = "8.0"
 
-  s.source       = { :git => "http://EXAMPLE/Simcoe.git", :tag => "0.0.1" }
+  s.source       = { :git => "https://bitbucket.org/prolificinteractive/simcoe", :tag => s.version }
   s.requires_arc = true
   
   
