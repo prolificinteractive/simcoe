@@ -14,8 +14,9 @@ internal final class EventTrackingFake: EventTracking {
 
     var trackEventCallCount = 0
 
-    func trackEvent(event: String, withAdditionalProperties properties: Properties?) {
+    func trackEvent(event: String, withAdditionalProperties properties: Properties?) -> TrackingResult {
         trackEventCallCount += 1
+        return .Success
     }
 
 }

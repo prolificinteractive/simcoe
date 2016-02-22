@@ -11,6 +11,8 @@ import mParticle_iOS_SDK
 /// Simcoe Analytics handler for the MParticle iOS SDK.
 public class mParticle {
 
+    private static let unknownErrorMessage = "An unknown error occurred."
+
     public let name = "mParticle"
 
     /**
@@ -27,8 +29,9 @@ public class mParticle {
 
 extension mParticle: PageViewTracking {
 
-    public func trackPageView(pageView: String, withAdditionalProperties properties: Properties?) {
+    public func trackPageView(pageView: String, withAdditionalProperties properties: Properties?) -> TrackingResult {
         MParticle.sharedInstance().logScreen(pageView, eventInfo: properties)
+        return .Success
     }
 
 }
@@ -49,9 +52,9 @@ extension mParticle: EventTracking {
      - parameter event:      The event name to log.
      - parameter properties: The properties of the event.
      */
-    public func trackEvent(event: String, withAdditionalProperties properties: Properties?) {
+    public func trackEvent(event: String, withAdditionalProperties properties: Properties?) -> TrackingResult {
         guard var properties = properties else {
-            return // TODO: handle errors
+            return .Error(message: "Cannot track an event without valid properties.")
         }
 
         properties[MPEventKeys.Name.rawValue] = event
@@ -59,11 +62,14 @@ extension mParticle: EventTracking {
         let event: MPEvent
         do {
             event = try toEvent(usingData: properties)
+        } catch let error as MPEventGenerationError {
+            return .Error(message: error.description)
         } catch {
-            return //TODO: Error Handling
+            return .Error(message: mParticle.unknownErrorMessage)
         }
 
         MParticle.sharedInstance().logEvent(event)
+        return .Success
     }
 
 }
@@ -84,7 +90,7 @@ extension mParticle: LocationTracking {
      - parameter location:   The location data being tracked.
      - parameter properties: The properties for the MPEvent.
      */
-    public func trackLocation(location: CLLocation, withAdditionalProperties properties: Properties?) {
+    public func trackLocation(location: CLLocation, withAdditionalProperties properties: Properties?) -> TrackingResult {
         var eventProperties = properties ?? [String: AnyObject]() // TODO: Handle Error
         eventProperties["latitude"] = location.coordinate.latitude
         eventProperties["longitude"] = location.coordinate.longitude
@@ -92,11 +98,14 @@ extension mParticle: LocationTracking {
         let event: MPEvent
         do {
             event = try toEvent(usingData: eventProperties)
+        } catch let error as MPEventGenerationError {
+            return .Error(message: error.description)
         } catch {
-            return // TODO: Error Handling
+            return .Error(message: mParticle.unknownErrorMessage)
         }
 
         MParticle.sharedInstance().logEvent(event)
+        return .Success
     }
 
 }
@@ -104,10 +113,9 @@ extension mParticle: LocationTracking {
 extension mParticle: LifetimeValueIncreasing {
 
     public func increaseLifetimeValue(byAmount amount: Double, forItem item: String?,
-        withAdditionalProperties properties: Properties?) {
-            
-
+        withAdditionalProperties properties: Properties?) -> TrackingResult {
             MParticle.sharedInstance().logLTVIncrease(amount, eventName: (item ?? ""), eventInfo: properties)
+            return .Success
     }
 
 }

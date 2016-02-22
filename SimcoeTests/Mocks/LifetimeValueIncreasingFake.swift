@@ -15,8 +15,9 @@ internal final class LifetimeValueIncreasingFake: LifetimeValueIncreasing {
     var lifetimeValueCallCount = 0
 
     func increaseLifetimeValue(byAmount amount: Double,
-        forItem item: String?, withAdditionalProperties properties: Properties?) {
+        forItem item: String?, withAdditionalProperties properties: Properties?) -> TrackingResult {
             lifetimeValueCallCount += 1
+            return .Success
     }
 
 }

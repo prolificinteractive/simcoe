@@ -11,15 +11,11 @@ import CoreLocation
 /// The root analytics engine.
 public final class Simcoe {
 
-    public static var recorder: Recorder {
-        return engine.recorder
-    }
-
     /// The default analytics logging engine.
-    private static let engine = Simcoe()
+    public static let engine = Simcoe(tracker: Tracker())
 
-    /// The analytics data recorder.
-    let recorder = Recorder()
+    /// The analytics data tracker.
+    public let tracker: Tracker
 
     var providers = [AnalyticsTracking]() {
         didSet {
@@ -88,41 +84,33 @@ public final class Simcoe {
         engine.trackLocation(location, withAdditionalProperties: properties)
     }
 
-    init() {
-
+    init(tracker: Tracker) {
+        self.tracker = tracker
     }
 
     func trackPageView(pageView: String, withAdditionalProperties properties: Properties? = nil) {
         let providers: [PageViewTracking] = findProviders()
 
-        providers.forEach { pageTrackingProvider in
-            pageTrackingProvider.trackPageView(pageView, withAdditionalProperties: properties)
+        write(toProviders: providers, description: "Page View: \(pageView)") { (provider: PageViewTracking) in
+            return provider.trackPageView(pageView, withAdditionalProperties: properties)
         }
-
-        let event = Event(providerNames: providers.map({ provider in return provider.name }),
-            description: "Page View: \(pageView)")
-        recorder.record(event: event)
     }
 
     func trackEvent(event: String, withAdditionalProperties properties: Properties? = nil) {
         let providers: [EventTracking] = findProviders()
 
-        providers.forEach { eventTracker in
-            eventTracker.trackEvent(event, withAdditionalProperties: properties)
-        }
-
         let propertiesString = properties != nil ? "=> \(properties!.description)" : ""
-        let event = Event(providerNames: providers.map({ provider in return provider.name }),
-            description: "Event: \(event) \(propertiesString)")
-        recorder.record(event: event)
+        write(toProviders: providers, description: "Event: \(event) \(propertiesString)") { eventTracker in
+            return eventTracker.trackEvent(event, withAdditionalProperties: properties)
+        }
     }
 
     func trackLifetimeIncrease(byAmount amount: Double = 1, forItem item: String? = nil,
         withAdditionalProperties properties: Properties? = nil) {
             let providers: [LifetimeValueIncreasing] = findProviders()
 
-            providers.forEach { lifeTimeValueIncreaser in
-                lifeTimeValueIncreaser
+            write(toProviders: providers, description: "Lifetime Value increased by \(amount) for \(item ?? "")") { lifeTimeValueIncreaser in
+               return lifeTimeValueIncreaser
                     .increaseLifetimeValue(byAmount: amount, forItem: item, withAdditionalProperties: properties)
             }
     }
@@ -130,9 +118,19 @@ public final class Simcoe {
      func trackLocation(location: CLLocation, withAdditionalProperties properties: Properties?) {
         let providers: [LocationTracking] = findProviders()
 
-        providers.forEach { locationTracker in
+        write(toProviders: providers, description: "User's Location") { locationTracker in
             locationTracker.trackLocation(location, withAdditionalProperties: properties)
         }
+    }
+
+    private func write<T>(toProviders providers: [T], description: String, action: T -> TrackingResult) {
+        let writeEvents = providers.map { provider -> WriteEvent in
+            let result = action(provider)
+            return WriteEvent(provider: provider as! AnalyticsTracking, trackingResult: result)
+        }
+
+        let event = Event(writeEvents: writeEvents, description: description)
+        tracker.track(event: event)
     }
 
     private func findProviders<T>() -> [T] {

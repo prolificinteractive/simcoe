@@ -11,8 +11,8 @@ A Simcoe Event.
 */
 internal struct Event {
 
- /// The names of all providers involved in the specific event.
-    let providerNames: [String]
+ /// The write actions that occurred in this event.
+    let writeEvents: [WriteEvent]
 
  /// The description of the event.
     let description: String

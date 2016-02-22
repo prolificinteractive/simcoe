@@ -18,6 +18,6 @@ public protocol LocationTracking: AnalyticsTracking {
 
      - parameter location: The location to track.
      */
-    func trackLocation(location: CLLocation, withAdditionalProperties properties: Properties?)
+    func trackLocation(location: CLLocation, withAdditionalProperties properties: Properties?) -> TrackingResult
     
 }

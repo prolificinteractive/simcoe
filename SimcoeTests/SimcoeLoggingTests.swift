@@ -17,7 +17,7 @@ class SimcoeLoggingTests: XCTestCase {
     override func setUp() {
         super.setUp()
 
-        simcoe = Simcoe()
+        simcoe = Simcoe(tracker: Tracker())
     }
 
     func test_that_it_logs_page_views_to_providers() {
@@ -77,5 +77,5 @@ class SimcoeLoggingTests: XCTestCase {
             "Expected result = \(expectation); got \(eventTracker.trackEventCallCount)")
 
     }
-
+    
 }

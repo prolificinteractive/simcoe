@@ -15,8 +15,9 @@ internal final class LocationTrackingFake: LocationTracking {
 
     var trackLocationCallCount = 0
 
-    func trackLocation(location: CLLocation, withAdditionalProperties properties: Properties?) {
+    func trackLocation(location: CLLocation, withAdditionalProperties properties: Properties?) -> TrackingResult {
         trackLocationCallCount += 1
+        return .Success
     }
 
 }
