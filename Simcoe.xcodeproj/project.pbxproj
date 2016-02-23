@@ -14,6 +14,7 @@
 		72897FEE1C7A8ECA00393482 /* LifetimeValueIncreasingFake.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72897FED1C7A8ECA00393482 /* LifetimeValueIncreasingFake.swift */; };
 		72897FF01C7A8F9900393482 /* LocationTrackingFake.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72897FEF1C7A8F9900393482 /* LocationTrackingFake.swift */; };
 		72897FF21C7A922C00393482 /* TrackerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72897FF11C7A922C00393482 /* TrackerTests.swift */; };
+		72897FF41C7BF0C600393482 /* EmptyProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72897FF31C7BF0C600393482 /* EmptyProvider.swift */; };
 		BFB180029276D6A19213D152 /* Pods_mParticleTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E0635B9404692DA868367EA /* Pods_mParticleTests.framework */; };
 		F90E8BCD1C7B8471009556F4 /* WriteEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F90E8BCC1C7B8471009556F4 /* WriteEvent.swift */; };
 		F90E8BCF1C7B8FE3009556F4 /* Output.swift in Sources */ = {isa = PBXBuildFile; fileRef = F90E8BCE1C7B8FE3009556F4 /* Output.swift */; };
@@ -64,6 +65,7 @@
 		72897FED1C7A8ECA00393482 /* LifetimeValueIncreasingFake.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LifetimeValueIncreasingFake.swift; sourceTree = "<group>"; };
 		72897FEF1C7A8F9900393482 /* LocationTrackingFake.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationTrackingFake.swift; sourceTree = "<group>"; };
 		72897FF11C7A922C00393482 /* TrackerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackerTests.swift; sourceTree = "<group>"; };
+		72897FF31C7BF0C600393482 /* EmptyProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyProvider.swift; sourceTree = "<group>"; };
 		8E0635B9404692DA868367EA /* Pods_mParticleTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_mParticleTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C29C5AD3C473D1AF367AFAF1 /* Pods-mParticleTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mParticleTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-mParticleTests/Pods-mParticleTests.release.xcconfig"; sourceTree = "<group>"; };
 		F902ED121C68FA07007975F5 /* Simcoe.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Simcoe.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -227,6 +229,7 @@
 				F90E8BCC1C7B8471009556F4 /* WriteEvent.swift */,
 				F90E8BCE1C7B8FE3009556F4 /* Output.swift */,
 				F90E8BD01C7B9131009556F4 /* ConsoleOutput.swift */,
+				72897FF31C7BF0C600393482 /* EmptyProvider.swift */,
 				F94E7CCC1C725D89007E7873 /* Adobe */,
 				F90A13A51C737F050074AC98 /* mParticle */,
 			);
@@ -453,6 +456,7 @@
 				F90E8BCD1C7B8471009556F4 /* WriteEvent.swift in Sources */,
 				F93814591C736D9D00678BA2 /* LifetimeValueIncreasing.swift in Sources */,
 				F938145D1C736E6600678BA2 /* OutputOptions.swift in Sources */,
+				72897FF41C7BF0C600393482 /* EmptyProvider.swift in Sources */,
 				F93DF0471C6E7E0D007B3928 /* Simcoe.swift in Sources */,
 				F938145B1C736DAF00678BA2 /* LocationTracking.swift in Sources */,
 				F93814551C736D7C00678BA2 /* PageViewTracking.swift in Sources */,

@@ -17,7 +17,7 @@ public final class Simcoe {
     /// The analytics data tracker.
     public let tracker: Tracker
 
-    var providers = [AnalyticsTracking]() {
+    var providers: [AnalyticsTracking] = [EmptyProvider()] {
         didSet {
             for provider in providers {
                 provider.start()
