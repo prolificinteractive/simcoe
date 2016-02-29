@@ -19,3 +19,5 @@ public protocol PageViewTracking: AnalyticsTracking {
     func trackPageView(pageView: String, withAdditionalProperties properties: Properties?) -> TrackingResult
     
 }
+
+

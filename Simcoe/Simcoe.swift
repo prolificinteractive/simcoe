@@ -17,7 +17,7 @@ public final class Simcoe {
     /// The analytics data tracker.
     public let tracker: Tracker
 
-    var providers: [AnalyticsTracking] = [EmptyProvider()] {
+    var providers = [AnalyticsTracking]() {
         didSet {
             for provider in providers {
                 provider.start()
@@ -41,8 +41,13 @@ public final class Simcoe {
 
      - parameter providers: The providers to use for analytics tracking.
      */
-    public static func run(withProviders providers: [AnalyticsTracking]) {
-        engine.providers = providers
+    public static func run(with providers: [AnalyticsTracking] = [AnalyticsTracking]()) {
+        var analyticsProviders = providers
+        if analyticsProviders.isEmpty {
+            analyticsProviders.append(EmptyProvider())
+        }
+
+        engine.providers = analyticsProviders
     }
 
     /**
@@ -88,6 +93,16 @@ public final class Simcoe {
         self.tracker = tracker
     }
 
+    public func write<T>(toProviders providers: [T], description: String, action: T -> TrackingResult) {
+        let writeEvents = providers.map { provider -> WriteEvent in
+            let result = action(provider)
+            return WriteEvent(provider: provider as! AnalyticsTracking, trackingResult: result)
+        }
+
+        let event = Event(writeEvents: writeEvents, description: description)
+        tracker.track(event: event)
+    }
+
     func trackPageView(pageView: String, withAdditionalProperties properties: Properties? = nil) {
         let providers: [PageViewTracking] = findProviders()
 
@@ -121,16 +136,6 @@ public final class Simcoe {
         write(toProviders: providers, description: "User's Location") { locationTracker in
             locationTracker.trackLocation(location, withAdditionalProperties: properties)
         }
-    }
-
-    private func write<T>(toProviders providers: [T], description: String, action: T -> TrackingResult) {
-        let writeEvents = providers.map { provider -> WriteEvent in
-            let result = action(provider)
-            return WriteEvent(provider: provider as! AnalyticsTracking, trackingResult: result)
-        }
-
-        let event = Event(writeEvents: writeEvents, description: description)
-        tracker.track(event: event)
     }
 
     private func findProviders<T>() -> [T] {

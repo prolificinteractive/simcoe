@@ -21,6 +21,7 @@
 		F90E8BD11C7B9131009556F4 /* ConsoleOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = F90E8BD01C7B9131009556F4 /* ConsoleOutput.swift */; };
 		F90E8BD31C7B9161009556F4 /* OutputFake.swift in Sources */ = {isa = PBXBuildFile; fileRef = F90E8BD21C7B9161009556F4 /* OutputFake.swift */; };
 		F90E8BD51C7B960D009556F4 /* Failable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F90E8BD41C7B960D009556F4 /* Failable.swift */; };
+		F929EF681C84BA1700280D89 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = F929EF671C84BA1700280D89 /* README.md */; };
 		F93043D61C77BFC900A90AFD /* Properties.swift in Sources */ = {isa = PBXBuildFile; fileRef = F93043D51C77BFC900A90AFD /* Properties.swift */; };
 		F93043E71C77C33000A90AFD /* MPEventTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F93043E61C77C33000A90AFD /* MPEventTests.swift */; };
 		F93043EB1C7B605500A90AFD /* ErrorHandlingOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = F93043EA1C7B605500A90AFD /* ErrorHandlingOption.swift */; };
@@ -78,6 +79,7 @@
 		F90E8BD01C7B9131009556F4 /* ConsoleOutput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConsoleOutput.swift; sourceTree = "<group>"; };
 		F90E8BD21C7B9161009556F4 /* OutputFake.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OutputFake.swift; sourceTree = "<group>"; };
 		F90E8BD41C7B960D009556F4 /* Failable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Failable.swift; sourceTree = "<group>"; };
+		F929EF671C84BA1700280D89 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		F93043D51C77BFC900A90AFD /* Properties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Properties.swift; sourceTree = "<group>"; };
 		F93043DB1C77C29700A90AFD /* mParticleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = mParticleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F93043DF1C77C29700A90AFD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -169,6 +171,7 @@
 		F902ED081C68FA07007975F5 = {
 			isa = PBXGroup;
 			children = (
+				F929EF671C84BA1700280D89 /* README.md */,
 				F90A13A81C737F620074AC98 /* Simcoe.podspec */,
 				F93DF03C1C6E7E0D007B3928 /* Simcoe */,
 				72897FDE1C79E25800393482 /* SimcoeTests */,
@@ -459,6 +462,7 @@
 				72897FF41C7BF0C600393482 /* EmptyProvider.swift in Sources */,
 				F93DF0471C6E7E0D007B3928 /* Simcoe.swift in Sources */,
 				F938145B1C736DAF00678BA2 /* LocationTracking.swift in Sources */,
+				F929EF681C84BA1700280D89 /* README.md in Sources */,
 				F93814551C736D7C00678BA2 /* PageViewTracking.swift in Sources */,
 				F90E8BCF1C7B8FE3009556F4 /* Output.swift in Sources */,
 				F93043D61C77BFC900A90AFD /* Properties.swift in Sources */,
