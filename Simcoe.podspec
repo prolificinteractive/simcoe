@@ -2,7 +2,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "Simcoe"
-  s.version      = "0.2.2"
+  s.version      = "0.2.3"
   s.summary      = "An analytics framework that provides a base layer of simple APIs for managing analytics frameworks."
   s.description  = <<-DESC
                     Simcoe is an analytics framework that aims to provide a simple, extensible API for managing and handling various analytics frameworks. It makes very few assumptions about your analytics implementations, allowing the implementer to customize it to their needs.
@@ -11,13 +11,13 @@ Pod::Spec.new do |s|
 
                     Simcoe also provides a wealth of debugging options, including the ability to track errors as well as log and debug analytics calls right from Xcode.
                 DESC
-  s.license      = "MIT (example)"
+  s.license      = "MIT"
   s.author       = { "Christopher Jones" => "c.jones@prolificinteractive.com" }
 
   #  When using multiple platforms
   s.ios.deployment_target = "8.0"
 
-  s.source       = { :git => "https://bitbucket.org/prolificinteractive/simcoe", :tag => s.version }
+  s.source       = { :git => "https://github.com/prolificinteractive/simcoe", :tag => s.version }
   s.requires_arc = true
   
   
