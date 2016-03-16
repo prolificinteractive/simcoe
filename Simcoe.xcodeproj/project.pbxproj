@@ -31,6 +31,8 @@
 		F93814591C736D9D00678BA2 /* LifetimeValueIncreasing.swift in Sources */ = {isa = PBXBuildFile; fileRef = F93814581C736D9D00678BA2 /* LifetimeValueIncreasing.swift */; };
 		F938145B1C736DAF00678BA2 /* LocationTracking.swift in Sources */ = {isa = PBXBuildFile; fileRef = F938145A1C736DAF00678BA2 /* LocationTracking.swift */; };
 		F938145D1C736E6600678BA2 /* OutputOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F938145C1C736E6600678BA2 /* OutputOptions.swift */; };
+		F93D5CFD1C99BB700090FAA6 /* Adobe.md in Sources */ = {isa = PBXBuildFile; fileRef = F93D5CFB1C99BB700090FAA6 /* Adobe.md */; };
+		F93D5CFE1C99BB700090FAA6 /* mParticle.md in Sources */ = {isa = PBXBuildFile; fileRef = F93D5CFC1C99BB700090FAA6 /* mParticle.md */; };
 		F93DF0441C6E7E0D007B3928 /* AnalyticsTracking.swift in Sources */ = {isa = PBXBuildFile; fileRef = F93DF03E1C6E7E0D007B3928 /* AnalyticsTracking.swift */; };
 		F93DF0471C6E7E0D007B3928 /* Simcoe.swift in Sources */ = {isa = PBXBuildFile; fileRef = F93DF0411C6E7E0D007B3928 /* Simcoe.swift */; };
 		F93DF0491C6E8009007B3928 /* Simcoe.h in Headers */ = {isa = PBXBuildFile; fileRef = F93DF0481C6E8009007B3928 /* Simcoe.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -92,6 +94,8 @@
 		F93814581C736D9D00678BA2 /* LifetimeValueIncreasing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LifetimeValueIncreasing.swift; sourceTree = "<group>"; };
 		F938145A1C736DAF00678BA2 /* LocationTracking.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationTracking.swift; sourceTree = "<group>"; };
 		F938145C1C736E6600678BA2 /* OutputOptions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OutputOptions.swift; sourceTree = "<group>"; };
+		F93D5CFB1C99BB700090FAA6 /* Adobe.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = Adobe.md; sourceTree = "<group>"; };
+		F93D5CFC1C99BB700090FAA6 /* mParticle.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = mParticle.md; sourceTree = "<group>"; };
 		F93DF03E1C6E7E0D007B3928 /* AnalyticsTracking.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnalyticsTracking.swift; sourceTree = "<group>"; };
 		F93DF03F1C6E7E0D007B3928 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F93DF0411C6E7E0D007B3928 /* Simcoe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Simcoe.swift; sourceTree = "<group>"; };
@@ -173,6 +177,7 @@
 			children = (
 				F929EF671C84BA1700280D89 /* README.md */,
 				F90A13A81C737F620074AC98 /* Simcoe.podspec */,
+				F93D5CFA1C99BB700090FAA6 /* Documentation */,
 				F93DF03C1C6E7E0D007B3928 /* Simcoe */,
 				72897FDE1C79E25800393482 /* SimcoeTests */,
 				F93043DC1C77C29700A90AFD /* mParticleTests */,
@@ -210,6 +215,15 @@
 				F93043DF1C77C29700A90AFD /* Info.plist */,
 			);
 			path = mParticleTests;
+			sourceTree = "<group>";
+		};
+		F93D5CFA1C99BB700090FAA6 /* Documentation */ = {
+			isa = PBXGroup;
+			children = (
+				F93D5CFB1C99BB700090FAA6 /* Adobe.md */,
+				F93D5CFC1C99BB700090FAA6 /* mParticle.md */,
+			);
+			path = Documentation;
 			sourceTree = "<group>";
 		};
 		F93DF03C1C6E7E0D007B3928 /* Simcoe */ = {
@@ -456,6 +470,7 @@
 				F94E7CC41C723D4F007E7873 /* Tracker.swift in Sources */,
 				F93DF0441C6E7E0D007B3928 /* AnalyticsTracking.swift in Sources */,
 				F90E8BD11C7B9131009556F4 /* ConsoleOutput.swift in Sources */,
+				F93D5CFE1C99BB700090FAA6 /* mParticle.md in Sources */,
 				F90E8BCD1C7B8471009556F4 /* WriteEvent.swift in Sources */,
 				F93814591C736D9D00678BA2 /* LifetimeValueIncreasing.swift in Sources */,
 				F938145D1C736E6600678BA2 /* OutputOptions.swift in Sources */,
@@ -463,6 +478,7 @@
 				F93DF0471C6E7E0D007B3928 /* Simcoe.swift in Sources */,
 				F938145B1C736DAF00678BA2 /* LocationTracking.swift in Sources */,
 				F929EF681C84BA1700280D89 /* README.md in Sources */,
+				F93D5CFD1C99BB700090FAA6 /* Adobe.md in Sources */,
 				F93814551C736D7C00678BA2 /* PageViewTracking.swift in Sources */,
 				F90E8BCF1C7B8FE3009556F4 /* Output.swift in Sources */,
 				F93043D61C77BFC900A90AFD /* Properties.swift in Sources */,

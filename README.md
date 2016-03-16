@@ -36,8 +36,8 @@ pod 'Simcoe', :subspecs => ['Adobe']
 
 Simcoe comes with default implementations for a wide-variety of providers right out of the box:
 
-* Adobe
-* mParticle
+* [Adobe](Documentation/Adobe.md)
+* [mParticle](Documentation/mParticle.md)
 
 
 ## Usage
