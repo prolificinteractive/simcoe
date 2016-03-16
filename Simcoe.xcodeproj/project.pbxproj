@@ -33,7 +33,7 @@
 		F938145D1C736E6600678BA2 /* OutputOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F938145C1C736E6600678BA2 /* OutputOptions.swift */; };
 		F93D5CFD1C99BB700090FAA6 /* Adobe.md in Sources */ = {isa = PBXBuildFile; fileRef = F93D5CFB1C99BB700090FAA6 /* Adobe.md */; };
 		F93D5CFE1C99BB700090FAA6 /* mParticle.md in Sources */ = {isa = PBXBuildFile; fileRef = F93D5CFC1C99BB700090FAA6 /* mParticle.md */; };
-		F93D5D001C99BDCF0090FAA6 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = F93D5CFF1C99BDCF0090FAA6 /* LICENSE */; };
+		F93D5D001C99BDCF0090FAA6 /* LICENSE.md in Resources */ = {isa = PBXBuildFile; fileRef = F93D5CFF1C99BDCF0090FAA6 /* LICENSE.md */; };
 		F93DF0441C6E7E0D007B3928 /* AnalyticsTracking.swift in Sources */ = {isa = PBXBuildFile; fileRef = F93DF03E1C6E7E0D007B3928 /* AnalyticsTracking.swift */; };
 		F93DF0471C6E7E0D007B3928 /* Simcoe.swift in Sources */ = {isa = PBXBuildFile; fileRef = F93DF0411C6E7E0D007B3928 /* Simcoe.swift */; };
 		F93DF0491C6E8009007B3928 /* Simcoe.h in Headers */ = {isa = PBXBuildFile; fileRef = F93DF0481C6E8009007B3928 /* Simcoe.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -97,7 +97,7 @@
 		F938145C1C736E6600678BA2 /* OutputOptions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OutputOptions.swift; sourceTree = "<group>"; };
 		F93D5CFB1C99BB700090FAA6 /* Adobe.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = Adobe.md; sourceTree = "<group>"; };
 		F93D5CFC1C99BB700090FAA6 /* mParticle.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = mParticle.md; sourceTree = "<group>"; };
-		F93D5CFF1C99BDCF0090FAA6 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		F93D5CFF1C99BDCF0090FAA6 /* LICENSE.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = LICENSE.md; sourceTree = "<group>"; };
 		F93DF03E1C6E7E0D007B3928 /* AnalyticsTracking.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnalyticsTracking.swift; sourceTree = "<group>"; };
 		F93DF03F1C6E7E0D007B3928 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F93DF0411C6E7E0D007B3928 /* Simcoe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Simcoe.swift; sourceTree = "<group>"; };
@@ -177,7 +177,7 @@
 		F902ED081C68FA07007975F5 = {
 			isa = PBXGroup;
 			children = (
-				F93D5CFF1C99BDCF0090FAA6 /* LICENSE */,
+				F93D5CFF1C99BDCF0090FAA6 /* LICENSE.md */,
 				F929EF671C84BA1700280D89 /* README.md */,
 				F90A13A81C737F620074AC98 /* Simcoe.podspec */,
 				F93D5CFA1C99BB700090FAA6 /* Documentation */,
@@ -388,7 +388,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F93D5D001C99BDCF0090FAA6 /* LICENSE in Resources */,
+				F93D5D001C99BDCF0090FAA6 /* LICENSE.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

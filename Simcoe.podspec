@@ -13,11 +13,12 @@ Pod::Spec.new do |s|
                 DESC
   s.license      = "MIT"
   s.author       = { "Christopher Jones" => "c.jones@prolificinteractive.com" }
+  s.homepage     = "https://github.com/prolificinteractive/simcoe"
 
   #  When using multiple platforms
   s.ios.deployment_target = "8.0"
 
-  s.source       = { :git => "https://github.com/prolificinteractive/simcoe", :tag => s.version }
+  s.source       = { :git => "https://github.com/prolificinteractive/simcoe.git", :tag => s.version }
   s.requires_arc = true
   
   
