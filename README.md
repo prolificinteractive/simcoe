@@ -113,18 +113,18 @@ of the event, and a closure to actually do the write event. Using this method wi
 type of custom analytics work you may need to do while also continuing to utilize the powerful debug and logging
 tools provided by the Simcoe framework.
 
-Let's say, for example, you are using Squeeblytics to track the amount of Squeebles in your application. This is 
+Let's say, for example, you are using Sqweeblytics to track the amount of Sqweebles in your application. This is 
 clearly unique behavior, but it's important analytics data.
 
-All you would need to do is wrap your Squeeblytics provider in the Simcoe engine:
+All you would need to do is wrap your Sqweeblytics provider in the Simcoe engine:
 
 ```
-Simcoe.engine.write(toProviders: [Squeeblytics()],
-    description: "Tracks all of the user's squeebles.",
-    action: { squeeblytics in
-        squeeblytics.track()
+Simcoe.engine.write(toProviders: [Sqweeblytics()],
+    description: "Tracks all of the user's sqweebles.",
+    action: { sqweeblytics in
+        sqweeblytics.track()
         return .Success
 })
 ```
 
-That's it! You are now able to properly track your squeebles while continuing to utilize the Simcoe engine.
+That's it! You are now able to properly track your sqweebles while continuing to utilize the Simcoe engine.
