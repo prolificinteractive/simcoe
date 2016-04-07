@@ -72,11 +72,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Simcoe/Simcoe.swift"
-            timestampString = "478461279.980084"
+            timestampString = "481754159.633311"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "59"
-            endingLineNumber = "59"
+            startingLineNumber = "65"
+            endingLineNumber = "65"
             landmarkName = "trackPageView(_:withAdditionalProperties:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -122,6 +122,86 @@
             startingLineNumber = "49"
             endingLineNumber = "49"
             landmarkName = "test_that_it_writes_to_output_once_when_option_simple()"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Simcoe/RemoteOutput.swift"
+            timestampString = "481754159.633311"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "32"
+            endingLineNumber = "32"
+            landmarkName = "print(_:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Simcoe/RemoteOutput.swift"
+            timestampString = "481754159.633311"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "36"
+            endingLineNumber = "36"
+            landmarkName = "print(_:)"
+            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Simcoe.RemoteOutput.print (Swift.String) -&gt; ()"
+                  moduleName = "Simcoe"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/cjones/Documents/Development/Simcoe/Simcoe/RemoteOutput.swift"
+                  timestampString = "481753962.108111"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "27"
+                  endingLineNumber = "27"
+                  offsetFromSymbolStart = "1456">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Simcoe.RemoteOutput.(print (Swift.String) -&gt; ()).(closure #1)"
+                  moduleName = "Simcoe"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/cjones/Documents/Development/Simcoe/Simcoe/RemoteOutput.swift"
+                  timestampString = "481753962.10936"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "28"
+                  endingLineNumber = "28"
+                  offsetFromSymbolStart = "30">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Simcoe/RemoteOutput.swift"
+            timestampString = "481754159.633311"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "35"
+            endingLineNumber = "35"
+            landmarkName = "print(_:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

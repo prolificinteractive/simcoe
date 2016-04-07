@@ -8,8 +8,14 @@
 
 import CoreLocation
 
+private let sessionToken = String(arc4random_uniform(999999))
+
 /// The root analytics engine.
 public final class Simcoe {
+
+    static var session: String {
+        return sessionToken
+    }
 
     /// The default analytics logging engine.
     public static let engine = Simcoe(tracker: Tracker())

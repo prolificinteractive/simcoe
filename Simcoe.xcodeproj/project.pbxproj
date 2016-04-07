@@ -39,6 +39,7 @@
 		F93DF0491C6E8009007B3928 /* Simcoe.h in Headers */ = {isa = PBXBuildFile; fileRef = F93DF0481C6E8009007B3928 /* Simcoe.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F94E7CC41C723D4F007E7873 /* Tracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F94E7CC31C723D4F007E7873 /* Tracker.swift */; };
 		F94E7CC61C723D95007E7873 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = F94E7CC51C723D95007E7873 /* Event.swift */; };
+		F992879B1CB6F5B9009B62F8 /* RemoteOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = F992879A1CB6F5B9009B62F8 /* RemoteOutput.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -104,6 +105,7 @@
 		F93DF0481C6E8009007B3928 /* Simcoe.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Simcoe.h; sourceTree = "<group>"; };
 		F94E7CC31C723D4F007E7873 /* Tracker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tracker.swift; sourceTree = "<group>"; };
 		F94E7CC51C723D95007E7873 /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
+		F992879A1CB6F5B9009B62F8 /* RemoteOutput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RemoteOutput.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -250,6 +252,7 @@
 				F90E8BCE1C7B8FE3009556F4 /* Output.swift */,
 				F90E8BD01C7B9131009556F4 /* ConsoleOutput.swift */,
 				72897FF31C7BF0C600393482 /* EmptyProvider.swift */,
+				F99287991CB6F46F009B62F8 /* Networking */,
 				F94E7CCC1C725D89007E7873 /* Adobe */,
 				F90A13A51C737F050074AC98 /* mParticle */,
 			);
@@ -262,6 +265,14 @@
 				F90A13AA1C738BC10074AC98 /* Adobe.swift */,
 			);
 			path = Adobe;
+			sourceTree = "<group>";
+		};
+		F99287991CB6F46F009B62F8 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				F992879A1CB6F5B9009B62F8 /* RemoteOutput.swift */,
+			);
+			name = Networking;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -483,6 +494,7 @@
 				F938145B1C736DAF00678BA2 /* LocationTracking.swift in Sources */,
 				F929EF681C84BA1700280D89 /* README.md in Sources */,
 				F93D5CFD1C99BB700090FAA6 /* Adobe.md in Sources */,
+				F992879B1CB6F5B9009B62F8 /* RemoteOutput.swift in Sources */,
 				F93814551C736D7C00678BA2 /* PageViewTracking.swift in Sources */,
 				F90E8BCF1C7B8FE3009556F4 /* Output.swift in Sources */,
 				F93043D61C77BFC900A90AFD /* Properties.swift in Sources */,

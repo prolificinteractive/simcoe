@@ -15,7 +15,7 @@ public final class Tracker {
     public var errorOption: ErrorHandlingOption = .Default
 
     var events = [Event]()
-    private let outputSource: Output
+    private let outputSources: [Output]
     
     /**
      Initializes a new instance using the specified source as its output. By default, this is the
@@ -23,8 +23,8 @@ public final class Tracker {
 
      - parameter outputSource: The source to use for general output.
      */
-    init(outputSource: Output = ConsoleOutput()) {
-        self.outputSource = outputSource
+    init(outputSources: [Output] = [ConsoleOutput(), RemoteOutput(token: Simcoe.session)]) {
+        self.outputSources = outputSources
     }
 
     /**
@@ -78,6 +78,6 @@ public final class Tracker {
     }
 
     private func writeOut(withName name: String, message: String) {
-        outputSource.print("[\(name)] \(message)")
+        outputSources.forEach { $0.print("[\(name)] \(message)") }
     }
 }
