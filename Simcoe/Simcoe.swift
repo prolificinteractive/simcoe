@@ -13,6 +13,7 @@ private let sessionToken = String(arc4random_uniform(999999))
 /// The root analytics engine.
 public final class Simcoe {
 
+    /// The Simcoe session.
     static var session: String {
         return sessionToken
     }
@@ -23,12 +24,24 @@ public final class Simcoe {
     /// The analytics data tracker.
     public let tracker: Tracker
 
-    var providers = [AnalyticsTracking]() {
+    /// Simcoe providers.
+    public var providers = [AnalyticsTracking]() {
         didSet {
             for provider in providers {
                 provider.start()
             }
         }
+    }
+
+    /**
+     Initializes a new instance using the specified tracker.
+
+     - parameter tracker: The tracker to use.
+
+     - returns: An instance of Simcoe.
+     */
+    init(tracker: Tracker) {
+        self.tracker = tracker
     }
 
     /**
@@ -59,7 +72,8 @@ public final class Simcoe {
     /**
      Tracks a page view.
 
-     - parameter pageView: The page view event.
+     - parameter pageView:   The page view event.
+     - parameter properties: The optional additional properties.
      */
     public static func trackPageView(pageView: String, withAdditionalProperties properties: Properties? = nil) {
         engine.trackPageView(pageView, withAdditionalProperties: properties)
@@ -69,7 +83,7 @@ public final class Simcoe {
      Tracks an analytics action or event.
 
      - parameter event:      The event that occurred.
-     - parameter properties: The event properties.
+     - parameter properties: The optional additional properties.
      */
     public static func trackEvent(event: String, withAdditionalProperties properties: Properties? = nil) {
         engine.trackEvent(event, withAdditionalProperties: properties)
@@ -78,27 +92,32 @@ public final class Simcoe {
     /**
      Tracks the lifetime value increase.
 
-     - parameter value:  The value whose lifetime value is to be increased.
-     - parameter amount: The amount to increase that lifetime value for.
+     - parameter amount:     The amount to increase that lifetime value for.
+     - parameter item:       The optional item to extend.
+     - parameter properties: The optional additional properties.
      */
     public static func trackLifetimeIncrease(byAmount amount: Double = 1, forItem item: String? = nil,
-        withAdditionalProperties properties: Properties? = nil) {
-            engine.trackLifetimeIncrease(byAmount: amount, forItem: item, withAdditionalProperties: properties)
+                                                      withAdditionalProperties properties: Properties? = nil) {
+        engine.trackLifetimeIncrease(byAmount: amount, forItem: item, withAdditionalProperties: properties)
     }
 
     /**
      Tracks a user's location.
 
-     - parameter location: The user's location.
+     - parameter location:   The user's location.
+     - parameter properties: The optional additional properties.
      */
     public static func trackLocation(location: CLLocation, withAdditionalProperties properties: Properties?) {
         engine.trackLocation(location, withAdditionalProperties: properties)
     }
 
-    init(tracker: Tracker) {
-        self.tracker = tracker
-    }
+    /**
+     Writes the event.
 
+     - parameter providers:   The list of provides.
+     - parameter description: The event description.
+     - parameter action:      The action description.
+     */
     public func write<T>(toProviders providers: [T], description: String, action: T -> TrackingResult) {
         let writeEvents = providers.map { provider -> WriteEvent in
             let result = action(provider)
@@ -109,6 +128,12 @@ public final class Simcoe {
         tracker.track(event: event)
     }
 
+    /**
+     Tracks the page view.
+
+     - parameter pageView:   The page view to track.
+     - parameter properties: The optional additional properties.
+     */
     func trackPageView(pageView: String, withAdditionalProperties properties: Properties? = nil) {
         let providers: [PageViewTracking] = findProviders()
 
@@ -117,6 +142,12 @@ public final class Simcoe {
         }
     }
 
+    /**
+     Tracks the event.
+
+     - parameter event:      The event to track.
+     - parameter properties: The optional additional properties.
+     */
     func trackEvent(event: String, withAdditionalProperties properties: Properties? = nil) {
         let providers: [EventTracking] = findProviders()
 
@@ -126,17 +157,30 @@ public final class Simcoe {
         }
     }
 
-    func trackLifetimeIncrease(byAmount amount: Double = 1, forItem item: String? = nil,
-        withAdditionalProperties properties: Properties? = nil) {
-            let providers: [LifetimeValueIncreasing] = findProviders()
+    /**
+     Tracks the lifetime value increase.
 
-            write(toProviders: providers, description: "Lifetime Value increased by \(amount) for \(item ?? "")") { lifeTimeValueIncreaser in
-               return lifeTimeValueIncreaser
-                    .increaseLifetimeValue(byAmount: amount, forItem: item, withAdditionalProperties: properties)
-            }
+     - parameter amount:     The amount to increase that lifetime value for.
+     - parameter item:       The optional item to extend.
+     - parameter properties: The optional additional properties.
+     */
+    func trackLifetimeIncrease(byAmount amount: Double = 1, forItem item: String? = nil,
+                                        withAdditionalProperties properties: Properties? = nil) {
+        let providers: [LifetimeValueIncreasing] = findProviders()
+
+        write(toProviders: providers, description: "Lifetime Value increased by \(amount) for \(item ?? "")") { lifeTimeValueIncreaser in
+            return lifeTimeValueIncreaser
+                .increaseLifetimeValue(byAmount: amount, forItem: item, withAdditionalProperties: properties)
+        }
     }
 
-     func trackLocation(location: CLLocation, withAdditionalProperties properties: Properties?) {
+    /**
+     Tracks a user's location.
+
+     - parameter location:   The user's location.
+     - parameter properties: The optional additional properties.
+     */
+    func trackLocation(location: CLLocation, withAdditionalProperties properties: Properties?) {
         let providers: [LocationTracking] = findProviders()
 
         write(toProviders: providers, description: "User's Location") { locationTracker in
@@ -146,8 +190,8 @@ public final class Simcoe {
 
     private func findProviders<T>() -> [T] {
         return providers
-            .map({ provider in return provider as? T })
-            .flatMap({ $0 })
+            .map { provider in return provider as? T }
+            .flatMap { $0 }
     }
 
 }

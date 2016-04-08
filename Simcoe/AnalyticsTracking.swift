@@ -7,13 +7,13 @@
 //
 
 /**
-Default protocol for an object being trackable for analytics. All analytics items that wish to
-be tracked must, at least, implement this protocol.
-*/
+ Default protocol for an object being trackable for analytics. All analytics items that wish to
+ be tracked must, at least, implement this protocol.
+ */
 public protocol AnalyticsTracking {
 
     /// The name of the tracker. This is used for debugging purposes only, but should
-    /// be reflective of the tool you are using to track analytics. 
+    /// be reflective of the tool you are using to track analytics.
     /// For instance, if you are using Adobe Omniture, it is recommended that this value
     /// return "Adobe Omniture".
     var name: String { get }
@@ -22,16 +22,23 @@ public protocol AnalyticsTracking {
      Starts tracking analytics. This is called on all providers passed to `Simcoe.run`.
      Your analytics tracker should start tracking lifecycle data or setup anything else
      that needs to run for the duration of the analytics lifecycle.
-     
-     This is an optional value and is implemented by default in an extension to do nothing. 
+
+     This is an optional value and is implemented by default in an extension to do nothing.
      */
     func start()
 
 }
 
-extension AnalyticsTracking {
+public extension AnalyticsTracking {
 
-    public func start() {
+    /**
+     Starts tracking analytics. This is called on all providers passed to `Simcoe.run`.
+     Your analytics tracker should start tracking lifecycle data or setup anything else
+     that needs to run for the duration of the analytics lifecycle.
+
+     This is an optional value and is implemented by default in an extension to do nothing.
+     */
+    func start() {
 
     }
 

@@ -23,7 +23,7 @@ public class Adobe {
 
 }
 
-extension Adobe: PageViewTracking  {
+extension Adobe: PageViewTracking {
 
     public func trackPageView(pageView: String, withAdditionalProperties properties: Properties?) -> TrackingResult {
         ADBMobile.trackState(pageView, data: properties)

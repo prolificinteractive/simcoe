@@ -7,8 +7,8 @@
 //
 
 /**
-Defines an object as an output source.
-*/
+ Defines an object as an output source.
+ */
 internal protocol Output {
 
     func print(message: String)

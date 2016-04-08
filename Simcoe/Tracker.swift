@@ -9,14 +9,17 @@
 /// A recorder for SimcoeEvents
 public final class Tracker {
 
-    /// The output option for the recorder. Defaults to .Verbose
+    /// The output option for the recorder. Defaults to .Verbose.
     public var outputOption: OutputOptions = .Verbose
 
+    /// The error option for the recorder. Defaults to .Default.
     public var errorOption: ErrorHandlingOption = .Default
 
+    /// The list of events to track.
     var events = [Event]()
+
     private let outputSources: [Output]
-    
+
     /**
      Initializes a new instance using the specified source as its output. By default, this is the
      standard output console.

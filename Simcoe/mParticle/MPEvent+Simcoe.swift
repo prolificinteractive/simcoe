@@ -12,9 +12,9 @@ import mParticle_iOS_SDK
  Creates a dictionary used to generate an MPEvent object. All of the input parameters map to
  properties on the MPEvent object. Not setting any of the properties will not initialize those respective
  properties of the MPEvent object.
- 
+
  The `info` parameter will generate additional key / value pairs into the root level of the dictionary.
- 
+
  It is safe to additionally add key / values into the root of the dictionary; any key / values passed in that
  are not recognized will be set in the info dictionary of the generated MPEvent object.
 
@@ -25,7 +25,7 @@ import mParticle_iOS_SDK
  - parameter startTime:   The start time of the event. Optional.
  - parameter endTime:     The end time of the event. Optional.
  - parameter customFlags: The custom flags for the event. Optional.
- - parameter info:        Additional key / value pairs to place into the root level of the dictionary. These will 
+ - parameter info:        Additional key / value pairs to place into the root level of the dictionary. These will
                             map to the `info` dictionary of the generated MPEvent object.
 
  - returns: A dictionary containing the information for generating an MPEvent.
@@ -55,7 +55,7 @@ public func eventData(type type: MPEventType, name: String, category: String? = 
             dictionary[MPEventKeys.EndTime.rawValue] = endTime
         }
 
-        if let customFlags = customFlags{
+        if let customFlags = customFlags {
             dictionary[MPEventKeys.CustomFlags.rawValue] = customFlags
         }
 
@@ -116,10 +116,10 @@ internal func toEvent(usingData data: [String: AnyObject]) throws -> MPEvent {
         for (key, value) in unfoundKeys {
             userInfo[key] = value
         }
-        
+
         event.info = userInfo
     }
-    
-    
+
+
     return event
 }

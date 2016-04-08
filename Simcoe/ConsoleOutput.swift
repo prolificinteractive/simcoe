@@ -17,5 +17,5 @@ internal final class ConsoleOutput: Output {
     func print(message: String) {
         Swift.print(message)
     }
-    
+
 }

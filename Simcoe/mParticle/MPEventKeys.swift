@@ -17,5 +17,5 @@ internal enum MPEventKeys: String {
     case CustomFlags = "SimcoeInternalCustomFlags"
 
     static let allEvents: [MPEventKeys] = [.EventType, .Category, .Duration, .StartTime, .EndTime, .Name, .CustomFlags]
-    
+
 }
