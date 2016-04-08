@@ -7,17 +7,17 @@
 //
 
 /**
-A Simcoe Event.
-*/
+ A Simcoe Event.
+ */
 internal struct Event {
 
- /// The write actions that occurred in this event.
+    /// The write actions that occurred in this event.
     let writeEvents: [WriteEvent]
 
- /// The description of the event.
+    /// The description of the event.
     let description: String
 
- /// The event's timestamp. Defaults to the current date and time.
+    /// The event's timestamp. Defaults to the current date and time.
     let timestamp = NSDate()
 
 }

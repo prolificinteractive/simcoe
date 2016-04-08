@@ -7,16 +7,19 @@
 //
 
 /**
-Defines methods for increasing a lifetime value of an analytics key.
-*/
+ Defines methods for increasing a lifetime value of an analytics key.
+ */
 public protocol LifetimeValueIncreasing: AnalyticsTracking {
 
     /**
      Increases the lifetime value of the key by the specified amount.
 
-     - parameter key:    The key.
-     - parameter amount: The amount.
+     - parameter amount:     The amount to increase that lifetime value for.
+     - parameter item:       The optional item to extend.
+     - parameter properties: The optional additional properties.
+
+     - returns: A tracking result.
      */
     func increaseLifetimeValue(byAmount amount: Double, forItem item: String?, withAdditionalProperties properties: Properties?) -> TrackingResult
-    
+
 }

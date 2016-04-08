@@ -39,13 +39,13 @@ extension mParticle: PageViewTracking {
 extension mParticle: EventTracking {
 
     /**
-     Tracks an mParticle event. 
-     
+     Tracks an mParticle event.
+
      Internally, this generates an MPEvent object based on the properties passed in. The event string
      passed as the first parameter is delineated as the .name of the MPEvent. As a caller, you are
      required to pass in non-nil properties where one of the properties is the MPEventType. Failure
      to do so will cause this function to fail.
-     
+
      It is recommended that you use the `Simcoe.eventData()` function in order to generate the properties
      dictionary properly.
 
@@ -77,13 +77,13 @@ extension mParticle: EventTracking {
 extension mParticle: LocationTracking {
 
     /**
-     Tracks the user's location. 
+     Tracks the user's location.
 
      Internally, this generates an MPEvent object based on the properties passed in. As a result, it is
      required that the properties dictionary not be nil and contains keys for .name and .eventType. The latitude
      and longitude of the location object passed in will automatically be added to the info dictionary of the MPEvent
      object; it is recommended not to include them manually unless there are other properties required to use them.
-     
+
      It is recommended that you use the `Simcoe.eventData()` function in order to generate the properties
      dictionary properly.
 

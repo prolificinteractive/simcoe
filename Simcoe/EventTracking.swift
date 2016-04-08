@@ -7,10 +7,18 @@
 //
 
 /**
-Defines methods for tracking analytics events.
-*/
+ Defines methods for tracking analytics events.
+ */
 public protocol EventTracking: AnalyticsTracking {
 
+    /**
+     Tracks the given event with optional additional properties.
+
+     - parameter event:      The event to tack.
+     - parameter properties: The optional additional properties.
+
+     - returns: A tracking result.
+     */
     func trackEvent(event: String, withAdditionalProperties properties: Properties?) -> TrackingResult
-    
+
 }

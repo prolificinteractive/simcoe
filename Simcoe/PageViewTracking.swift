@@ -7,17 +7,17 @@
 //
 
 /**
-Defines functionality for tracking page views.
-*/
+ Defines functionality for tracking page views.
+ */
 public protocol PageViewTracking: AnalyticsTracking {
 
     /**
      Tracks the page view.
 
      - parameter pageView: The page view to track.
+
+     - returns: A tracking result.
      */
     func trackPageView(pageView: String, withAdditionalProperties properties: Properties?) -> TrackingResult
-    
+
 }
-
-

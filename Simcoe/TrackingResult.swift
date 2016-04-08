@@ -7,11 +7,11 @@
 //
 
 /**
-A result of an analytics tracking operation.
+ A result of an analytics tracking operation.
 
-- Success: The operation was successfully logged to the analytics provider.
-- Error:   An error occurred while logging to the analytics provider; the message value indicates a human-readable description of why that error occurred.
-*/
+ - Success: The operation was successfully logged to the analytics provider.
+ - Error:   An error occurred while logging to the analytics provider; the message value indicates a human-readable description of why that error occurred.
+ */
 public enum TrackingResult {
 
     case Success

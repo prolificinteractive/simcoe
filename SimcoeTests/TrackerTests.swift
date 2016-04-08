@@ -16,7 +16,7 @@ class TrackerTests: XCTestCase {
 
     override func setUp() {
         outputSource = OutputFake()
-        simcoe = Simcoe(tracker: Tracker(outputSource: outputSource))
+        simcoe = Simcoe(tracker: Tracker(outputSources: [outputSource]))
     }
 
     func test_that_it_records_events() {

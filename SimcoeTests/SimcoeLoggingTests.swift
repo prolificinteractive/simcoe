@@ -77,5 +77,5 @@ class SimcoeLoggingTests: XCTestCase {
             "Expected result = \(expectation); got \(eventTracker.trackEventCallCount)")
 
     }
-    
+
 }
