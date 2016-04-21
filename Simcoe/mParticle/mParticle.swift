@@ -18,11 +18,24 @@ public class mParticle {
     /**
      Initializes and starts the SDK with the input key and secret.
 
-     - parameter key:    The key.
-     - parameter secret: The secret.
+     - parameter key:              The key.
+     - parameter secret:           The secret.
+     - parameter installationType: The installation type.
+     - parameter environment:      The environment.
+     - parameter proxyAppDelegate: Determines if app delegate proxy should be used.
+
+     - returns: A mParticle instance.
      */
-    public init(key: String, secret: String) {
-        MParticle.sharedInstance().startWithKey(key, secret:secret)
+    public init(key: String,
+                secret: String,
+                installationType: MPInstallationType = .Autodetect,
+                environment: MPEnvironment = .AutoDetect,
+                proxyAppDelegate: Bool = true) {
+        MParticle.sharedInstance().startWithKey(key,
+                                                secret:secret,
+                                                installationType: installationType,
+                                                environment: environment,
+                                                proxyAppDelegate: proxyAppDelegate)
     }
 
 }
