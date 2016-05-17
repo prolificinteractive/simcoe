@@ -53,3 +53,11 @@ extension EmptyProvider: ErrorLogging {
     }
     
 }
+
+extension EmptyProvider: UserAttributes {
+    
+    func setUserAttribute(key: String, value: AnyObject) -> TrackingResult {
+        return .Success
+    }
+    
+}

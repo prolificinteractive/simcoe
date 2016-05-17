@@ -151,3 +151,18 @@ extension mParticle: ErrorLogging {
     
 }
 
+extension mParticle: UserAttributes {
+    
+    /**
+     Sets the User Attribute through mParticle.
+     
+     - parameter key:   The key of the user attribute
+     - parameter value: the value of the user attribute
+     */
+    public func setUserAttribute(key: String, value: AnyObject) -> TrackingResult {
+        MParticle.sharedInstance().setUserAttribute(key, value: value)
+        return .Success
+    }
+    
+}
+

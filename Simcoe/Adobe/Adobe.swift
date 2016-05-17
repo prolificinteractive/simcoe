@@ -73,3 +73,12 @@ extension Adobe: ErrorLogging {
     }
     
 }
+
+extension Adobe: UserAttributes {
+    
+    public func setUserAttribute(key: String, value: AnyObject) {
+        //TODO: implement this
+        return .Success
+    }
+    
+}

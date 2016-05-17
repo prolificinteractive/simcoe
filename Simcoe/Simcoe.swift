@@ -198,8 +198,22 @@ public final class Simcoe {
         let providers: [ErrorLogging] = findProviders()
         
         let propertiesString = properties != nil ? "=> \(properties!.description)" : ""
-        write(toProviders: providers, description: "Error: \(error) \(propertiesString)") { eventTracker in
-            return eventTracker.logError(error, withAdditionalProperties: properties)
+        write(toProviders: providers, description: "Error: \(error) \(propertiesString)") { errorLogger in
+            return errorLogger.logError(error, withAdditionalProperties: properties)
+        }
+    }
+    
+    /**
+     Sets the User Attribute.
+     
+     - parameter key:   The key of the user attribute
+     - parameter value: the value of the user attribute
+     */
+    func setUserAttribute(key: String, value: AnyObject) {
+        let providers: [UserAttributes] = findProviders()
+        
+        write(toProviders: providers, description: "Setting user attribute with key: \(key) value:\(value)") { attributeSetter in
+            return attributeSetter.setUserAttribute(key, value: value)
         }
     }
 

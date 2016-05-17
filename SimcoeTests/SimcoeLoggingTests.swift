@@ -75,6 +75,17 @@ class SimcoeLoggingTests: XCTestCase {
         XCTAssertEqual(errorLogger.errorLoggingCallCount, expectation,
                        "Expected result = Called \(expectation) times; got \(errorLogger.errorLoggingCallCount)")
     }
+    
+    func test_that_it_logs_user_attributes_to_providers() {
+        let attributesSetter = UserAttributesFake()
+        simcoe.providers = [attributesSetter]
+        let expectation = 1
+        
+        simcoe.setUserAttribute("foo", value: "bar")
+        
+        XCTAssertEqual(attributesSetter.attributesCallCount, expectation,
+                       "Expected result = Called \(expectation) times; got \(attributesSetter.attributesCallCount)")
+    }
 
     func test_that_it_does_not_log_to_other_providers() {
         let pageViewTracker = PageViewTrackingFake()
