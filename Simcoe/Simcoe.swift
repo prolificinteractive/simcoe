@@ -184,7 +184,7 @@ public final class Simcoe {
         let providers: [LocationTracking] = findProviders()
 
         write(toProviders: providers, description: "User's Location") { locationTracker in
-            locationTracker.trackLocation(location, withAdditionalProperties: properties)
+            return locationTracker.trackLocation(location, withAdditionalProperties: properties)
         }
     }
     
