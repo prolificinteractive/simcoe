@@ -64,6 +64,17 @@ class SimcoeLoggingTests: XCTestCase {
         XCTAssertEqual(expectation, locationTracker.trackLocationCallCount,
             "Expected result = Called \(expectation) times; got \(locationTracker.trackLocationCallCount)")
     }
+    
+    func test_that_it_logs_errors_to_providers() {
+        let errorLogger = ErrorLoggingFake()
+        simcoe.providers = [errorLogger]
+        let expectation = 1
+        
+        simcoe.logError("test", withAdditionalProperties: nil)
+        
+        XCTAssertEqual(errorLogger.errorLoggingCallCount, expectation,
+                       "Expected result = Called \(expectation) times; got \(errorLogger.errorLoggingCallCount)")
+    }
 
     func test_that_it_does_not_log_to_other_providers() {
         let pageViewTracker = PageViewTrackingFake()

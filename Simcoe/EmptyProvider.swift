@@ -45,3 +45,11 @@ extension EmptyProvider: LifetimeValueIncreasing {
     }
 
 }
+
+extension EmptyProvider: ErrorLogging {
+    
+    func logError(error: String, withAdditionalProperties properties: Properties?) -> TrackingResult {
+        return .Success
+    }
+    
+}

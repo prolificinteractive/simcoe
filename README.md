@@ -87,6 +87,7 @@ protocols, each one giving defining the functionality needed to handle that API 
 * `EventTracking`
 * `LifetimeValueIncreasing`
 * `LocationTracking`
+* `ErrorLogging`
 
 So for your analytics provider to be able to handle page views in the Simcoe framework, your provider should 
 implement the `PageViewTracking` protocol. This plug-and-play API allows you to define what you want your provider

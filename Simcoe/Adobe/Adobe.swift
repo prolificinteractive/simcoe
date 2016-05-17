@@ -64,3 +64,12 @@ extension Adobe: LocationTracking {
     }
 
 }
+
+extension Adobe: ErrorLogging {
+    
+    public func logError(error: String, withAdditionalProperties properties: Properties? = nil) -> TrackingResult {
+        //TODO: implement this
+        return .Success
+    }
+    
+}

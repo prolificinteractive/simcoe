@@ -187,6 +187,21 @@ public final class Simcoe {
             locationTracker.trackLocation(location, withAdditionalProperties: properties)
         }
     }
+    
+    /**
+     Logs the error with optional additional properties.
+     
+     - parameter error:      The error to log.
+     - parameter properties: The optional additional properties.
+     */
+    func logError(error: String, withAdditionalProperties properties: Properties? = nil) {
+        let providers: [ErrorLogging] = findProviders()
+        
+        let propertiesString = properties != nil ? "=> \(properties!.description)" : ""
+        write(toProviders: providers, description: "Error: \(error) \(propertiesString)") { eventTracker in
+            return eventTracker.logError(error, withAdditionalProperties: properties)
+        }
+    }
 
     private func findProviders<T>() -> [T] {
         return providers

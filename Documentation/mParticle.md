@@ -28,6 +28,7 @@ mParticle automatically implements the following protocols:
 - `EventTracking`
 - `LifetimeValueIncreasing`
 - `LocationTracking`
+- `ErrorLogging`
 
 ## MPEvent
 

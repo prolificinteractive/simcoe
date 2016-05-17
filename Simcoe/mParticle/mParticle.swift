@@ -132,3 +132,22 @@ extension mParticle: LifetimeValueIncreasing {
     }
 
 }
+
+extension mParticle: ErrorLogging {
+    
+    /**
+     Logs an error through mParticle.
+     
+     It is recommended that you use the `Simcoe.eventData()` function in order to generate the properties
+     dictionary properly.
+     
+     - parameter error:      The error to log.
+     - parameter properties: The properties of the event.
+     */
+    public func logError(error: String, withAdditionalProperties properties: Properties? = nil) -> TrackingResult {
+        MParticle.sharedInstance().logError(error, eventInfo: properties)
+        return .Success
+    }
+    
+}
+
