@@ -7,9 +7,9 @@ The mParticle subspec provides a default implementation for common mParticle fun
 The mParticle implementation of Simcoe requires:
 
 - Simcoe Core framework
-- mParticle-iOS-SDK/mParticle (5.3+)
+- mParticle-Apple-SDK/mParticle (6+)
 
-The mParticle-iOS-SDK/mParticle framework is included as part of the subspec.
+The mParticle-Apple-SDK/mParticle framework is included as part of the subspec.
 
 ## Usage
 

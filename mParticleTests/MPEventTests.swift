@@ -7,7 +7,7 @@
 //
 
 import XCTest
-import mParticle_iOS_SDK
+import mParticle_Apple_SDK
 @testable import Simcoe
 
 class MPEventTests: XCTestCase {

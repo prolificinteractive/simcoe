@@ -6,7 +6,7 @@
 //  Copyright © 2016 Prolific Interactive. All rights reserved.
 //
 
-import mParticle_iOS_SDK
+import mParticle_Apple_SDK
 
 /// Simcoe Analytics handler for the MParticle iOS SDK.
 public class mParticle {

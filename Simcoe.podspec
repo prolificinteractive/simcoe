@@ -34,7 +34,7 @@ Pod::Spec.new do |s|
   # Each subspec represents an analytics library implemented using Simcoe.
 
   adobe		=   { :name => "Adobe",           :dependency => "AdobeMobileSDK", :version => '~> 4.8' }
-  mParticle =   { :name => "mParticle",       :dependency => "mParticle-iOS-SDK/mParticle", :version => '~> 5.3' }
+  mParticle =   { :name => "mParticle",       :dependency => "mParticle-Apple-SDK/mParticle", :version => '~> 6' }
 
   all_specs = [adobe, mParticle]
 
