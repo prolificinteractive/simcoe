@@ -1,5 +1,5 @@
 PODS:
-  - mParticle-Apple-SDK/mParticle (6.0.5)
+  - mParticle-Apple-SDK/mParticle (6.0.6)
   - Simcoe/Core (0.3.2)
   - Simcoe/mParticle (0.3.2):
     - mParticle-Apple-SDK/mParticle (~> 6)
@@ -13,7 +13,7 @@ EXTERNAL SOURCES:
     :path: ./
 
 SPEC CHECKSUMS:
-  mParticle-Apple-SDK: 94e01d66c0fdcc6fb765de398f2361d7f534b248
-  Simcoe: 54e213a6d057346f316a84dd86262c45c04b7b65
+  mParticle-Apple-SDK: 360fb9c3dfa657b99ca34994ece0fb60f7c9022c
+  Simcoe: c80858392c2470bcd2e435f0f0ebcf514a291416
 
 COCOAPODS: 0.39.0
