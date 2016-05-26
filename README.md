@@ -5,7 +5,7 @@ streamlined as possible -- especially for projects utilizing multiple analytics 
 
 ## Requirements
 
-Simcoe is written in Swift and utilizes dynamic frameworks for its immplementation. As such, this 
+Simcoe is written in Swift and utilizes dynamic frameworks for its implementation. As such, this 
 library requires:
 
 * Xcode 7 or greater
@@ -47,7 +47,7 @@ providers you wish to use:
 
 `Simcoe.run(with: Adobe())`
 
-If you do not yet know which analtytics tool your project will be using, that's fine! Simply start Simcoe
+If you do not yet know which analytics tool your project will be using, that's fine! Simply start Simcoe
 the same way:
 
 `Simcoe.run()`
