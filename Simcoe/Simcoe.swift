@@ -110,6 +110,26 @@ public final class Simcoe {
     public static func trackLocation(location: CLLocation, withAdditionalProperties properties: Properties?) {
         engine.trackLocation(location, withAdditionalProperties: properties)
     }
+    
+    /**
+     Logs the error with optional additional properties.
+     
+     - parameter error:      The error to log.
+     - parameter properties: The optional additional properties.
+     */
+    public static func logError(error: String, withAdditionalProperties properties: Properties? = nil) {
+        engine.logError(error, withAdditionalProperties: properties)
+    }
+    
+    /**
+     Sets the User Attribute.
+     
+     - parameter key:   The key of the user attribute
+     - parameter value: the value of the user attribute
+     */
+    public static func setUserAttribute(key: String, value: AnyObject) {
+        engine.setUserAttribute(key, value: value)
+    }
 
     /**
      Writes the event.
@@ -184,7 +204,36 @@ public final class Simcoe {
         let providers: [LocationTracking] = findProviders()
 
         write(toProviders: providers, description: "User's Location") { locationTracker in
-            locationTracker.trackLocation(location, withAdditionalProperties: properties)
+            return locationTracker.trackLocation(location, withAdditionalProperties: properties)
+        }
+    }
+    
+    /**
+     Logs the error with optional additional properties.
+     
+     - parameter error:      The error to log.
+     - parameter properties: The optional additional properties.
+     */
+    func logError(error: String, withAdditionalProperties properties: Properties? = nil) {
+        let providers: [ErrorLogging] = findProviders()
+        
+        let propertiesString = properties != nil ? "=> \(properties!.description)" : ""
+        write(toProviders: providers, description: "Error: \(error) \(propertiesString)") { errorLogger in
+            return errorLogger.logError(error, withAdditionalProperties: properties)
+        }
+    }
+    
+    /**
+     Sets the User Attribute.
+     
+     - parameter key:   The key of the user attribute
+     - parameter value: the value of the user attribute
+     */
+    func setUserAttribute(key: String, value: AnyObject) {
+        let providers: [UserAttributes] = findProviders()
+        
+        write(toProviders: providers, description: "Setting user attribute with key: \(key) value:\(value)") { attributeSetter in
+            return attributeSetter.setUserAttribute(key, value: value)
         }
     }
 

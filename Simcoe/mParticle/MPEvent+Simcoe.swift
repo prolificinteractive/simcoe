@@ -6,7 +6,7 @@
 //  Copyright © 2016 Prolific Interactive. All rights reserved.
 //
 
-import mParticle_iOS_SDK
+import mParticle_Apple_SDK
 
 /**
  Creates a dictionary used to generate an MPEvent object. All of the input parameters map to

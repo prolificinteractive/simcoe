@@ -29,6 +29,10 @@ Adobe automatically implements the following protocols:
 - `LifetimeValueIncreasing`
 - `LocationTracking`
 
+Adobe automatically implements dummy functions for the following protocols:
+
+- `ErrorLogging`
+- `UserAttributes`
 
 ## Subclassing
 

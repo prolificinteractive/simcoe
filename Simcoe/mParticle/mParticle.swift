@@ -6,7 +6,7 @@
 //  Copyright © 2016 Prolific Interactive. All rights reserved.
 //
 
-import mParticle_iOS_SDK
+import mParticle_Apple_SDK
 
 /// Simcoe Analytics handler for the MParticle iOS SDK.
 public class mParticle {
@@ -132,3 +132,37 @@ extension mParticle: LifetimeValueIncreasing {
     }
 
 }
+
+extension mParticle: ErrorLogging {
+    
+    /**
+     Logs an error through mParticle.
+     
+     It is recommended that you use the `Simcoe.eventData()` function in order to generate the properties
+     dictionary properly.
+     
+     - parameter error:      The error to log.
+     - parameter properties: The properties of the event.
+     */
+    public func logError(error: String, withAdditionalProperties properties: Properties? = nil) -> TrackingResult {
+        MParticle.sharedInstance().logError(error, eventInfo: properties)
+        return .Success
+    }
+    
+}
+
+extension mParticle: UserAttributes {
+    
+    /**
+     Sets the User Attribute through mParticle.
+     
+     - parameter key:   The key of the user attribute
+     - parameter value: the value of the user attribute
+     */
+    public func setUserAttribute(key: String, value: AnyObject) -> TrackingResult {
+        MParticle.sharedInstance().setUserAttribute(key, value: value)
+        return .Success
+    }
+    
+}
+

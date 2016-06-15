@@ -15,6 +15,10 @@
 		72897FF01C7A8F9900393482 /* LocationTrackingFake.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72897FEF1C7A8F9900393482 /* LocationTrackingFake.swift */; };
 		72897FF21C7A922C00393482 /* TrackerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72897FF11C7A922C00393482 /* TrackerTests.swift */; };
 		72897FF41C7BF0C600393482 /* EmptyProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72897FF31C7BF0C600393482 /* EmptyProvider.swift */; };
+		B1300C711CEB6B5300E8A3D6 /* ErrorLogging.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1300C701CEB6B5300E8A3D6 /* ErrorLogging.swift */; };
+		B1FF1D081CEB9419004C056B /* ErrorLoggingFake.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1FF1D071CEB9419004C056B /* ErrorLoggingFake.swift */; };
+		B1FF1D0C1CEBA02D004C056B /* UserAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1FF1D0B1CEBA02D004C056B /* UserAttributes.swift */; };
+		B1FF1D0E1CEBA2F9004C056B /* UserAttributesFake.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1FF1D0D1CEBA2F9004C056B /* UserAttributesFake.swift */; };
 		BFB180029276D6A19213D152 /* Pods_mParticleTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E0635B9404692DA868367EA /* Pods_mParticleTests.framework */; };
 		F90E8BCD1C7B8471009556F4 /* WriteEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F90E8BCC1C7B8471009556F4 /* WriteEvent.swift */; };
 		F90E8BCF1C7B8FE3009556F4 /* Output.swift in Sources */ = {isa = PBXBuildFile; fileRef = F90E8BCE1C7B8FE3009556F4 /* Output.swift */; };
@@ -72,6 +76,10 @@
 		72897FF11C7A922C00393482 /* TrackerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackerTests.swift; sourceTree = "<group>"; };
 		72897FF31C7BF0C600393482 /* EmptyProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyProvider.swift; sourceTree = "<group>"; };
 		8E0635B9404692DA868367EA /* Pods_mParticleTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_mParticleTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B1300C701CEB6B5300E8A3D6 /* ErrorLogging.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorLogging.swift; sourceTree = "<group>"; };
+		B1FF1D071CEB9419004C056B /* ErrorLoggingFake.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorLoggingFake.swift; sourceTree = "<group>"; };
+		B1FF1D0B1CEBA02D004C056B /* UserAttributes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserAttributes.swift; sourceTree = "<group>"; };
+		B1FF1D0D1CEBA2F9004C056B /* UserAttributesFake.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserAttributesFake.swift; sourceTree = "<group>"; };
 		C29C5AD3C473D1AF367AFAF1 /* Pods-mParticleTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mParticleTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-mParticleTests/Pods-mParticleTests.release.xcconfig"; sourceTree = "<group>"; };
 		F902ED121C68FA07007975F5 /* Simcoe.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Simcoe.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F90A13A81C737F620074AC98 /* Simcoe.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Simcoe.podspec; sourceTree = "<group>"; };
@@ -172,6 +180,8 @@
 				72897FEF1C7A8F9900393482 /* LocationTrackingFake.swift */,
 				F90E8BD21C7B9161009556F4 /* OutputFake.swift */,
 				F90E8BD41C7B960D009556F4 /* Failable.swift */,
+				B1FF1D071CEB9419004C056B /* ErrorLoggingFake.swift */,
+				B1FF1D0D1CEBA2F9004C056B /* UserAttributesFake.swift */,
 			);
 			path = Mocks;
 			sourceTree = "<group>";
@@ -238,9 +248,11 @@
 				F93DF0481C6E8009007B3928 /* Simcoe.h */,
 				F93DF03E1C6E7E0D007B3928 /* AnalyticsTracking.swift */,
 				F93814541C736D7C00678BA2 /* PageViewTracking.swift */,
+				B1300C701CEB6B5300E8A3D6 /* ErrorLogging.swift */,
 				F93814561C736D8A00678BA2 /* EventTracking.swift */,
 				F93814581C736D9D00678BA2 /* LifetimeValueIncreasing.swift */,
 				F938145A1C736DAF00678BA2 /* LocationTracking.swift */,
+				B1FF1D0B1CEBA02D004C056B /* UserAttributes.swift */,
 				F93DF03F1C6E7E0D007B3928 /* Info.plist */,
 				F93DF0411C6E7E0D007B3928 /* Simcoe.swift */,
 				F94E7CC31C723D4F007E7873 /* Tracker.swift */,
@@ -469,9 +481,11 @@
 				F90E8BD51C7B960D009556F4 /* Failable.swift in Sources */,
 				72897FE01C79E25800393482 /* SimcoeLoggingTests.swift in Sources */,
 				72897FEA1C79E2BC00393482 /* PageViewTrackingFake.swift in Sources */,
+				B1FF1D081CEB9419004C056B /* ErrorLoggingFake.swift in Sources */,
 				72897FF01C7A8F9900393482 /* LocationTrackingFake.swift in Sources */,
 				72897FF21C7A922C00393482 /* TrackerTests.swift in Sources */,
 				72897FEE1C7A8ECA00393482 /* LifetimeValueIncreasingFake.swift in Sources */,
+				B1FF1D0E1CEBA2F9004C056B /* UserAttributesFake.swift in Sources */,
 				72897FEC1C79E52300393482 /* EventTrackingFake.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -487,6 +501,7 @@
 				F90E8BD11C7B9131009556F4 /* ConsoleOutput.swift in Sources */,
 				F93D5CFE1C99BB700090FAA6 /* mParticle.md in Sources */,
 				F90E8BCD1C7B8471009556F4 /* WriteEvent.swift in Sources */,
+				B1FF1D0C1CEBA02D004C056B /* UserAttributes.swift in Sources */,
 				F93814591C736D9D00678BA2 /* LifetimeValueIncreasing.swift in Sources */,
 				F938145D1C736E6600678BA2 /* OutputOptions.swift in Sources */,
 				72897FF41C7BF0C600393482 /* EmptyProvider.swift in Sources */,
@@ -497,6 +512,7 @@
 				F992879B1CB6F5B9009B62F8 /* RemoteOutput.swift in Sources */,
 				F93814551C736D7C00678BA2 /* PageViewTracking.swift in Sources */,
 				F90E8BCF1C7B8FE3009556F4 /* Output.swift in Sources */,
+				B1300C711CEB6B5300E8A3D6 /* ErrorLogging.swift in Sources */,
 				F93043D61C77BFC900A90AFD /* Properties.swift in Sources */,
 				F93043EB1C7B605500A90AFD /* ErrorHandlingOption.swift in Sources */,
 				F93814571C736D8A00678BA2 /* EventTracking.swift in Sources */,
