@@ -25,7 +25,7 @@ Pod::Spec.new do |s|
   # Default subspec that contains all shared code files for the library
   # All subspecs must declare this as a dependency.
   s.subspec "Core" do |ss|
-	 ss.source_files = "Simcoe/* "
+	 ss.source_files = "Simcoe/*.swift "
   end
   
   s.default_subspec = "Core"
