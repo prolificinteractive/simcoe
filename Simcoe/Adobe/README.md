@@ -15,7 +15,7 @@ The AdobeMobileSDK framework is included as part of the subspec.
 
 This subspec adds the `Adobe` class to your Simcoe framework; this class implements the base features for Simcoe within the Adobe framework.
 
-To track analytics using Adobe, include it as part of your initial `run` call:
+To track analytics using Adobe, include it as part of your initial `run()` call:
 
 ```swift
 Simcoe.run(with: [Adobe()])

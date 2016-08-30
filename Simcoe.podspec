@@ -20,16 +20,16 @@ Pod::Spec.new do |s|
 
   s.source       = { :git => "https://github.com/prolificinteractive/simcoe.git", :tag => s.version }
   s.requires_arc = true
-  
-  
+
+
   # Default subspec that contains all shared code files for the library
   # All subspecs must declare this as a dependency.
   s.subspec "Core" do |ss|
 	 ss.source_files = "Simcoe/*.swift "
   end
-  
+
   s.default_subspec = "Core"
-  
+
   # Subspecs
   # Each subspec represents an analytics library implemented using Simcoe.
 
@@ -38,20 +38,19 @@ Pod::Spec.new do |s|
 
   all_specs = [adobe, mParticle]
 
-  all_specs.each do |spec| 
-  
+  all_specs.each do |spec|
+
   	# Define a Cocoapods subspec
   	s.subspec spec[:name] do |sp|
 		sp.source_files = "Simcoe/#{spec[:name]}/*"
 		sp.dependency "Simcoe/Core"
-		
+
         if spec[:dependency] && spec[:version]
             sp.dependency *spec[:dependency], spec[:version]
 		end
-		
+
         end #Subspec definition
 
     end # all subspecs loop
-
 
 end #Pod definition
