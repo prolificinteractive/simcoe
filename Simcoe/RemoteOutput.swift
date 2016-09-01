@@ -8,11 +8,14 @@
 
 import Foundation
 
+/**
+ *  A remote output source.
+ */
 internal struct RemoteOutput: Output {
 
     let token: String
 
-    private let baseUrl = NSURL(string: "http://panalytics.herokuapp.com/")!
+    private let baseUrl = NSURL(string: "https://panalytics.herokuapp.com/")!
 
     private var url: NSURL {
         return NSURL(string: token, relativeToURL: baseUrl)!
