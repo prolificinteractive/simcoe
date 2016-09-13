@@ -35,14 +35,13 @@ mParticle automatically implements the following protocols:
 
 Because of the complex nature of mParticle tracking, a few helper functions have been added to make logging mParticle events easier within the Simcoe framework.
 
-For `EventTracking` and `LocationTracking`, mParticle expects an `MPEvent` object be passed. Because Simcoe is built to be abstract, it is unable to fit `MPEvent` 
-into its interface. As a result, the mParticle subspec includes a helper method `eventData()` that you can use to create an MPEvent dicitonary that Simcoe recognizes.
+For `EventTracking` and `LocationTracking`, mParticle expects an `MPEvent` object be passed. Because Simcoe is built to be abstract, it is unable to fit `MPEvent` into its interface. As a result, the mParticle subspec includes a helper method `eventData()` that you can use to create an MPEvent dictionary that Simcoe recognizes.
 
 ```swift
 public func eventData(type type: MPEventType, name: String, category: String? = nil,
     duration: Float? = nil, startTime: NSDate? = nil,
     endTime: NSDate? = nil, customFlags: [String: [String]]? = nil,
-    info: [String: AnyObject]? = nil) -> [String: AnyObject] 
+    info: [String: AnyObject]? = nil) -> [String: AnyObject]
 ```
 
 The two mandatory items for every `MPEvent` object are `type` and `name`, both of which are non-optional parameters. All other items of `MPEvent` are optional
@@ -53,5 +52,5 @@ Any mParticle tracking function that does not properly receive an event dictiona
 
 ## Subclassing
 
-The `Adobe` class is able to be subclassed. If you are overriding any Simcoe methods, it is advised that you do _not_ call `super` on them
+The `mParticle` class is able to be subclassed. If you are overriding any Simcoe methods, it is advised that you do _not_ call `super` on them
 as you may make analytics calls more than once.
