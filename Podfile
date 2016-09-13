@@ -4,16 +4,14 @@ inhibit_all_warnings!
 
 workspace 'Simcoe'
 
-target 'mParticleTests', :exclusive => true do
+target 'mParticleTests' do
     pod 'Simcoe', :path => './', :subspecs => ['mParticle']
 end
 
-target 'mParticleExample', :exclusive => true do
-    xcodeproj 'mParticleExample/mParticleExample'
+target 'mParticleExample' do
+    project 'mParticleExample/mParticleExample'
     pod 'Simcoe', :path => './', :subspecs => ['mParticle']
 end
-
-
 
 post_install do |installer|
     installer.pods_project.targets.each do |target|
