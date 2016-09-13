@@ -19,7 +19,6 @@
 		B1FF1D081CEB9419004C056B /* ErrorLoggingFake.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1FF1D071CEB9419004C056B /* ErrorLoggingFake.swift */; };
 		B1FF1D0C1CEBA02D004C056B /* UserAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1FF1D0B1CEBA02D004C056B /* UserAttributes.swift */; };
 		B1FF1D0E1CEBA2F9004C056B /* UserAttributesFake.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1FF1D0D1CEBA2F9004C056B /* UserAttributesFake.swift */; };
-		BFB180029276D6A19213D152 /* Pods_mParticleTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E0635B9404692DA868367EA /* Pods_mParticleTests.framework */; };
 		F90E8BCD1C7B8471009556F4 /* WriteEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F90E8BCC1C7B8471009556F4 /* WriteEvent.swift */; };
 		F90E8BCF1C7B8FE3009556F4 /* Output.swift in Sources */ = {isa = PBXBuildFile; fileRef = F90E8BCE1C7B8FE3009556F4 /* Output.swift */; };
 		F90E8BD11C7B9131009556F4 /* ConsoleOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = F90E8BD01C7B9131009556F4 /* ConsoleOutput.swift */; };
@@ -44,6 +43,7 @@
 		F94E7CC41C723D4F007E7873 /* Tracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F94E7CC31C723D4F007E7873 /* Tracker.swift */; };
 		F94E7CC61C723D95007E7873 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = F94E7CC51C723D95007E7873 /* Event.swift */; };
 		F992879B1CB6F5B9009B62F8 /* RemoteOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = F992879A1CB6F5B9009B62F8 /* RemoteOutput.swift */; };
+		FED3AE982B78054DD1663708 /* Pods_mParticleTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A444FDB2E93F4A8D18B05B07 /* Pods_mParticleTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,7 +64,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		253F40E5BD1AF3BACF1EC067 /* Pods-mParticleTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mParticleTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-mParticleTests/Pods-mParticleTests.debug.xcconfig"; sourceTree = "<group>"; };
 		72897FC81C79321F00393482 /* MPEventGenerationError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MPEventGenerationError.swift; sourceTree = "<group>"; };
 		72897FDD1C79E25800393482 /* SimcoeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SimcoeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		72897FDF1C79E25800393482 /* SimcoeLoggingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimcoeLoggingTests.swift; sourceTree = "<group>"; };
@@ -75,12 +74,13 @@
 		72897FEF1C7A8F9900393482 /* LocationTrackingFake.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationTrackingFake.swift; sourceTree = "<group>"; };
 		72897FF11C7A922C00393482 /* TrackerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackerTests.swift; sourceTree = "<group>"; };
 		72897FF31C7BF0C600393482 /* EmptyProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyProvider.swift; sourceTree = "<group>"; };
-		8E0635B9404692DA868367EA /* Pods_mParticleTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_mParticleTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A444FDB2E93F4A8D18B05B07 /* Pods_mParticleTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_mParticleTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		ABB8D015030629B5B6D5C565 /* Pods-mParticleTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mParticleTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-mParticleTests/Pods-mParticleTests.release.xcconfig"; sourceTree = "<group>"; };
 		B1300C701CEB6B5300E8A3D6 /* ErrorLogging.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorLogging.swift; sourceTree = "<group>"; };
 		B1FF1D071CEB9419004C056B /* ErrorLoggingFake.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorLoggingFake.swift; sourceTree = "<group>"; };
 		B1FF1D0B1CEBA02D004C056B /* UserAttributes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserAttributes.swift; sourceTree = "<group>"; };
 		B1FF1D0D1CEBA2F9004C056B /* UserAttributesFake.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserAttributesFake.swift; sourceTree = "<group>"; };
-		C29C5AD3C473D1AF367AFAF1 /* Pods-mParticleTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mParticleTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-mParticleTests/Pods-mParticleTests.release.xcconfig"; sourceTree = "<group>"; };
+		D0E78A2C342A0DFD4D7A09BE /* Pods-mParticleTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mParticleTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-mParticleTests/Pods-mParticleTests.debug.xcconfig"; sourceTree = "<group>"; };
 		F902ED121C68FA07007975F5 /* Simcoe.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Simcoe.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F90A13A81C737F620074AC98 /* Simcoe.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Simcoe.podspec; sourceTree = "<group>"; };
 		F90A13AA1C738BC10074AC98 /* Adobe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Adobe.swift; sourceTree = "<group>"; };
@@ -136,26 +136,18 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BFB180029276D6A19213D152 /* Pods_mParticleTests.framework in Frameworks */,
+				FED3AE982B78054DD1663708 /* Pods_mParticleTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		37CE4D0DC0F2D4340035D886 /* Frameworks */ = {
+		47D911C47B32A5C651B618B6 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				8E0635B9404692DA868367EA /* Pods_mParticleTests.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		4B7DB2042A4357F196BE5466 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				253F40E5BD1AF3BACF1EC067 /* Pods-mParticleTests.debug.xcconfig */,
-				C29C5AD3C473D1AF367AFAF1 /* Pods-mParticleTests.release.xcconfig */,
+				D0E78A2C342A0DFD4D7A09BE /* Pods-mParticleTests.debug.xcconfig */,
+				ABB8D015030629B5B6D5C565 /* Pods-mParticleTests.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -186,6 +178,14 @@
 			path = Mocks;
 			sourceTree = "<group>";
 		};
+		74218C41E5CF5B0DACAA51D5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A444FDB2E93F4A8D18B05B07 /* Pods_mParticleTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		F902ED081C68FA07007975F5 = {
 			isa = PBXGroup;
 			children = (
@@ -197,8 +197,8 @@
 				72897FDE1C79E25800393482 /* SimcoeTests */,
 				F93043DC1C77C29700A90AFD /* mParticleTests */,
 				F902ED131C68FA07007975F5 /* Products */,
-				4B7DB2042A4357F196BE5466 /* Pods */,
-				37CE4D0DC0F2D4340035D886 /* Frameworks */,
+				47D911C47B32A5C651B618B6 /* Pods */,
+				74218C41E5CF5B0DACAA51D5 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -341,12 +341,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F93043E51C77C29700A90AFD /* Build configuration list for PBXNativeTarget "mParticleTests" */;
 			buildPhases = (
-				F770A41D786D7B5E35012906 /* Check Pods Manifest.lock */,
+				6AE9C592C18FE419675356E3 /* [CP] Check Pods Manifest.lock */,
 				F93043D71C77C29700A90AFD /* Sources */,
 				F93043D81C77C29700A90AFD /* Frameworks */,
 				F93043D91C77C29700A90AFD /* Resources */,
-				5EC434FB3596E10F0873D6B2 /* Embed Pods Frameworks */,
-				B9E409C47E20848B4C876457 /* Copy Pods Resources */,
+				F262222E97E8B5B40E295A69 /* [CP] Embed Pods Frameworks */,
+				5EB758D4CA8149670E5FDBF4 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -425,29 +425,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		5EC434FB3596E10F0873D6B2 /* Embed Pods Frameworks */ = {
+		5EB758D4CA8149670E5FDBF4 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-mParticleTests/Pods-mParticleTests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		B9E409C47E20848B4C876457 /* Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Copy Pods Resources";
+			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -455,19 +440,34 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-mParticleTests/Pods-mParticleTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		F770A41D786D7B5E35012906 /* Check Pods Manifest.lock */ = {
+		6AE9C592C18FE419675356E3 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Check Pods Manifest.lock";
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		F262222E97E8B5B40E295A69 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-mParticleTests/Pods-mParticleTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -695,7 +695,7 @@
 		};
 		F93043E31C77C29700A90AFD /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 253F40E5BD1AF3BACF1EC067 /* Pods-mParticleTests.debug.xcconfig */;
+			baseConfigurationReference = D0E78A2C342A0DFD4D7A09BE /* Pods-mParticleTests.debug.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = mParticleTests/Info.plist;
@@ -708,7 +708,7 @@
 		};
 		F93043E41C77C29700A90AFD /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C29C5AD3C473D1AF367AFAF1 /* Pods-mParticleTests.release.xcconfig */;
+			baseConfigurationReference = ABB8D015030629B5B6D5C565 /* Pods-mParticleTests.release.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = mParticleTests/Info.plist;
