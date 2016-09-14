@@ -19,6 +19,7 @@ post_install do |installer|
             if config.name == "Debug"
                 # Enables unit testing of pods frameworks
                 config.build_settings['ENABLE_TESTABILITY'] = "YES"
+                config.build_settings['SWIFT_VERSION'] = "2.3"
             end
         end
     end
