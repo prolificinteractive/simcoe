@@ -8,7 +8,7 @@
 
 @testable import Simcoe
 
-internal final class UserAttributesFake: UserAttributes {
+internal final class UserAttributesFake: UserAttributeTracking {
     
     let name = "User Attributes [Fake]"
     

@@ -12,6 +12,7 @@ before_install:
 - rvm use $(cat .ruby-version)
 - gem install bundler
 - bundle install
+- pod repo update --silent
 - pod install
 script:
 - set -o pipefail && xcodebuild test -workspace Simcoe.xcworkspace -scheme SimcoeTests -destination 'platform=iOS Simulator,name=iPhone 7,OS=latest' | xcpretty

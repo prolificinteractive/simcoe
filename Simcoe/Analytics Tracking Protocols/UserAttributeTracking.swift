@@ -1,5 +1,5 @@
 //
-//  UserAttributes.swift
+//  UserAttributeTracking.swift
 //  Simcoe
 //
 //  Created by John Lin on 5/17/16.
@@ -7,9 +7,9 @@
 //
 
 /**
- Defines methods for logging errors to analytics.
+ Defines functionality for logging errors to analytics.
  */
-public protocol UserAttributes: AnalyticsTracking {
+public protocol UserAttributeTracking: AnalyticsTracking {
     
     /**
      Sets the User Attribute.
