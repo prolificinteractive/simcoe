@@ -1,16 +1,29 @@
+source 'https://github.com/CocoaPods/Specs.git'
 platform :ios, '8.0'
 use_frameworks!
 inhibit_all_warnings!
 
+install! 'cocoapods', :deterministic_uuids => false
+
 workspace 'Simcoe'
 
-target 'mParticleTests' do
-    pod 'Simcoe', :path => './', :subspecs => ['mParticle']
+target 'Simcoe' do
+    pod 'Simcoe', :path => './', :subspecs => ['Adobe', 'mParticle']
+
+    target 'SimcoeTests' do
+        podspec :path => 'Simcoe.podspec'
+    end
+
+    target 'mParticleTests' do
+        podspec :path => 'Simcoe.podspec'
+    end
 end
 
 target 'mParticleExample' do
     project 'mParticleExample/mParticleExample'
-    pod 'Simcoe', :path => './', :subspecs => ['mParticle']
+    pod 'Simcoe', :path => './', :subspecs => ['Adobe', 'mParticle']
+    podspec :path => 'Simcoe.podspec'
+
 end
 
 post_install do |installer|

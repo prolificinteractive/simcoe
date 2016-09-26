@@ -6,6 +6,11 @@
 //  Copyright © 2016 Prolific Interactive. All rights reserved.
 //
 
+/// The MPEvent generation error types.
+///
+/// - NameMissing:     The name missing error.
+/// - TypeMissing:     The type missing error.
+/// - EventInitFailed: The event init failed error.
 internal enum MPEventGenerationError: ErrorType {
 
     case NameMissing
@@ -16,6 +21,7 @@ internal enum MPEventGenerationError: ErrorType {
 
 extension MPEventGenerationError: CustomStringConvertible {
 
+    /// The error description.
     var description: String {
         switch self {
         case .NameMissing:

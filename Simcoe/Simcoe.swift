@@ -94,121 +94,100 @@ public final class Simcoe {
 
     // MARK: - CartLogging
 
-    /**
-     Logs the addition of a product to the cart.
-
-     - parameter productName: The name of the product added to the cart.
-     - parameter productId:   The productId of the product.
-     - parameter quantity:    The quantity of the product added to the cart.
-     - parameter price:       The price of the product.
-     - parameter properties:  The properties that can be added to a product. See `MPProductKeys`
-
-     - returns: A tracking result.
-     */
-    public static func logAddToCart(productName: String,
-                                    productId: String,
-                                    quantity: Int,
-                                    price: Double?,
-                                    withAdditionalProperties properties: Properties?) {
-        engine.logAddToCart(productName,
-                            productId: productId,
-                            quantity: quantity,
-                            price: price,
-                            withAdditionalProperties: properties)
+    /// Logs the addition of a product to the cart.
+    ///
+    /// - parameter product:         The SimcoeProductConvertible instance.
+    /// - parameter eventProperties: The event properties.
+    ///
+    /// - returns: A tracking result.
+    public static func logAddToCart<T: SimcoeProductConvertible>(product: T, eventProperties: Properties?) {
+        engine.logAddToCart(product, eventProperties: eventProperties)
     }
 
-    /**
-     Logs the addition of a product to the cart.
-
-     - parameter productName: The name of the product added to the cart.
-     - parameter productId:   The productId of the product.
-     - parameter quantity:    The quantity of the product added to the cart.
-     - parameter price:       The price of the product.
-     - parameter properties:  The properties that can be added to a product. See `MPProductKeys`
-
-     - returns: A tracking result.
-     */
-    func logAddToCart(productName: String,
-                      productId: String,
-                      quantity: Int,
-                      price: Double?,
-                      withAdditionalProperties properties: Properties?) {
+    /// Logs the addition of a product to the cart.
+    ///
+    /// - parameter product:         The SimcoeProductConvertible instance.
+    /// - parameter eventProperties: The event properties.
+    ///
+    /// - returns: A tracking result.
+    func logAddToCart<T: SimcoeProductConvertible>(product: T, eventProperties: Properties?) {
         let providers: [CartLogging] = findProviders()
-        let propertiesString = properties != nil ? "=> \(properties!.description)" : ""
-        let productPrice = String(format: "%.2f", Double(price ?? 0.0))
+        let simcoeProduct = product.toSimcoeProduct()
+        let propertiesString = eventProperties != nil ? "=> \(eventProperties!.description)" : ""
+        let productPrice = String(format: "%.2f", Double(simcoeProduct.price ?? 0.0))
 
         let addToCartDescription
-            = "\(quantity) x \(productName)(\(productId)) at \(productPrice) Added to cart \(propertiesString)"
+            = "\(simcoeProduct.quantity) x \(simcoeProduct.productName)(\(simcoeProduct.productId)) at \(productPrice) Added to cart \(propertiesString)"
 
         write(toProviders: providers,
-              description: addToCartDescription) {
-                addToCardLogger in
-                return addToCardLogger.logAddToCart(productName,
-                                                    productId: productId,
-                                                    quantity: quantity,
-                                                    price: price,
-                                                    withAdditionalProperties: properties)
+              description: addToCartDescription) { addToCartLogger in
+                return addToCartLogger.logAddToCart(product, eventProperties: eventProperties)
         }
     }
 
-    /**
-     Logs the removal of a product from the cart.
-
-     - parameter productName: The name of the product added to the cart.
-     - parameter productId:   The productId of the product.
-     - parameter quantity:    The quantity of the product added to the cart.
-     - parameter price:       The price of the product.
-     - parameter properties:  The properties that can be added to a product. See `MPProductKeys`
-
-     - returns: A tracking result.
-     */
-    public static func logRemoveFromCart(productName: String,
-                                         productId: String,
-                                         quantity: Int,
-                                         price: Double?,
-                                         withAdditionalProperties properties: Properties?) {
-        engine.logRemoveFromCart(productName,
-                                 productId: productId,
-                                 quantity: quantity,
-                                 price: price,
-                                 withAdditionalProperties: properties)
+    /// Logs the removal of a product from the cart.
+    ///
+    /// - parameter product:         The SimcoeProductConvertible instance.
+    /// - parameter eventProperties: The event properties.
+    ///
+    /// - returns: A tracking result.
+    public static func logRemoveFromCart<T: SimcoeProductConvertible>(product: T, eventProperties: Properties?) {
+        engine.logRemoveFromCart(product, eventProperties: eventProperties)
     }
 
-    /**
-     Logs the removal of a product from the cart.
-
-     - parameter productName: The name of the product added to the cart.
-     - parameter productId:   The productId of the product.
-     - parameter quantity:    The quantity of the product added to the cart.
-     - parameter price:       The price of the product.
-     - parameter properties:  The properties that can be added to a product. See `MPProductKeys`
-
-     - returns: A tracking result.
-     */
-    func logRemoveFromCart(productName: String,
-                           productId: String,
-                           quantity: Int,
-                           price: Double?,
-                           withAdditionalProperties properties: Properties?) {
+    /// Logs the removal of a product from the cart.
+    ///
+    /// - parameter product:         The SimcoeProductConvertible instance.
+    /// - parameter eventProperties: The event properties.
+    ///
+    /// - returns: A tracking result.
+    func logRemoveFromCart<T: SimcoeProductConvertible>(product: T, eventProperties: Properties?) {
         let providers: [CartLogging] = findProviders()
-        let propertiesString = properties != nil ? "=> \(properties!.description)" : ""
-        let productPrice = String(format: "%.2f", Double(price ?? 0.0))
+        let simcoeProduct = product.toSimcoeProduct()
+        let propertiesString = eventProperties != nil ? "=> \(eventProperties!.description)" : ""
+        let productPrice = String(format: "%.2f", Double(simcoeProduct.price ?? 0.0))
 
         let removeFromCartDescription
-            = "\(quantity) x \(productName)(\(productId)) at \(productPrice) Removed from cart \(propertiesString)"
+            = "\(simcoeProduct.quantity) x \(simcoeProduct.productName)(\(simcoeProduct.productId)) at \(productPrice) Removed from cart \(propertiesString)"
 
         write(toProviders: providers,
-              description: removeFromCartDescription) {
-                addToCardLogger in
-                return addToCardLogger.logRemoveFromCart(productName,
-                                                         productId: productId,
-                                                         quantity: quantity,
-                                                         price: price,
-                                                         withAdditionalProperties: properties)
+              description: removeFromCartDescription) { removeFromCartLogger in
+                return removeFromCartLogger.logRemoveFromCart(product, eventProperties: eventProperties)
         }
     }
 
-    // MARK: - CheckoutLogging
+    // MARK: - CheckoutTracking
+
+    /// Tracks a checkout event.
+    ///
+    /// - parameter products:        The products.
+    /// - parameter eventProperties: The event properties.
+    ///
+    /// - returns: A tracking result.
+    public static func trackCheckoutEvent<T: SimcoeProductConvertible>(products: [T], eventProperties: Properties?) {
+        engine.trackCheckoutEvent(products, eventProperties: eventProperties)
+    }
+
+    /// Tracks a checkout event.
+    ///
+    /// - parameter products:        The products.
+    /// - parameter eventProperties: The event properties.
+    ///
+    /// - returns: A tracking result.
+    func trackCheckoutEvent<T: SimcoeProductConvertible>(products: [T], eventProperties: Properties?) {
+        let providers: [CheckoutTracking] = findProviders()
+        let propertiesString = eventProperties != nil ? "=> \(eventProperties!.description)" : ""
+
+        let productsList = products.map { $0.toSimcoeProduct().productName }.joinWithSeparator(", ")
+
+        let checkoutEventDescription
+            = "Checkout: \(productsList). \(propertiesString)"
+
+        write(toProviders: providers,
+              description: checkoutEventDescription) { checkoutTracker in
+                return checkoutTracker.trackCheckoutEvent(products, eventProperties: eventProperties)
+        }
+    }
 
     // MARK: - ErrorLogging
 

@@ -11,38 +11,20 @@
  */
 public protocol CartLogging: AnalyticsTracking {
 
-    /**
-     Logs the addition of a product to the cart.
+    /// Logs the addition of a product to the cart.
+    ///
+    /// - parameter product:         The SimcoeProductConvertible instance.
+    /// - parameter eventProperties: The event properties.
+    ///
+    /// - returns: A tracking result.
+    func logAddToCart<T: SimcoeProductConvertible>(product: T, eventProperties: Properties?) -> TrackingResult
 
-     - parameter productName:          The name of the product added to the cart.
-     - parameter productId:            The productId of the product.
-     - parameter quantity:             The quantity of the product added to the cart.
-     - parameter price:                The price of the product.
-     - parameter additionalProperties: The properties that can be added to a product. See `MPProductKeys`
-
-     - returns: A tracking result.
-     */
-    func logAddToCart(productName: String,
-                      productId: String,
-                      quantity: Int,
-                      price: Double?,
-                      withAdditionalProperties additionalProperties: Properties?) -> TrackingResult
-
-    /**
-     Logs the removal of a product from the cart.
-
-     - parameter productName: The name of the product added to the cart.
-     - parameter productId:   The productId of the product.
-     - parameter quantity:    The quantity of the product added to the cart.
-     - parameter price:       The price of the product.
-     - parameter properties:  The properties that can be added to a product. See `MPProductKeys`
-
-     - returns: A tracking result.
-     */
-    func logRemoveFromCart(productName: String,
-                           productId: String,
-                           quantity: Int,
-                           price: Double?,
-                           withAdditionalProperties properties: Properties?) -> TrackingResult
+    /// Logs the removal of a product from the cart.
+    ///
+    /// - parameter product:         The SimcoeProductConvertible instance.
+    /// - parameter eventProperties: The event properties.
+    ///
+    /// - returns: A tracking result.
+    func logRemoveFromCart<T: SimcoeProductConvertible>(product: T, eventProperties: Properties?) -> TrackingResult
     
 }
