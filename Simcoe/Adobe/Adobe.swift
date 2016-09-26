@@ -14,9 +14,7 @@ public class Adobe {
 
     public let name = "Adobe Omniture"
 
-    public init() {
-
-    }
+    public init() { }
 
     public func start() {
         ADBMobile.collectLifecycleData()

@@ -16,13 +16,39 @@ internal final class EmptyProvider {
 
 extension EmptyProvider: CartLogging {
 
-    func logAddToCart(productName: String, productId: String, quantity: Int, price: Double?, withAdditionalProperties additionalProperties: Properties?) -> TrackingResult {
+    /// Logs the addition of a product to the cart.
+    ///
+    /// - parameter product:         The SimcoeProductConvertible instance.
+    /// - parameter eventProperties: The event properties.
+    ///
+    /// - returns: A tracking result.
+    func logAddToCart<T: SimcoeProductConvertible>(product: T, eventProperties: Properties?) -> TrackingResult {
         return .Success
     }
 
-    func logRemoveFromCart(productName: String, productId: String, quantity: Int, price: Double?, withAdditionalProperties properties: Properties?) -> TrackingResult {
+    /// Logs the removal of a product from the cart.
+    ///
+    /// - parameter product:         The SimcoeProductConvertible instance.
+    /// - parameter eventProperties: The event properties.
+    ///
+    /// - returns: A tracking result.
+    func logRemoveFromCart<T: SimcoeProductConvertible>(product: T, eventProperties: Properties?) -> TrackingResult {
         return .Success
     }
+}
+
+extension EmptyProvider: CheckoutTracking {
+
+    /// Tracks a checkout event.
+    ///
+    /// - parameter products:        The products.
+    /// - parameter eventProperties: The event properties.
+    ///
+    /// - returns: A tracking result.
+    func trackCheckoutEvent<T: SimcoeProductConvertible>(products: [T], eventProperties: Properties?) -> TrackingResult {
+        return .Success
+    }
+
 }
 
 extension EmptyProvider: ErrorLogging {
