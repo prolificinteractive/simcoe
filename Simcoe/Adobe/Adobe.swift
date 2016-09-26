@@ -9,6 +9,7 @@
 import CoreLocation
 import AdobeMobileSDK
 
+/// The adobe analytics provider.
 public class Adobe {
 
     public let name = "Adobe Omniture"

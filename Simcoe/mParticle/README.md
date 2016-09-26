@@ -24,12 +24,13 @@ Simcoe.run(with: [mParticle()])
 mParticle automatically implements the following protocols:
 
 - `AnalyticsTracking`
-- `PageViewTracking`
+- `CartLogging`
+- `ErrorLogging`
 - `EventTracking`
 - `LifetimeValueIncreasing`
 - `LocationTracking`
-- `ErrorLogging`
-- `UserAttributes`
+- `PageViewTracking`
+- `UserAttributeTracking`
 
 ## MPEvent
 

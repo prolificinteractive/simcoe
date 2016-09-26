@@ -1,4 +1,3 @@
-
 Pod::Spec.new do |s|
 
   s.name         = "Simcoe"
@@ -25,7 +24,7 @@ Pod::Spec.new do |s|
   # Default subspec that contains all shared code files for the library
   # All subspecs must declare this as a dependency.
   s.subspec "Core" do |ss|
-	 ss.source_files = "Simcoe/*.swift "
+	 ss.source_files = "Simcoe/*.swift", "Simcoe/Analytics\ Tracking\ Protocols/**/*.swift"
   end
 
   s.default_subspec = "Core"
@@ -34,20 +33,20 @@ Pod::Spec.new do |s|
   # Each subspec represents an analytics library implemented using Simcoe.
 
   adobe		=   { :name => "Adobe",           :dependency => "AdobeMobileSDK", :version => '~> 4.8' }
-  mParticle =   { :name => "mParticle",       :dependency => "mParticle-Apple-SDK/mParticle", :version => '~> 6' }
+  mParticle =   { :name => "mParticle",       :dependency => "mParticle-Apple-SDK", :version => '~> 6' }
 
   all_specs = [adobe, mParticle]
 
   all_specs.each do |spec|
 
   	# Define a Cocoapods subspec
-  	s.subspec spec[:name] do |sp|
-		sp.source_files = "Simcoe/#{spec[:name]}/*"
-		sp.dependency "Simcoe/Core"
+        s.subspec spec[:name] do |sp|
+            sp.source_files = "Simcoe/#{spec[:name]}/*"
+            sp.dependency "Simcoe/Core"
 
-        if spec[:dependency] && spec[:version]
-            sp.dependency *spec[:dependency], spec[:version]
-		end
+            if spec[:dependency] && spec[:version]
+                sp.dependency *spec[:dependency], spec[:version]
+            end
 
         end #Subspec definition
 

@@ -14,25 +14,28 @@ internal final class EmptyProvider {
 
 }
 
-extension EmptyProvider: PageViewTracking {
+extension EmptyProvider: CartLogging {
 
-    func trackPageView(pageView: String, withAdditionalProperties properties: Properties?) -> TrackingResult {
+    func logAddToCart(productName: String, productId: String, quantity: Int, price: Double?, withAdditionalProperties additionalProperties: Properties?) -> TrackingResult {
         return .Success
     }
 
+    func logRemoveFromCart(productName: String, productId: String, quantity: Int, price: Double?, withAdditionalProperties properties: Properties?) -> TrackingResult {
+        return .Success
+    }
+}
+
+extension EmptyProvider: ErrorLogging {
+
+    func logError(error: String, withAdditionalProperties properties: Properties?) -> TrackingResult {
+        return .Success
+    }
+    
 }
 
 extension EmptyProvider: EventTracking {
 
     func trackEvent(event: String, withAdditionalProperties properties: Properties?) -> TrackingResult {
-        return .Success
-    }
-
-}
-
-extension EmptyProvider: LocationTracking {
-
-    func trackLocation(location: CLLocation, withAdditionalProperties properties: Properties?) -> TrackingResult {
         return .Success
     }
 
@@ -46,15 +49,23 @@ extension EmptyProvider: LifetimeValueIncreasing {
 
 }
 
-extension EmptyProvider: ErrorLogging {
-    
-    func logError(error: String, withAdditionalProperties properties: Properties?) -> TrackingResult {
+extension EmptyProvider: LocationTracking {
+
+    func trackLocation(location: CLLocation, withAdditionalProperties properties: Properties?) -> TrackingResult {
         return .Success
     }
-    
+
 }
 
-extension EmptyProvider: UserAttributes {
+extension EmptyProvider: PageViewTracking {
+
+    func trackPageView(pageView: String, withAdditionalProperties properties: Properties?) -> TrackingResult {
+        return .Success
+    }
+
+}
+
+extension EmptyProvider: UserAttributeTracking {
     
     func setUserAttribute(key: String, value: AnyObject) -> TrackingResult {
         return .Success
