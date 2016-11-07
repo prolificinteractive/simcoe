@@ -38,6 +38,12 @@ public class mParticle {
                                                 proxyAppDelegate: proxyAppDelegate)
     }
 
+    /// Starts the mParticle SDK with the api_key and api_secret saved in MParticleConfig.plist.
+    /// - warning: This may throw an error if the MPartcileConfig.plist file is not found in the main bundle.
+    public init() {
+        MParticle.sharedInstance().start()
+    }
+
 }
 
 extension mParticle: PageViewTracking {
