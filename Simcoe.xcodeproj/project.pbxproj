@@ -16,6 +16,7 @@
 		72897FF21C7A922C00393482 /* TrackerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72897FF11C7A922C00393482 /* TrackerTests.swift */; };
 		72897FF41C7BF0C600393482 /* EmptyProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72897FF31C7BF0C600393482 /* EmptyProvider.swift */; };
 		B1300C711CEB6B5300E8A3D6 /* ErrorLogging.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1300C701CEB6B5300E8A3D6 /* ErrorLogging.swift */; };
+		B1D985511D11DE4F00C848D7 /* Simcoe+mParticle.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1D985501D11DE4F00C848D7 /* Simcoe+mParticle.swift */; };
 		B1FF1D081CEB9419004C056B /* ErrorLoggingFake.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1FF1D071CEB9419004C056B /* ErrorLoggingFake.swift */; };
 		B1FF1D0C1CEBA02D004C056B /* UserAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1FF1D0B1CEBA02D004C056B /* UserAttributes.swift */; };
 		B1FF1D0E1CEBA2F9004C056B /* UserAttributesFake.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1FF1D0D1CEBA2F9004C056B /* UserAttributesFake.swift */; };
@@ -77,6 +78,7 @@
 		A444FDB2E93F4A8D18B05B07 /* Pods_mParticleTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_mParticleTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		ABB8D015030629B5B6D5C565 /* Pods-mParticleTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mParticleTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-mParticleTests/Pods-mParticleTests.release.xcconfig"; sourceTree = "<group>"; };
 		B1300C701CEB6B5300E8A3D6 /* ErrorLogging.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorLogging.swift; sourceTree = "<group>"; };
+		B1D985501D11DE4F00C848D7 /* Simcoe+mParticle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Simcoe+mParticle.swift"; sourceTree = "<group>"; };
 		B1FF1D071CEB9419004C056B /* ErrorLoggingFake.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorLoggingFake.swift; sourceTree = "<group>"; };
 		B1FF1D0B1CEBA02D004C056B /* UserAttributes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserAttributes.swift; sourceTree = "<group>"; };
 		B1FF1D0D1CEBA2F9004C056B /* UserAttributesFake.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserAttributesFake.swift; sourceTree = "<group>"; };
@@ -215,6 +217,7 @@
 		F90A13A51C737F050074AC98 /* mParticle */ = {
 			isa = PBXGroup;
 			children = (
+				B1D985501D11DE4F00C848D7 /* Simcoe+mParticle.swift */,
 				F90A13AC1C738BC60074AC98 /* mParticle.swift */,
 				F90A13B01C7397440074AC98 /* MPEvent+Simcoe.swift */,
 				F93043E81C77D0A700A90AFD /* MPEventKeys.swift */,
@@ -499,6 +502,7 @@
 				F94E7CC61C723D95007E7873 /* Event.swift in Sources */,
 				F93043ED1C7B66C900A90AFD /* TrackingResult.swift in Sources */,
 				F94E7CC41C723D4F007E7873 /* Tracker.swift in Sources */,
+				B1D985511D11DE4F00C848D7 /* Simcoe+mParticle.swift in Sources */,
 				F93DF0441C6E7E0D007B3928 /* AnalyticsTracking.swift in Sources */,
 				F90E8BD11C7B9131009556F4 /* ConsoleOutput.swift in Sources */,
 				F93D5CFE1C99BB700090FAA6 /* mParticle.md in Sources */,
