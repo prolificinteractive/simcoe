@@ -11,7 +11,7 @@
 /// - Affiliation: The affiliation.
 /// - CouponCode: The coupon code.
 /// - Revenue: The revenue amount.
-/// - Shipping: THe shipping amount.
+/// - Shipping: The shipping amount.
 /// - Tax: The tax amount.
 /// - TransactionId: The transaction Id.
 public enum MPTransactionAttributesKeys: String, EnumerationListable {
