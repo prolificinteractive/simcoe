@@ -87,8 +87,10 @@ First, all analytics trackers implement this base protocol: `AnalyticsTracking`.
 
 While simply implementing this protocol is all you need for your object to be a valid analytics tracker, you won't be able to do too much with it. This is because Simcoe utilizes an array of various different protocols, each one giving defining the functionality needed to handle that API event. These protocols are:
 
+* `ViewDetailLogging`
 * `CartLogging`
 * `CheckoutTracking`
+* `PurchaseTracking`
 * `ErrorLogging`
 * `EventTracking`
 * `LifetimeValueIncreasing`
@@ -100,8 +102,10 @@ So for your analytics provider to be able to handle page views in the Simcoe fra
 
 Each provider type defined above maps directly to a Simcoe function that will call that method. These are, respectively:
 
+* `logViewDetail`
 * `logAddToCart`, `logRemoveFromCart`
 * `trackCheckoutEvent`
+* `trackPurchaseEvent`
 * `logError`
 * `trackEvent`
 * `increaseLifetimeValue`

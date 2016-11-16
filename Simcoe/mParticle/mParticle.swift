@@ -46,6 +46,29 @@ public class mParticle {
 
 }
 
+// MARK: - ViewDetailLogging
+
+extension mParticle: ViewDetailLogging {
+
+    /// Logs the action of viewing a product's details.
+    ///
+    /// - parameter product: The SimcoeProductConvertible instance.
+    /// - parameter eventProperties: The event properties.
+    ///
+    /// - returns: A tracking result.
+    public func logViewDetail<T: SimcoeProductConvertible>(product: T, eventProperties: Properties?) -> TrackingResult {
+        let mPProduct = MPProduct(product: product)
+        let event = MPCommerceEvent(eventType: .ViewDetail,
+                                     products: [mPProduct],
+                                     eventProperties: eventProperties)
+
+        MParticle.sharedInstance().logCommerceEvent(event)
+
+        return .Success
+    }
+
+}
+
 // MARK: - CartLogging
 
 extension mParticle: CartLogging {
@@ -99,6 +122,29 @@ extension mParticle: CheckoutTracking {
     public func trackCheckoutEvent<T: SimcoeProductConvertible>(products: [T], eventProperties: Properties?) -> TrackingResult {
         let mPProducts = products.map { MPProduct(product: $0) }
         let event = MPCommerceEvent(eventType: .Checkout,
+                                    products: mPProducts,
+                                    eventProperties: eventProperties)
+
+        MParticle.sharedInstance().logCommerceEvent(event)
+
+        return .Success
+    }
+
+}
+
+// MARK: - PurchaseTracking
+
+extension mParticle: PurchaseTracking {
+
+    /// Tracks a purchase event.
+    ///
+    /// - parameter products:        The products.
+    /// - parameter eventProperties: The event properties.
+    ///
+    /// - returns: A tracking result.
+    public func trackPurchaseEvent<T : SimcoeProductConvertible>(products: [T], eventProperties: Properties?) -> TrackingResult {
+        let mPProducts = products.map { MPProduct(product: $0) }
+        let event = MPCommerceEvent(eventType: .Purchase,
                                     products: mPProducts,
                                     eventProperties: eventProperties)
 

@@ -92,6 +92,38 @@ public final class Simcoe {
             .flatMap { $0 }
     }
 
+    // MARK: - ViewDetailLogging
+
+    /// Logs the action of viewing a product's details.
+    ///
+    /// - parameter product: The SimcoeProductConvertible instance.
+    /// - parameter eventProperties: The event properties.
+    ///
+    /// - returns: A tracking result.
+    public static func logViewDetail<T: SimcoeProductConvertible>(product: T, eventProperties: Properties?) {
+        engine.logViewDetail(product, eventProperties: eventProperties)
+    }
+
+    /// Logs the action of viewing a product's details.
+    ///
+    /// - parameter product: The SimcoeProductConvertible instance.
+    /// - parameter eventProperties: The event properties.
+    ///
+    /// - returns: A tracking result.
+    func logViewDetail<T: SimcoeProductConvertible>(product: T, eventProperties: Properties?) {
+        let providers: [ViewDetailLogging] = findProviders()
+        let simcoeProduct = product.toSimcoeProduct()
+        let propertiesString = eventProperties != nil ? "=> \(eventProperties!.description)" : ""
+
+        let viewDetailDescription
+            = "Viewed details of: \(simcoeProduct.productName)(\(simcoeProduct.productId)). \(propertiesString)"
+
+        write(toProviders: providers,
+              description: viewDetailDescription) { viewDetailLogger in
+                return viewDetailLogger.logViewDetail(product, eventProperties: eventProperties)
+        }
+    }
+
     // MARK: - CartLogging
 
     /// Logs the addition of a product to the cart.
@@ -186,6 +218,39 @@ public final class Simcoe {
         write(toProviders: providers,
               description: checkoutEventDescription) { checkoutTracker in
                 return checkoutTracker.trackCheckoutEvent(products, eventProperties: eventProperties)
+        }
+    }
+
+    // MARK: - PurchaseTracking
+
+    /// Tracks a purchase event.
+    ///
+    /// - parameter products:        The products.
+    /// - parameter eventProperties: The event properties.
+    ///
+    /// - returns: A tracking result.
+    public static func trackPurchaseEvent<T: SimcoeProductConvertible>(products: [T], eventProperties: Properties?) {
+        engine.trackPurchaseEvent(products, eventProperties: eventProperties)
+    }
+
+    /// Tracks a purchase event.
+    ///
+    /// - parameter products: The products.
+    /// - parameter eventProperties: The event properties.
+    ///
+    /// - returns: A tracking result.
+    func trackPurchaseEvent<T: SimcoeProductConvertible>(products: [T], eventProperties: Properties?) {
+        let providers: [PurchaseTracking] = findProviders()
+        let propertiesString = eventProperties != nil ? "=> \(eventProperties!.description)" : ""
+
+        let productsList = products.map { $0.toSimcoeProduct().productName }.joinWithSeparator(", ")
+
+        let purchaseEventDescription
+            = "Purchase: \(productsList). \(propertiesString)"
+
+        write(toProviders: providers,
+              description: purchaseEventDescription) { purchaseTracker in
+                return purchaseTracker.trackPurchaseEvent(products, eventProperties: eventProperties)
         }
     }
 
