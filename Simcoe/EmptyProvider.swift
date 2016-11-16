@@ -14,6 +14,20 @@ internal final class EmptyProvider {
 
 }
 
+extension EmptyProvider: ViewDetailLogging {
+
+    /// Logs the action of viewing a product's details.
+    ///
+    /// - parameter product: The SimcoeProductConvertible instance.
+    /// - parameter eventProperties: The event properties.
+    ///
+    /// - returns: A tracking result.
+    func logViewDetail<T : SimcoeProductConvertible>(product: T, eventProperties: Properties?) -> TrackingResult {
+        return .Success
+    }
+
+}
+
 extension EmptyProvider: CartLogging {
 
     /// Logs the addition of a product to the cart.
@@ -46,6 +60,20 @@ extension EmptyProvider: CheckoutTracking {
     ///
     /// - returns: A tracking result.
     func trackCheckoutEvent<T: SimcoeProductConvertible>(products: [T], eventProperties: Properties?) -> TrackingResult {
+        return .Success
+    }
+
+}
+
+extension EmptyProvider: PurchaseTracking {
+
+    /// Tracks a purchase event.
+    ///
+    /// - parameter products:        The products.
+    /// - parameter eventProperties: The event properties.
+    ///
+    /// - returns: A tracking result.
+    func trackPurchaseEvent<T : SimcoeProductConvertible>(products: [T], eventProperties: Properties?) -> TrackingResult {
         return .Success
     }
 
