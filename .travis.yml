@@ -1,0 +1,18 @@
+# references:
+# # * http://www.objc.io/issue-6/travis-ci.html
+# # * https://github.com/supermarin/xcpretty#usage
+#
+
+language: objective-c
+osx_image: xcode8.1
+cache: cocoapods
+podfile: Podfile
+before_install:
+- rvm install $(cat .ruby-version) 
+- rvm use $(cat .ruby-version)
+- gem install bundler
+- bundle install
+- pod install
+script:
+- set -o pipefail && xcodebuild test -workspace Simcoe.xcworkspace -scheme SimcoeTests -destination 'platform=iOS Simulator,name=iPhone 7,OS=latest' | xcpretty
+- pod lib lint
