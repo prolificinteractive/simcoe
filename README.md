@@ -1,6 +1,6 @@
 ![Simcoe](Images/Simcoe_logo.jpg)
 
-[![Travis build status](https://img.shields.io/travis/prolificinteractive/Simcoe.svg?style=flat-square)](https://travis-ci.org/prolificinteractive/Simcoe)
+[![Travis build status](https://img.shields.io/travis/prolificinteractive/simcoe.svg?style=flat-square)](https://travis-ci.org/prolificinteractive/simcoe)
 [![Cocoapods Compatible](https://img.shields.io/cocoapods/v/Simcoe.svg?style=flat-square)](https://img.shields.io/cocoapods/v/Simcoe.svg)
 [![Platform](https://img.shields.io/cocoapods/p/Simcoe.svg?style=flat-square)](http://cocoadocs.org/docsets/Simcoe)
 [![Docs](https://img.shields.io/cocoapods/metrics/doc-percent/Simcoe.svg?style=flat-square)](http://cocoadocs.org/docsets/Simcoe)
