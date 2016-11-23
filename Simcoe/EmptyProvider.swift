@@ -14,19 +14,7 @@ internal final class EmptyProvider {
 
 }
 
-extension EmptyProvider: ViewDetailLogging {
-
-    /// Logs the action of viewing a product's details.
-    ///
-    /// - parameter product: The SimcoeProductConvertible instance.
-    /// - parameter eventProperties: The event properties.
-    ///
-    /// - returns: A tracking result.
-    func logViewDetail<T : SimcoeProductConvertible>(product: T, eventProperties: Properties?) -> TrackingResult {
-        return .Success
-    }
-
-}
+// MARK: - CartLogging
 
 extension EmptyProvider: CartLogging {
 
@@ -51,6 +39,8 @@ extension EmptyProvider: CartLogging {
     }
 }
 
+// MARK: - CheckoutTracking
+
 extension EmptyProvider: CheckoutTracking {
 
     /// Tracks a checkout event.
@@ -65,6 +55,98 @@ extension EmptyProvider: CheckoutTracking {
 
 }
 
+// MARK: - ErrorLogging
+
+extension EmptyProvider: ErrorLogging {
+
+    /**
+     Logs the error with optional additional properties.
+
+     - parameter error:      The error to log.
+     - parameter properties: The optional additional properties.
+
+     - returns: A tracking result.
+     */
+    func logError(error: String, withAdditionalProperties properties: Properties?) -> TrackingResult {
+        return .Success
+    }
+    
+}
+
+// MARK: - EventTracking
+
+extension EmptyProvider: EventTracking {
+
+    /**
+     Tracks the given event with optional additional properties.
+
+     - parameter event:      The event to tack.
+     - parameter properties: The optional additional properties.
+
+     - returns: A tracking result.
+     */
+    func trackEvent(event: String, withAdditionalProperties properties: Properties?) -> TrackingResult {
+        return .Success
+    }
+
+}
+
+// MARK: - LifetimeValueIncreasing
+
+extension EmptyProvider: LifetimeValueIncreasing {
+
+    /**
+     Increases the lifetime value of the key by the specified amount.
+
+     - parameter amount:     The amount to increase that lifetime value for.
+     - parameter item:       The optional item to extend.
+     - parameter properties: The optional additional properties.
+
+     - returns: A tracking result.
+     */
+    func increaseLifetimeValue(byAmount amount: Double, forItem item: String?, withAdditionalProperties properties: Properties?) -> TrackingResult {
+        return .Success
+    }
+
+}
+
+// MARK: - LocationTracking
+
+extension EmptyProvider: LocationTracking {
+
+    /**
+     Tracks location.
+
+     - parameter location:   The location to track.
+     - parameter properties: The optional additional properties.
+
+     - returns: A tracking result.
+     */
+    func trackLocation(location: CLLocation, withAdditionalProperties properties: Properties?) -> TrackingResult {
+        return .Success
+    }
+
+}
+
+// MARK: - PageViewTracking
+
+extension EmptyProvider: PageViewTracking {
+
+    /**
+     Tracks the page view.
+
+     - parameter pageView: The page view to track.
+
+     - returns: A tracking result.
+     */
+    func trackPageView(pageView: String, withAdditionalProperties properties: Properties?) -> TrackingResult {
+        return .Success
+    }
+
+}
+
+// MARK: - PurchaseTracking
+
 extension EmptyProvider: PurchaseTracking {
 
     /// Tracks a purchase event.
@@ -76,52 +158,38 @@ extension EmptyProvider: PurchaseTracking {
     func trackPurchaseEvent<T : SimcoeProductConvertible>(products: [T], eventProperties: Properties?) -> TrackingResult {
         return .Success
     }
-
-}
-
-extension EmptyProvider: ErrorLogging {
-
-    func logError(error: String, withAdditionalProperties properties: Properties?) -> TrackingResult {
-        return .Success
-    }
     
 }
 
-extension EmptyProvider: EventTracking {
-
-    func trackEvent(event: String, withAdditionalProperties properties: Properties?) -> TrackingResult {
-        return .Success
-    }
-
-}
-
-extension EmptyProvider: LifetimeValueIncreasing {
-
-    func increaseLifetimeValue(byAmount amount: Double, forItem item: String?, withAdditionalProperties properties: Properties?) -> TrackingResult {
-        return .Success
-    }
-
-}
-
-extension EmptyProvider: LocationTracking {
-
-    func trackLocation(location: CLLocation, withAdditionalProperties properties: Properties?) -> TrackingResult {
-        return .Success
-    }
-
-}
-
-extension EmptyProvider: PageViewTracking {
-
-    func trackPageView(pageView: String, withAdditionalProperties properties: Properties?) -> TrackingResult {
-        return .Success
-    }
-
-}
+// MARK: - UserAttributeTracking
 
 extension EmptyProvider: UserAttributeTracking {
-    
+
+    /**
+     Sets the User Attribute.
+
+     - parameter key:      The attribute key to log.
+     - parameter value:    The attribute value to log.
+
+     - returns: A tracking result.
+     */
     func setUserAttribute(key: String, value: AnyObject) -> TrackingResult {
+        return .Success
+    }
+    
+}
+
+// MARK: - ViewDetailLogging
+
+extension EmptyProvider: ViewDetailLogging {
+
+    /// Logs the action of viewing a product's details.
+    ///
+    /// - parameter product: The SimcoeProductConvertible instance.
+    /// - parameter eventProperties: The event properties.
+    ///
+    /// - returns: A tracking result.
+    func logViewDetail<T : SimcoeProductConvertible>(product: T, eventProperties: Properties?) -> TrackingResult {
         return .Success
     }
     
