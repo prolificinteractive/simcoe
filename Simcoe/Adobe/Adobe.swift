@@ -6,8 +6,8 @@
 //  Copyright © 2016 Prolific Interactive. All rights reserved.
 //
 
-import CoreLocation
 import AdobeMobileSDK
+import CoreLocation
 
 /// The adobe analytics provider.
 public class Adobe {
