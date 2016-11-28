@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0C0460CC4E74C7C1DAF81892 /* Pods_mParticleExample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 075A0BE6B064899013AA2BA0 /* Pods_mParticleExample.framework */; };
+		270708AE1DBFF5E200A7F4BA /* ExampleProduct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 270708AD1DBFF5E200A7F4BA /* ExampleProduct.swift */; };
 		723FD4CF1C77FEB70069622D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723FD4CE1C77FEB70069622D /* AppDelegate.swift */; };
 		723FD4D11C77FEB70069622D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723FD4D01C77FEB70069622D /* ViewController.swift */; };
 		723FD4D41C77FEB70069622D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 723FD4D21C77FEB70069622D /* Main.storyboard */; };
@@ -17,6 +18,7 @@
 
 /* Begin PBXFileReference section */
 		075A0BE6B064899013AA2BA0 /* Pods_mParticleExample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_mParticleExample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		270708AD1DBFF5E200A7F4BA /* ExampleProduct.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExampleProduct.swift; sourceTree = "<group>"; };
 		723FD4CB1C77FEB70069622D /* mParticleExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = mParticleExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		723FD4CE1C77FEB70069622D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		723FD4D01C77FEB70069622D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -67,6 +69,7 @@
 				723FD4D51C77FEB70069622D /* Assets.xcassets */,
 				723FD4D71C77FEB70069622D /* LaunchScreen.storyboard */,
 				723FD4DA1C77FEB70069622D /* Info.plist */,
+				270708AD1DBFF5E200A7F4BA /* ExampleProduct.swift */,
 			);
 			path = mParticleExample;
 			sourceTree = "<group>";
@@ -213,6 +216,7 @@
 			files = (
 				723FD4D11C77FEB70069622D /* ViewController.swift in Sources */,
 				723FD4CF1C77FEB70069622D /* AppDelegate.swift in Sources */,
+				270708AE1DBFF5E200A7F4BA /* ExampleProduct.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

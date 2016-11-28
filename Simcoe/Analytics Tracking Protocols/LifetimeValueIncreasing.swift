@@ -20,6 +20,8 @@ public protocol LifetimeValueIncreasing: AnalyticsTracking {
 
      - returns: A tracking result.
      */
-    func increaseLifetimeValue(byAmount amount: Double, forItem item: String?, withAdditionalProperties properties: Properties?) -> TrackingResult
+    func increaseLifetimeValue(byAmount amount: Double,
+                                        forItem item: String?,
+                                                withAdditionalProperties properties: Properties?) -> TrackingResult
 
 }

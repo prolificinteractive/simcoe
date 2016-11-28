@@ -6,17 +6,15 @@
 //  Copyright © 2016 Prolific Interactive. All rights reserved.
 //
 
-import CoreLocation
 import AdobeMobileSDK
+import CoreLocation
 
 /// The adobe analytics provider.
 public class Adobe {
 
     public let name = "Adobe Omniture"
 
-    public init() {
-
-    }
+    public init() { }
 
     public func start() {
         ADBMobile.collectLifecycleData()

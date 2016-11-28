@@ -44,84 +44,40 @@ public class mParticle {
         MParticle.sharedInstance().start()
     }
 
-    private func mPProduct(name: String, productId: String, quantity: Int, price: NSNumber?, additionalProperties: Properties?) -> MPProduct {
-        let product = MPProduct(name:name, sku:productId, quantity:quantity, price:price)
-
-        if let brand = additionalProperties?[MPProductKeys.Brand.rawValue] as? String {
-            product.brand = brand
-        }
-
-        if let category = additionalProperties?[MPProductKeys.Category.rawValue] as? String {
-            product.category = category
-        }
-
-        if let couponCode = additionalProperties?[MPProductKeys.CouponCode.rawValue] as? String {
-            product.couponCode = couponCode
-        }
-
-        if let sku = additionalProperties?[MPProductKeys.Sku.rawValue] as? String {
-            product.variant = sku
-        }
-
-        if let position = additionalProperties?[MPProductKeys.Position.rawValue] as? UInt {
-            product.position = position
-        }
-
-        return product
-    }
-
 }
 
 // MARK: - CartLogging
 
 extension mParticle: CartLogging {
 
-    /**
-     Logs the addition of a product to the cart.
-
-     - parameter productName:          The name of the product added to the cart.
-     - parameter productId:            The sku of the product.
-     - parameter quantity:             The quantity of the product added to the cart.
-     - parameter price:                The price of the product.
-     - parameter additionalProperties: The properties that can be added to a product. See `MPProductKeys`
-
-     - returns: A tracking result.
-     */
-    public func logAddToCart(productName: String,
-                             productId: String,
-                             quantity: Int,
-                             price: Double?,
-                             withAdditionalProperties additionalProperties: Properties?) -> TrackingResult {
-        let product = mPProduct(productName,
-                                productId:productId,
-                                quantity: quantity,
-                                price: price,
-                                additionalProperties: additionalProperties)
-        let event = MPCommerceEvent(action: .AddToCart, product: product)
+    /// Logs the addition of a product to the cart.
+    ///
+    /// - parameter product:         The SimcoeProductConvertible instance.
+    /// - parameter eventProperties: The event properties.
+    ///
+    /// - returns: A tracking result.
+    public func logAddToCart<T: SimcoeProductConvertible>(product: T, eventProperties: Properties?) -> TrackingResult {
+        let mPProduct = MPProduct(product: product)
+        let event = MPCommerceEvent(eventType: .AddToCart,
+                                    products: [mPProduct],
+                                    eventProperties: eventProperties)
 
         MParticle.sharedInstance().logCommerceEvent(event)
 
         return .Success
     }
 
-    /**
-     Logs the removal of a product from the cart.
-
-     - parameter productName:          The name of the product added to the cart.
-     - parameter productId:            The productId of the product.
-     - parameter quantity:             The quantity of the product added to the cart.
-     - parameter price:                The price of the product.
-     - parameter additionalProperties: The properties that can be added to a product. See `MPProductKeys`
-
-     - returns: A tracking result.
-     */
-    public func logRemoveFromCart(productName: String,
-                                  productId: String,
-                                  quantity: Int,
-                                  price: Double?,
-                                  withAdditionalProperties additionalProperties: Properties?) -> TrackingResult {
-        let product = mPProduct(productName, productId:productId, quantity: quantity, price: price, additionalProperties: additionalProperties)
-        let event = MPCommerceEvent(action: .RemoveFromCart, product: product)
+    /// Logs the removal of a product from the cart.
+    ///
+    /// - parameter product:         The SimcoeProductConvertible instance.
+    /// - parameter eventProperties: The event properties.
+    ///
+    /// - returns: A tracking result.
+    public func logRemoveFromCart<T: SimcoeProductConvertible>(product: T, eventProperties: Properties?) -> TrackingResult {
+        let mPProduct = MPProduct(product: product)
+        let event = MPCommerceEvent(eventType: .RemoveFromCart,
+                                    products: [mPProduct],
+                                    eventProperties: eventProperties)
 
         MParticle.sharedInstance().logCommerceEvent(event)
 
@@ -130,6 +86,28 @@ extension mParticle: CartLogging {
     
 }
 
+// MARK: - CheckoutTracking
+
+extension mParticle: CheckoutTracking {
+
+    /// Tracks a checkout event.
+    ///
+    /// - parameter products:        The products.
+    /// - parameter eventProperties: The event properties.
+    ///
+    /// - returns: A tracking result.
+    public func trackCheckoutEvent<T: SimcoeProductConvertible>(products: [T], eventProperties: Properties?) -> TrackingResult {
+        let mPProducts = products.map { MPProduct(product: $0) }
+        let event = MPCommerceEvent(eventType: .Checkout,
+                                    products: mPProducts,
+                                    eventProperties: eventProperties)
+
+        MParticle.sharedInstance().logCommerceEvent(event)
+
+        return .Success
+    }
+
+}
 
 // MARK: - ErrorLogging
 
@@ -179,7 +157,7 @@ extension mParticle: EventTracking {
 
         let event: MPEvent
         do {
-            event = try toEvent(usingData: properties)
+            event = try MPEvent.toEvent(usingData: properties)
         } catch let error as MPEventGenerationError {
             return .Error(message: error.description)
         } catch {
@@ -231,7 +209,7 @@ extension mParticle: LocationTracking {
 
         let event: MPEvent
         do {
-            event = try toEvent(usingData: eventProperties)
+            event = try MPEvent.toEvent(usingData: eventProperties)
         } catch let error as MPEventGenerationError {
             return .Error(message: error.description)
         } catch {
@@ -257,6 +235,30 @@ extension mParticle: PageViewTracking {
     
 }
 
+// MARK: - PurchaseTracking
+
+extension mParticle: PurchaseTracking {
+
+    /// Tracks a purchase event.
+    ///
+    /// - parameter products:        The products.
+    /// - parameter eventProperties: The event properties.
+    ///
+    /// - returns: A tracking result.
+    public func trackPurchaseEvent<T : SimcoeProductConvertible>(products: [T], eventProperties: Properties?) -> TrackingResult {
+        let mPProducts = products.map { MPProduct(product: $0) }
+        let event = MPCommerceEvent(eventType: .Purchase,
+                                    products: mPProducts,
+                                    eventProperties: eventProperties)
+
+        MParticle.sharedInstance().logCommerceEvent(event)
+
+        return .Success
+    }
+    
+}
+
+
 // MARK: - UserAttributeTracking
 
 extension mParticle: UserAttributeTracking {
@@ -269,6 +271,29 @@ extension mParticle: UserAttributeTracking {
      */
     public func setUserAttribute(key: String, value: AnyObject) -> TrackingResult {
         MParticle.sharedInstance().setUserAttribute(key, value: value)
+
+        return .Success
+    }
+    
+}
+
+// MARK: - ViewDetailLogging
+
+extension mParticle: ViewDetailLogging {
+
+    /// Logs the action of viewing a product's details.
+    ///
+    /// - parameter product: The SimcoeProductConvertible instance.
+    /// - parameter eventProperties: The event properties.
+    ///
+    /// - returns: A tracking result.
+    public func logViewDetail<T: SimcoeProductConvertible>(product: T, eventProperties: Properties?) -> TrackingResult {
+        let mPProduct = MPProduct(product: product)
+        let event = MPCommerceEvent(eventType: .ViewDetail,
+                                    products: [mPProduct],
+                                    eventProperties: eventProperties)
+
+        MParticle.sharedInstance().logCommerceEvent(event)
 
         return .Success
     }

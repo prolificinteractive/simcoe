@@ -25,12 +25,15 @@ mParticle automatically implements the following protocols:
 
 - `AnalyticsTracking`
 - `CartLogging`
+- `CheckoutTracking`
 - `ErrorLogging`
 - `EventTracking`
 - `LifetimeValueIncreasing`
 - `LocationTracking`
 - `PageViewTracking`
+- `PurchaseTracking`
 - `UserAttributeTracking`
+- `ViewDetailLogging`
 
 ## MPEvent
 

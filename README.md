@@ -16,7 +16,7 @@ streamlined as possible -- especially for projects utilizing multiple analytics 
 Simcoe is written in Swift and utilizes dynamic frameworks for its implementation. As such, this
 library requires:
 
-* Xcode 7 or greater
+* Xcode 8 or greater
 * iOS 8 or greater
 
 ## Installation
@@ -88,25 +88,30 @@ First, all analytics trackers implement this base protocol: `AnalyticsTracking`.
 While simply implementing this protocol is all you need for your object to be a valid analytics tracker, you won't be able to do too much with it. This is because Simcoe utilizes an array of various different protocols, each one giving defining the functionality needed to handle that API event. These protocols are:
 
 * `CartLogging`
+* `CheckoutTracking`
 * `ErrorLogging`
 * `EventTracking`
 * `LifetimeValueIncreasing`
 * `LocationTracking`
 * `PageViewTracking`
+* `PurchaseTracking`
 * `UserAttributeTracking`
+* `ViewDetailLogging`
 
 So for your analytics provider to be able to handle page views in the Simcoe framework, your provider should implement the `PageViewTracking` protocol. This plug-and-play API allows you to define what you want your provider to handle at a very granular level. If your provider only needs to implement location tracking and nothing else, then you need only implement the `LocationTracking` protocol (as well as the `AnalyticsTracking` protocol, of course); all other protocols are optional. This allows you full customization as to how your objects respond to Simcoe.
 
 Each provider type defined above maps directly to a Simcoe function that will call that method. These are, respectively:
 
 * `logAddToCart`, `logRemoveFromCart`
+* `trackCheckoutEvent`
 * `logError`
 * `trackEvent`
 * `increaseLifetimeValue`
 * `trackLocation`
 * `trackPageView`
+* `trackPurchaseEvent`
 * `setUserAttribute`
-
+* `logViewDetail`
 
 #### Additional Tracking
 
