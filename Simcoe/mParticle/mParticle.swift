@@ -13,6 +13,7 @@ public class mParticle {
 
     private static let unknownErrorMessage = "An unknown error occurred."
 
+    /// The name of the tracker.
     public let name = "mParticle"
 
     /**
@@ -175,6 +176,15 @@ extension mParticle: EventTracking {
 
 extension mParticle: LifetimeValueIncreasing {
 
+    /**
+     Increases the lifetime value of the key by the specified amount.
+
+     - parameter amount:     The amount to increase that lifetime value for.
+     - parameter item:       The optional item to extend.
+     - parameter properties: The optional additional properties.
+
+     - returns: A tracking result.
+     */
     public func increaseLifetimeValue(byAmount amount: Double, forItem item: String?,
                                                withAdditionalProperties properties: Properties?) -> TrackingResult {
         MParticle.sharedInstance().logLTVIncrease(amount, eventName: (item ?? ""), eventInfo: properties)
@@ -227,6 +237,13 @@ extension mParticle: LocationTracking {
 
 extension mParticle: PageViewTracking {
 
+    /**
+     Tracks the page view.
+
+     - parameter pageView: The page view to track.
+
+     - returns: A tracking result.
+     */
     public func trackPageView(pageView: String, withAdditionalProperties properties: Properties?) -> TrackingResult {
         MParticle.sharedInstance().logScreen(pageView, eventInfo: properties)
 

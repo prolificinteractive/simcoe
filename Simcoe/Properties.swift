@@ -6,4 +6,5 @@
 //
 //
 
+/// The properties.
 public typealias Properties = [String: AnyObject]
