@@ -32,7 +32,7 @@ Adobe automatically implements the following protocols:
 Adobe automatically implements dummy functions for the following protocols:
 
 - `ErrorLogging`
-- `UserAttributes`
+- `UserAttributeTracking`
 
 ## Subclassing
 

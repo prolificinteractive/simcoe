@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "F902ED111C68FA07007975F5"
-               BuildableName = "Simcoe.framework"
-               BlueprintName = "Simcoe"
-               ReferencedContainer = "container:Simcoe.xcodeproj">
+               BlueprintIdentifier = "723FD4CA1C77FEB70069622D"
+               BuildableName = "mParticleExample.app"
+               BlueprintName = "mParticleExample"
+               ReferencedContainer = "container:mParticleExample.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -26,7 +26,8 @@
       buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
-      shouldUseLaunchSchemeArgsEnv = "YES">
+      shouldUseLaunchSchemeArgsEnv = "YES"
+      codeCoverageEnabled = "YES">
       <Testables>
          <TestableReference
             skipped = "NO">
@@ -35,17 +36,27 @@
                BlueprintIdentifier = "72897FDC1C79E25800393482"
                BuildableName = "SimcoeTests.xctest"
                BlueprintName = "SimcoeTests"
-               ReferencedContainer = "container:Simcoe.xcodeproj">
+               ReferencedContainer = "container:../Simcoe.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "F93043DA1C77C29700A90AFD"
+               BuildableName = "mParticleTests.xctest"
+               BlueprintName = "mParticleTests"
+               ReferencedContainer = "container:../Simcoe.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "F902ED111C68FA07007975F5"
-            BuildableName = "Simcoe.framework"
-            BlueprintName = "Simcoe"
-            ReferencedContainer = "container:Simcoe.xcodeproj">
+            BlueprintIdentifier = "723FD4CA1C77FEB70069622D"
+            BuildableName = "mParticleExample.app"
+            BlueprintName = "mParticleExample"
+            ReferencedContainer = "container:mParticleExample.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -61,15 +72,16 @@
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
       allowLocationSimulation = "YES">
-      <MacroExpansion>
+      <BuildableProductRunnable
+         runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "F902ED111C68FA07007975F5"
-            BuildableName = "Simcoe.framework"
-            BlueprintName = "Simcoe"
-            ReferencedContainer = "container:Simcoe.xcodeproj">
+            BlueprintIdentifier = "723FD4CA1C77FEB70069622D"
+            BuildableName = "mParticleExample.app"
+            BlueprintName = "mParticleExample"
+            ReferencedContainer = "container:mParticleExample.xcodeproj">
          </BuildableReference>
-      </MacroExpansion>
+      </BuildableProductRunnable>
       <AdditionalOptions>
       </AdditionalOptions>
    </LaunchAction>
@@ -79,15 +91,16 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
-      <MacroExpansion>
+      <BuildableProductRunnable
+         runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "F902ED111C68FA07007975F5"
-            BuildableName = "Simcoe.framework"
-            BlueprintName = "Simcoe"
-            ReferencedContainer = "container:Simcoe.xcodeproj">
+            BlueprintIdentifier = "723FD4CA1C77FEB70069622D"
+            BuildableName = "mParticleExample.app"
+            BlueprintName = "mParticleExample"
+            ReferencedContainer = "container:mParticleExample.xcodeproj">
          </BuildableReference>
-      </MacroExpansion>
+      </BuildableProductRunnable>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">

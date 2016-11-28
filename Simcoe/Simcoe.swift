@@ -70,68 +70,6 @@ public final class Simcoe {
     }
 
     /**
-     Tracks a page view.
-
-     - parameter pageView:   The page view event.
-     - parameter properties: The optional additional properties.
-     */
-    public static func trackPageView(pageView: String, withAdditionalProperties properties: Properties? = nil) {
-        engine.trackPageView(pageView, withAdditionalProperties: properties)
-    }
-
-    /**
-     Tracks an analytics action or event.
-
-     - parameter event:      The event that occurred.
-     - parameter properties: The optional additional properties.
-     */
-    public static func trackEvent(event: String, withAdditionalProperties properties: Properties? = nil) {
-        engine.trackEvent(event, withAdditionalProperties: properties)
-    }
-
-    /**
-     Tracks the lifetime value increase.
-
-     - parameter amount:     The amount to increase that lifetime value for.
-     - parameter item:       The optional item to extend.
-     - parameter properties: The optional additional properties.
-     */
-    public static func trackLifetimeIncrease(byAmount amount: Double = 1, forItem item: String? = nil,
-                                                      withAdditionalProperties properties: Properties? = nil) {
-        engine.trackLifetimeIncrease(byAmount: amount, forItem: item, withAdditionalProperties: properties)
-    }
-
-    /**
-     Tracks a user's location.
-
-     - parameter location:   The user's location.
-     - parameter properties: The optional additional properties.
-     */
-    public static func trackLocation(location: CLLocation, withAdditionalProperties properties: Properties?) {
-        engine.trackLocation(location, withAdditionalProperties: properties)
-    }
-    
-    /**
-     Logs the error with optional additional properties.
-     
-     - parameter error:      The error to log.
-     - parameter properties: The optional additional properties.
-     */
-    public static func logError(error: String, withAdditionalProperties properties: Properties? = nil) {
-        engine.logError(error, withAdditionalProperties: properties)
-    }
-    
-    /**
-     Sets the User Attribute.
-     
-     - parameter key:   The key of the user attribute
-     - parameter value: the value of the user attribute
-     */
-    public static func setUserAttribute(key: String, value: AnyObject) {
-        engine.setUserAttribute(key, value: value)
-    }
-
-    /**
      Writes the event.
 
      - parameter providers:   The list of provides.
@@ -148,18 +86,167 @@ public final class Simcoe {
         tracker.track(event: event)
     }
 
-    /**
-     Tracks the page view.
+    private func findProviders<T>() -> [T] {
+        return providers
+            .map { provider in return provider as? T }
+            .flatMap { $0 }
+    }
 
-     - parameter pageView:   The page view to track.
+    // MARK: - CartLogging
+
+    /**
+     Logs the addition of a product to the cart.
+
+     - parameter productName: The name of the product added to the cart.
+     - parameter productId:   The productId of the product.
+     - parameter quantity:    The quantity of the product added to the cart.
+     - parameter price:       The price of the product.
+     - parameter properties:  The properties that can be added to a product. See `MPProductKeys`
+
+     - returns: A tracking result.
+     */
+    public static func logAddToCart(productName: String,
+                                    productId: String,
+                                    quantity: Int,
+                                    price: Double?,
+                                    withAdditionalProperties properties: Properties?) {
+        engine.logAddToCart(productName,
+                            productId: productId,
+                            quantity: quantity,
+                            price: price,
+                            withAdditionalProperties: properties)
+    }
+
+    /**
+     Logs the addition of a product to the cart.
+
+     - parameter productName: The name of the product added to the cart.
+     - parameter productId:   The productId of the product.
+     - parameter quantity:    The quantity of the product added to the cart.
+     - parameter price:       The price of the product.
+     - parameter properties:  The properties that can be added to a product. See `MPProductKeys`
+
+     - returns: A tracking result.
+     */
+    func logAddToCart(productName: String,
+                      productId: String,
+                      quantity: Int,
+                      price: Double?,
+                      withAdditionalProperties properties: Properties?) {
+        let providers: [CartLogging] = findProviders()
+        let propertiesString = properties != nil ? "=> \(properties!.description)" : ""
+        let productPrice = String(format: "%.2f", Double(price ?? 0.0))
+
+        let addToCartDescription
+            = "\(quantity) x \(productName)(\(productId)) at \(productPrice) Added to cart \(propertiesString)"
+
+        write(toProviders: providers,
+              description: addToCartDescription) {
+                addToCardLogger in
+                return addToCardLogger.logAddToCart(productName,
+                                                    productId: productId,
+                                                    quantity: quantity,
+                                                    price: price,
+                                                    withAdditionalProperties: properties)
+        }
+    }
+
+    /**
+     Logs the removal of a product from the cart.
+
+     - parameter productName: The name of the product added to the cart.
+     - parameter productId:   The productId of the product.
+     - parameter quantity:    The quantity of the product added to the cart.
+     - parameter price:       The price of the product.
+     - parameter properties:  The properties that can be added to a product. See `MPProductKeys`
+
+     - returns: A tracking result.
+     */
+    public static func logRemoveFromCart(productName: String,
+                                         productId: String,
+                                         quantity: Int,
+                                         price: Double?,
+                                         withAdditionalProperties properties: Properties?) {
+        engine.logRemoveFromCart(productName,
+                                 productId: productId,
+                                 quantity: quantity,
+                                 price: price,
+                                 withAdditionalProperties: properties)
+    }
+
+    /**
+     Logs the removal of a product from the cart.
+
+     - parameter productName: The name of the product added to the cart.
+     - parameter productId:   The productId of the product.
+     - parameter quantity:    The quantity of the product added to the cart.
+     - parameter price:       The price of the product.
+     - parameter properties:  The properties that can be added to a product. See `MPProductKeys`
+
+     - returns: A tracking result.
+     */
+    func logRemoveFromCart(productName: String,
+                           productId: String,
+                           quantity: Int,
+                           price: Double?,
+                           withAdditionalProperties properties: Properties?) {
+        let providers: [CartLogging] = findProviders()
+        let propertiesString = properties != nil ? "=> \(properties!.description)" : ""
+        let productPrice = String(format: "%.2f", Double(price ?? 0.0))
+
+        let removeFromCartDescription
+            = "\(quantity) x \(productName)(\(productId)) at \(productPrice) Removed from cart \(propertiesString)"
+
+        write(toProviders: providers,
+              description: removeFromCartDescription) {
+                addToCardLogger in
+                return addToCardLogger.logRemoveFromCart(productName,
+                                                         productId: productId,
+                                                         quantity: quantity,
+                                                         price: price,
+                                                         withAdditionalProperties: properties)
+        }
+    }
+
+    // MARK: - CheckoutLogging
+
+    // MARK: - ErrorLogging
+
+    /**
+     Logs the error with optional additional properties.
+
+     - parameter error:      The error to log.
      - parameter properties: The optional additional properties.
      */
-    func trackPageView(pageView: String, withAdditionalProperties properties: Properties? = nil) {
-        let providers: [PageViewTracking] = findProviders()
+    public static func logError(error: String, withAdditionalProperties properties: Properties? = nil) {
+        engine.logError(error, withAdditionalProperties: properties)
+    }
 
-        write(toProviders: providers, description: "Page View: \(pageView)") { (provider: PageViewTracking) in
-            return provider.trackPageView(pageView, withAdditionalProperties: properties)
+    /**
+     Logs the error with optional additional properties.
+
+     - parameter error:      The error to log.
+     - parameter properties: The optional additional properties.
+     */
+    func logError(error: String, withAdditionalProperties properties: Properties? = nil) {
+        let providers: [ErrorLogging] = findProviders()
+
+        let propertiesString = properties != nil ? "=> \(properties!.description)" : ""
+        write(toProviders: providers, description: "Error: \(error) \(propertiesString)") { errorLogger in
+            return errorLogger.logError(error, withAdditionalProperties: properties)
         }
+    }
+
+    // MARK: - EventTracking
+
+    /**
+     Tracks an analytics action or event.
+
+     - parameter event:      The event that occurred.
+     - parameter properties: The optional additional properties.
+     */
+    public static func trackEvent(event: String, withAdditionalProperties properties: Properties? = nil) {
+        engine.trackEvent(event, withAdditionalProperties: properties)
     }
 
     /**
@@ -175,6 +262,20 @@ public final class Simcoe {
         write(toProviders: providers, description: "Event: \(event) \(propertiesString)") { eventTracker in
             return eventTracker.trackEvent(event, withAdditionalProperties: properties)
         }
+    }
+
+    // MARK: - LifetimeValueIncreasing
+
+    /**
+     Tracks the lifetime value increase.
+
+     - parameter amount:     The amount to increase that lifetime value for.
+     - parameter item:       The optional item to extend.
+     - parameter properties: The optional additional properties.
+     */
+    public static func trackLifetimeIncrease(byAmount amount: Double = 1, forItem item: String? = nil,
+                                                      withAdditionalProperties properties: Properties? = nil) {
+        engine.trackLifetimeIncrease(byAmount: amount, forItem: item, withAdditionalProperties: properties)
     }
 
     /**
@@ -194,6 +295,18 @@ public final class Simcoe {
         }
     }
 
+    // MARK: - LocationTracking
+
+    /**
+     Tracks a user's location.
+
+     - parameter location:   The user's location.
+     - parameter properties: The optional additional properties.
+     */
+    public static func trackLocation(location: CLLocation, withAdditionalProperties properties: Properties?) {
+        engine.trackLocation(location, withAdditionalProperties: properties)
+    }
+
     /**
      Tracks a user's location.
 
@@ -207,40 +320,57 @@ public final class Simcoe {
             return locationTracker.trackLocation(location, withAdditionalProperties: properties)
         }
     }
-    
+
+    // MARK: - PageViewTracking
+
     /**
-     Logs the error with optional additional properties.
-     
-     - parameter error:      The error to log.
+     Tracks a page view.
+
+     - parameter pageView:   The page view event.
      - parameter properties: The optional additional properties.
      */
-    func logError(error: String, withAdditionalProperties properties: Properties? = nil) {
-        let providers: [ErrorLogging] = findProviders()
-        
-        let propertiesString = properties != nil ? "=> \(properties!.description)" : ""
-        write(toProviders: providers, description: "Error: \(error) \(propertiesString)") { errorLogger in
-            return errorLogger.logError(error, withAdditionalProperties: properties)
+    public static func trackPageView(pageView: String, withAdditionalProperties properties: Properties? = nil) {
+        engine.trackPageView(pageView, withAdditionalProperties: properties)
+    }
+
+    /**
+     Tracks the page view.
+
+     - parameter pageView:   The page view to track.
+     - parameter properties: The optional additional properties.
+     */
+    func trackPageView(pageView: String, withAdditionalProperties properties: Properties? = nil) {
+        let providers: [PageViewTracking] = findProviders()
+
+        write(toProviders: providers, description: "Page View: \(pageView)") { (provider: PageViewTracking) in
+            return provider.trackPageView(pageView, withAdditionalProperties: properties)
         }
     }
-    
+
+    // MARK: - UserAttributeTracking
+
     /**
      Sets the User Attribute.
-     
+
+     - parameter key:   The key of the user attribute
+     - parameter value: the value of the user attribute
+     */
+    public static func setUserAttribute(key: String, value: AnyObject) {
+        engine.setUserAttribute(key, value: value)
+    }
+
+    /**
+     Sets the User Attribute.
+
      - parameter key:   The key of the user attribute
      - parameter value: the value of the user attribute
      */
     func setUserAttribute(key: String, value: AnyObject) {
-        let providers: [UserAttributes] = findProviders()
+        let providers: [UserAttributeTracking] = findProviders()
         
         write(toProviders: providers, description: "Setting user attribute with key: \(key) value:\(value)") { attributeSetter in
             return attributeSetter.setUserAttribute(key, value: value)
         }
     }
-
-    private func findProviders<T>() -> [T] {
-        return providers
-            .map { provider in return provider as? T }
-            .flatMap { $0 }
-    }
-
+    
 }
