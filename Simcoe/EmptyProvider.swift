@@ -8,8 +8,10 @@
 
 import CoreLocation
 
+/// The empty provider.
 internal final class EmptyProvider {
 
+    /// The name of the tracker.
     let name = "Analytics"
 
 }

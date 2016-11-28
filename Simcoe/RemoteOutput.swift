@@ -13,6 +13,7 @@ import Foundation
  */
 internal struct RemoteOutput: Output {
 
+    /// The token.
     let token: String
 
     private let baseUrl = NSURL(string: "https://panalytics.herokuapp.com/")!
@@ -21,12 +22,18 @@ internal struct RemoteOutput: Output {
         return NSURL(string: token, relativeToURL: baseUrl)!
     }
 
+    /// The default initializer.
+    ///
+    /// - Parameter token: The token.
     init(token: String) {
         self.token = token
 
         Swift.print ("Simcoe now logging remotely to URL: \(url.absoluteString)")
     }
 
+    /// Prints a message.
+    ///
+    /// - Parameter message: The message.
     func print(message: String) {
         let request = NSMutableURLRequest(URL: url)
         request.HTTPMethod = "POST"
