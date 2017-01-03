@@ -68,6 +68,16 @@ If you do not yet know which analytics tool your project will be using, that's f
 By default, if Simcoe is not given any providers, it will automatically create a default provider to use as a placeholder. This allows you to implement, track, and debug analytics without a provider. Then, when your
 provider changes, simply update your `run()` call with the providers and that's it!
 
+To facilitate debugging when using multiple providers, Simcoe contains a few options for updating the information logged in the console:
+
+* Verbose
+* Simple
+* None
+
+By default, Simcoe will log all console outputs in detail (*Verbose*) providing one line per item for **each** provider that was specified. *Simple* will output one line per item regardless of how many providers were specified while *None* will disable all console logging. To update the *outputOption,* simply call (update this property after the `run()` command): 
+
+`Simcoe.engine.tracker.outputOption = .Simple`
+
 Simcoe providers a base function call for each major analytics action right out of the gate, giving a consistent API to all of your analytics tracking. For instance, to track page views:
 
 ``
