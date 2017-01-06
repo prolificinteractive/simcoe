@@ -10,15 +10,15 @@
 public final class Tracker {
 
     /// The output option for the recorder. Defaults to .Verbose.
-    public var outputOption: OutputOptions = .Verbose
+    public var outputOption: OutputOptions = .verbose
 
     /// The error option for the recorder. Defaults to .Default.
-    public var errorOption: ErrorHandlingOption = .Default
+    public var errorOption: ErrorHandlingOption = .default
 
     /// The list of events to track.
     var events = [Event]()
 
-    private let outputSources: [Output]
+    fileprivate let outputSources: [Output]
 
     /**
      Initializes a new instance using the specified source as its output. By default, this is the
@@ -35,17 +35,17 @@ public final class Tracker {
 
      - parameter event: The event to record.
      */
-    func track(event event: Event) {
+    func track(event: Event) {
         events.append(event)
         parseEvent(event)
     }
 
-    private func parseEvent(event: Event) {
+    fileprivate func parseEvent(_ event: Event) {
         let successfulProviders = event.writeEvents.map { writeEvent -> AnalyticsTracking? in
             switch writeEvent.trackingResult {
-            case .Success:
+            case .success:
                 return writeEvent.provider
-            case .Error(let message):
+            case .error(let message):
                 handleError(usingMessage: message, inProvider: writeEvent.provider)
                 return nil
             }
@@ -54,24 +54,24 @@ public final class Tracker {
         write(event.description, forProviders: successfulProviders.flatMap { $0 })
     }
 
-    private func handleError(usingMessage message: String, inProvider provider: AnalyticsTracking) {
+    fileprivate func handleError(usingMessage message: String, inProvider provider: AnalyticsTracking) {
         switch errorOption {
-        case .Default:
+        case .default:
             writeOut(withName: "** ANALYTICS ERROR **", message: message)
             break
-        case .Strict:
+        case .strict:
             fatalError(message)
-        case .Suppress:
+        case .suppress:
             break
         }
     }
 
-    private func write(description: String, forProviders providers: [AnalyticsTracking]) {
-        guard outputOption != .None else {
+    fileprivate func write(_ description: String, forProviders providers: [AnalyticsTracking]) {
+        guard outputOption != .none else {
             return
         }
 
-        if outputOption == .Verbose {
+        if outputOption == .verbose {
             for provider in providers {
                 writeOut(withName: provider.name, message: description)
             }
@@ -80,7 +80,7 @@ public final class Tracker {
         }
     }
 
-    private func writeOut(withName name: String, message: String) {
+    fileprivate func writeOut(withName name: String, message: String) {
         outputSources.forEach { $0.print("[\(name)] \(message)") }
     }
 }

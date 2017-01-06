@@ -17,7 +17,7 @@ public protocol CartLogging: AnalyticsTracking {
     /// - parameter eventProperties: The event properties.
     ///
     /// - returns: A tracking result.
-    func logAddToCart<T: SimcoeProductConvertible>(product: T, eventProperties: Properties?) -> TrackingResult
+    func logAddToCart<T: SimcoeProductConvertible>(_ product: T, eventProperties: Properties?) -> TrackingResult
 
     /// Logs the removal of a product from the cart.
     ///
@@ -25,6 +25,6 @@ public protocol CartLogging: AnalyticsTracking {
     /// - parameter eventProperties: The event properties.
     ///
     /// - returns: A tracking result.
-    func logRemoveFromCart<T: SimcoeProductConvertible>(product: T, eventProperties: Properties?) -> TrackingResult
+    func logRemoveFromCart<T: SimcoeProductConvertible>(_ product: T, eventProperties: Properties?) -> TrackingResult
     
 }

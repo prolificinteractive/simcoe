@@ -14,7 +14,7 @@ internal final class ConsoleOutput: Output {
 
      - parameter message: The message to print.
      */
-    func print(message: String) {
+    func print(_ message: String) {
         Swift.print(message)
     }
 

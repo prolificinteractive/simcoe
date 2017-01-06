@@ -76,7 +76,7 @@ public final class Simcoe {
      - parameter description: The event description.
      - parameter action:      The action description.
      */
-    public func write<T>(toProviders providers: [T], description: String, action: T -> TrackingResult) {
+    public func write<T>(toProviders providers: [T], description: String, action: (T) -> TrackingResult) {
         let writeEvents = providers.map { provider -> WriteEvent in
             let result = action(provider)
             return WriteEvent(provider: provider as! AnalyticsTracking, trackingResult: result)
@@ -86,7 +86,7 @@ public final class Simcoe {
         tracker.track(event: event)
     }
 
-    private func findProviders<T>() -> [T] {
+    fileprivate func findProviders<T>() -> [T] {
         return providers
             .map { provider in return provider as? T }
             .flatMap { $0 }
@@ -100,7 +100,7 @@ public final class Simcoe {
     /// - parameter eventProperties: The event properties.
     ///
     /// - returns: A tracking result.
-    public static func logAddToCart<T: SimcoeProductConvertible>(product: T, eventProperties: Properties?) {
+    public static func logAddToCart<T: SimcoeProductConvertible>(_ product: T, eventProperties: Properties?) {
         engine.logAddToCart(product, eventProperties: eventProperties)
     }
 
@@ -110,7 +110,7 @@ public final class Simcoe {
     /// - parameter eventProperties: The event properties.
     ///
     /// - returns: A tracking result.
-    func logAddToCart<T: SimcoeProductConvertible>(product: T, eventProperties: Properties?) {
+    func logAddToCart<T: SimcoeProductConvertible>(_ product: T, eventProperties: Properties?) {
         let providers: [CartLogging] = findProviders()
         let simcoeProduct = product.toSimcoeProduct()
         let propertiesString = eventProperties != nil ? "=> \(eventProperties!.description)" : ""
@@ -131,7 +131,7 @@ public final class Simcoe {
     /// - parameter eventProperties: The event properties.
     ///
     /// - returns: A tracking result.
-    public static func logRemoveFromCart<T: SimcoeProductConvertible>(product: T, eventProperties: Properties?) {
+    public static func logRemoveFromCart<T: SimcoeProductConvertible>(_ product: T, eventProperties: Properties?) {
         engine.logRemoveFromCart(product, eventProperties: eventProperties)
     }
 
@@ -141,7 +141,7 @@ public final class Simcoe {
     /// - parameter eventProperties: The event properties.
     ///
     /// - returns: A tracking result.
-    func logRemoveFromCart<T: SimcoeProductConvertible>(product: T, eventProperties: Properties?) {
+    func logRemoveFromCart<T: SimcoeProductConvertible>(_ product: T, eventProperties: Properties?) {
         let providers: [CartLogging] = findProviders()
         let simcoeProduct = product.toSimcoeProduct()
         let propertiesString = eventProperties != nil ? "=> \(eventProperties!.description)" : ""
@@ -164,7 +164,7 @@ public final class Simcoe {
     /// - parameter eventProperties: The event properties.
     ///
     /// - returns: A tracking result.
-    public static func trackCheckoutEvent<T: SimcoeProductConvertible>(products: [T], eventProperties: Properties?) {
+    public static func trackCheckoutEvent<T: SimcoeProductConvertible>(_ products: [T], eventProperties: Properties?) {
         engine.trackCheckoutEvent(products, eventProperties: eventProperties)
     }
 
@@ -174,11 +174,11 @@ public final class Simcoe {
     /// - parameter eventProperties: The event properties.
     ///
     /// - returns: A tracking result.
-    func trackCheckoutEvent<T: SimcoeProductConvertible>(products: [T], eventProperties: Properties?) {
+    func trackCheckoutEvent<T: SimcoeProductConvertible>(_ products: [T], eventProperties: Properties?) {
         let providers: [CheckoutTracking] = findProviders()
         let propertiesString = eventProperties != nil ? "=> \(eventProperties!.description)" : ""
 
-        let productsList = products.map { $0.toSimcoeProduct().productName }.joinWithSeparator(", ")
+        let productsList = products.map { $0.toSimcoeProduct().productName }.joined(separator: ", ")
 
         let checkoutEventDescription
             = "Checkout: \(productsList). \(propertiesString)"
@@ -197,8 +197,8 @@ public final class Simcoe {
      - parameter error:      The error to log.
      - parameter properties: The optional additional properties.
      */
-    public static func logError(error: String, withAdditionalProperties properties: Properties? = nil) {
-        engine.logError(error, withAdditionalProperties: properties)
+    public static func log(error: String, withAdditionalProperties properties: Properties? = nil) {
+        engine.log(error: error, withAdditionalProperties: properties)
     }
 
     /**
@@ -207,12 +207,12 @@ public final class Simcoe {
      - parameter error:      The error to log.
      - parameter properties: The optional additional properties.
      */
-    func logError(error: String, withAdditionalProperties properties: Properties? = nil) {
+    func log(error: String, withAdditionalProperties properties: Properties? = nil) {
         let providers: [ErrorLogging] = findProviders()
 
         let propertiesString = properties != nil ? "=> \(properties!.description)" : ""
         write(toProviders: providers, description: "Error: \(error) \(propertiesString)") { errorLogger in
-            return errorLogger.logError(error, withAdditionalProperties: properties)
+            return errorLogger.log(error: error, withAdditionalProperties: properties)
         }
     }
 
@@ -224,8 +224,8 @@ public final class Simcoe {
      - parameter event:      The event that occurred.
      - parameter properties: The optional additional properties.
      */
-    public static func trackEvent(event: String, withAdditionalProperties properties: Properties? = nil) {
-        engine.trackEvent(event, withAdditionalProperties: properties)
+    public static func track(event: String, withAdditionalProperties properties: Properties? = nil) {
+        engine.track(event: event, withAdditionalProperties: properties)
     }
 
     /**
@@ -234,12 +234,12 @@ public final class Simcoe {
      - parameter event:      The event to track.
      - parameter properties: The optional additional properties.
      */
-    func trackEvent(event: String, withAdditionalProperties properties: Properties? = nil) {
+    func track(event: String, withAdditionalProperties properties: Properties? = nil) {
         let providers: [EventTracking] = findProviders()
 
         let propertiesString = properties != nil ? "=> \(properties!.description)" : ""
         write(toProviders: providers, description: "Event: \(event) \(propertiesString)") { eventTracker in
-            return eventTracker.trackEvent(event, withAdditionalProperties: properties)
+            return eventTracker.track(event: event, withAdditionalProperties: properties)
         }
     }
 
@@ -282,8 +282,8 @@ public final class Simcoe {
      - parameter location:   The user's location.
      - parameter properties: The optional additional properties.
      */
-    public static func trackLocation(location: CLLocation, withAdditionalProperties properties: Properties?) {
-        engine.trackLocation(location, withAdditionalProperties: properties)
+    public static func track(location: CLLocation, withAdditionalProperties properties: Properties?) {
+        engine.track(location: location, withAdditionalProperties: properties)
     }
 
     /**
@@ -292,11 +292,11 @@ public final class Simcoe {
      - parameter location:   The user's location.
      - parameter properties: The optional additional properties.
      */
-    func trackLocation(location: CLLocation, withAdditionalProperties properties: Properties?) {
+    func track(location: CLLocation, withAdditionalProperties properties: Properties?) {
         let providers: [LocationTracking] = findProviders()
 
         write(toProviders: providers, description: "User's Location") { locationTracker in
-            return locationTracker.trackLocation(location, withAdditionalProperties: properties)
+            return locationTracker.track(location: location, withAdditionalProperties: properties)
         }
     }
 
@@ -308,8 +308,8 @@ public final class Simcoe {
      - parameter pageView:   The page view event.
      - parameter properties: The optional additional properties.
      */
-    public static func trackPageView(pageView: String, withAdditionalProperties properties: Properties? = nil) {
-        engine.trackPageView(pageView, withAdditionalProperties: properties)
+    public static func track(pageView: String, withAdditionalProperties properties: Properties? = nil) {
+        engine.track(pageView: pageView, withAdditionalProperties: properties)
     }
 
     /**
@@ -318,11 +318,11 @@ public final class Simcoe {
      - parameter pageView:   The page view to track.
      - parameter properties: The optional additional properties.
      */
-    func trackPageView(pageView: String, withAdditionalProperties properties: Properties? = nil) {
+    func track(pageView: String, withAdditionalProperties properties: Properties? = nil) {
         let providers: [PageViewTracking] = findProviders()
 
         write(toProviders: providers, description: "Page View: \(pageView)") { (provider: PageViewTracking) in
-            return provider.trackPageView(pageView, withAdditionalProperties: properties)
+            return provider.track(pageView: pageView, withAdditionalProperties: properties)
         }
     }
 
@@ -334,7 +334,7 @@ public final class Simcoe {
     /// - parameter eventProperties: The event properties.
     ///
     /// - returns: A tracking result.
-    public static func trackPurchaseEvent<T: SimcoeProductConvertible>(products: [T], eventProperties: Properties?) {
+    public static func trackPurchaseEvent<T: SimcoeProductConvertible>(_ products: [T], eventProperties: Properties?) {
         engine.trackPurchaseEvent(products, eventProperties: eventProperties)
     }
 
@@ -344,11 +344,11 @@ public final class Simcoe {
     /// - parameter eventProperties: The event properties.
     ///
     /// - returns: A tracking result.
-    func trackPurchaseEvent<T: SimcoeProductConvertible>(products: [T], eventProperties: Properties?) {
+    func trackPurchaseEvent<T: SimcoeProductConvertible>(_ products: [T], eventProperties: Properties?) {
         let providers: [PurchaseTracking] = findProviders()
         let propertiesString = eventProperties != nil ? "=> \(eventProperties!.description)" : ""
 
-        let productsList = products.map { $0.toSimcoeProduct().productName }.joinWithSeparator(", ")
+        let productsList = products.map { $0.toSimcoeProduct().productName }.joined(separator: ", ")
 
         let purchaseEventDescription
             = "Purchase: \(productsList). \(propertiesString)"
@@ -367,7 +367,7 @@ public final class Simcoe {
      - parameter key:   The key of the user attribute
      - parameter value: the value of the user attribute
      */
-    public static func setUserAttribute(key: String, value: AnyObject) {
+    public static func setUserAttribute(_ key: String, value: AnyObject) {
         engine.setUserAttribute(key, value: value)
     }
 
@@ -377,7 +377,7 @@ public final class Simcoe {
      - parameter key:   The key of the user attribute
      - parameter value: the value of the user attribute
      */
-    func setUserAttribute(key: String, value: AnyObject) {
+    func setUserAttribute(_ key: String, value: AnyObject) {
         let providers: [UserAttributeTracking] = findProviders()
         
         write(toProviders: providers, description: "Setting user attribute with key: \(key) value:\(value)") { attributeSetter in
@@ -393,7 +393,7 @@ public final class Simcoe {
     /// - parameter eventProperties: The event properties.
     ///
     /// - returns: A tracking result.
-    public static func logViewDetail<T: SimcoeProductConvertible>(product: T, eventProperties: Properties?) {
+    public static func logViewDetail<T: SimcoeProductConvertible>(_ product: T, eventProperties: Properties?) {
         engine.logViewDetail(product, eventProperties: eventProperties)
     }
 
@@ -403,7 +403,7 @@ public final class Simcoe {
     /// - parameter eventProperties: The event properties.
     ///
     /// - returns: A tracking result.
-    func logViewDetail<T: SimcoeProductConvertible>(product: T, eventProperties: Properties?) {
+    func logViewDetail<T: SimcoeProductConvertible>(_ product: T, eventProperties: Properties?) {
         let providers: [ViewDetailLogging] = findProviders()
         let simcoeProduct = product.toSimcoeProduct()
         let propertiesString = eventProperties != nil ? "=> \(eventProperties!.description)" : ""

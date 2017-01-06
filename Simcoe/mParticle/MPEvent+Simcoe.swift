@@ -32,33 +32,33 @@ extension MPEvent {
 
      - returns: A dictionary containing the information for generating an MPEvent.
      */
-    public static func eventData(type type: MPEventType, name: String, category: String? = nil,
-                               duration: Float? = nil, startTime: NSDate? = nil,
-                               endTime: NSDate? = nil, customFlags: [String: [String]]? = nil,
+    public static func eventData(type: MPEventType, name: String, category: String? = nil,
+                               duration: Float? = nil, startTime: Date? = nil,
+                               endTime: Date? = nil, customFlags: [String: [String]]? = nil,
                                info: Properties? = nil) -> Properties {
-        var properties: Properties = [MPEventKeys.EventType.rawValue: type.rawValue]
+        var properties: Properties = [MPEventKeys.eventType.rawValue: type.rawValue as AnyObject]
 
-        properties[MPEventKeys.EventType.rawValue] = type.rawValue
-        properties[MPEventKeys.Name.rawValue] = name
+        properties[MPEventKeys.eventType.rawValue] = type.rawValue as AnyObject
+        properties[MPEventKeys.name.rawValue] = name as AnyObject
 
         if let category = category {
-            properties[MPEventKeys.Category.rawValue] = category
+            properties[MPEventKeys.category.rawValue] = category as AnyObject
         }
 
         if let duration = duration {
-            properties[MPEventKeys.Duration.rawValue] = duration
+            properties[MPEventKeys.duration.rawValue] = duration as AnyObject
         }
 
         if let startTime = startTime {
-            properties[MPEventKeys.StartTime.rawValue] = startTime
+            properties[MPEventKeys.startTime.rawValue] = startTime as AnyObject
         }
 
         if let endTime = endTime {
-            properties[MPEventKeys.EndTime.rawValue] = endTime
+            properties[MPEventKeys.endTime.rawValue] = endTime as AnyObject
         }
 
         if let customFlags = customFlags {
-            properties[MPEventKeys.CustomFlags.rawValue] = customFlags
+            properties[MPEventKeys.customFlags.rawValue] = customFlags as AnyObject
         }
 
         if let info = info {
@@ -79,42 +79,42 @@ extension MPEvent {
     ///
     /// - returns: A MPEvent.
     internal static func toEvent(usingData data: Properties) throws -> MPEvent {
-        guard let name = data[MPEventKeys.Name.rawValue] as? String else {
-            throw MPEventGenerationError.NameMissing
+        guard let name = data[MPEventKeys.name.rawValue] as? String else {
+            throw MPEventGenerationError.nameMissing
         }
 
-        guard let eventValue = data[MPEventKeys.EventType.rawValue] as? UInt,
-            type = MPEventType(rawValue: eventValue) else {
-                throw MPEventGenerationError.TypeMissing
+        guard let eventValue = data[MPEventKeys.eventType.rawValue] as? UInt,
+            let type = MPEventType(rawValue: eventValue) else {
+                throw MPEventGenerationError.typeMissing
         }
 
         guard let event = MPEvent(name: name, type: type) else {
-            throw MPEventGenerationError.EventInitFailed
+            throw MPEventGenerationError.eventInitFailed
         }
 
-        if let category = data[MPEventKeys.Category.rawValue] as? String {
+        if let category = data[MPEventKeys.category.rawValue] as? String {
             event.category = category
         }
 
-        if let duration = data[MPEventKeys.Duration.rawValue] as? Float {
-            event.duration = duration
+        if let duration = data[MPEventKeys.duration.rawValue] as? Float {
+            event.duration = duration as NSNumber
         }
 
-        if let startTime = data[MPEventKeys.StartTime.rawValue] as? NSDate {
+        if let startTime = data[MPEventKeys.startTime.rawValue] as? Date {
             event.startTime = startTime
         }
 
-        if let endTime = data[MPEventKeys.EndTime.rawValue] as? NSDate {
+        if let endTime = data[MPEventKeys.endTime.rawValue] as? Date {
             event.endTime = endTime
         }
 
-        if let flags = data[MPEventKeys.CustomFlags.rawValue] as? [String: [String]] {
+        if let flags = data[MPEventKeys.customFlags.rawValue] as? [String: [String]] {
             for (key, flagValues) in flags {
                 event.addCustomFlags(flagValues, withKey: key)
             }
         }
 
-        event.info = MPEventKeys.remainingProperties(data)
+        event.info = MPEventKeys.remaining(properties: data)
         
         return event
     }

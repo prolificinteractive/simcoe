@@ -17,8 +17,8 @@
  */
 public enum OutputOptions {
 
-    case None
-    case Simple
-    case Verbose
+    case none
+    case simple
+    case verbose
 
 }

@@ -21,6 +21,6 @@ public protocol LocationTracking: AnalyticsTracking {
 
      - returns: A tracking result.
      */
-    func trackLocation(location: CLLocation, withAdditionalProperties properties: Properties?) -> TrackingResult
+    func track(location: CLLocation, withAdditionalProperties properties: Properties?) -> TrackingResult
 
 }

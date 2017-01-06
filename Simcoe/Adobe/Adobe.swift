@@ -10,16 +10,16 @@ import AdobeMobileSDK
 import CoreLocation
 
 /// The adobe analytics provider.
-public class Adobe {
+open class Adobe {
 
     /// The name of the tracker.
-    public let name = "Adobe Omniture"
+    open let name = "Adobe Omniture"
 
     /// The default initializer.
     public init() { }
 
     /// Starts tracking analytics.
-    public func start() {
+    open func start() {
         ADBMobile.collectLifecycleData()
     }
 
@@ -35,9 +35,9 @@ extension Adobe: EventTracking {
     ///   - event: The event to track.
     ///   - properties: The optional additional properties.
     /// - Returns: A tracking result.
-    public func trackEvent(event: String, withAdditionalProperties properties: Properties?) -> TrackingResult {
+    public func track(event: String, withAdditionalProperties properties: Properties?) -> TrackingResult {
         ADBMobile.trackAction(event, data: properties)
-        return .Success
+        return .success
     }
     
 }
@@ -58,11 +58,11 @@ extension Adobe: LifetimeValueIncreasing {
     public func increaseLifetimeValue(byAmount amount: Double, forItem item: String?, withAdditionalProperties properties: Properties?) -> TrackingResult {
         var data = properties ?? [String: AnyObject]()
         if let item = item {
-            data[item] = ""
+            data[item] = "" as AnyObject
         }
 
-        ADBMobile.trackLifetimeValueIncrease(NSDecimalNumber(double: 1), data: data)
-        return .Success
+        ADBMobile.trackLifetimeValueIncrease(NSDecimalNumber(value: 1), data: data)
+        return .success
     }
 
 }
@@ -79,10 +79,10 @@ extension Adobe: LocationTracking {
 
      - returns: A tracking result.
      */
-    public func trackLocation(location: CLLocation,
+    public func track(location: CLLocation,
                               withAdditionalProperties properties: [String: AnyObject]?) -> TrackingResult {
         ADBMobile.trackLocation(location, data: properties)
-        return .Success
+        return .success
     }
     
 }
@@ -98,9 +98,9 @@ extension Adobe: PageViewTracking {
 
      - returns: A tracking result.
      */
-    public func trackPageView(pageView: String, withAdditionalProperties properties: Properties?) -> TrackingResult {
+    public func track(pageView: String, withAdditionalProperties properties: Properties?) -> TrackingResult {
         ADBMobile.trackState(pageView, data: properties)
-        return .Success
+        return .success
     }
 
 }

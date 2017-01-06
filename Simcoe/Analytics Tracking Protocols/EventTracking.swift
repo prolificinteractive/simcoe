@@ -17,6 +17,6 @@ public protocol EventTracking: AnalyticsTracking {
     ///   - event: The event to track.
     ///   - properties: The optional additional properties.
     /// - Returns: A tracking result.
-    func trackEvent(event: String, withAdditionalProperties properties: Properties?) -> TrackingResult
+    func track(event: String, withAdditionalProperties properties: Properties?) -> TrackingResult
 
 }

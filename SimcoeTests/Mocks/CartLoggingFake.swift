@@ -17,24 +17,24 @@ internal final class CartLoggingFake: CartLogging, Failable {
     var cartAdditionCount = 0
     var cartRemovalCount = 0
 
-    func logAddToCart<T: SimcoeProductConvertible>(product: T, eventProperties: Properties?) -> TrackingResult {
+    func logAddToCart<T: SimcoeProductConvertible>(_ product: T, eventProperties: Properties?) -> TrackingResult {
         cartAdditionCount += 1
 
         if shouldFail {
-            return .Error(message: "Error")
+            return .error(message: "Error")
         }
 
-        return .Success
+        return .success
     }
 
-    func logRemoveFromCart<T : SimcoeProductConvertible>(product: T, eventProperties: Properties?) -> TrackingResult {
+    func logRemoveFromCart<T : SimcoeProductConvertible>(_ product: T, eventProperties: Properties?) -> TrackingResult {
         cartRemovalCount += 1
 
         if shouldFail {
-            return .Error(message: "Error")
+            return .error(message: "Error")
         }
 
-        return .Success
+        return .success
     }
 
 }

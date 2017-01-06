@@ -14,7 +14,7 @@
  */
 public enum TrackingResult {
 
-    case Success
-    case Error(message: String)
+    case success
+    case error(message: String)
 
 }

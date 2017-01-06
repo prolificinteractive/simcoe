@@ -26,8 +26,8 @@ extension EmptyProvider: CartLogging {
     /// - parameter eventProperties: The event properties.
     ///
     /// - returns: A tracking result.
-    func logAddToCart<T: SimcoeProductConvertible>(product: T, eventProperties: Properties?) -> TrackingResult {
-        return .Success
+    func logAddToCart<T: SimcoeProductConvertible>(_ product: T, eventProperties: Properties?) -> TrackingResult {
+        return .success
     }
 
     /// Logs the removal of a product from the cart.
@@ -36,8 +36,8 @@ extension EmptyProvider: CartLogging {
     /// - parameter eventProperties: The event properties.
     ///
     /// - returns: A tracking result.
-    func logRemoveFromCart<T: SimcoeProductConvertible>(product: T, eventProperties: Properties?) -> TrackingResult {
-        return .Success
+    func logRemoveFromCart<T: SimcoeProductConvertible>(_ product: T, eventProperties: Properties?) -> TrackingResult {
+        return .success
     }
 }
 
@@ -51,8 +51,8 @@ extension EmptyProvider: CheckoutTracking {
     /// - parameter eventProperties: The event properties.
     ///
     /// - returns: A tracking result.
-    func trackCheckoutEvent<T: SimcoeProductConvertible>(products: [T], eventProperties: Properties?) -> TrackingResult {
-        return .Success
+    func trackCheckoutEvent<T: SimcoeProductConvertible>(_ products: [T], eventProperties: Properties?) -> TrackingResult {
+        return .success
     }
 
 }
@@ -69,8 +69,8 @@ extension EmptyProvider: ErrorLogging {
 
      - returns: A tracking result.
      */
-    func logError(error: String, withAdditionalProperties properties: Properties?) -> TrackingResult {
-        return .Success
+    func log(error: String, withAdditionalProperties properties: Properties?) -> TrackingResult {
+        return .success
     }
     
 }
@@ -87,8 +87,8 @@ extension EmptyProvider: EventTracking {
 
      - returns: A tracking result.
      */
-    func trackEvent(event: String, withAdditionalProperties properties: Properties?) -> TrackingResult {
-        return .Success
+    func track(event: String, withAdditionalProperties properties: Properties?) -> TrackingResult {
+        return .success
     }
 
 }
@@ -107,7 +107,7 @@ extension EmptyProvider: LifetimeValueIncreasing {
      - returns: A tracking result.
      */
     func increaseLifetimeValue(byAmount amount: Double, forItem item: String?, withAdditionalProperties properties: Properties?) -> TrackingResult {
-        return .Success
+        return .success
     }
 
 }
@@ -124,8 +124,8 @@ extension EmptyProvider: LocationTracking {
 
      - returns: A tracking result.
      */
-    func trackLocation(location: CLLocation, withAdditionalProperties properties: Properties?) -> TrackingResult {
-        return .Success
+    func track(location: CLLocation, withAdditionalProperties properties: Properties?) -> TrackingResult {
+        return .success
     }
 
 }
@@ -141,8 +141,8 @@ extension EmptyProvider: PageViewTracking {
 
      - returns: A tracking result.
      */
-    func trackPageView(pageView: String, withAdditionalProperties properties: Properties?) -> TrackingResult {
-        return .Success
+    func track(pageView: String, withAdditionalProperties properties: Properties?) -> TrackingResult {
+        return .success
     }
 
 }
@@ -157,8 +157,8 @@ extension EmptyProvider: PurchaseTracking {
     /// - parameter eventProperties: The event properties.
     ///
     /// - returns: A tracking result.
-    func trackPurchaseEvent<T : SimcoeProductConvertible>(products: [T], eventProperties: Properties?) -> TrackingResult {
-        return .Success
+    func trackPurchaseEvent<T : SimcoeProductConvertible>(_ products: [T], eventProperties: Properties?) -> TrackingResult {
+        return .success
     }
     
 }
@@ -175,8 +175,8 @@ extension EmptyProvider: UserAttributeTracking {
 
      - returns: A tracking result.
      */
-    func setUserAttribute(key: String, value: AnyObject) -> TrackingResult {
-        return .Success
+    func setUserAttribute(_ key: String, value: AnyObject) -> TrackingResult {
+        return .success
     }
     
 }
@@ -191,8 +191,8 @@ extension EmptyProvider: ViewDetailLogging {
     /// - parameter eventProperties: The event properties.
     ///
     /// - returns: A tracking result.
-    func logViewDetail<T : SimcoeProductConvertible>(product: T, eventProperties: Properties?) -> TrackingResult {
-        return .Success
+    func logViewDetail<T : SimcoeProductConvertible>(_ product: T, eventProperties: Properties?) -> TrackingResult {
+        return .success
     }
     
 }

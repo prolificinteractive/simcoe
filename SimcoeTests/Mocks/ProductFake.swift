@@ -18,8 +18,8 @@ internal struct ProductFake {
 
     let totalPrice: Double = 935.47
 
-    let properties: Properties = [ "sku": 348956743,
-                                   "brand": "super" ]
+    let properties: Properties = [ "sku": 348956743 as AnyObject,
+                                   "brand": "super" as AnyObject]
 
 }
 

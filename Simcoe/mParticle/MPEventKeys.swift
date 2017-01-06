@@ -17,14 +17,14 @@
 /// - CustomFlags:  The custom flags.
 public enum MPEventKeys: String, EnumerationListable {
 
-    case EventType = "SimcoeInternalMPEventType"
-    case Category = "SimcoeInternalMPCategory"
-    case Duration = "SimcoeInternalMPDuration"
-    case StartTime = "SimcoeInternalMPStartTime"
-    case EndTime = "SimcoeInternalMPEndTime"
-    case Name = "SimcoeInternalName"
-    case CustomFlags = "SimcoeInternalCustomFlags"
+    case eventType = "SimcoeInternalMPEventType"
+    case category = "SimcoeInternalMPCategory"
+    case duration = "SimcoeInternalMPDuration"
+    case startTime = "SimcoeInternalMPStartTime"
+    case endTime = "SimcoeInternalMPEndTime"
+    case name = "SimcoeInternalName"
+    case customFlags = "SimcoeInternalCustomFlags"
 
-    static let allKeys: [MPEventKeys] = [.EventType, .Category, .Duration, .StartTime, .EndTime, .Name, .CustomFlags]
+    static let allKeys: [MPEventKeys] = [.eventType, .category, .duration, .startTime, .endTime, .name, .customFlags]
     
 }

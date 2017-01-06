@@ -15,8 +15,8 @@
  */
 public enum ErrorHandlingOption {
 
-    case Suppress
-    case Default
-    case Strict
+    case suppress
+    case `default`
+    case strict
 
 }

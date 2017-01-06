@@ -19,24 +19,24 @@
 /// - TransactionAttributes: The transactions attributes.
 public enum MPCommerceEventKeys: String, EnumerationListable {
 
-    case CheckoutOptions = "checkoutOptions"
-    case CheckoutStep = "checkoutStep"
-    case Currency = "currency"
-    case NonInteractive = "nonInteractive"
-    case PromotionContainer = "promotionContainer"
-    case ProductListName = "productListName"
-    case ProductListSource = "productListSource"
-    case ScreenName = "screenName"
-    case TransactionAttributes = "transactionAttributes"
+    case checkoutOptions = "checkoutOptions"
+    case checkoutStep = "checkoutStep"
+    case currency = "currency"
+    case nonInteractive = "nonInteractive"
+    case promotionContainer = "promotionContainer"
+    case productListName = "productListName"
+    case productListSource = "productListSource"
+    case screenName = "screenName"
+    case transactionAttributes = "transactionAttributes"
 
-    static let allKeys: [MPCommerceEventKeys] = [.CheckoutOptions,
-                                                 .CheckoutStep,
-                                                 .Currency,
-                                                 .NonInteractive,
-                                                 .PromotionContainer,
-                                                 .ProductListName,
-                                                 .ProductListSource,
-                                                 .ScreenName,
-                                                 .TransactionAttributes]
+    static let allKeys: [MPCommerceEventKeys] = [.checkoutOptions,
+                                                 .checkoutStep,
+                                                 .currency,
+                                                 .nonInteractive,
+                                                 .promotionContainer,
+                                                 .productListName,
+                                                 .productListSource,
+                                                 .screenName,
+                                                 .transactionAttributes]
 
 }

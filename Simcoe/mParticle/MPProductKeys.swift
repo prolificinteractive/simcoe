@@ -16,12 +16,12 @@
 /// - Variant:    The variant.
 public enum MPProductKeys: String, EnumerationListable {
 
-    case Brand = "brand"
-    case Category = "category"
-    case CouponCode = "couponCode"
-    case Sku = "sku"
-    case Position = "position"
+    case brand = "brand"
+    case category = "category"
+    case couponCode = "couponCode"
+    case sku = "sku"
+    case position = "position"
 
-    static let allKeys: [MPProductKeys] = [.Brand, .Category, .CouponCode, .Sku, .Position]
+    static let allKeys: [MPProductKeys] = [.brand, .category, .couponCode, .sku, .position]
 
 }

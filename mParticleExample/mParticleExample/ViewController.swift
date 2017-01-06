@@ -15,7 +15,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
 
         Simcoe.run()
-        Simcoe.trackPageView("Main")
+        Simcoe.track(pageView: "Main")
     }
 
     override func didReceiveMemoryWarning() {
@@ -23,8 +23,8 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
-    @IBAction func tap(sender: AnyObject) {
-        Simcoe.trackEvent("Button Tap")
+    @IBAction func tap(_ sender: AnyObject) {
+        Simcoe.track(event: "Button Tap")
     }
 
 }

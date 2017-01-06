@@ -9,12 +9,12 @@
 import mParticle_Apple_SDK
 
 /// Simcoe Analytics handler for the MParticle iOS SDK.
-public class mParticle {
+open class mParticle {
 
-    private static let unknownErrorMessage = "An unknown error occurred."
+    fileprivate static let unknownErrorMessage = "An unknown error occurred."
 
     /// The name of the tracker.
-    public let name = "mParticle"
+    open let name = "mParticle"
 
     /**
      Initializes and starts the SDK with the input key and secret.
@@ -29,10 +29,10 @@ public class mParticle {
      */
     public init(key: String,
                 secret: String,
-                installationType: MPInstallationType = .Autodetect,
-                environment: MPEnvironment = .AutoDetect,
+                installationType: MPInstallationType = .autodetect,
+                environment: MPEnvironment = .autoDetect,
                 proxyAppDelegate: Bool = true) {
-        MParticle.sharedInstance().startWithKey(key,
+        MParticle.sharedInstance().start(withKey: key,
                                                 secret:secret,
                                                 installationType: installationType,
                                                 environment: environment,
@@ -57,15 +57,15 @@ extension mParticle: CartLogging {
     /// - parameter eventProperties: The event properties.
     ///
     /// - returns: A tracking result.
-    public func logAddToCart<T: SimcoeProductConvertible>(product: T, eventProperties: Properties?) -> TrackingResult {
+    public func logAddToCart<T: SimcoeProductConvertible>(_ product: T, eventProperties: Properties?) -> TrackingResult {
         let mPProduct = MPProduct(product: product)
-        let event = MPCommerceEvent(eventType: .AddToCart,
+        let event = MPCommerceEvent(eventType: .addToCart,
                                     products: [mPProduct],
                                     eventProperties: eventProperties)
 
         MParticle.sharedInstance().logCommerceEvent(event)
 
-        return .Success
+        return .success
     }
 
     /// Logs the removal of a product from the cart.
@@ -74,15 +74,15 @@ extension mParticle: CartLogging {
     /// - parameter eventProperties: The event properties.
     ///
     /// - returns: A tracking result.
-    public func logRemoveFromCart<T: SimcoeProductConvertible>(product: T, eventProperties: Properties?) -> TrackingResult {
+    public func logRemoveFromCart<T: SimcoeProductConvertible>(_ product: T, eventProperties: Properties?) -> TrackingResult {
         let mPProduct = MPProduct(product: product)
-        let event = MPCommerceEvent(eventType: .RemoveFromCart,
+        let event = MPCommerceEvent(eventType: .removeFromCart,
                                     products: [mPProduct],
                                     eventProperties: eventProperties)
 
         MParticle.sharedInstance().logCommerceEvent(event)
 
-        return .Success
+        return .success
     }
     
 }
@@ -97,15 +97,15 @@ extension mParticle: CheckoutTracking {
     /// - parameter eventProperties: The event properties.
     ///
     /// - returns: A tracking result.
-    public func trackCheckoutEvent<T: SimcoeProductConvertible>(products: [T], eventProperties: Properties?) -> TrackingResult {
+    public func trackCheckoutEvent<T: SimcoeProductConvertible>(_ products: [T], eventProperties: Properties?) -> TrackingResult {
         let mPProducts = products.map { MPProduct(product: $0) }
-        let event = MPCommerceEvent(eventType: .Checkout,
+        let event = MPCommerceEvent(eventType: .checkout,
                                     products: mPProducts,
                                     eventProperties: eventProperties)
 
         MParticle.sharedInstance().logCommerceEvent(event)
 
-        return .Success
+        return .success
     }
 
 }
@@ -123,10 +123,10 @@ extension mParticle: ErrorLogging {
      - parameter error:      The error to log.
      - parameter properties: The properties of the event.
      */
-    public func logError(error: String, withAdditionalProperties properties: Properties? = nil) -> TrackingResult {
+    public func log(error: String, withAdditionalProperties properties: Properties? = nil) -> TrackingResult {
         MParticle.sharedInstance().logError(error, eventInfo: properties)
 
-        return .Success
+        return .success
     }
 
 }
@@ -149,25 +149,25 @@ extension mParticle: EventTracking {
      - parameter event:      The event name to log.
      - parameter properties: The properties of the event.
      */
-    public func trackEvent(event: String, withAdditionalProperties properties: Properties?) -> TrackingResult {
+    public func track(event: String, withAdditionalProperties properties: Properties?) -> TrackingResult {
         guard var properties = properties else {
-            return .Error(message: "Cannot track an event without valid properties.")
+            return .error(message: "Cannot track an event without valid properties.")
         }
 
-        properties[MPEventKeys.Name.rawValue] = event
+        properties[MPEventKeys.name.rawValue] = event as AnyObject
 
         let event: MPEvent
         do {
             event = try MPEvent.toEvent(usingData: properties)
         } catch let error as MPEventGenerationError {
-            return .Error(message: error.description)
+            return .error(message: error.description)
         } catch {
-            return .Error(message: mParticle.unknownErrorMessage)
+            return .error(message: mParticle.unknownErrorMessage)
         }
 
         MParticle.sharedInstance().logEvent(event)
 
-        return .Success
+        return .success
     }
 
 }
@@ -189,7 +189,7 @@ extension mParticle: LifetimeValueIncreasing {
                                                withAdditionalProperties properties: Properties?) -> TrackingResult {
         MParticle.sharedInstance().logLTVIncrease(amount, eventName: (item ?? ""), eventInfo: properties)
 
-        return .Success
+        return .success
     }
     
 }
@@ -212,23 +212,23 @@ extension mParticle: LocationTracking {
      - parameter location:   The location data being tracked.
      - parameter properties: The properties for the MPEvent.
      */
-    public func trackLocation(location: CLLocation, withAdditionalProperties properties: Properties?) -> TrackingResult {
+    public func track(location: CLLocation, withAdditionalProperties properties: Properties?) -> TrackingResult {
         var eventProperties = properties ?? [String: AnyObject]() // TODO: Handle Error
-        eventProperties["latitude"] = location.coordinate.latitude
-        eventProperties["longitude"] = location.coordinate.longitude
+        eventProperties["latitude"] = location.coordinate.latitude as AnyObject
+        eventProperties["longitude"] = location.coordinate.longitude as AnyObject
 
         let event: MPEvent
         do {
             event = try MPEvent.toEvent(usingData: eventProperties)
         } catch let error as MPEventGenerationError {
-            return .Error(message: error.description)
+            return .error(message: error.description)
         } catch {
-            return .Error(message: mParticle.unknownErrorMessage)
+            return .error(message: mParticle.unknownErrorMessage)
         }
 
         MParticle.sharedInstance().logEvent(event)
 
-        return .Success
+        return .success
     }
 
 }
@@ -244,10 +244,10 @@ extension mParticle: PageViewTracking {
 
      - returns: A tracking result.
      */
-    public func trackPageView(pageView: String, withAdditionalProperties properties: Properties?) -> TrackingResult {
+    public func track(pageView: String, withAdditionalProperties properties: Properties?) -> TrackingResult {
         MParticle.sharedInstance().logScreen(pageView, eventInfo: properties)
 
-        return .Success
+        return .success
     }
     
 }
@@ -262,15 +262,15 @@ extension mParticle: PurchaseTracking {
     /// - parameter eventProperties: The event properties.
     ///
     /// - returns: A tracking result.
-    public func trackPurchaseEvent<T : SimcoeProductConvertible>(products: [T], eventProperties: Properties?) -> TrackingResult {
+    public func trackPurchaseEvent<T : SimcoeProductConvertible>(_ products: [T], eventProperties: Properties?) -> TrackingResult {
         let mPProducts = products.map { MPProduct(product: $0) }
-        let event = MPCommerceEvent(eventType: .Purchase,
+        let event = MPCommerceEvent(eventType: .purchase,
                                     products: mPProducts,
                                     eventProperties: eventProperties)
 
         MParticle.sharedInstance().logCommerceEvent(event)
 
-        return .Success
+        return .success
     }
     
 }
@@ -286,10 +286,10 @@ extension mParticle: UserAttributeTracking {
      - parameter key:   The key of the user attribute
      - parameter value: the value of the user attribute
      */
-    public func setUserAttribute(key: String, value: AnyObject) -> TrackingResult {
+    public func setUserAttribute(_ key: String, value: AnyObject) -> TrackingResult {
         MParticle.sharedInstance().setUserAttribute(key, value: value)
 
-        return .Success
+        return .success
     }
     
 }
@@ -304,15 +304,15 @@ extension mParticle: ViewDetailLogging {
     /// - parameter eventProperties: The event properties.
     ///
     /// - returns: A tracking result.
-    public func logViewDetail<T: SimcoeProductConvertible>(product: T, eventProperties: Properties?) -> TrackingResult {
+    public func logViewDetail<T: SimcoeProductConvertible>(_ product: T, eventProperties: Properties?) -> TrackingResult {
         let mPProduct = MPProduct(product: product)
-        let event = MPCommerceEvent(eventType: .ViewDetail,
+        let event = MPCommerceEvent(eventType: .viewDetail,
                                     products: [mPProduct],
                                     eventProperties: eventProperties)
 
         MParticle.sharedInstance().logCommerceEvent(event)
 
-        return .Success
+        return .success
     }
     
 }

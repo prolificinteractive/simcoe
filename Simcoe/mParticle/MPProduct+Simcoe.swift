@@ -20,35 +20,35 @@ extension MPProduct {
         self.init(name: simcoeProduct.productName,
                   // INTENTIONAL: In MPProduct: SKU of a product. This is the product id
                   sku: simcoeProduct.productId,
-                  quantity: simcoeProduct.quantity,
-                  price: simcoeProduct.price)
+                  quantity: NSNumber(value: simcoeProduct.quantity),
+                  price: NSNumber(value: simcoeProduct.price ?? 0))
 
         guard let properties = simcoeProduct.properties else {
             return
         }
 
-        if let brand = properties[MPProductKeys.Brand.rawValue] as? String {
+        if let brand = properties[MPProductKeys.brand.rawValue] as? String {
             self.brand = brand
         }
 
-        if let category = properties[MPProductKeys.Category.rawValue] as? String {
+        if let category = properties[MPProductKeys.category.rawValue] as? String {
             self.category = category
         }
 
-        if let couponCode = properties[MPProductKeys.CouponCode.rawValue] as? String {
+        if let couponCode = properties[MPProductKeys.couponCode.rawValue] as? String {
             self.couponCode = couponCode
         }
 
-        if let sku = properties[MPProductKeys.Sku.rawValue] as? String {
+        if let sku = properties[MPProductKeys.sku.rawValue] as? String {
             // INTENTIONAL: In MPProduct: The variant of the product
             self.variant = sku
         }
 
-        if let position = properties[MPProductKeys.Position.rawValue] as? UInt {
+        if let position = properties[MPProductKeys.position.rawValue] as? UInt {
             self.position = position
         }
         
-        let remaining = MPProductKeys.remainingProperties(properties)
+        let remaining = MPProductKeys.remaining(properties: properties)
         
         for (key, value) in remaining {
             if let value = value as? String {

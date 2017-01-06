@@ -16,13 +16,13 @@ internal final class PageViewTrackingFake: PageViewTracking, Failable {
 
     var pageViewTrackCount = 0
 
-    func trackPageView(pageView: String, withAdditionalProperties properties: Properties?) -> TrackingResult {
+    func track(pageView: String, withAdditionalProperties properties: Properties?) -> TrackingResult {
         pageViewTrackCount += 1
 
         if shouldFail {
-           return .Error(message: "Error")
+           return .error(message: "Error")
         }
 
-        return .Success
+        return .success
     }
 }

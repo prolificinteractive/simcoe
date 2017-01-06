@@ -19,6 +19,6 @@ public protocol ErrorLogging: AnalyticsTracking {
      
      - returns: A tracking result.
      */
-    func logError(error: String, withAdditionalProperties properties: Properties?) -> TrackingResult
+    func log(error: String, withAdditionalProperties properties: Properties?) -> TrackingResult
     
 }

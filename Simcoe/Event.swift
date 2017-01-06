@@ -18,6 +18,6 @@ internal struct Event {
     let description: String
 
     /// The event's timestamp. Defaults to the current date and time.
-    let timestamp = NSDate()
+    let timestamp = Date()
 
 }

@@ -16,13 +16,13 @@
 /// - TransactionId: The transaction Id.
 public enum MPTransactionAttributesKeys: String, EnumerationListable {
 
-    case Affiliation = "affiliation"
-    case CouponCode = "couponCode"
-    case Revenue = "revenue"
-    case Shipping = "shipping"
-    case Tax = "tax"
-    case TransactionId = "transactionId"
+    case affiliation = "affiliation"
+    case couponCode = "couponCode"
+    case revenue = "revenue"
+    case shipping = "shipping"
+    case tax = "tax"
+    case transactionId = "transactionId"
 
-    static let allKeys: [MPTransactionAttributesKeys] = [.Affiliation, .CouponCode, .Revenue, .Shipping, .Tax, .TransactionId]
+    static let allKeys: [MPTransactionAttributesKeys] = [.affiliation, .couponCode, .revenue, .shipping, .tax, .transactionId]
 
 }

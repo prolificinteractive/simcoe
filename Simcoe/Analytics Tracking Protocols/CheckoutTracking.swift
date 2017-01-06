@@ -17,6 +17,6 @@ public protocol CheckoutTracking: AnalyticsTracking {
     /// - parameter eventProperties: The event properties.
     ///
     /// - returns: A tracking result.
-    func trackCheckoutEvent<T: SimcoeProductConvertible>(products: [T], eventProperties: Properties?) -> TrackingResult
+    func trackCheckoutEvent<T: SimcoeProductConvertible>(_ products: [T], eventProperties: Properties?) -> TrackingResult
 
 }

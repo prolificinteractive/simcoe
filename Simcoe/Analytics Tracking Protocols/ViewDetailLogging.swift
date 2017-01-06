@@ -17,6 +17,6 @@ public protocol ViewDetailLogging: AnalyticsTracking {
     /// - parameter eventProperties: The event properties.
     ///
     /// - returns: A tracking result.
-    func logViewDetail<T: SimcoeProductConvertible>(product: T, eventProperties: Properties?) -> TrackingResult
+    func logViewDetail<T: SimcoeProductConvertible>(_ product: T, eventProperties: Properties?) -> TrackingResult
 
 }

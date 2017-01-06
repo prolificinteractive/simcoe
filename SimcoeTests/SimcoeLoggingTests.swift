@@ -73,7 +73,7 @@ internal final class SimcoeLoggingTests: XCTestCase {
         simcoe.providers = [errorLogger]
         let expectation = 1
 
-        simcoe.logError("test", withAdditionalProperties: nil)
+        simcoe.log(error: "test", withAdditionalProperties: nil)
 
         XCTAssertEqual(errorLogger.errorLoggingCallCount, expectation,
                        "Expected result = Called \(expectation) times; got \(errorLogger.errorLoggingCallCount)")
@@ -86,7 +86,7 @@ internal final class SimcoeLoggingTests: XCTestCase {
         simcoe.providers = [eventTracker]
         let expectation = 1
 
-        simcoe.trackEvent("test", withAdditionalProperties: nil)
+        simcoe.track(event: "test", withAdditionalProperties: nil)
 
         XCTAssertEqual(eventTracker.trackEventCallCount, expectation,
                        "Expected result = Called \(expectation) times; got \(eventTracker.trackEventCallCount)")
@@ -113,7 +113,7 @@ internal final class SimcoeLoggingTests: XCTestCase {
         let expectation = 1
         let location = CLLocation(latitude: 0, longitude: 0)
 
-        simcoe.trackLocation(location, withAdditionalProperties: nil)
+        simcoe.track(location: location, withAdditionalProperties: nil)
 
         XCTAssertEqual(expectation, locationTracker.trackLocationCallCount,
                        "Expected result = Called \(expectation) times; got \(locationTracker.trackLocationCallCount)")
@@ -126,7 +126,7 @@ internal final class SimcoeLoggingTests: XCTestCase {
         simcoe.providers = [pageViewTracker]
         let expectation = 1
 
-        simcoe.trackPageView("page view test", withAdditionalProperties: nil)
+        simcoe.track(pageView: "page view test", withAdditionalProperties: nil)
 
         XCTAssertEqual(pageViewTracker.pageViewTrackCount, expectation,
                        "Expected result = Called \(expectation) times; got \(pageViewTracker.pageViewTrackCount)")
@@ -139,7 +139,7 @@ internal final class SimcoeLoggingTests: XCTestCase {
         simcoe.providers = [attributesSetter]
         let expectation = 1
 
-        simcoe.setUserAttribute("foo", value: "bar")
+        simcoe.setUserAttribute("foo", value: "bar" as AnyObject)
 
         XCTAssertEqual(attributesSetter.attributesCallCount, expectation,
                        "Expected result = Called \(expectation) times; got \(attributesSetter.attributesCallCount)")
@@ -153,7 +153,7 @@ internal final class SimcoeLoggingTests: XCTestCase {
         let expectation = 0
         simcoe.providers = [pageViewTracker, eventTracker]
 
-        simcoe.trackPageView("page view test", withAdditionalProperties: nil)
+        simcoe.track(pageView: "page view test", withAdditionalProperties: nil)
         
         XCTAssertEqual(eventTracker.trackEventCallCount, expectation,
                        "Expected result = \(expectation); got \(eventTracker.trackEventCallCount)")

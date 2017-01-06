@@ -14,6 +14,6 @@ internal protocol Output {
     /// Prints a message to the output source.
     ///
     /// - Parameter message: The message to print.
-    func print(message: String)
+    func print(_ message: String)
 
 }

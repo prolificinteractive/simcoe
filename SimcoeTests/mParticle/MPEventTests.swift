@@ -14,9 +14,10 @@ class MPEventTests: XCTestCase {
 
     func test_that_MPEvent_created_with_name_and_type() {
         let properties: [String: AnyObject] =
-            [MPEventKeys.Name.rawValue: "Event", MPEventKeys.EventType.rawValue: MPEventType.Other.rawValue]
+            [MPEventKeys.name.rawValue: "Event" as AnyObject,
+             MPEventKeys.eventType.rawValue: MPEventType.other.rawValue as AnyObject]
         let event: MPEvent?
-        let eventError: ErrorType?
+        let eventError: Error?
 
         do {
             event = try MPEvent.toEvent(usingData: properties)
@@ -33,10 +34,10 @@ class MPEventTests: XCTestCase {
     }
 
     func test_that_name_error_thrown_when_missing() {
-        let properties: [String: AnyObject] = [MPEventKeys.EventType.rawValue: MPEventType.Other.rawValue]
-        let expected = MPEventGenerationError.NameMissing
+        let properties: [String: AnyObject] = [MPEventKeys.eventType.rawValue: MPEventType.other.rawValue as AnyObject]
+        let expected = MPEventGenerationError.nameMissing
         let event: MPEvent?
-        let eventError: ErrorType?
+        let eventError: Error?
 
         do {
             event = try MPEvent.toEvent(usingData: properties)
@@ -53,10 +54,10 @@ class MPEventTests: XCTestCase {
     }
 
     func test_that_type_error_thrown_when_missing() {
-        let properties: [String: AnyObject] = [MPEventKeys.Name.rawValue: "Test"]
-        let expected = MPEventGenerationError.TypeMissing
+        let properties: [String: AnyObject] = [MPEventKeys.name.rawValue: "Test" as AnyObject]
+        let expected = MPEventGenerationError.typeMissing
         let event: MPEvent?
-        let eventError: ErrorType?
+        let eventError: Error?
 
         do {
             event = try MPEvent.toEvent(usingData: properties)
@@ -73,8 +74,8 @@ class MPEventTests: XCTestCase {
     }
 
     func test_that_init_error_thrown_when_bad_data_input() {
-        let properties = MPEvent.eventData(type: .Other, name: "")
-        let expected = MPEventGenerationError.EventInitFailed
+        let properties = MPEvent.eventData(type: .other, name: "")
+        let expected = MPEventGenerationError.eventInitFailed
         let event: MPEvent?
         let eventError: MPEventGenerationError?
 
@@ -93,7 +94,7 @@ class MPEventTests: XCTestCase {
     }
 
     func test_that_MPEvent_has_type() {
-        let type = MPEventType.Media
+        let type = MPEventType.media
 
         let data = MPEvent.eventData(type: type, name: "Event Type")
         let result = try! MPEvent.toEvent(usingData: data)
@@ -105,7 +106,7 @@ class MPEventTests: XCTestCase {
     func test_that_MPEvent_has_name() {
         let name = "Hello, World"
 
-        let data = MPEvent.eventData(type: .Other, name: name)
+        let data = MPEvent.eventData(type: .other, name: name)
         let result = try! MPEvent.toEvent(usingData: data)
 
         XCTAssertEqual(result.name, name,
@@ -115,7 +116,7 @@ class MPEventTests: XCTestCase {
     func test_that_MPEvent_has_category() {
         let category = "A Cool Category"
 
-        let data = MPEvent.eventData(type: .Other, name: "Category", category: category)
+        let data = MPEvent.eventData(type: .other, name: "Category", category: category)
         let result = try! MPEvent.toEvent(usingData: data)
 
         XCTAssertEqual(category, result.category,
@@ -125,17 +126,17 @@ class MPEventTests: XCTestCase {
     func test_that_MPEvent_has_duration() {
         let duration: Float = 40
 
-        let data = MPEvent.eventData(type: .Other, name: "Duration", duration: duration)
+        let data = MPEvent.eventData(type: .other, name: "Duration", duration: duration)
         let result = try! MPEvent.toEvent(usingData: data)
 
-        XCTAssertEqual(duration, result.duration,
+        XCTAssertEqual(duration, result.duration as! Float,
             "Expected result = \(duration); got \(result.duration)")
     }
 
     func test_that_MPEvent_has_startTime() {
-        let startTime = NSDate(timeIntervalSinceReferenceDate: 1000)
+        let startTime = Date(timeIntervalSinceReferenceDate: 1000)
 
-        let data = MPEvent.eventData(type: .Other, name: "Start Time", startTime: startTime)
+        let data = MPEvent.eventData(type: .other, name: "Start Time", startTime: startTime)
         let result = try! MPEvent.toEvent(usingData: data)
 
         XCTAssertEqual(startTime.timeIntervalSinceReferenceDate, result.startTime?.timeIntervalSinceReferenceDate,
@@ -143,9 +144,9 @@ class MPEventTests: XCTestCase {
     }
 
     func test_that_MPEvent_has_endTime() {
-        let endTime = NSDate(timeIntervalSinceReferenceDate: 1424)
+        let endTime = Date(timeIntervalSinceReferenceDate: 1424)
 
-        let data = MPEvent.eventData(type: .Other, name: "End Time", endTime: endTime)
+        let data = MPEvent.eventData(type: .other, name: "End Time", endTime: endTime)
         let result = try! MPEvent.toEvent(usingData: data)
 
         XCTAssertEqual(endTime.timeIntervalSinceReferenceDate, result.endTime?.timeIntervalSinceReferenceDate,
@@ -157,7 +158,7 @@ class MPEventTests: XCTestCase {
         let values = ["Excellent", "Tubular"]
         let customFlags = [key: values]
 
-        let data = MPEvent.eventData(type: .Other, name: "Custom Flags", customFlags: customFlags)
+        let data = MPEvent.eventData(type: .other, name: "Custom Flags", customFlags: customFlags)
         let result = try! MPEvent.toEvent(usingData: data)
 
         XCTAssertEqual(key, result.customFlags.keys.first!,
@@ -171,7 +172,7 @@ class MPEventTests: XCTestCase {
         let key = "Stuff"
         let value = 42
 
-        let data = MPEvent.eventData(type: .Other, name: name, info: [key: value])
+        let data = MPEvent.eventData(type: .other, name: name, info: [key: value as AnyObject])
         let result = try! MPEvent.toEvent(usingData: data)
 
         XCTAssertNotNil(result.info,
