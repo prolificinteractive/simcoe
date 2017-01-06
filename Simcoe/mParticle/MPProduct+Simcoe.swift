@@ -47,6 +47,14 @@ extension MPProduct {
         if let position = properties[MPProductKeys.Position.rawValue] as? UInt {
             self.position = position
         }
+        
+        let remaining = MPProductKeys.remainingProperties(properties)
+        
+        for (key, value) in remaining {
+            if let value = value as? String {
+                self[key] = value
+            }
+        }
     }
     
 }
