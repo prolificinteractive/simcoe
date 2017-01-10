@@ -80,7 +80,7 @@ extension Adobe: LocationTracking {
      - returns: A tracking result.
      */
     public func track(location: CLLocation,
-                              withAdditionalProperties properties: [String: AnyObject]?) -> TrackingResult {
+                              withAdditionalProperties properties: Properties?) -> TrackingResult {
         ADBMobile.trackLocation(location, data: properties)
         return .success
     }
