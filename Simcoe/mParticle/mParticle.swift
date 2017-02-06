@@ -9,7 +9,16 @@
 import mParticle_Apple_SDK
 
 /// Simcoe Analytics handler for the MParticle iOS SDK.
-open class mParticle {
+open class mParticle: CartLogging,
+                      CheckoutTracking,
+                      ErrorLogging,
+                      EventTracking,
+                      LifetimeValueIncreasing,
+                      LocationTracking,
+                      PageViewTracking,
+                      PurchaseTracking,
+                      UserAttributeTracking,
+                      ViewDetailLogging {
 
     fileprivate static let unknownErrorMessage = "An unknown error occurred."
 
@@ -42,11 +51,7 @@ open class mParticle {
         MParticle.sharedInstance().start()
     }
 
-}
-
-// MARK: - CartLogging
-
-extension mParticle: CartLogging {
+    // MARK: - CartLogging
 
     /// Logs the addition of a product to the cart.
     ///
@@ -54,7 +59,7 @@ extension mParticle: CartLogging {
     ///   - product: The SimcoeProductConvertible instance.
     ///   - eventProperties: The event properties.
     /// - Returns: A tracking result.
-    public func logAddToCart<T: SimcoeProductConvertible>(_ product: T, eventProperties: Properties?) -> TrackingResult {
+    open func logAddToCart<T: SimcoeProductConvertible>(_ product: T, eventProperties: Properties?) -> TrackingResult {
         let mPProduct = MPProduct(product: product)
         let event = MPCommerceEvent(eventType: .addToCart,
                                     products: [mPProduct],
@@ -71,7 +76,7 @@ extension mParticle: CartLogging {
     ///   - product: The SimcoeProductConvertible instance.
     ///   - eventProperties: The event properties.
     /// - Returns: A tracking result.
-    public func logRemoveFromCart<T: SimcoeProductConvertible>(_ product: T, eventProperties: Properties?) -> TrackingResult {
+    open func logRemoveFromCart<T: SimcoeProductConvertible>(_ product: T, eventProperties: Properties?) -> TrackingResult {
         let mPProduct = MPProduct(product: product)
         let event = MPCommerceEvent(eventType: .removeFromCart,
                                     products: [mPProduct],
@@ -81,12 +86,8 @@ extension mParticle: CartLogging {
 
         return .success
     }
-    
-}
 
-// MARK: - CheckoutTracking
-
-extension mParticle: CheckoutTracking {
+    // MARK: - CheckoutTracking
 
     /// Tracks a checkout event.
     ///
@@ -94,7 +95,7 @@ extension mParticle: CheckoutTracking {
     ///   - products: The products.
     ///   - eventProperties: The event properties.
     /// - Returns: A tracking result.
-    public func trackCheckoutEvent<T: SimcoeProductConvertible>(_ products: [T], eventProperties: Properties?) -> TrackingResult {
+    open func trackCheckoutEvent<T: SimcoeProductConvertible>(_ products: [T], eventProperties: Properties?) -> TrackingResult {
         let mPProducts = products.map { MPProduct(product: $0) }
         let event = MPCommerceEvent(eventType: .checkout,
                                     products: mPProducts,
@@ -105,11 +106,7 @@ extension mParticle: CheckoutTracking {
         return .success
     }
 
-}
-
-// MARK: - ErrorLogging
-
-extension mParticle: ErrorLogging {
+    // MARK: - ErrorLogging
 
     /// Logs an error through mParticle.
     ///
@@ -120,17 +117,13 @@ extension mParticle: ErrorLogging {
     ///   - error: The error to log.
     ///   - properties: The properties of the event.
     /// - Returns: A tracking result.
-    public func log(error: String, withAdditionalProperties properties: Properties? = nil) -> TrackingResult {
+    open func log(error: String, withAdditionalProperties properties: Properties? = nil) -> TrackingResult {
         MParticle.sharedInstance().logError(error, eventInfo: properties)
 
         return .success
     }
 
-}
-
-// MARK: - EventTracking
-
-extension mParticle: EventTracking {
+    // MARK: - EventTracking
 
     /// Tracks an mParticle event.
     ///
@@ -146,7 +139,7 @@ extension mParticle: EventTracking {
     ///   - event: The event name to log.
     ///   - properties: The properties of the event.
     /// - Returns: A tracking result.
-    public func track(event: String, withAdditionalProperties properties: Properties?) -> TrackingResult {
+    open func track(event: String, withAdditionalProperties properties: Properties?) -> TrackingResult {
         guard var properties = properties else {
             return .error(message: "Cannot track an event without valid properties.")
         }
@@ -167,11 +160,7 @@ extension mParticle: EventTracking {
         return .success
     }
 
-}
-
-// MARK: - LifetimeValueIncreasing
-
-extension mParticle: LifetimeValueIncreasing {
+    // MARK: - LifetimeValueIncreasing
 
     /// Increases the lifetime value of the key by the specified amount.
     ///
@@ -180,18 +169,14 @@ extension mParticle: LifetimeValueIncreasing {
     ///   - item: The optional item to extend.
     ///   - properties: The optional additional properties.
     /// - Returns: A tracking result.
-    public func increaseLifetimeValue(byAmount amount: Double, forItem item: String?,
-                                               withAdditionalProperties properties: Properties?) -> TrackingResult {
+    open func increaseLifetimeValue(byAmount amount: Double, forItem item: String?,
+                                      withAdditionalProperties properties: Properties?) -> TrackingResult {
         MParticle.sharedInstance().logLTVIncrease(amount, eventName: (item ?? ""), eventInfo: properties)
 
         return .success
     }
-    
-}
 
-// MARK: - LocationTracking
-
-extension mParticle: LocationTracking {
+    // MARK: - LocationTracking
 
     /// Tracks the user's location.
     ///
@@ -206,7 +191,7 @@ extension mParticle: LocationTracking {
     ///   - location: The location data being tracked.
     ///   - properties: The properties for the MPEvent.
     /// - Returns: A tracking result.
-    public func track(location: CLLocation, withAdditionalProperties properties: Properties?) -> TrackingResult {
+    open func track(location: CLLocation, withAdditionalProperties properties: Properties?) -> TrackingResult {
         var eventProperties = properties ?? Properties() // TODO: Handle Error
         eventProperties["latitude"] = String(location.coordinate.latitude)
         eventProperties["longitude"] = String(location.coordinate.longitude)
@@ -225,11 +210,7 @@ extension mParticle: LocationTracking {
         return .success
     }
 
-}
-
-// MARK: - PageViewTracking
-
-extension mParticle: PageViewTracking {
+    // MARK: - PageViewTracking
 
     /// Tracks the page view.
     ///
@@ -237,17 +218,13 @@ extension mParticle: PageViewTracking {
     ///   - pageView: The page view to track.
     ///   - properties: The optional additional properties.
     /// - Returns: A tracking result.
-    public func track(pageView: String, withAdditionalProperties properties: Properties?) -> TrackingResult {
+    open func track(pageView: String, withAdditionalProperties properties: Properties?) -> TrackingResult {
         MParticle.sharedInstance().logScreen(pageView, eventInfo: properties)
 
         return .success
     }
-    
-}
 
-// MARK: - PurchaseTracking
-
-extension mParticle: PurchaseTracking {
+    // MARK: - PurchaseTracking
 
     /// Tracks a purchase event.
     ///
@@ -255,7 +232,7 @@ extension mParticle: PurchaseTracking {
     ///   - products: The products.
     ///   - eventProperties: The event properties
     /// - Returns: A tracking result.
-    public func trackPurchaseEvent<T : SimcoeProductConvertible>(_ products: [T], eventProperties: Properties?) -> TrackingResult {
+    open func trackPurchaseEvent<T : SimcoeProductConvertible>(_ products: [T], eventProperties: Properties?) -> TrackingResult {
         let mPProducts = products.map { MPProduct(product: $0) }
         let event = MPCommerceEvent(eventType: .purchase,
                                     products: mPProducts,
@@ -265,31 +242,22 @@ extension mParticle: PurchaseTracking {
 
         return .success
     }
-    
-}
 
+    // MARK: - UserAttributeTracking
 
-// MARK: - UserAttributeTracking
-
-extension mParticle: UserAttributeTracking {
-    
     /// Sets the User Attribute.
     ///
     /// - Parameters:
     ///   - key: The attribute key to log.
     ///   - value: The attribute value to log.
     /// - Returns: A tracking result.
-    public func setUserAttribute(_ key: String, value: Any) -> TrackingResult {
+    open func setUserAttribute(_ key: String, value: Any) -> TrackingResult {
         MParticle.sharedInstance().setUserAttribute(key, value: value)
 
         return .success
     }
-    
-}
 
-// MARK: - ViewDetailLogging
-
-extension mParticle: ViewDetailLogging {
+    // MARK: - ViewDetailLogging
 
     /// Logs the action of viewing a product's details.
     ///
@@ -297,7 +265,7 @@ extension mParticle: ViewDetailLogging {
     ///   - product: The SimcoeProductConvertible instance.
     ///   - eventProperties: The event properties.
     /// - Returns: A tracking result.
-    public func logViewDetail<T: SimcoeProductConvertible>(_ product: T, eventProperties: Properties?) -> TrackingResult {
+    open func logViewDetail<T: SimcoeProductConvertible>(_ product: T, eventProperties: Properties?) -> TrackingResult {
         let mPProduct = MPProduct(product: product)
         let event = MPCommerceEvent(eventType: .viewDetail,
                                     products: [mPProduct],
@@ -307,5 +275,5 @@ extension mParticle: ViewDetailLogging {
 
         return .success
     }
-    
+
 }
