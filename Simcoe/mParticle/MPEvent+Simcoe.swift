@@ -36,29 +36,29 @@ extension MPEvent {
                                duration: Float? = nil, startTime: Date? = nil,
                                endTime: Date? = nil, customFlags: [String: [String]]? = nil,
                                info: Properties? = nil) -> Properties {
-        var properties: Properties = [MPEventKeys.eventType.rawValue: type.rawValue as AnyObject]
+        var properties = Properties()
 
-        properties[MPEventKeys.eventType.rawValue] = type.rawValue as AnyObject
-        properties[MPEventKeys.name.rawValue] = name as AnyObject
+        properties[MPEventKeys.eventType.rawValue] = type.rawValue as String
+        properties[MPEventKeys.name.rawValue] = name as String
 
         if let category = category {
-            properties[MPEventKeys.category.rawValue] = category as AnyObject
+            properties[MPEventKeys.category.rawValue] = category as String
         }
 
         if let duration = duration {
-            properties[MPEventKeys.duration.rawValue] = duration as AnyObject
+            properties[MPEventKeys.duration.rawValue] = duration as Float
         }
 
         if let startTime = startTime {
-            properties[MPEventKeys.startTime.rawValue] = startTime as AnyObject
+            properties[MPEventKeys.startTime.rawValue] = startTime as Date
         }
 
         if let endTime = endTime {
-            properties[MPEventKeys.endTime.rawValue] = endTime as AnyObject
+            properties[MPEventKeys.endTime.rawValue] = endTime as Date
         }
 
         if let customFlags = customFlags {
-            properties[MPEventKeys.customFlags.rawValue] = customFlags as AnyObject
+            properties[MPEventKeys.customFlags.rawValue] = customFlags as [String: [String]]
         }
 
         if let info = info {
@@ -97,7 +97,7 @@ extension MPEvent {
         }
 
         if let duration = data[MPEventKeys.duration.rawValue] as? Float {
-            event.duration = duration as NSNumber
+            event.duration = duration
         }
 
         if let startTime = data[MPEventKeys.startTime.rawValue] as? Date {

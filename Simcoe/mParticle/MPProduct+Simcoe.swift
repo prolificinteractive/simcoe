@@ -20,8 +20,8 @@ extension MPProduct {
         self.init(name: simcoeProduct.productName,
                   // INTENTIONAL: In MPProduct: SKU of a product. This is the product id
                   sku: simcoeProduct.productId,
-                  quantity: NSNumber(value: simcoeProduct.quantity),
-                  price: NSNumber(value: simcoeProduct.price ?? 0))
+                  quantity: simcoeProduct.quantity,
+                  price: simcoeProduct.price ?? nil)
 
         guard let properties = simcoeProduct.properties else {
             return

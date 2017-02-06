@@ -367,7 +367,7 @@ public final class Simcoe {
      - parameter key:   The key of the user attribute
      - parameter value: the value of the user attribute
      */
-    public static func setUserAttribute(_ key: String, value: AnyObject) {
+    public static func setUserAttribute(_ key: String, value: Any) {
         engine.setUserAttribute(key, value: value)
     }
 
@@ -377,7 +377,7 @@ public final class Simcoe {
      - parameter key:   The key of the user attribute
      - parameter value: the value of the user attribute
      */
-    func setUserAttribute(_ key: String, value: AnyObject) {
+    func setUserAttribute(_ key: String, value: Any) {
         let providers: [UserAttributeTracking] = findProviders()
         
         write(toProviders: providers, description: "Setting user attribute with key: \(key) value:\(value)") { attributeSetter in

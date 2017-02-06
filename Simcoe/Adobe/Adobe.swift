@@ -56,12 +56,12 @@ extension Adobe: LifetimeValueIncreasing {
      - returns: A tracking result.
      */
     public func increaseLifetimeValue(byAmount amount: Double, forItem item: String?, withAdditionalProperties properties: Properties?) -> TrackingResult {
-        var data = properties ?? [String: AnyObject]()
+        var data = properties ?? Properties()
         if let item = item {
-            data[item] = "" as AnyObject
+            data[item] = "" as UInt
         }
 
-        ADBMobile.trackLifetimeValueIncrease(NSDecimalNumber(value: 1), data: data)
+        ADBMobile.trackLifetimeValueIncrease(Decimal(1), data: data)
         return .success
     }
 

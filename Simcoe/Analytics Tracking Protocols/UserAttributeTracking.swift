@@ -19,6 +19,6 @@ public protocol UserAttributeTracking: AnalyticsTracking {
      
      - returns: A tracking result.
      */
-    func setUserAttribute(_ key: String, value: AnyObject) -> TrackingResult
+    func setUserAttribute(_ key: String, value: Any) -> TrackingResult
     
 }

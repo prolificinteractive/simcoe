@@ -154,7 +154,7 @@ extension mParticle: EventTracking {
             return .error(message: "Cannot track an event without valid properties.")
         }
 
-        properties[MPEventKeys.name.rawValue] = event as AnyObject
+        properties[MPEventKeys.name.rawValue] = event as String
 
         let event: MPEvent
         do {
@@ -213,9 +213,9 @@ extension mParticle: LocationTracking {
      - parameter properties: The properties for the MPEvent.
      */
     public func track(location: CLLocation, withAdditionalProperties properties: Properties?) -> TrackingResult {
-        var eventProperties = properties ?? [String: AnyObject]() // TODO: Handle Error
-        eventProperties["latitude"] = location.coordinate.latitude as AnyObject
-        eventProperties["longitude"] = location.coordinate.longitude as AnyObject
+        var eventProperties = properties ?? Properties() // TODO: Handle Error
+        eventProperties["latitude"] = String(location.coordinate.latitude)
+        eventProperties["longitude"] = String(location.coordinate.longitude)
 
         let event: MPEvent
         do {
@@ -286,7 +286,7 @@ extension mParticle: UserAttributeTracking {
      - parameter key:   The key of the user attribute
      - parameter value: the value of the user attribute
      */
-    public func setUserAttribute(_ key: String, value: AnyObject) -> TrackingResult {
+    public func setUserAttribute(_ key: String, value: Any) -> TrackingResult {
         MParticle.sharedInstance().setUserAttribute(key, value: value)
 
         return .success
