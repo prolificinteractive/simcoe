@@ -8,9 +8,7 @@
 
 import Foundation
 
-/**
- *  A remote output source.
- */
+/// A remote output source.
 internal struct RemoteOutput: Output {
 
     /// The token.

@@ -12,16 +12,14 @@ extension MPProduct {
 
     /// A convenience initializer.
     ///
-    /// - parameter product: A SimcoeProductConvertible instance.
-    ///
-    /// - returns: A MPProduct.
+    /// - Parameter product: A SimcoeProductConvertible instance.
     internal convenience init(product: SimcoeProductConvertible) {
         let simcoeProduct = product.toSimcoeProduct()
         self.init(name: simcoeProduct.productName,
                   // INTENTIONAL: In MPProduct: SKU of a product. This is the product id
                   sku: simcoeProduct.productId,
-                  quantity: simcoeProduct.quantity,
-                  price: simcoeProduct.price ?? nil)
+                  quantity: NSNumber(value: simcoeProduct.quantity),
+                  price: NSNumber(value: simcoeProduct.price ?? 0))
 
         guard let properties = simcoeProduct.properties else {
             return

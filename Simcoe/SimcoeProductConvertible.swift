@@ -11,7 +11,7 @@ public protocol SimcoeProductConvertible {
 
     /// Converts a product to a Simcoe Product.
     ///
-    /// - returns: A SimcoeProduct
+    /// - Returns: A SimcoeProduct
     func toSimcoeProduct() -> SimcoeProduct
     
 }

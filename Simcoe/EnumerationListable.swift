@@ -17,9 +17,8 @@ extension EnumerationListable where Self: RawRepresentable {
 
     /// The unfound keys in the provided Properties.
     ///
-    /// - parameter properties: The properties.
-    ///
-    /// - returns: The unfound keys.
+    /// - Parameter properties: The properties.
+    /// - Returns: The unfound keys.
     fileprivate static func unfoundKeys(_ properties: Properties) -> [String] {
         let allKeyRawValues: [String] = Self.allKeys.flatMap { $0.rawValue as? String }
         let allKeyRawValuesSet = Set(allKeyRawValues)
@@ -32,9 +31,8 @@ extension EnumerationListable where Self: RawRepresentable {
 
     /// The remaining properties.
     ///
-    /// - parameter properties: The properties.
-    ///
-    /// - returns: The remaining properties.
+    /// - Parameter properties: The properties.
+    /// - Returns: The remaining properties.
     static func remaining(properties: Properties) -> Properties {
         let unfoundKeys = Self.unfoundKeys(properties)
         var additionalProperties = Properties()

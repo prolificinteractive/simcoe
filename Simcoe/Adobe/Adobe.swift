@@ -35,34 +35,33 @@ extension Adobe: EventTracking {
     ///   - event: The event to track.
     ///   - properties: The optional additional properties.
     /// - Returns: A tracking result.
-    public func track(event: String, withAdditionalProperties properties: Properties?) -> TrackingResult {
+    public func track(event: String,
+                      withAdditionalProperties properties: Properties?) -> TrackingResult {
         ADBMobile.trackAction(event, data: properties)
         return .success
     }
-    
+
 }
 
 // MARK: - LifetimeValueIncreasing
 
 extension Adobe: LifetimeValueIncreasing {
 
-    /**
-     Increases the lifetime value of the key by the specified amount.
-
-     - parameter amount:     The amount to increase that lifetime value for.
-     - parameter item:       The optional item to extend.
-     - parameter properties: The optional additional properties.
-
-     - returns: A tracking result.
-     */
+    /// Increases the lifetime value of the key by the specified amount.
+    ///
+    /// - Parameters:
+    ///   - amount: The amount to increase that lifetime value for.
+    ///   - item: The optional item to extend.
+    ///   - properties: The optional additional properties.
+    /// - Returns: A tracking result.
     public func increaseLifetimeValue(byAmount amount: Double, forItem item: String?, withAdditionalProperties properties: Properties?) -> TrackingResult {
-        var data = properties ?? Properties()
-        if let item = item {
-            data[item] = "" as UInt
-        }
+            var data = properties ?? Properties()
+            if let item = item {
+                data[item] = "" as String
+            }
 
-        ADBMobile.trackLifetimeValueIncrease(Decimal(1), data: data)
-        return .success
+            ADBMobile.trackLifetimeValueIncrease(1, data: data)
+            return .success
     }
 
 }
@@ -71,36 +70,33 @@ extension Adobe: LifetimeValueIncreasing {
 
 extension Adobe: LocationTracking {
 
-    /**
-     Tracks location.
-
-     - parameter location:   The location to track.
-     - parameter properties: The optional additional properties.
-
-     - returns: A tracking result.
-     */
+    /// Tracks location.
+    ///
+    /// - Parameters:
+    ///   - location: The location to track.
+    ///   - properties: The optional additional properties.
+    /// - Returns: A tracking result.
     public func track(location: CLLocation,
-                              withAdditionalProperties properties: Properties?) -> TrackingResult {
+                      withAdditionalProperties properties: Properties?) -> TrackingResult {
         ADBMobile.trackLocation(location, data: properties)
         return .success
     }
-    
+
 }
 
 // MARK: - PageViewTracking
 
 extension Adobe: PageViewTracking {
 
-    /**
-     Tracks the page view.
-
-     - parameter pageView: The page view to track.
-
-     - returns: A tracking result.
-     */
+    /// Tracks the page view.
+    ///
+    /// - Parameters:
+    ///   - pageView: The page view to track.
+    ///   - properties: The optional additional properties.
+    /// - Returns: A tracking result.
     public func track(pageView: String, withAdditionalProperties properties: Properties?) -> TrackingResult {
         ADBMobile.trackState(pageView, data: properties)
         return .success
     }
-
+    
 }
