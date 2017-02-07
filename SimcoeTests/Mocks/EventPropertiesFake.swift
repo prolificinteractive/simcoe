@@ -10,7 +10,7 @@
 
 internal final class EventPropertiesFake {
 
-    static let eventProperties: Properties = ["checkoutStep": 1 as String,
+    static let eventProperties: Properties = ["checkoutStep": 1 as Int,
                                               "currency": "USD" as String,
                                               "screenName": "home" as String]
     

@@ -13,9 +13,10 @@ import mParticle_Apple_SDK
 class MPEventTests: XCTestCase {
 
     func test_that_MPEvent_created_with_name_and_type() {
-        let properties: [String: AnyObject] =
-            [MPEventKeys.name.rawValue: "Event" as AnyObject,
-             MPEventKeys.eventType.rawValue: MPEventType.other.rawValue as AnyObject]
+        var properties = Properties()
+        properties[MPEventKeys.name.rawValue] = "Event" as String
+        properties[MPEventKeys.eventType.rawValue] = MPEventType.other.rawValue as UInt
+
         let event: MPEvent?
         let eventError: Error?
 
@@ -34,7 +35,9 @@ class MPEventTests: XCTestCase {
     }
 
     func test_that_name_error_thrown_when_missing() {
-        let properties: [String: AnyObject] = [MPEventKeys.eventType.rawValue: MPEventType.other.rawValue as AnyObject]
+        var properties = Properties()
+        properties[MPEventKeys.eventType.rawValue] = MPEventType.other.rawValue as UInt
+
         let expected = MPEventGenerationError.nameMissing
         let event: MPEvent?
         let eventError: Error?
@@ -54,7 +57,9 @@ class MPEventTests: XCTestCase {
     }
 
     func test_that_type_error_thrown_when_missing() {
-        let properties: [String: AnyObject] = [MPEventKeys.name.rawValue: "Test" as AnyObject]
+        var properties = Properties()
+        properties[MPEventKeys.name.rawValue] = "Test" as String
+
         let expected = MPEventGenerationError.typeMissing
         let event: MPEvent?
         let eventError: Error?
@@ -172,7 +177,7 @@ class MPEventTests: XCTestCase {
         let key = "Stuff"
         let value = 42
 
-        let data = MPEvent.eventData(type: .other, name: name, info: [key: value as AnyObject])
+        let data = MPEvent.eventData(type: .other, name: name, info: [key: value as Int])
         let result = try! MPEvent.toEvent(usingData: data)
 
         XCTAssertNotNil(result.info,
