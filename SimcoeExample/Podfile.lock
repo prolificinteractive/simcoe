@@ -1,0 +1,27 @@
+PODS:
+  - AdobeMobileSDK (4.13.3):
+    - AdobeMobileSDK/iOS (= 4.13.3)
+  - AdobeMobileSDK/iOS (4.13.3)
+  - mParticle-Apple-SDK (6.12.3):
+    - mParticle-Apple-SDK/mParticle (= 6.12.3)
+  - mParticle-Apple-SDK/mParticle (6.12.3)
+  - Simcoe/Adobe (0.5.1):
+    - AdobeMobileSDK (~> 4.13)
+    - Simcoe/Core
+  - Simcoe/Core (0.5.1)
+  - Simcoe/mParticle (0.5.1):
+    - mParticle-Apple-SDK (~> 6)
+    - Simcoe/Core
+
+DEPENDENCIES:
+  - Simcoe/Adobe
+  - Simcoe/mParticle
+
+SPEC CHECKSUMS:
+  AdobeMobileSDK: 10bf49f2d5714b057615fbd9ade3ac2cfbff8316
+  mParticle-Apple-SDK: aa8648804e27986d1a7df36f222e93ef9cee2e9f
+  Simcoe: d640f0404f60167189f86175a5d9ca96092a1ad7
+
+PODFILE CHECKSUM: 580a39f57c913a79d766c549c729802bc4de85b8
+
+COCOAPODS: 1.1.1
