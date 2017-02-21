@@ -14,14 +14,24 @@ PODS:
     - Simcoe/Core
 
 DEPENDENCIES:
-  - Simcoe/Adobe
-  - Simcoe/mParticle
+  - Simcoe/Adobe (from `https://github.com/prolificinteractive/simcoe.git`, branch `feature/swift3`)
+  - Simcoe/mParticle (from `https://github.com/prolificinteractive/simcoe.git`, branch `feature/swift3`)
+
+EXTERNAL SOURCES:
+  Simcoe:
+    :branch: feature/swift3
+    :git: https://github.com/prolificinteractive/simcoe.git
+
+CHECKOUT OPTIONS:
+  Simcoe:
+    :commit: 136fdc0e7bcc6940c53fd54daff71ffd65c9afb6
+    :git: https://github.com/prolificinteractive/simcoe.git
 
 SPEC CHECKSUMS:
   AdobeMobileSDK: 10bf49f2d5714b057615fbd9ade3ac2cfbff8316
   mParticle-Apple-SDK: aa8648804e27986d1a7df36f222e93ef9cee2e9f
-  Simcoe: d640f0404f60167189f86175a5d9ca96092a1ad7
+  Simcoe: 11fe674388e2f4c5b3f90090f165f5150b8aabb8
 
-PODFILE CHECKSUM: 580a39f57c913a79d766c549c729802bc4de85b8
+PODFILE CHECKSUM: 854f299f4e979b60279d6b865805f12ffa66d397
 
 COCOAPODS: 1.1.1

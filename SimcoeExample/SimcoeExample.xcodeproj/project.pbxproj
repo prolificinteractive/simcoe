@@ -9,11 +9,13 @@
 /* Begin PBXBuildFile section */
 		17923EF38131CF03F54F6E9D /* Pods_SimcoeExample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 431A5FFF8F112E2B83CCE282 /* Pods_SimcoeExample.framework */; };
 		20C3B1B11E5CE6F70095F185 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20C3B1B01E5CE6F70095F185 /* AppDelegate.swift */; };
-		20C3B1B31E5CE6F70095F185 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20C3B1B21E5CE6F70095F185 /* ViewController.swift */; };
 		20C3B1B61E5CE6F70095F185 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 20C3B1B41E5CE6F70095F185 /* Main.storyboard */; };
 		20C3B1B81E5CE6F70095F185 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 20C3B1B71E5CE6F70095F185 /* Assets.xcassets */; };
 		20C3B1BB1E5CE6F70095F185 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 20C3B1B91E5CE6F70095F185 /* LaunchScreen.storyboard */; };
 		20C3B1C61E5CE6F80095F185 /* SimcoeExampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20C3B1C51E5CE6F80095F185 /* SimcoeExampleTests.swift */; };
+		20C3B1D11E5CE7D70095F185 /* AnalyticsDisplayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20C3B1D01E5CE7D70095F185 /* AnalyticsDisplayViewController.swift */; };
+		20C3B1D31E5CED6C0095F185 /* TrackerTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20C3B1D21E5CED6C0095F185 /* TrackerTableViewController.swift */; };
+		20C3B1D51E5CEEB00095F185 /* Tracker.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 20C3B1D41E5CEEB00095F185 /* Tracker.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,7 +31,6 @@
 /* Begin PBXFileReference section */
 		20C3B1AD1E5CE6F70095F185 /* SimcoeExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SimcoeExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		20C3B1B01E5CE6F70095F185 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		20C3B1B21E5CE6F70095F185 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		20C3B1B51E5CE6F70095F185 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		20C3B1B71E5CE6F70095F185 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		20C3B1BA1E5CE6F70095F185 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -37,6 +38,9 @@
 		20C3B1C11E5CE6F80095F185 /* SimcoeExampleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SimcoeExampleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		20C3B1C51E5CE6F80095F185 /* SimcoeExampleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimcoeExampleTests.swift; sourceTree = "<group>"; };
 		20C3B1C71E5CE6F80095F185 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		20C3B1D01E5CE7D70095F185 /* AnalyticsDisplayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnalyticsDisplayViewController.swift; sourceTree = "<group>"; };
+		20C3B1D21E5CED6C0095F185 /* TrackerTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackerTableViewController.swift; sourceTree = "<group>"; };
+		20C3B1D41E5CEEB00095F185 /* Tracker.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Tracker.storyboard; sourceTree = "<group>"; };
 		431A5FFF8F112E2B83CCE282 /* Pods_SimcoeExample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SimcoeExample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6705DEBD5E0BA9CA1E336C0F /* Pods-SimcoeExample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SimcoeExample.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SimcoeExample/Pods-SimcoeExample.debug.xcconfig"; sourceTree = "<group>"; };
 		96D6CBE7E25C6571D36DD4FB /* Pods-SimcoeExample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SimcoeExample.release.xcconfig"; path = "Pods/Target Support Files/Pods-SimcoeExample/Pods-SimcoeExample.release.xcconfig"; sourceTree = "<group>"; };
@@ -85,8 +89,10 @@
 			isa = PBXGroup;
 			children = (
 				20C3B1B01E5CE6F70095F185 /* AppDelegate.swift */,
-				20C3B1B21E5CE6F70095F185 /* ViewController.swift */,
+				20C3B1D01E5CE7D70095F185 /* AnalyticsDisplayViewController.swift */,
+				20C3B1D21E5CED6C0095F185 /* TrackerTableViewController.swift */,
 				20C3B1B41E5CE6F70095F185 /* Main.storyboard */,
+				20C3B1D41E5CEEB00095F185 /* Tracker.storyboard */,
 				20C3B1B71E5CE6F70095F185 /* Assets.xcassets */,
 				20C3B1B91E5CE6F70095F185 /* LaunchScreen.storyboard */,
 				20C3B1BC1E5CE6F70095F185 /* Info.plist */,
@@ -209,6 +215,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				20C3B1BB1E5CE6F70095F185 /* LaunchScreen.storyboard in Resources */,
+				20C3B1D51E5CEEB00095F185 /* Tracker.storyboard in Resources */,
 				20C3B1B81E5CE6F70095F185 /* Assets.xcassets in Resources */,
 				20C3B1B61E5CE6F70095F185 /* Main.storyboard in Resources */,
 			);
@@ -276,7 +283,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				20C3B1B31E5CE6F70095F185 /* ViewController.swift in Sources */,
+				20C3B1D31E5CED6C0095F185 /* TrackerTableViewController.swift in Sources */,
+				20C3B1D11E5CE7D70095F185 /* AnalyticsDisplayViewController.swift in Sources */,
 				20C3B1B11E5CE6F70095F185 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
