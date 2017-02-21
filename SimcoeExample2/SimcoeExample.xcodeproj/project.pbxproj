@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		17923EF38131CF03F54F6E9D /* Pods_SimcoeExample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 431A5FFF8F112E2B83CCE282 /* Pods_SimcoeExample.framework */; };
 		20C3B1B11E5CE6F70095F185 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20C3B1B01E5CE6F70095F185 /* AppDelegate.swift */; };
 		20C3B1B61E5CE6F70095F185 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 20C3B1B41E5CE6F70095F185 /* Main.storyboard */; };
 		20C3B1B81E5CE6F70095F185 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 20C3B1B71E5CE6F70095F185 /* Assets.xcassets */; };
@@ -15,7 +16,6 @@
 		20C3B1D11E5CE7D70095F185 /* AnalyticsDisplayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20C3B1D01E5CE7D70095F185 /* AnalyticsDisplayViewController.swift */; };
 		20C3B1D31E5CED6C0095F185 /* TrackerTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20C3B1D21E5CED6C0095F185 /* TrackerTableViewController.swift */; };
 		20C3B1D51E5CEEB00095F185 /* Tracker.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 20C3B1D41E5CEEB00095F185 /* Tracker.storyboard */; };
-		7C053332C270E8F7722BCEC4 /* Pods_SimcoeExample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2CD57B97C112AB0B5961BA41 /* Pods_SimcoeExample.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,9 +41,9 @@
 		20C3B1D01E5CE7D70095F185 /* AnalyticsDisplayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnalyticsDisplayViewController.swift; sourceTree = "<group>"; };
 		20C3B1D21E5CED6C0095F185 /* TrackerTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackerTableViewController.swift; sourceTree = "<group>"; };
 		20C3B1D41E5CEEB00095F185 /* Tracker.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Tracker.storyboard; sourceTree = "<group>"; };
-		2CD57B97C112AB0B5961BA41 /* Pods_SimcoeExample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SimcoeExample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		E83548EECC7ED7DF5F36D714 /* Pods-SimcoeExample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SimcoeExample.release.xcconfig"; path = "../Pods/Target Support Files/Pods-SimcoeExample/Pods-SimcoeExample.release.xcconfig"; sourceTree = "<group>"; };
-		E91AED01048FDD61337E822D /* Pods-SimcoeExample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SimcoeExample.debug.xcconfig"; path = "../Pods/Target Support Files/Pods-SimcoeExample/Pods-SimcoeExample.debug.xcconfig"; sourceTree = "<group>"; };
+		431A5FFF8F112E2B83CCE282 /* Pods_SimcoeExample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SimcoeExample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6705DEBD5E0BA9CA1E336C0F /* Pods-SimcoeExample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SimcoeExample.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SimcoeExample/Pods-SimcoeExample.debug.xcconfig"; sourceTree = "<group>"; };
+		96D6CBE7E25C6571D36DD4FB /* Pods-SimcoeExample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SimcoeExample.release.xcconfig"; path = "Pods/Target Support Files/Pods-SimcoeExample/Pods-SimcoeExample.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,7 +51,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7C053332C270E8F7722BCEC4 /* Pods_SimcoeExample.framework in Frameworks */,
+				17923EF38131CF03F54F6E9D /* Pods_SimcoeExample.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -112,8 +112,8 @@
 		C7C320D69EA0D1C563FF3995 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				E91AED01048FDD61337E822D /* Pods-SimcoeExample.debug.xcconfig */,
-				E83548EECC7ED7DF5F36D714 /* Pods-SimcoeExample.release.xcconfig */,
+				6705DEBD5E0BA9CA1E336C0F /* Pods-SimcoeExample.debug.xcconfig */,
+				96D6CBE7E25C6571D36DD4FB /* Pods-SimcoeExample.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -121,7 +121,7 @@
 		F9408D272EA2E6886CDC6D26 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				2CD57B97C112AB0B5961BA41 /* Pods_SimcoeExample.framework */,
+				431A5FFF8F112E2B83CCE282 /* Pods_SimcoeExample.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -420,7 +420,7 @@
 		};
 		20C3B1CB1E5CE6F80095F185 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E91AED01048FDD61337E822D /* Pods-SimcoeExample.debug.xcconfig */;
+			baseConfigurationReference = 6705DEBD5E0BA9CA1E336C0F /* Pods-SimcoeExample.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 5ZZ7W4SB26;
@@ -434,7 +434,7 @@
 		};
 		20C3B1CC1E5CE6F80095F185 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E83548EECC7ED7DF5F36D714 /* Pods-SimcoeExample.release.xcconfig */;
+			baseConfigurationReference = 96D6CBE7E25C6571D36DD4FB /* Pods-SimcoeExample.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 5ZZ7W4SB26;

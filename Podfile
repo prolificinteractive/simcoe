@@ -16,8 +16,8 @@ target 'Simcoe' do
 
 end
 
-target 'mParticleExample' do
-    project 'mParticleExample/mParticleExample'
+target 'SimcoeExample' do
+    project 'SimcoeExample/SimcoeExample'
     pod 'Simcoe', :path => './', :subspecs => ['Adobe', 'mParticle']
     podspec :path => 'Simcoe.podspec'
 

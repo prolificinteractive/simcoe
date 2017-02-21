@@ -5,7 +5,7 @@
       location = "group:Simcoe.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:mParticleExample/mParticleExample.xcodeproj">
+      location = "group:SimcoeExample/SimcoeExample.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:Pods/Pods.xcodeproj">
