@@ -7,10 +7,24 @@
 //
 
 import Foundation
+import Simcoe
 
 internal protocol TrackerAction {
     
     var name: String { get }
     
+    func isActionAvailable(provider: AnalyticsTracking) -> Bool
+    
     func track()
+    
+    func isContainedIn(actions: [TrackerAction]) -> Bool
+}
+
+extension TrackerAction {
+    
+    func isContainedIn(actions: [TrackerAction]) -> Bool {
+        return actions.contains(where: { (arrayAction) -> Bool in
+            return name == arrayAction.name
+        })
+    }
 }

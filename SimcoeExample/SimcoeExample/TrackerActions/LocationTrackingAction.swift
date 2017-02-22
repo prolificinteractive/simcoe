@@ -22,6 +22,10 @@ internal class LocationTrackingAction: TrackerAction {
         self.engine = engine
     }
     
+    func isActionAvailable(provider: AnalyticsTracking) -> Bool {
+        return provider is LocationTracking
+    }
+    
     func track() {
         let properties: Properties = ["Location" : "Tracker Page"]
         let location = CLLocation(latitude: 40.7128, longitude: 74.0059)

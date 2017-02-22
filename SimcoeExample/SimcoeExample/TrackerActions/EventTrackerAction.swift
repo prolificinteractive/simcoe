@@ -22,6 +22,10 @@ internal class EventTrackerAction: TrackerAction {
         self.engine = engine
     }
     
+    func isActionAvailable(provider: AnalyticsTracking) -> Bool {
+        return provider is EventTracking
+    }
+    
     func track() {
         var eventDataProperties: Properties = MPEvent.eventData(type: .other, name: "")
         eventDataProperties["Location"] = "Tracker Page"

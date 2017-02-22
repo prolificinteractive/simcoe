@@ -21,6 +21,10 @@ internal class LifetimeValueIncreasingAction: TrackerAction {
         self.engine = engine
     }
     
+    func isActionAvailable(provider: AnalyticsTracking) -> Bool {
+        return provider is LifetimeValueIncreasing
+    }
+    
     func track() {
         let properties: Properties = ["Location" : "Tracker Page"]
         engine.trackLifetimeIncrease(byAmount: 1,

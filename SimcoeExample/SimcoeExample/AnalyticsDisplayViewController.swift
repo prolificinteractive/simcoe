@@ -11,13 +11,34 @@ import Simcoe
 import CoreLocation
 import mParticle_Apple_SDK
 
-internal final class TrackerActionGenerator {
+internal protocol ActionGenerator {
+    
+    func trackerActions(providers: [AnalyticsTracking]) -> [TrackerAction]
+    
+}
+
+internal final class TrackerActionGenerator: ActionGenerator {
+    
+    private var engine: AnalyticsEngine
+    
+    private var availableTrackerActions: [TrackerAction]
+    
+    init(engine: AnalyticsEngine, availableTrackerActions: [TrackerAction]) {
+        self.engine = engine
+        self.availableTrackerActions = availableTrackerActions
+    }
     
     func trackerActions(providers: [AnalyticsTracking]) -> [TrackerAction] {
         var actions: [TrackerAction] = []
         
         for provider in providers {
-            
+            for action in availableTrackerActions {
+                if action.isActionAvailable(provider: provider) == true &&
+                    action.isContainedIn(actions: actions) == false {
+                
+                    actions.append(action)
+                }
+            }
         }
         
         return actions
@@ -35,7 +56,7 @@ internal final class AnalyticsDisplayViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let particle = mParticle(key: "ef79020ccbbfcf198717de75f0a406b4", secret: "0195e9e766b5b87aa2095d926f1d527e")
+        let particle = mParticle(key: "mikesaidtomakeafakeone", secret: "hiyoseob")
         let adobe = Adobe()
         
         setupTrackers(providers: [adobe], name: adobe.name)
@@ -45,10 +66,20 @@ internal final class AnalyticsDisplayViewController: UITableViewController {
     }
     
     private func setupTrackers(providers: [AnalyticsTracking], name: String) {
-        let actions: [TrackerAction] = [EventTrackerAction(engine: analyticsEngine),
-                                        LocationTrackingAction(engine: analyticsEngine),
-                                        LifetimeValueIncreasingAction(engine: analyticsEngine),
-                                        PageViewTrackingAction(engine: analyticsEngine)]
+        
+        let availableActions: [TrackerAction] = [EventTrackerAction(engine: analyticsEngine),
+                                                 LocationTrackingAction(engine: analyticsEngine),
+                                                 LifetimeValueIncreasingAction(engine: analyticsEngine),
+                                                 PageViewTrackingAction(engine: analyticsEngine)]
+        
+        guard !providers.isEmpty else {
+            self.providers.append(AnalyticsTracker(providers: providers, actions: availableActions, name: name))
+            return
+        }
+        
+
+        let actionGenerator = TrackerActionGenerator(engine: analyticsEngine, availableTrackerActions: availableActions)
+        let actions = actionGenerator.trackerActions(providers: providers)
         
         self.providers.append(AnalyticsTracker(providers: providers, actions: actions, name: name))
     }

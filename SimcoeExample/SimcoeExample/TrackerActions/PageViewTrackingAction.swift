@@ -22,6 +22,10 @@ internal class PageViewTrackingAction: TrackerAction {
         self.engine = engine
     }
     
+    func isActionAvailable(provider: AnalyticsTracking) -> Bool {
+        return provider is PageViewTracking
+    }
+    
     func track() {
         let properties: Properties = ["Location" : "Tracker Page"]
         engine.track(pageView: "Tracker Selection Page View", withAdditionalProperties: properties)
