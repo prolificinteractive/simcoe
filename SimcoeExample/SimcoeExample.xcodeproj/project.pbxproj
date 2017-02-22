@@ -7,6 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		200562E11E5DE5A60015AD55 /* TrackerAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200562E01E5DE5A60015AD55 /* TrackerAction.swift */; };
+		200562E31E5DE5BA0015AD55 /* EventTrackerAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200562E21E5DE5BA0015AD55 /* EventTrackerAction.swift */; };
+		200562E51E5DE5CC0015AD55 /* LifetimeValueIncreasingAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200562E41E5DE5CC0015AD55 /* LifetimeValueIncreasingAction.swift */; };
+		200562E71E5DE5DD0015AD55 /* LocationTrackingAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200562E61E5DE5DD0015AD55 /* LocationTrackingAction.swift */; };
+		200562E91E5DE5EB0015AD55 /* PageViewTrackingAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200562E81E5DE5EB0015AD55 /* PageViewTrackingAction.swift */; };
+		200562EC1E5DEA530015AD55 /* SimcoeAnalyticsEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200562EB1E5DEA530015AD55 /* SimcoeAnalyticsEngine.swift */; };
+		200562EE1E5DEA780015AD55 /* AnalyticsEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200562ED1E5DEA780015AD55 /* AnalyticsEngine.swift */; };
+		200562F11E5DEAB20015AD55 /* AnalyticsTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200562F01E5DEAB20015AD55 /* AnalyticsTracker.swift */; };
 		20C3B1B11E5CE6F70095F185 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20C3B1B01E5CE6F70095F185 /* AppDelegate.swift */; };
 		20C3B1B61E5CE6F70095F185 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 20C3B1B41E5CE6F70095F185 /* Main.storyboard */; };
 		20C3B1B81E5CE6F70095F185 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 20C3B1B71E5CE6F70095F185 /* Assets.xcassets */; };
@@ -29,6 +37,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		200562E01E5DE5A60015AD55 /* TrackerAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackerAction.swift; sourceTree = "<group>"; };
+		200562E21E5DE5BA0015AD55 /* EventTrackerAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventTrackerAction.swift; sourceTree = "<group>"; };
+		200562E41E5DE5CC0015AD55 /* LifetimeValueIncreasingAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LifetimeValueIncreasingAction.swift; sourceTree = "<group>"; };
+		200562E61E5DE5DD0015AD55 /* LocationTrackingAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationTrackingAction.swift; sourceTree = "<group>"; };
+		200562E81E5DE5EB0015AD55 /* PageViewTrackingAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageViewTrackingAction.swift; sourceTree = "<group>"; };
+		200562EB1E5DEA530015AD55 /* SimcoeAnalyticsEngine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimcoeAnalyticsEngine.swift; sourceTree = "<group>"; };
+		200562ED1E5DEA780015AD55 /* AnalyticsEngine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnalyticsEngine.swift; sourceTree = "<group>"; };
+		200562F01E5DEAB20015AD55 /* AnalyticsTracker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnalyticsTracker.swift; sourceTree = "<group>"; };
 		20C3B1AD1E5CE6F70095F185 /* SimcoeExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SimcoeExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		20C3B1B01E5CE6F70095F185 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		20C3B1B51E5CE6F70095F185 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -65,6 +81,42 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		200562DE1E5DE59A0015AD55 /* TrackerActions */ = {
+			isa = PBXGroup;
+			children = (
+				200562E21E5DE5BA0015AD55 /* EventTrackerAction.swift */,
+				200562E41E5DE5CC0015AD55 /* LifetimeValueIncreasingAction.swift */,
+				200562E61E5DE5DD0015AD55 /* LocationTrackingAction.swift */,
+				200562E81E5DE5EB0015AD55 /* PageViewTrackingAction.swift */,
+			);
+			path = TrackerActions;
+			sourceTree = "<group>";
+		};
+		200562DF1E5DE59A0015AD55 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				200562E01E5DE5A60015AD55 /* TrackerAction.swift */,
+				200562ED1E5DEA780015AD55 /* AnalyticsEngine.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		200562EA1E5DEA4D0015AD55 /* Analytics Engine */ = {
+			isa = PBXGroup;
+			children = (
+				200562EB1E5DEA530015AD55 /* SimcoeAnalyticsEngine.swift */,
+			);
+			path = "Analytics Engine";
+			sourceTree = "<group>";
+		};
+		200562EF1E5DEAAB0015AD55 /* Helper Classes */ = {
+			isa = PBXGroup;
+			children = (
+				200562F01E5DEAB20015AD55 /* AnalyticsTracker.swift */,
+			);
+			path = "Helper Classes";
+			sourceTree = "<group>";
+		};
 		20C3B1A41E5CE6F70095F185 = {
 			isa = PBXGroup;
 			children = (
@@ -96,6 +148,10 @@
 				20C3B1B71E5CE6F70095F185 /* Assets.xcassets */,
 				20C3B1B91E5CE6F70095F185 /* LaunchScreen.storyboard */,
 				20C3B1BC1E5CE6F70095F185 /* Info.plist */,
+				200562EA1E5DEA4D0015AD55 /* Analytics Engine */,
+				200562DE1E5DE59A0015AD55 /* TrackerActions */,
+				200562DF1E5DE59A0015AD55 /* Protocols */,
+				200562EF1E5DEAAB0015AD55 /* Helper Classes */,
 			);
 			path = SimcoeExample;
 			sourceTree = "<group>";
@@ -283,8 +339,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				200562E91E5DE5EB0015AD55 /* PageViewTrackingAction.swift in Sources */,
+				200562E11E5DE5A60015AD55 /* TrackerAction.swift in Sources */,
+				200562E51E5DE5CC0015AD55 /* LifetimeValueIncreasingAction.swift in Sources */,
 				20C3B1D31E5CED6C0095F185 /* TrackerTableViewController.swift in Sources */,
+				200562EE1E5DEA780015AD55 /* AnalyticsEngine.swift in Sources */,
+				200562EC1E5DEA530015AD55 /* SimcoeAnalyticsEngine.swift in Sources */,
+				200562E31E5DE5BA0015AD55 /* EventTrackerAction.swift in Sources */,
+				200562E71E5DE5DD0015AD55 /* LocationTrackingAction.swift in Sources */,
 				20C3B1D11E5CE7D70095F185 /* AnalyticsDisplayViewController.swift in Sources */,
+				200562F11E5DEAB20015AD55 /* AnalyticsTracker.swift in Sources */,
 				20C3B1B11E5CE6F70095F185 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

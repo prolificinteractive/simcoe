@@ -11,84 +11,26 @@ import Simcoe
 import CoreLocation
 import mParticle_Apple_SDK
 
-internal class AnalyticsTracker {
+internal final class TrackerActionGenerator {
     
-    var providers: [AnalyticsTracking]
-    
-    var actions: [TrackerAction]
-    
-    var name: String
-    
-    init(providers: [AnalyticsTracking], actions: [TrackerAction], name: String) {
-        self.providers = providers
-        self.actions = actions
-        self.name = name
-    }
-}
-
-internal protocol TrackerAction {
-    
-    var name: String { get }
-    
-    func track()
-}
-
-internal class EventTrackerAction: TrackerAction {
-    
-    var name: String {
-        return "Track Event"
-    }
-    
-    func track() {
-        var eventDataProperties: Properties = MPEvent.eventData(type: .other, name: "")
-        eventDataProperties["Location"] = "Tracker Page"
+    func trackerActions(providers: [AnalyticsTracking]) -> [TrackerAction] {
+        var actions: [TrackerAction] = []
         
-        Simcoe.track(event: "Tapped Track Event", withAdditionalProperties: eventDataProperties)
-    }
-}
-
-internal class LifetimeValueIncreasingAction: TrackerAction {
-    
-    var name: String {
-        return "Track Lifetime Value Increase"
-    }
-    
-    func track() {
-        let properties: Properties = ["Location" : "Tracker Page"]
-        Simcoe.trackLifetimeIncrease(byAmount: 1,
-                                     forItem: "Track Lifetime Value Tapped",
-                                     withAdditionalProperties: properties)
-    }
-}
-
-internal class LocationTrackingAction: TrackerAction {
-    
-    var name: String {
-        return "Track Location"
-    }
-    
-    func track() {
-        let properties: Properties = ["Location" : "Tracker Page"]
-        let location = CLLocation(latitude: 40.7128, longitude: 74.0059)
-        Simcoe.track(location: location, withAdditionalProperties: properties)
-    }
-}
-
-internal class PageViewTrackingAction: TrackerAction {
-    
-    var name: String {
-        return "Track Page View"
-    }
-    
-    func track() {
-        let properties: Properties = ["Location" : "Tracker Page"]
-        Simcoe.track(pageView: "Tracker Selection Page View", withAdditionalProperties: properties)
+        for provider in providers {
+            
+        }
+        
+        return actions
     }
 }
 
 internal final class AnalyticsDisplayViewController: UITableViewController {
     
     var providers: [AnalyticsTracker] = []
+    
+    lazy var analyticsEngine: AnalyticsEngine = {
+        return SimcoeAnalyticsEngine()
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -103,10 +45,10 @@ internal final class AnalyticsDisplayViewController: UITableViewController {
     }
     
     private func setupTrackers(providers: [AnalyticsTracking], name: String) {
-        let actions: [TrackerAction] = [EventTrackerAction(),
-                                        LocationTrackingAction(),
-                                        LifetimeValueIncreasingAction(),
-                                        PageViewTrackingAction()]
+        let actions: [TrackerAction] = [EventTrackerAction(engine: analyticsEngine),
+                                        LocationTrackingAction(engine: analyticsEngine),
+                                        LifetimeValueIncreasingAction(engine: analyticsEngine),
+                                        PageViewTrackingAction(engine: analyticsEngine)]
         
         self.providers.append(AnalyticsTracker(providers: providers, actions: actions, name: name))
     }
@@ -130,7 +72,7 @@ extension AnalyticsDisplayViewController {
         
         let trackerVC = TrackerTableViewController.storyboardInit()
         
-        Simcoe.run(with: providers[indexPath.row].providers)
+        analyticsEngine.run(with: providers[indexPath.row].providers)
         
         trackerVC.trackers = providers[indexPath.row].actions
         navigationController?.pushViewController(trackerVC, animated: true)

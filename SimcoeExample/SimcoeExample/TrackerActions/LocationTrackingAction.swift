@@ -7,3 +7,24 @@
 //
 
 import Foundation
+import Simcoe
+import CoreLocation
+
+internal class LocationTrackingAction: TrackerAction {
+    
+    var name: String {
+        return "Track Location"
+    }
+    
+    private var engine: AnalyticsEngine
+    
+    init(engine: AnalyticsEngine) {
+        self.engine = engine
+    }
+    
+    func track() {
+        let properties: Properties = ["Location" : "Tracker Page"]
+        let location = CLLocation(latitude: 40.7128, longitude: 74.0059)
+        engine.track(location: location, withAdditionalProperties: properties)
+    }
+}

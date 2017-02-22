@@ -7,3 +7,19 @@
 //
 
 import Foundation
+import Simcoe
+
+internal class AnalyticsTracker {
+    
+    var providers: [AnalyticsTracking]
+    
+    var actions: [TrackerAction]
+    
+    var name: String
+    
+    init(providers: [AnalyticsTracking], actions: [TrackerAction], name: String) {
+        self.providers = providers
+        self.actions = actions
+        self.name = name
+    }
+}

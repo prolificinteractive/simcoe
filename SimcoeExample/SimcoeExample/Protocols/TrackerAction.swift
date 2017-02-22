@@ -7,3 +7,10 @@
 //
 
 import Foundation
+
+internal protocol TrackerAction {
+    
+    var name: String { get }
+    
+    func track()
+}

@@ -7,3 +7,23 @@
 //
 
 import Foundation
+import Simcoe
+import CoreLocation
+
+internal class PageViewTrackingAction: TrackerAction {
+    
+    var name: String {
+        return "Track Page View"
+    }
+    
+    private var engine: AnalyticsEngine
+    
+    init(engine: AnalyticsEngine) {
+        self.engine = engine
+    }
+    
+    func track() {
+        let properties: Properties = ["Location" : "Tracker Page"]
+        engine.track(pageView: "Tracker Selection Page View", withAdditionalProperties: properties)
+    }
+}

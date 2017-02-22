@@ -7,3 +7,25 @@
 //
 
 import Foundation
+import Simcoe
+import mParticle_Apple_SDK
+
+internal class EventTrackerAction: TrackerAction {
+    
+    var name: String {
+        return "Track Event"
+    }
+    
+    private var engine: AnalyticsEngine
+    
+    init(engine: AnalyticsEngine) {
+        self.engine = engine
+    }
+    
+    func track() {
+        var eventDataProperties: Properties = MPEvent.eventData(type: .other, name: "")
+        eventDataProperties["Location"] = "Tracker Page"
+        
+        engine.track(event: "Tapped Track Event", withAdditionalProperties: eventDataProperties)
+    }
+}
