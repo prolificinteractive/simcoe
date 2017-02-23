@@ -27,8 +27,7 @@ internal class LocationTrackingAction: TrackerAction {
     }
     
     func track() {
-        let properties: Properties = ["Location" : "Tracker Page"]
         let location = CLLocation(latitude: 40.7128, longitude: 74.0059)
-        engine.track(location: location, withAdditionalProperties: properties)
+        engine.track(location: location, withAdditionalProperties: defaultProperties)
     }
 }

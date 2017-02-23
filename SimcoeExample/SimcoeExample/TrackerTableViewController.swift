@@ -12,11 +12,6 @@ import Simcoe
 internal final class TrackerTableViewController: UITableViewController {
     
     var trackers: [TrackerAction]!
- 
-    static func storyboardInit() -> TrackerTableViewController {
-        let storyBoard = UIStoryboard(name: "Tracker", bundle: nil)
-        return storyBoard.instantiateViewController(withIdentifier: "TrackerTableViewController") as! TrackerTableViewController
-    }
 }
 
 extension TrackerTableViewController {
@@ -34,5 +29,12 @@ extension TrackerTableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         trackers[indexPath.row].track()
+    }
+}
+
+extension TrackerTableViewController {
+    
+    static func storyboardInit<T>() -> T {
+        return UIStoryboard.trackerStoryboard.instantiateViewController(TrackerTableViewController.storyboardID)
     }
 }

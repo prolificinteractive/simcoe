@@ -1,18 +1,18 @@
 //
-//  PageViewTrackingAction.swift
+//  ViewDetailLoggingAction.swift
 //  SimcoeExample
 //
-//  Created by Jonathan Samudio on 2/22/17.
+//  Created by Jonathan Samudio on 2/23/17.
 //  Copyright © 2017 Prolific Interactive. All rights reserved.
 //
 
 import Foundation
 import Simcoe
 
-internal class PageViewTrackingAction: TrackerAction {
+internal final class ViewDetailLoggingAction: TrackerAction {
     
     var name: String {
-        return "Track Page View"
+        return "Track Purchase"
     }
     
     private var engine: AnalyticsEngine
@@ -22,10 +22,11 @@ internal class PageViewTrackingAction: TrackerAction {
     }
     
     func isActionAvailable(provider: AnalyticsTracking) -> Bool {
-        return provider is PageViewTracking
+        return provider is ViewDetailLogging
     }
     
     func track() {
-        engine.track(pageView: "Tracker Selection Page View", withAdditionalProperties: defaultProperties)
+        engine.logViewDetail(SampleProduct(), eventProperties: defaultProperties)
     }
 }
+

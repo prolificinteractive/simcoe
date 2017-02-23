@@ -26,9 +26,8 @@ internal class LifetimeValueIncreasingAction: TrackerAction {
     }
     
     func track() {
-        let properties: Properties = ["Location" : "Tracker Page"]
         engine.trackLifetimeIncrease(byAmount: 1,
                                      forItem: "Track Lifetime Value Tapped",
-                                     withAdditionalProperties: properties)
+                                     withAdditionalProperties: defaultProperties)
     }
 }

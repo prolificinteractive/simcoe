@@ -1,18 +1,18 @@
 //
-//  PageViewTrackingAction.swift
+//  RemoveFromCartAction.swift
 //  SimcoeExample
 //
-//  Created by Jonathan Samudio on 2/22/17.
+//  Created by Jonathan Samudio on 2/23/17.
 //  Copyright © 2017 Prolific Interactive. All rights reserved.
 //
 
 import Foundation
 import Simcoe
 
-internal class PageViewTrackingAction: TrackerAction {
+internal final class RemoveFromCartAction: TrackerAction {
     
     var name: String {
-        return "Track Page View"
+        return "Track Remove from Cart Logging"
     }
     
     private var engine: AnalyticsEngine
@@ -22,10 +22,10 @@ internal class PageViewTrackingAction: TrackerAction {
     }
     
     func isActionAvailable(provider: AnalyticsTracking) -> Bool {
-        return provider is PageViewTracking
+        return provider is CartLogging
     }
     
     func track() {
-        engine.track(pageView: "Tracker Selection Page View", withAdditionalProperties: defaultProperties)
+        engine.logRemoveFromCart(SampleProduct(), eventProperties: defaultProperties)
     }
 }

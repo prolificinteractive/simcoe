@@ -23,4 +23,18 @@ internal protocol AnalyticsEngine {
     func track(location: CLLocation, withAdditionalProperties properties: Properties?)
     
     func track(pageView: String, withAdditionalProperties properties: Properties?)
+    
+    func logAddToCart<T: SimcoeProductConvertible>(_ product: T, eventProperties: Properties?)
+    
+    func logRemoveFromCart<T: SimcoeProductConvertible>(_ product: T, eventProperties: Properties?)
+    
+    func trackCheckoutEvent<T: SimcoeProductConvertible>(_ products: [T], eventProperties: Properties?)
+    
+    func log(error: String, withAdditionalProperties properties: Properties?)
+    
+    func trackPurchaseEvent<T: SimcoeProductConvertible>(_ products: [T], eventProperties: Properties?)
+    
+    func setUserAttribute(_ key: String, value: AnyObject)
+    
+    func logViewDetail<T: SimcoeProductConvertible>(_ product: T, eventProperties: Properties?)
 }

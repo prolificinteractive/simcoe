@@ -13,6 +13,8 @@ internal protocol TrackerAction {
     
     var name: String { get }
     
+    var defaultProperties: Properties { get }
+    
     func isActionAvailable(provider: AnalyticsTracking) -> Bool
     
     func track()
@@ -21,6 +23,10 @@ internal protocol TrackerAction {
 }
 
 extension TrackerAction {
+    
+    var defaultProperties: Properties {
+        return ["Location" : "Tracker Page"]
+    }
     
     func isContainedIn(actions: [TrackerAction]) -> Bool {
         return actions.contains(where: { (arrayAction) -> Bool in
