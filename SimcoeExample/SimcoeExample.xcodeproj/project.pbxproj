@@ -27,10 +27,10 @@
 		200563051E5F5F5F0015AD55 /* ActionGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200563041E5F5F5F0015AD55 /* ActionGenerator.swift */; };
 		200563071E5F87030015AD55 /* AvailableTrackers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200563061E5F87030015AD55 /* AvailableTrackers.swift */; };
 		200563091E5F87230015AD55 /* AnalyticsProviders.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200563081E5F87230015AD55 /* AnalyticsProviders.swift */; };
-		2005630C1E5F8A880015AD55 /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2005630B1E5F8A880015AD55 /* UIViewControllerExtension.swift */; };
-		2005630E1E5F8A9C0015AD55 /* UIStoryboardExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2005630D1E5F8A9C0015AD55 /* UIStoryboardExtension.swift */; };
 		200563121E5F9D630015AD55 /* AnalyticsDisplayBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200563111E5F9D630015AD55 /* AnalyticsDisplayBuilder.swift */; };
 		200563141E5F9E770015AD55 /* SimcoeExampleApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200563131E5F9E770015AD55 /* SimcoeExampleApplication.swift */; };
+		200563181E5FA1BF0015AD55 /* UIStoryboardExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200563161E5FA1BF0015AD55 /* UIStoryboardExtension.swift */; };
+		200563191E5FA1BF0015AD55 /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200563171E5FA1BF0015AD55 /* UIViewControllerExtension.swift */; };
 		20C3B1B11E5CE6F70095F185 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20C3B1B01E5CE6F70095F185 /* AppDelegate.swift */; };
 		20C3B1B61E5CE6F70095F185 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 20C3B1B41E5CE6F70095F185 /* Main.storyboard */; };
 		20C3B1B81E5CE6F70095F185 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 20C3B1B71E5CE6F70095F185 /* Assets.xcassets */; };
@@ -73,10 +73,10 @@
 		200563041E5F5F5F0015AD55 /* ActionGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionGenerator.swift; sourceTree = "<group>"; };
 		200563061E5F87030015AD55 /* AvailableTrackers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AvailableTrackers.swift; sourceTree = "<group>"; };
 		200563081E5F87230015AD55 /* AnalyticsProviders.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnalyticsProviders.swift; sourceTree = "<group>"; };
-		2005630B1E5F8A880015AD55 /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
-		2005630D1E5F8A9C0015AD55 /* UIStoryboardExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIStoryboardExtension.swift; sourceTree = "<group>"; };
 		200563111E5F9D630015AD55 /* AnalyticsDisplayBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnalyticsDisplayBuilder.swift; sourceTree = "<group>"; };
 		200563131E5F9E770015AD55 /* SimcoeExampleApplication.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimcoeExampleApplication.swift; sourceTree = "<group>"; };
+		200563161E5FA1BF0015AD55 /* UIStoryboardExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIStoryboardExtension.swift; sourceTree = "<group>"; };
+		200563171E5FA1BF0015AD55 /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
 		20C3B1AD1E5CE6F70095F185 /* SimcoeExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SimcoeExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		20C3B1B01E5CE6F70095F185 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		20C3B1B51E5CE6F70095F185 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -161,16 +161,6 @@
 			path = "Helper Classes";
 			sourceTree = "<group>";
 		};
-		2005630A1E5F8A7B0015AD55 /* Extensions */ = {
-			isa = PBXGroup;
-			children = (
-				2005630B1E5F8A880015AD55 /* UIViewControllerExtension.swift */,
-				2005630D1E5F8A9C0015AD55 /* UIStoryboardExtension.swift */,
-			);
-			name = Extensions;
-			path = SimcoeExample/Extensions;
-			sourceTree = "<group>";
-		};
 		200563101E5F9D550015AD55 /* Builders */ = {
 			isa = PBXGroup;
 			children = (
@@ -179,11 +169,19 @@
 			path = Builders;
 			sourceTree = "<group>";
 		};
+		200563151E5FA1BF0015AD55 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				200563161E5FA1BF0015AD55 /* UIStoryboardExtension.swift */,
+				200563171E5FA1BF0015AD55 /* UIViewControllerExtension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		20C3B1A41E5CE6F70095F185 = {
 			isa = PBXGroup;
 			children = (
 				20C3B1AF1E5CE6F70095F185 /* SimcoeExample */,
-				2005630A1E5F8A7B0015AD55 /* Extensions */,
 				20C3B1C41E5CE6F80095F185 /* SimcoeExampleTests */,
 				20C3B1AE1E5CE6F70095F185 /* Products */,
 				C7C320D69EA0D1C563FF3995 /* Pods */,
@@ -217,6 +215,7 @@
 				200562DF1E5DE59A0015AD55 /* Protocols */,
 				200562EF1E5DEAAB0015AD55 /* Helper Classes */,
 				200563101E5F9D550015AD55 /* Builders */,
+				200563151E5FA1BF0015AD55 /* Extensions */,
 			);
 			path = SimcoeExample;
 			sourceTree = "<group>";
@@ -411,10 +410,11 @@
 				200563031E5F5F4A0015AD55 /* TrackerActionGenerator.swift in Sources */,
 				200562FB1E5F577D0015AD55 /* PurchaseTrackingAction.swift in Sources */,
 				20C3B1D31E5CED6C0095F185 /* TrackerTableViewController.swift in Sources */,
-				2005630E1E5F8A9C0015AD55 /* UIStoryboardExtension.swift in Sources */,
 				200562EE1E5DEA780015AD55 /* AnalyticsEngine.swift in Sources */,
+				200563181E5FA1BF0015AD55 /* UIStoryboardExtension.swift in Sources */,
 				200562F91E5F56D50015AD55 /* ErrorLoggingAction.swift in Sources */,
 				200562EC1E5DEA530015AD55 /* SimcoeAnalyticsEngine.swift in Sources */,
+				200563191E5FA1BF0015AD55 /* UIViewControllerExtension.swift in Sources */,
 				200562F31E5F43B10015AD55 /* AddToCartLoggingAction.swift in Sources */,
 				200562E31E5DE5BA0015AD55 /* EventTrackerAction.swift in Sources */,
 				200563071E5F87030015AD55 /* AvailableTrackers.swift in Sources */,
@@ -426,7 +426,6 @@
 				200563091E5F87230015AD55 /* AnalyticsProviders.swift in Sources */,
 				200562F71E5F56030015AD55 /* CheckoutTrackingAction.swift in Sources */,
 				200563141E5F9E770015AD55 /* SimcoeExampleApplication.swift in Sources */,
-				2005630C1E5F8A880015AD55 /* UIViewControllerExtension.swift in Sources */,
 				20C3B1D11E5CE7D70095F185 /* AnalyticsDisplayViewController.swift in Sources */,
 				200563121E5F9D630015AD55 /* AnalyticsDisplayBuilder.swift in Sources */,
 				200562F11E5DEAB20015AD55 /* AnalyticsTracker.swift in Sources */,
