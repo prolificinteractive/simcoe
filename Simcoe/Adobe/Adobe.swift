@@ -10,7 +10,7 @@ import AdobeMobileSDK
 import CoreLocation
 
 /// The adobe analytics provider.
-open class Adobe: EventTracking, LifetimeValueIncreasing, LocationTracking, PageViewTracking {
+public class Adobe {
 
     /// The name of the tracker.
     open let name = "Adobe Omniture"
@@ -23,7 +23,11 @@ open class Adobe: EventTracking, LifetimeValueIncreasing, LocationTracking, Page
         ADBMobile.collectLifecycleData()
     }
 
-    // MARK: - EventTracking
+}
+
+// MARK: - EventTracking
+
+extension Adobe: EventTracking {
 
     /// Tracks the given event with optional additional properties.
     ///
@@ -31,13 +35,17 @@ open class Adobe: EventTracking, LifetimeValueIncreasing, LocationTracking, Page
     ///   - event: The event to track.
     ///   - properties: The optional additional properties.
     /// - Returns: A tracking result.
-    open func track(event: String,
-                      withAdditionalProperties properties: Properties?) -> TrackingResult {
+    public func track(event: String,
+                    withAdditionalProperties properties: Properties?) -> TrackingResult {
         ADBMobile.trackAction(event, data: properties)
         return .success
     }
 
-    // MARK: - LifetimeValueIncreasing
+}
+
+// MARK: - LifetimeValueIncreasing
+
+extension Adobe: LifetimeValueIncreasing {
 
     /// Increases the lifetime value of the key by the specified amount.
     ///
@@ -46,7 +54,7 @@ open class Adobe: EventTracking, LifetimeValueIncreasing, LocationTracking, Page
     ///   - item: The optional item to extend.
     ///   - properties: The optional additional properties.
     /// - Returns: A tracking result.
-    open func increaseLifetimeValue(byAmount amount: Double, forItem item: String?, withAdditionalProperties properties: Properties?) -> TrackingResult {
+    public func increaseLifetimeValue(byAmount amount: Double, forItem item: String?, withAdditionalProperties properties: Properties?) -> TrackingResult {
         var data = properties ?? Properties()
         if let item = item {
             data[item] = "" as String
@@ -56,7 +64,11 @@ open class Adobe: EventTracking, LifetimeValueIncreasing, LocationTracking, Page
         return .success
     }
 
-    // MARK: - LocationTracking
+}
+
+// MARK: - LocationTracking
+
+extension Adobe: LocationTracking {
 
     /// Tracks location.
     ///
@@ -64,13 +76,17 @@ open class Adobe: EventTracking, LifetimeValueIncreasing, LocationTracking, Page
     ///   - location: The location to track.
     ///   - properties: The optional additional properties.
     /// - Returns: A tracking result.
-    open func track(location: CLLocation,
-                      withAdditionalProperties properties: Properties?) -> TrackingResult {
+    public func track(location: CLLocation,
+                    withAdditionalProperties properties: Properties?) -> TrackingResult {
         ADBMobile.trackLocation(location, data: properties)
         return .success
     }
 
-    // MARK: - PageViewTracking
+}
+
+// MARK: - PageViewTracking
+
+extension Adobe: PageViewTracking {
 
     /// Tracks the page view.
     ///
@@ -78,7 +94,7 @@ open class Adobe: EventTracking, LifetimeValueIncreasing, LocationTracking, Page
     ///   - pageView: The page view to track.
     ///   - properties: The optional additional properties.
     /// - Returns: A tracking result.
-    open func track(pageView: String, withAdditionalProperties properties: Properties?) -> TrackingResult {
+    public func track(pageView: String, withAdditionalProperties properties: Properties?) -> TrackingResult {
         ADBMobile.trackState(pageView, data: properties)
         return .success
     }
