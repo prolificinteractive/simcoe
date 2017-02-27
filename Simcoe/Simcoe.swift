@@ -60,6 +60,13 @@ public final class Simcoe {
         engine.providers = analyticsProviders
     }
 
+    /// Stops analytics tracking on all providers.
+    public static func stop() {
+        engine.providers.forEach {
+            $0.stop()
+        }
+    }
+
     /// Writes the event.
     ///
     /// - Parameters:
@@ -252,6 +259,50 @@ public final class Simcoe {
         }
     }
 
+    // MARK: - LifetimeValueTracking
+
+    /// Tracks the lifetime value.
+    ///
+    /// - Parameters:
+    ///   - key: The lifetime value's identifier.
+    ///   - value: The lifetime value.
+    public static func trackLifetimeValue(_ key: String, value: Any) {
+        engine.trackLifetimeValue(key, value: value)
+    }
+
+    /// Tracks the lifetime value.
+    ///
+    /// - Parameters:
+    ///   - key: The lifetime value's identifier.
+    ///   - value: The lifetime value.
+    func trackLifetimeValue(_ key: String, value: Any) {
+        let providers: [LifetimeValueTracking] = findProviders()
+
+        write(toProviders: providers, description: "Tracking lifetime value with key: \(key) value: \(value)") { lifetimeValueTracker in
+            return lifetimeValueTracker.trackLifetimeValue(key, value: value)
+        }
+    }
+
+    /// Track the lifetime values.
+    ///
+    /// - Parameter attributes: The lifetime attribute values.
+    public static func trackLifetimeValues(_ attributes: Properties) {
+        engine.trackLifetimeValues(attributes)
+    }
+
+    /// Track the lifetime values.
+    ///
+    /// - Parameter attributes: The lifetime attribute values.
+    func trackLifetimeValues(_ attributes: Properties) {
+        let providers: [LifetimeValueTracking] = findProviders()
+
+        attributes.forEach { (key, value) in
+            write(toProviders: providers, description: "Tracking lifetime value with key: \(key) value: \(value)") { lifetimeValueTracker in
+                return lifetimeValueTracker.trackLifetimeValue(key, value: value)
+            }
+        }
+    }
+
     // MARK: - LocationTracking
 
     /// Tracks location.
@@ -350,8 +401,28 @@ public final class Simcoe {
     func setUserAttribute(_ key: String, value: Any) {
         let providers: [UserAttributeTracking] = findProviders()
         
-        write(toProviders: providers, description: "Setting user attribute with key: \(key) value:\(value)") { attributeSetter in
+        write(toProviders: providers, description: "Setting user attribute with key: \(key) value: \(value)") { attributeSetter in
             return attributeSetter.setUserAttribute(key, value: value)
+        }
+    }
+
+    /// Sets the User Attributes.
+    ///
+    /// - Parameter attributes: The attribute values to log.
+    public static func setUserAttributes(_ attributes: Properties) {
+        engine.setUserAttributes(attributes)
+    }
+
+    /// Sets the User Attributes.
+    ///
+    /// - Parameter attributes: The attribute values to log.
+    func setUserAttributes(_ attributes: Properties) {
+        let providers: [UserAttributeTracking] = findProviders()
+
+        attributes.forEach { (key, value) in
+            write(toProviders: providers, description: "Setting user attribute with key: \(key) value: \(value)") { attributeSetter in
+                return attributeSetter.setUserAttribute(key, value: value)
+            }
         }
     }
 

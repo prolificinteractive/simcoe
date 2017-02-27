@@ -284,6 +284,18 @@ extension mParticle: UserAttributeTracking {
         return .success
     }
 
+    /// Sets the User Attributes.
+    ///
+    /// - Parameter attributes: The attribute values to log.
+    /// - Returns: A tracking result.
+    public func setUserAttributes(_ attributes: Properties) -> TrackingResult {
+        attributes.forEach {
+            MParticle.sharedInstance().setUserAttribute($0, value: $1)
+        }
+
+        return .success
+    }
+
 }
 
 // MARK: - ViewDetailLogging

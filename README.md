@@ -102,9 +102,11 @@ While simply implementing this protocol is all you need for your object to be a 
 * `ErrorLogging`
 * `EventTracking`
 * `LifetimeValueIncreasing`
+* `LifetimeValueTracking`
 * `LocationTracking`
 * `PageViewTracking`
 * `PurchaseTracking`
+* `TimedEventTracking`
 * `UserAttributeTracking`
 * `ViewDetailLogging`
 

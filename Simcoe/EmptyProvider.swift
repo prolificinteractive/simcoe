@@ -106,6 +106,30 @@ extension EmptyProvider: LifetimeValueIncreasing {
 
 }
 
+// MARK: - LifetimeValueTracking
+
+extension EmptyProvider: LifetimeValueTracking {
+
+    /// Tracks the lifetime value.
+    ///
+    /// - Parameters:
+    ///   - key: The lifetime value's identifier.
+    ///   - value: The lifetime value.
+    /// - Returns: A tracking result.
+    func trackLifetimeValue(_ key: String, value: Any) -> TrackingResult {
+        return .success
+    }
+
+    /// Track the lifetime values.
+    ///
+    /// - Parameter attributes: The lifetime attribute values.
+    /// - Returns: A tracking result.
+    func trackLifetimeValues(_ attributes: Properties) -> TrackingResult {
+        return .success
+    }
+
+}
+
 // MARK: - LocationTracking
 
 extension EmptyProvider: LocationTracking {
@@ -165,6 +189,15 @@ extension EmptyProvider: UserAttributeTracking {
     ///   - value: The attribute value to log.
     /// - Returns: A tracking result.
     func setUserAttribute(_ key: String, value: Any) -> TrackingResult {
+        return .success
+    }
+
+
+    /// Sets the user Attributes.
+    ///
+    /// - Parameter attributes: The attribute properties.
+    /// - Returns: A tracking result.
+    func setUserAttributes(_ attributes: Properties) -> TrackingResult {
         return .success
     }
     

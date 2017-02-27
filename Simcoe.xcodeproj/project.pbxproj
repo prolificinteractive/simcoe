@@ -58,6 +58,8 @@
 		276A94BA1DE659A700774D9E /* ProductFake.swift in Sources */ = {isa = PBXBuildFile; fileRef = 276A94AE1DE659A700774D9E /* ProductFake.swift */; };
 		276A94BB1DE659A700774D9E /* UserAttributesFake.swift in Sources */ = {isa = PBXBuildFile; fileRef = 276A94AF1DE659A700774D9E /* UserAttributesFake.swift */; };
 		2792AE2E1DA4606900FB1E28 /* MPEventTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2792AE2D1DA4606900FB1E28 /* MPEventTests.swift */; };
+		2D5888D01E64B27B0035C73D /* LifetimeValueTracking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D5888CF1E64B27B0035C73D /* LifetimeValueTracking.swift */; };
+		2D5888D21E64B3A20035C73D /* TimedEventTracking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D5888D11E64B3A20035C73D /* TimedEventTracking.swift */; };
 		59A60EFA736D92D64FAFFB74 /* Pods_Simcoe.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A4BAED5FDA700FDC89B8644 /* Pods_Simcoe.framework */; };
 		72897FE01C79E25800393482 /* SimcoeLoggingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72897FDF1C79E25800393482 /* SimcoeLoggingTests.swift */; };
 		72897FE21C79E25800393482 /* Simcoe.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F902ED121C68FA07007975F5 /* Simcoe.framework */; };
@@ -117,6 +119,8 @@
 		276A94AE1DE659A700774D9E /* ProductFake.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductFake.swift; sourceTree = "<group>"; };
 		276A94AF1DE659A700774D9E /* UserAttributesFake.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserAttributesFake.swift; sourceTree = "<group>"; };
 		2792AE2D1DA4606900FB1E28 /* MPEventTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MPEventTests.swift; path = mParticle/MPEventTests.swift; sourceTree = "<group>"; };
+		2D5888CF1E64B27B0035C73D /* LifetimeValueTracking.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LifetimeValueTracking.swift; sourceTree = "<group>"; };
+		2D5888D11E64B3A20035C73D /* TimedEventTracking.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimedEventTracking.swift; sourceTree = "<group>"; };
 		6FA69F4C737E782FBEFB8F74 /* Pods_Simcoe_SimcoeTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Simcoe_SimcoeTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		72897FDD1C79E25800393482 /* SimcoeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SimcoeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		72897FDF1C79E25800393482 /* SimcoeLoggingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimcoeLoggingTests.swift; sourceTree = "<group>"; };
@@ -186,11 +190,13 @@
 				276A94751DE6590C00774D9E /* ErrorLogging.swift */,
 				276A94761DE6590C00774D9E /* EventTracking.swift */,
 				276A94771DE6590C00774D9E /* LifetimeValueIncreasing.swift */,
+				2D5888CF1E64B27B0035C73D /* LifetimeValueTracking.swift */,
 				276A94781DE6590C00774D9E /* LocationTracking.swift */,
 				276A94791DE6590C00774D9E /* PageViewTracking.swift */,
 				276A947A1DE6590C00774D9E /* PurchaseTracking.swift */,
 				276A947B1DE6590C00774D9E /* UserAttributeTracking.swift */,
 				276A947C1DE6590C00774D9E /* ViewDetailLogging.swift */,
+				2D5888D11E64B3A20035C73D /* TimedEventTracking.swift */,
 			);
 			path = "Analytics Tracking Protocols";
 			sourceTree = "<group>";
@@ -568,6 +574,7 @@
 				276A93D51DE60AA800774D9E /* OutputOptions.swift in Sources */,
 				276A93D61DE60AA800774D9E /* Properties.swift in Sources */,
 				276A94801DE6590C00774D9E /* ErrorLogging.swift in Sources */,
+				2D5888D21E64B3A20035C73D /* TimedEventTracking.swift in Sources */,
 				276A94991DE6597700774D9E /* MPEventKeys.swift in Sources */,
 				276A93D71DE60AA800774D9E /* Simcoe.swift in Sources */,
 				276A94981DE6597700774D9E /* MPEventGenerationError.swift in Sources */,
@@ -581,6 +588,7 @@
 				276A947E1DE6590C00774D9E /* CartLogging.swift in Sources */,
 				276A93D91DE60AA800774D9E /* TrackingResult.swift in Sources */,
 				276A93DA1DE60AA800774D9E /* WriteEvent.swift in Sources */,
+				2D5888D01E64B27B0035C73D /* LifetimeValueTracking.swift in Sources */,
 				276A94821DE6590C00774D9E /* LifetimeValueIncreasing.swift in Sources */,
 				276A949D1DE6597700774D9E /* MPTransactionAttributesKeys.swift in Sources */,
 			);
