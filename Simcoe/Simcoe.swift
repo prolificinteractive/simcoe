@@ -382,6 +382,54 @@ public final class Simcoe {
         }
     }
 
+    // MARK: - TimedEventTracking
+
+    /// Starts the timed event.
+    ///
+    /// - Parameters:
+    ///   - event: The event name.
+    ///   - eventProperties: The event properties.
+    public static func start(timedEvent event: String, eventProperties: Properties?) {
+        engine.start(timedEvent: event, eventProperties: eventProperties)
+    }
+
+    /// Starts the timed event.
+    ///
+    /// - Parameters:
+    ///   - event: The event name.
+    ///   - eventProperties: The event properties.
+    func start(timedEvent event: String, eventProperties: Properties?) {
+        let providers: [TimedEventTracking] = findProviders()
+
+        let propertiesString = eventProperties != nil ? "=> \(eventProperties!.description)" : ""
+        write(toProviders: providers, description: "Starting Timed Event: \(event) \(propertiesString)") { timedEventTracker in
+            return timedEventTracker.start(timedEvent: event, eventProperties: eventProperties)
+        }
+    }
+
+    /// Stops the timed event.
+    ///
+    /// - Parameters:
+    ///   - event: The event name.
+    ///   - eventProperties: The event properties.
+    public static func end(timedEvent event: String, eventProperties: Properties?) {
+        engine.end(timedEvent: event, eventProperties: eventProperties)
+    }
+
+    /// Stops the timed event.
+    ///
+    /// - Parameters:
+    ///   - event: The event name.
+    ///   - eventProperties: The event properties.
+    func end(timedEvent event: String, eventProperties: Properties?) {
+        let providers: [TimedEventTracking] = findProviders()
+
+        let propertiesString = eventProperties != nil ? "=> \(eventProperties!.description)" : ""
+        write(toProviders: providers, description: "Ending Timed Event: \(event) \(propertiesString)") { timedEventTracker in
+            return timedEventTracker.start(timedEvent: event, eventProperties: eventProperties)
+        }
+    }
+
     // MARK: - UserAttributeTracking
 
     /// Sets the User Attribute.

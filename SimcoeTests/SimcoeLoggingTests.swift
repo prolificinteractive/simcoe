@@ -105,6 +105,36 @@ internal final class SimcoeLoggingTests: XCTestCase {
                        "Expected result = Called \(expectation) times; got \(lifetimeValueIncreaser.lifetimeValueCallCount)")
     }
 
+    // MARK: - LifetimeValueTracking
+
+    func test_that_it_logs_lifetime_value_to_providers() {
+        let lifetimeValueTracker = LifetimeValueTrackingFake()
+        simcoe.providers = [lifetimeValueTracker]
+        let expectation = 1
+
+        simcoe.trackLifetimeValue("test", value: 1)
+
+        XCTAssertEqual(expectation, lifetimeValueTracker.lifetimeValueCallCount,
+                       "Expected result = Called \(expectation) times; got \(lifetimeValueTracker.lifetimeValueCallCount)")
+    }
+
+    func test_that_it_logs_multiple_lifetime_values_to_providers() {
+        let lifetimeValueTracker = LifetimeValueTrackingFake()
+        simcoe.providers = [lifetimeValueTracker]
+        let expectation = 3
+
+        let attributes = [
+            "foo": 1,
+            "bar": 2,
+            "yes": 3
+        ]
+
+        simcoe.trackLifetimeValues(attributes)
+
+        XCTAssertEqual(lifetimeValueTracker.lifetimeValueCallCount, expectation,
+                       "Expected result = Called \(expectation) times; got \(lifetimeValueTracker.lifetimeValueCallCount)")
+    }
+
     // MARK: - LocationTracking
 
     func test_that_it_logs_location_to_providers() {
@@ -130,6 +160,46 @@ internal final class SimcoeLoggingTests: XCTestCase {
 
         XCTAssertEqual(pageViewTracker.pageViewTrackCount, expectation,
                        "Expected result = Called \(expectation) times; got \(pageViewTracker.pageViewTrackCount)")
+    }
+
+    // MARK: - PurchaseTracking
+
+    func test_that_it_logs_purchase_events_to_providers() {
+        let purchaseTracker = PurchaseTrackingFake()
+        simcoe.providers = [purchaseTracker]
+        let expectation = 1
+
+        let product = ProductFake()
+        let eventProperties: Properties? = EventPropertiesFake.eventProperties
+
+        simcoe.trackPurchaseEvent([product], eventProperties: eventProperties)
+
+        XCTAssertEqual(purchaseTracker.purchaseEventCount, expectation,
+                       "Expected result = Called \(expectation) times; got \(purchaseTracker.purchaseEventCount)")
+    }
+
+    // MARK: - TimedEventTracking
+
+    func test_that_it_logs_start_timed_event_to_providers() {
+        let timedEventTracker = TimedEventTrackingFake()
+        simcoe.providers = [timedEventTracker]
+        let expectation = 1
+
+        simcoe.start(timedEvent: "test", eventProperties: nil)
+
+        XCTAssertEqual(timedEventTracker.trackTimedEventCallCount, expectation,
+                       "Expected result = Called \(expectation) times; got \(timedEventTracker.trackTimedEventCallCount)")
+    }
+
+    func test_that_it_logs_stop_timed_event_to_providers() {
+        let timedEventTracker = TimedEventTrackingFake()
+        simcoe.providers = [timedEventTracker]
+        let expectation = 1
+
+        simcoe.end(timedEvent: "test", eventProperties: nil)
+
+        XCTAssertEqual(timedEventTracker.trackTimedEventCallCount, expectation,
+                       "Expected result = Called \(expectation) times; got \(timedEventTracker.trackTimedEventCallCount)")
     }
 
     // MARK: - UserAttributeTracking
@@ -160,6 +230,22 @@ internal final class SimcoeLoggingTests: XCTestCase {
 
         XCTAssertEqual(attributesSetter.attributesCallCount, expectation,
                        "Expected result = Called \(expectation) times; got \(attributesSetter.attributesCallCount)")
+    }
+
+    // MARK: - ViewDetailLogging
+
+    func test_that_it_logs_view_detail_event_to_providers() {
+        let viewDetailLogger = ViewDetailLoggingFake()
+        simcoe.providers = [viewDetailLogger]
+        let expectation = 1
+
+        let product = ProductFake()
+        let eventProperties: Properties? = EventPropertiesFake.eventProperties
+
+        simcoe.logViewDetail(product, eventProperties: eventProperties)
+
+        XCTAssertEqual(viewDetailLogger.viewDetailEventCount, expectation,
+                       "Expected result = Called \(expectation) times; got \(viewDetailLogger.viewDetailEventCount)")
     }
 
     // MARK: - Other
