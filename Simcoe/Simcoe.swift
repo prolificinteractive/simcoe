@@ -60,6 +60,13 @@ public final class Simcoe {
         engine.providers = analyticsProviders
     }
 
+    /// Force uploads all pending events.
+    public static func flush() {
+        engine.providers.forEach {
+            $0.flush()
+        }
+    }
+
     /// Writes the event.
     ///
     /// - Parameters:
@@ -223,32 +230,47 @@ public final class Simcoe {
         }
     }
 
-    // MARK: - LifetimeValueIncreasing
+    // MARK: - LifetimeValueTracking
 
-    /// Tracks the lifetime value increase.
+    /// Tracks the lifetime value.
     ///
     /// - Parameters:
-    ///   - amount: The amount to increase that lifetime value for.
-    ///   - item: The optional item to extend.
-    ///   - properties: The optional additional properties.
-    public static func trackLifetimeIncrease(byAmount amount: Double = 1, forItem item: String? = nil,
-                                                      withAdditionalProperties properties: Properties? = nil) {
-        engine.trackLifetimeIncrease(byAmount: amount, forItem: item, withAdditionalProperties: properties)
+    ///   - key: The lifetime value's identifier.
+    ///   - value: The lifetime value.
+    public static func trackLifetimeValue(_ key: String, value: Any, withAdditionalProperties properties: Properties?) {
+        engine.trackLifetimeValue(key, value: value, withAdditionalProperties: properties)
     }
 
-    /// Tracks the lifetime value increase.
+    /// Tracks the lifetime value.
     ///
     /// - Parameters:
-    ///   - amount: The amount to increase that lifetime value for.
-    ///   - item: The optional item to extend.
-    ///   - properties: The optional additional properties.
-    func trackLifetimeIncrease(byAmount amount: Double = 1, forItem item: String? = nil,
-                                        withAdditionalProperties properties: Properties? = nil) {
-        let providers: [LifetimeValueIncreasing] = findProviders()
+    ///   - key: The lifetime value's identifier.
+    ///   - value: The lifetime value.
+    func trackLifetimeValue(_ key: String, value: Any, withAdditionalProperties properties: Properties?) {
+        let providers: [LifetimeValueTracking] = findProviders()
 
-        write(toProviders: providers, description: "Lifetime Value increased by \(amount) for \(item ?? "")") { lifeTimeValueIncreaser in
-            return lifeTimeValueIncreaser
-                .increaseLifetimeValue(byAmount: amount, forItem: item, withAdditionalProperties: properties)
+        write(toProviders: providers, description: "Tracking lifetime value with key: \(key) value: \(value)") { lifetimeValueTracker in
+            return lifetimeValueTracker.trackLifetimeValue(key, value: value, withAdditionalProperties: properties)
+        }
+    }
+
+    /// Track the lifetime values.
+    ///
+    /// - Parameter attributes: The lifetime attribute values.
+    public static func trackLifetimeValues(_ attributes: Properties, withAdditionalProperties properties: Properties?) {
+        engine.trackLifetimeValues(attributes, withAdditionalProperties: properties)
+    }
+
+    /// Track the lifetime values.
+    ///
+    /// - Parameter attributes: The lifetime attribute values.
+    func trackLifetimeValues(_ attributes: Properties, withAdditionalProperties properties: Properties?) {
+        let providers: [LifetimeValueTracking] = findProviders()
+
+        attributes.forEach { (key, value) in
+            write(toProviders: providers, description: "Tracking lifetime value with key: \(key) value: \(value)") { lifetimeValueTracker in
+                return lifetimeValueTracker.trackLifetimeValue(key, value: value, withAdditionalProperties: properties)
+            }
         }
     }
 
@@ -331,6 +353,108 @@ public final class Simcoe {
         }
     }
 
+    // MARK: - SuperPropertyTracking
+
+    /// Sets the super properties.
+    ///
+    /// - Parameter superProperties: The super properties.
+    public static func set(superProperties: Properties) {
+        engine.set(superProperties: superProperties)
+    }
+
+    /// Sets the super properties.
+    ///
+    /// - Parameter superProperties: The super properties.
+    func set(superProperties: Properties) {
+        let providers: [SuperPropertyTracking] = findProviders()
+
+        write(toProviders: providers, description: "Setting super properties: \(superProperties)") { superPropertyTracker in
+            return superPropertyTracker.set(superProperties: superProperties)
+        }
+    }
+
+    /// Unsets the super property.
+    ///
+    /// - Parameter superProperty: The super property.
+    public static func unset(superProperty: String) {
+        engine.unset(superProperty: superProperty)
+    }
+
+    /// Unsets the super property.
+    ///
+    /// - Parameter superProperty: The super property.
+    func unset(superProperty: String) {
+        let providers: [SuperPropertyTracking] = findProviders()
+
+        write(toProviders: providers, description: "Unsetting super property: \(superProperty)") { superPropertyTracker in
+            return superPropertyTracker.unset(superProperty: superProperty)
+        }
+    }
+
+    /// Clears all currently set super properties.
+    ///
+    public static func clearSuperProperties() {
+        engine.clearSuperProperties()
+    }
+
+    /// Clears all currently set super properties.
+    ///
+    func clearSuperProperties() {
+        let providers: [SuperPropertyTracking] = findProviders()
+
+        write(toProviders: providers, description: "Clearing all super properties.") { superPropertyTracker in
+            return superPropertyTracker.clearSuperProperties()
+        }
+    }
+
+    // MARK: - TimedEventTracking
+
+    /// Starts the timed event.
+    ///
+    /// - Parameters:
+    ///   - event: The event name.
+    ///   - eventProperties: The event properties.
+    public static func start(timedEvent event: String, withAddtionalProperties properties: Properties?) {
+        engine.start(timedEvent: event, withAdditionalProperties: properties)
+    }
+
+    /// Starts the timed event.
+    ///
+    /// - Parameters:
+    ///   - event: The event name.
+    ///   - eventProperties: The event properties.
+    func start(timedEvent event: String, withAdditionalProperties properties: Properties?) {
+        let providers: [TimedEventTracking] = findProviders()
+
+        let propertiesString = properties != nil ? "=> \(properties!.description)" : ""
+        write(toProviders: providers, description: "Starting Timed Event: \(event) \(propertiesString)") { timedEventTracker in
+            return timedEventTracker.start(timedEvent: event, withAdditionalProperties: properties)
+        }
+    }
+
+    /// Stops the timed event.
+    ///
+    /// - Parameters:
+    ///   - event: The event name.
+    ///   - eventProperties: The event properties.
+    public static func end(timedEvent event: String, withAdditionalProperties properties: Properties?) {
+        engine.end(timedEvent: event, withAdditionalProperties: properties)
+    }
+
+    /// Stops the timed event.
+    ///
+    /// - Parameters:
+    ///   - event: The event name.
+    ///   - eventProperties: The event properties.
+    func end(timedEvent event: String, withAdditionalProperties properties: Properties?) {
+        let providers: [TimedEventTracking] = findProviders()
+
+        let propertiesString = properties != nil ? "=> \(properties!.description)" : ""
+        write(toProviders: providers, description: "Ending Timed Event: \(event) \(propertiesString)") { timedEventTracker in
+            return timedEventTracker.start(timedEvent: event, withAdditionalProperties: properties)
+        }
+    }
+
     // MARK: - UserAttributeTracking
 
     /// Sets the User Attribute.
@@ -350,8 +474,31 @@ public final class Simcoe {
     func setUserAttribute(_ key: String, value: Any) {
         let providers: [UserAttributeTracking] = findProviders()
         
-        write(toProviders: providers, description: "Setting user attribute with key: \(key) value:\(value)") { attributeSetter in
+        write(toProviders: providers, description: "Setting user attribute with key: \(key) value: \(value)") { attributeSetter in
             return attributeSetter.setUserAttribute(key, value: value)
+        }
+    }
+
+    /// Sets the User Attributes.
+    ///
+    /// - Parameter attributes: The attribute values to log.
+    public static func setUserAttributes(_ attributes: Properties) {
+        engine.setUserAttributes(attributes)
+    }
+
+    /// Sets the User Attributes.
+    ///
+    /// - Parameter attributes: The attribute values to log.
+    func setUserAttributes(_ attributes: Properties) {
+        let providers: [UserAttributeTracking] = findProviders()
+
+        var description = ""
+        attributes.forEach {
+            description += "Setting user attribute with key: \($0) value: \($1)\n"
+        }
+
+        write(toProviders: providers, description: description) { attributeSetter in
+            return attributeSetter.setUserAttributes(attributes)
         }
     }
 

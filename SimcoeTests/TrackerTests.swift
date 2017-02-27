@@ -106,6 +106,4 @@ class TrackerTests: XCTestCase {
             "Expected result = \(expectation); got \(outputSource.printCallCount)")
     }
 
-
-
 }

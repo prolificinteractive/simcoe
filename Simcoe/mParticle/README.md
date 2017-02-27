@@ -28,10 +28,11 @@ mParticle automatically implements the following protocols:
 - `CheckoutTracking`
 - `ErrorLogging`
 - `EventTracking`
-- `LifetimeValueIncreasing`
+- `LifetimeValueTracking`
 - `LocationTracking`
 - `PageViewTracking`
 - `PurchaseTracking`
+- `TimedEventTracking`
 - `UserAttributeTracking`
 - `ViewDetailLogging`
 
@@ -56,5 +57,4 @@ Any mParticle tracking function that does not properly receive an event dictiona
 
 ## Subclassing
 
-The `mParticle` class is able to be subclassed. If you are overriding any Simcoe methods, it is advised that you do _not_ call `super` on them
-as you may make analytics calls more than once.
+As Simcoe moves toward more composition over inheritance, the `mParticle` class is not subclassable.
