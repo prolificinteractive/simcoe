@@ -16,5 +16,11 @@ public protocol UserAttributeTracking: AnalyticsTracking {
     ///   - value: The attribute value to log.
     /// - Returns: A tracking result.
     func setUserAttribute(_ key: String, value: Any) -> TrackingResult
-    
+
+    /// Sets the User Attributes.
+    ///
+    /// - Parameter attributes: The attribute values to log.
+    /// - Returns: A tracking result.
+    func setUserAttributes(_ attributes: Properties) -> TrackingResult
+
 }

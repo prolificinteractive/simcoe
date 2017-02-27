@@ -18,5 +18,12 @@ internal final class UserAttributesFake: UserAttributeTracking {
         attributesCallCount += 1
         return .success
     }
+
+    func setUserAttributes(_ attributes: Properties) -> TrackingResult {
+        attributes.forEach { _ in
+            attributesCallCount += 1
+        }
+        return .success
+    }
     
 }
