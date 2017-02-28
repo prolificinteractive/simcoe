@@ -220,6 +220,13 @@
 			name = mParticle;
 			sourceTree = "<group>";
 		};
+		2DB15D6C1E64FAEC0042DE7E /* Mixpanel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Mixpanel;
+			sourceTree = "<group>";
+		};
 		6EC9CA1862EB4824462A8FA3 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -310,6 +317,7 @@
 		F93DF03C1C6E7E0D007B3928 /* Simcoe */ = {
 			isa = PBXGroup;
 			children = (
+				2DB15D6C1E64FAEC0042DE7E /* Mixpanel */,
 				F94E7CCC1C725D89007E7873 /* Adobe */,
 				276A93A41DE608EB00774D9E /* Analytics Tracking Protocols */,
 				F90E8BD01C7B9131009556F4 /* ConsoleOutput.swift */,
