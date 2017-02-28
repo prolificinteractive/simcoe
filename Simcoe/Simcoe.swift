@@ -372,9 +372,11 @@ public final class Simcoe {
 
     /// Sets the super properties.
     ///
-    /// - Parameter superProperties: The super properties.
-    func set(superProperties: Properties) {
-        let providers: [SuperPropertyTracking] = findProviders()
+    /// - Parameters:
+    ///   - superProperties: The super properties.
+    ///   - providers: The providers.
+    func set(superProperties: Properties, providers: [AnalyticsTracking] = Simcoe.engine.providers) {
+        let providers: [SuperPropertyTracking] = findProviders(providers)
 
         write(toProviders: providers, description: "Setting super properties: \(superProperties)") { superPropertyTracker in
             return superPropertyTracker.set(superProperties: superProperties)
@@ -390,9 +392,11 @@ public final class Simcoe {
 
     /// Unsets the super property.
     ///
-    /// - Parameter superProperty: The super property.
-    func unset(superProperty: String) {
-        let providers: [SuperPropertyTracking] = findProviders()
+    /// - Parameters:
+    ///   - superProperty: The super property.
+    ///   - providers: The providers.
+    func unset(superProperty: String, providers: [AnalyticsTracking] = Simcoe.engine.providers) {
+        let providers: [SuperPropertyTracking] = findProviders(providers)
 
         write(toProviders: providers, description: "Unsetting super property: \(superProperty)") { superPropertyTracker in
             return superPropertyTracker.unset(superProperty: superProperty)
@@ -407,8 +411,9 @@ public final class Simcoe {
 
     /// Clears all currently set super properties.
     ///
-    func clearSuperProperties() {
-        let providers: [SuperPropertyTracking] = findProviders()
+    /// - Parameter providers: The providers.
+    func clearSuperProperties(providers: [AnalyticsTracking] = Simcoe.engine.providers) {
+        let providers: [SuperPropertyTracking] = findProviders(providers)
 
         write(toProviders: providers, description: "Clearing all super properties.") { superPropertyTracker in
             return superPropertyTracker.clearSuperProperties()
@@ -481,6 +486,7 @@ public final class Simcoe {
     /// - Parameters:
     ///   - key: The attribute key to log.
     ///   - value: The attribute value to log.
+    ///   - providers: The providers.
     func setUserAttribute(_ key: String, value: Any, providers: [AnalyticsTracking] = Simcoe.engine.providers) {
         let providers: [UserAttributeTracking] = findProviders(providers)
         
@@ -498,7 +504,9 @@ public final class Simcoe {
 
     /// Sets the User Attributes.
     ///
-    /// - Parameter attributes: The attribute values to log.
+    /// - Parameters:
+    ///   - attributes: The attribute values to log.
+    ///   - providers: The providers.
     func setUserAttributes(_ attributes: Properties, providers: [AnalyticsTracking] = Simcoe.engine.providers) {
         let providers: [UserAttributeTracking] = findProviders(providers)
 
