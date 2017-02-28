@@ -8,7 +8,7 @@ install! 'cocoapods', :deterministic_uuids => false
 workspace 'Simcoe'
 
 target 'Simcoe' do
-    pod 'Simcoe', :path => './', :subspecs => ['Adobe', 'mParticle']
+    pod 'Simcoe', :path => './', :subspecs => ['Adobe', 'mParticle', 'Mixpanel']
 
     target 'SimcoeTests' do
         podspec :path => 'Simcoe.podspec'
@@ -18,7 +18,7 @@ end
 
 target 'mParticleExample' do
     project 'mParticleExample/mParticleExample'
-    pod 'Simcoe', :path => './', :subspecs => ['Adobe', 'mParticle']
+    pod 'Simcoe', :path => './', :subspecs => ['Adobe', 'mParticle', 'Mixpanel']
     podspec :path => 'Simcoe.podspec'
 
 end
