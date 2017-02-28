@@ -133,6 +133,7 @@
 		2DB15D641E64F1760042DE7E /* SuperPropertyTracking.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SuperPropertyTracking.swift; sourceTree = "<group>"; };
 		2DB15D661E64F47F0042DE7E /* SuperPropertyTrackingFake.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SuperPropertyTrackingFake.swift; sourceTree = "<group>"; };
 		2DB15D6D1E65B9F20042DE7E /* Mixpanel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Mixpanel.swift; sourceTree = "<group>"; };
+		2DB6080F1E65CB9B00A997FB /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		6FA69F4C737E782FBEFB8F74 /* Pods_Simcoe_SimcoeTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Simcoe_SimcoeTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		72897FDD1C79E25800393482 /* SimcoeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SimcoeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		72897FDF1C79E25800393482 /* SimcoeLoggingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimcoeLoggingTests.swift; sourceTree = "<group>"; };
@@ -226,6 +227,7 @@
 			isa = PBXGroup;
 			children = (
 				2DB15D6D1E65B9F20042DE7E /* Mixpanel.swift */,
+				2DB6080F1E65CB9B00A997FB /* README.md */,
 			);
 			path = Mixpanel;
 			sourceTree = "<group>";
