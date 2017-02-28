@@ -6,7 +6,7 @@
 //  Copyright © 2017 Prolific Interactive. All rights reserved.
 //
 
-/// Defines methods for tracking lifetime values
+/// Defines methods for tracking lifetime values.
 public protocol LifetimeValueTracking: AnalyticsTracking {
 
     /// Tracks the lifetime value.

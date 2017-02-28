@@ -382,6 +382,48 @@ public final class Simcoe {
         }
     }
 
+    // MARK: - SuperPropertyTracking
+
+    /// Sets the super properties.
+    ///
+    /// - Parameter properties: The super properties.
+    public static func set(superProperties properties: Properties) {
+        engine.set(superProperties: properties)
+    }
+
+    /// Sets the super properties.
+    ///
+    /// - Parameter properties: The super properties.
+    func set(superProperties properties: Properties) {
+        let providers: [SuperPropertyTracking] = findProviders()
+
+        write(toProviders: providers, description: "Tracking super properties: \(properties)") { superPropertyTracker in
+            return superPropertyTracker.set(superProperties: properties)
+        }
+    }
+
+    /// Increments the super property.
+    ///
+    /// - Parameters:
+    ///   - property: The super property.
+    ///   - value: The amount to increment the super property by.
+    public static func increment(superProperty property: String, value: Double) {
+        engine.increment(superProperty: property, value: value)
+    }
+
+    /// Increments the super property.
+    ///
+    /// - Parameters:
+    ///   - property: The super property.
+    ///   - value: The amount to increment the super property by.
+    func increment(superProperty property: String, value: Double) {
+        let providers: [SuperPropertyTracking] = findProviders()
+
+        write(toProviders: providers, description: "Incremented super property: \(property) by \(value)") { superPropertyTracker in
+            return superPropertyTracker.increment(superProperty: property, value: value)
+        }
+    }
+
     // MARK: - TimedEventTracking
 
     /// Starts the timed event.

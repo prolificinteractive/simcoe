@@ -106,6 +106,7 @@ While simply implementing this protocol is all you need for your object to be a 
 * `LocationTracking`
 * `PageViewTracking`
 * `PurchaseTracking`
+* `SuperPropertyTracking`
 * `TimedEventTracking`
 * `UserAttributeTracking`
 * `ViewDetailLogging`
