@@ -178,6 +178,32 @@ internal final class SimcoeLoggingTests: XCTestCase {
                        "Expected result = Called \(expectation) times; got \(purchaseTracker.purchaseEventCount)")
     }
 
+    // MARK: - SuperPropertyTracking
+
+    func test_that_it_logs_super_properties_to_providers() {
+        let superPropertyTracker = SuperPropertyTrackingFake()
+        simcoe.providers = [superPropertyTracker]
+        let expectation = 1
+
+        let eventProperties: Properties = EventPropertiesFake.eventProperties
+
+        simcoe.set(superProperties: eventProperties)
+
+        XCTAssertEqual(superPropertyTracker.superPropertyEventCount, expectation,
+                       "Expected result = Called \(expectation) times; got \(superPropertyTracker.superPropertyEventCount)")
+    }
+
+    func test_that_it_logs_property_increment_to_providers() {
+        let superPropertyTracker = SuperPropertyTrackingFake()
+        simcoe.providers = [superPropertyTracker]
+        let expectation = 1
+
+        simcoe.increment(superProperty: "test", value: 1)
+
+        XCTAssertEqual(superPropertyTracker.superPropertyEventCount, expectation,
+                       "Expected result = Called \(expectation) times; got \(superPropertyTracker.superPropertyEventCount)")
+    }
+
     // MARK: - TimedEventTracking
 
     func test_that_it_logs_start_timed_event_to_providers() {
