@@ -24,13 +24,12 @@ internal final class SimcoeLoggingTests: XCTestCase {
 
     func test_that_it_logs_add_to_cart_to_providers() {
         let cartLogger = CartLoggingFake()
-        simcoe.providers = [cartLogger]
         let expectation = 1
 
         let product = ProductFake()
         let eventProperties: Properties? = EventPropertiesFake.eventProperties
 
-        simcoe.logAddToCart(product, eventProperties: eventProperties)
+        simcoe.logAddToCart(product, eventProperties: eventProperties, providers: [cartLogger])
 
         XCTAssertEqual(cartLogger.cartAdditionCount, expectation,
                        "Expected result = Called \(expectation) times; got \(cartLogger.cartAdditionCount)")
@@ -38,13 +37,12 @@ internal final class SimcoeLoggingTests: XCTestCase {
 
     func test_that_it_logs_remove_from_cart_to_providers() {
         let cartLogger = CartLoggingFake()
-        simcoe.providers = [cartLogger]
         let expectation = 1
 
         let product = ProductFake()
         let eventProperties: Properties? = EventPropertiesFake.eventProperties
 
-        simcoe.logRemoveFromCart(product, eventProperties: eventProperties)
+        simcoe.logRemoveFromCart(product, eventProperties: eventProperties, providers: [cartLogger])
 
         XCTAssertEqual(cartLogger.cartRemovalCount, expectation,
                        "Expected result = Called \(expectation) times; got \(cartLogger.cartRemovalCount)")
@@ -54,13 +52,12 @@ internal final class SimcoeLoggingTests: XCTestCase {
 
     func test_that_it_tracks_checkout_event_to_providers() {
         let checkoutTracker = CheckoutTrackingFake()
-        simcoe.providers = [checkoutTracker]
         let expectation = 1
 
         let product = ProductFake()
         let eventProperties: Properties? = EventPropertiesFake.eventProperties
 
-        simcoe.trackCheckoutEvent([product], eventProperties: eventProperties)
+        simcoe.trackCheckoutEvent([product], eventProperties: eventProperties, providers: [checkoutTracker])
 
         XCTAssertEqual(checkoutTracker.checkoutEventCount, expectation,
                        "Expected result = Called \(expectation) times; got \(checkoutTracker.checkoutEventCount)")
@@ -70,10 +67,9 @@ internal final class SimcoeLoggingTests: XCTestCase {
 
     func test_that_it_logs_errors_to_providers() {
         let errorLogger = ErrorLoggingFake()
-        simcoe.providers = [errorLogger]
         let expectation = 1
 
-        simcoe.log(error: "test", withAdditionalProperties: nil)
+        simcoe.log(error: "test", withAdditionalProperties: nil, providers: [errorLogger])
 
         XCTAssertEqual(errorLogger.errorLoggingCallCount, expectation,
                        "Expected result = Called \(expectation) times; got \(errorLogger.errorLoggingCallCount)")
@@ -83,10 +79,9 @@ internal final class SimcoeLoggingTests: XCTestCase {
 
     func test_that_it_logs_events_to_providers() {
         let eventTracker = EventTrackingFake()
-        simcoe.providers = [eventTracker]
         let expectation = 1
 
-        simcoe.track(event: "test", withAdditionalProperties: nil)
+        simcoe.track(event: "test", withAdditionalProperties: nil, providers: [eventTracker])
 
         XCTAssertEqual(eventTracker.trackEventCallCount, expectation,
                        "Expected result = Called \(expectation) times; got \(eventTracker.trackEventCallCount)")
@@ -96,7 +91,6 @@ internal final class SimcoeLoggingTests: XCTestCase {
 
     func test_that_it_logs_lifetime_value_to_providers() {
         let lifetimeValueTracker = LifetimeValueTrackingFake()
-        simcoe.providers = [lifetimeValueTracker]
         let expectation = 1
 
         simcoe.trackLifetimeValue("test", value: 1, withAdditionalProperties: nil)
@@ -107,7 +101,6 @@ internal final class SimcoeLoggingTests: XCTestCase {
 
     func test_that_it_logs_multiple_lifetime_values_to_providers() {
         let lifetimeValueTracker = LifetimeValueTrackingFake()
-        simcoe.providers = [lifetimeValueTracker]
         let expectation = 3
 
         let attributes = [
@@ -126,11 +119,10 @@ internal final class SimcoeLoggingTests: XCTestCase {
 
     func test_that_it_logs_location_to_providers() {
         let locationTracker = LocationTrackingFake()
-        simcoe.providers = [locationTracker]
         let expectation = 1
         let location = CLLocation(latitude: 0, longitude: 0)
 
-        simcoe.track(location: location, withAdditionalProperties: nil)
+        simcoe.track(location: location, withAdditionalProperties: nil, providers: [locationTracker])
 
         XCTAssertEqual(expectation, locationTracker.trackLocationCallCount,
                        "Expected result = Called \(expectation) times; got \(locationTracker.trackLocationCallCount)")
@@ -140,10 +132,9 @@ internal final class SimcoeLoggingTests: XCTestCase {
 
     func test_that_it_logs_page_views_to_providers() {
         let pageViewTracker = PageViewTrackingFake()
-        simcoe.providers = [pageViewTracker]
         let expectation = 1
 
-        simcoe.track(pageView: "page view test", withAdditionalProperties: nil)
+        simcoe.track(pageView: "page view test", withAdditionalProperties: nil, providers: [pageViewTracker])
 
         XCTAssertEqual(pageViewTracker.pageViewTrackCount, expectation,
                        "Expected result = Called \(expectation) times; got \(pageViewTracker.pageViewTrackCount)")
@@ -153,13 +144,12 @@ internal final class SimcoeLoggingTests: XCTestCase {
 
     func test_that_it_logs_purchase_events_to_providers() {
         let purchaseTracker = PurchaseTrackingFake()
-        simcoe.providers = [purchaseTracker]
         let expectation = 1
 
         let product = ProductFake()
         let eventProperties: Properties? = EventPropertiesFake.eventProperties
 
-        simcoe.trackPurchaseEvent([product], eventProperties: eventProperties)
+        simcoe.trackPurchaseEvent([product], eventProperties: eventProperties, providers: [purchaseTracker])
 
         XCTAssertEqual(purchaseTracker.purchaseEventCount, expectation,
                        "Expected result = Called \(expectation) times; got \(purchaseTracker.purchaseEventCount)")
@@ -169,12 +159,11 @@ internal final class SimcoeLoggingTests: XCTestCase {
 
     func test_that_it_logs_setting_properties_to_providers() {
         let superPropertyTracker = SuperPropertyTrackingFake()
-        simcoe.providers = [superPropertyTracker]
         let expectation = 1
 
         let eventProperties: Properties = EventPropertiesFake.eventProperties
 
-        simcoe.set(superProperties: eventProperties)
+        simcoe.set(superProperties: eventProperties, providers: [superPropertyTracker])
 
         XCTAssertEqual(superPropertyTracker.superPropertyEventCount, expectation,
                        "Expected result = Called \(expectation) times; got \(superPropertyTracker.superPropertyEventCount)")
@@ -182,10 +171,9 @@ internal final class SimcoeLoggingTests: XCTestCase {
 
     func test_that_it_logs_unsetting_properties_to_providers() {
         let superPropertyTracker = SuperPropertyTrackingFake()
-        simcoe.providers = [superPropertyTracker]
         let expectation = 1
 
-        simcoe.unset(superProperty: "")
+        simcoe.unset(superProperty: "", providers: [superPropertyTracker])
 
         XCTAssertEqual(superPropertyTracker.superPropertyEventCount, expectation,
                        "Expected result = Called \(expectation) times; got \(superPropertyTracker.superPropertyEventCount)")
@@ -206,10 +194,9 @@ internal final class SimcoeLoggingTests: XCTestCase {
 
     func test_that_it_logs_start_timed_event_to_providers() {
         let timedEventTracker = TimedEventTrackingFake()
-        simcoe.providers = [timedEventTracker]
         let expectation = 1
 
-        simcoe.start(timedEvent: "test", withAdditionalProperties: nil)
+        simcoe.start(timedEvent: "test", withAdditionalProperties: nil, providers: [timedEventTracker])
 
         XCTAssertEqual(timedEventTracker.trackTimedEventCallCount, expectation,
                        "Expected result = Called \(expectation) times; got \(timedEventTracker.trackTimedEventCallCount)")
@@ -217,10 +204,9 @@ internal final class SimcoeLoggingTests: XCTestCase {
 
     func test_that_it_logs_stop_timed_event_to_providers() {
         let timedEventTracker = TimedEventTrackingFake()
-        simcoe.providers = [timedEventTracker]
         let expectation = 1
 
-        simcoe.end(timedEvent: "test", withAdditionalProperties: nil)
+        simcoe.end(timedEvent: "test", withAdditionalProperties: nil, providers: [timedEventTracker])
 
         XCTAssertEqual(timedEventTracker.trackTimedEventCallCount, expectation,
                        "Expected result = Called \(expectation) times; got \(timedEventTracker.trackTimedEventCallCount)")
@@ -230,10 +216,9 @@ internal final class SimcoeLoggingTests: XCTestCase {
 
     func test_that_it_logs_user_attributes_to_providers() {
         let attributesSetter = UserAttributesFake()
-        simcoe.providers = [attributesSetter]
         let expectation = 1
 
-        simcoe.setUserAttribute("foo", value: "bar" as String)
+        simcoe.setUserAttribute("foo", value: "bar" as String, providers: [attributesSetter])
 
         XCTAssertEqual(attributesSetter.attributesCallCount, expectation,
                        "Expected result = Called \(expectation) times; got \(attributesSetter.attributesCallCount)")
@@ -241,7 +226,6 @@ internal final class SimcoeLoggingTests: XCTestCase {
 
     func test_that_it_logs_multiple_user_attributes_to_providers() {
         let attributesSetter = UserAttributesFake()
-        simcoe.providers = [attributesSetter]
         let expectation = 3
 
         let attributes = [
@@ -250,7 +234,7 @@ internal final class SimcoeLoggingTests: XCTestCase {
             "yes": "no"
         ]
 
-        simcoe.setUserAttributes(attributes)
+        simcoe.setUserAttributes(attributes, providers: [attributesSetter])
 
         XCTAssertEqual(attributesSetter.attributesCallCount, expectation,
                        "Expected result = Called \(expectation) times; got \(attributesSetter.attributesCallCount)")
@@ -260,13 +244,12 @@ internal final class SimcoeLoggingTests: XCTestCase {
 
     func test_that_it_logs_view_detail_event_to_providers() {
         let viewDetailLogger = ViewDetailLoggingFake()
-        simcoe.providers = [viewDetailLogger]
         let expectation = 1
 
         let product = ProductFake()
         let eventProperties: Properties? = EventPropertiesFake.eventProperties
 
-        simcoe.logViewDetail(product, eventProperties: eventProperties)
+        simcoe.logViewDetail(product, eventProperties: eventProperties, providers: [viewDetailLogger])
 
         XCTAssertEqual(viewDetailLogger.viewDetailEventCount, expectation,
                        "Expected result = Called \(expectation) times; got \(viewDetailLogger.viewDetailEventCount)")
