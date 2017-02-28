@@ -397,7 +397,7 @@ public final class Simcoe {
     func set(superProperties properties: Properties) {
         let providers: [SuperPropertyTracking] = findProviders()
 
-        write(toProviders: providers, description: "Tracking super properties: \(properties)") { superPropertyTracker in
+        write(toProviders: providers, description: "Setting super properties: \(properties)") { superPropertyTracker in
             return superPropertyTracker.set(superProperties: properties)
         }
     }
@@ -513,6 +513,66 @@ public final class Simcoe {
             write(toProviders: providers, description: "Setting user attribute with key: \(key) value: \(value)") { attributeSetter in
                 return attributeSetter.setUserAttribute(key, value: value)
             }
+        }
+    }
+
+    // MARK: - UserPropertyTracking
+
+    /// Sets the user properties.
+    ///
+    /// - Parameter properties: The user properties.
+    public static func set(userProperties properties: Properties) {
+        engine.set(userProperties: properties)
+    }
+
+    /// Sets the user properties.
+    ///
+    /// - Parameter properties: The user properties.
+    func set(userProperties properties: Properties) {
+        let providers: [UserPropertyTracking] = findProviders()
+
+        write(toProviders: providers, description: "Setting user properties: \(properties)") { userPropertyTracker in
+            return userPropertyTracker.set(userProperties: properties)
+        }
+    }
+
+    /// Sets the user alias.
+    ///
+    /// - Parameter userId: The user alias.
+    public static func set(userAlias userId: String) {
+        engine.set(userAlias: userId)
+    }
+
+    /// Sets the user alias.
+    ///
+    /// - Parameter userId: The user alias.
+    func set(userAlias userId: String) {
+        let providers: [UserPropertyTracking] = findProviders()
+
+        write(toProviders: providers, description: "Setting user alias: \(userId)") { userPropertyTracker in
+            return userPropertyTracker.set(userAlias: userId)
+        }
+    }
+
+    /// Increments the user property.
+    ///
+    /// - Parameters:
+    ///   - property: The user property.
+    ///   - value: The amonut to increment the user property by.
+    public static func increment(userProperty property: String, value: Double) {
+        engine.increment(userProperty: property, value: value)
+    }
+
+    /// Increments the user property.
+    ///
+    /// - Parameters:
+    ///   - property: The user property.
+    ///   - value: The amonut to increment the user property by.
+    func increment(userProperty property: String, value: Double) {
+        let providers: [UserPropertyTracking] = findProviders()
+
+        write(toProviders: providers, description: "Incremented user property: \(property) by \(value)") { userPropertyTracker in
+            return userPropertyTracker.increment(userProperty: property, value: value)
         }
     }
 

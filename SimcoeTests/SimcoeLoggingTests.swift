@@ -193,7 +193,7 @@ internal final class SimcoeLoggingTests: XCTestCase {
                        "Expected result = Called \(expectation) times; got \(superPropertyTracker.superPropertyEventCount)")
     }
 
-    func test_that_it_logs_property_increment_to_providers() {
+    func test_that_it_logs_super_property_increment_to_providers() {
         let superPropertyTracker = SuperPropertyTrackingFake()
         simcoe.providers = [superPropertyTracker]
         let expectation = 1
@@ -256,6 +256,43 @@ internal final class SimcoeLoggingTests: XCTestCase {
 
         XCTAssertEqual(attributesSetter.attributesCallCount, expectation,
                        "Expected result = Called \(expectation) times; got \(attributesSetter.attributesCallCount)")
+    }
+
+    // MARK: - UserPropertyTracking
+
+    func test_that_it_logs_user_properties_to_providers() {
+        let userPropertyTracker = UserPropertyTrackingFake()
+        simcoe.providers = [userPropertyTracker]
+        let expectation = 1
+
+        let properties = ["foo": "bar"]
+
+        simcoe.set(userProperties: properties)
+
+        XCTAssertEqual(userPropertyTracker.userPropertyCallCount, expectation,
+                       "Expected result = Called \(expectation) times; got \(userPropertyTracker.userPropertyCallCount)")
+    }
+
+    func test_that_it_logs_user_alias_to_providers() {
+        let userPropertyTracker = UserPropertyTrackingFake()
+        simcoe.providers = [userPropertyTracker]
+        let expectation = 1
+
+        simcoe.set(userAlias: "test")
+
+        XCTAssertEqual(userPropertyTracker.userPropertyCallCount, expectation,
+                       "Expected result = Called \(expectation) times; got \(userPropertyTracker.userPropertyCallCount)")
+    }
+
+    func test_that_it_logs_user_property_increment_to_providers() {
+        let userPropertyTracker = UserPropertyTrackingFake()
+        simcoe.providers = [userPropertyTracker]
+        let expectation = 1
+
+        simcoe.increment(userProperty: "test", value: 1)
+
+        XCTAssertEqual(userPropertyTracker.userPropertyCallCount, expectation,
+                       "Expected result = Called \(expectation) times; got \(userPropertyTracker.userPropertyCallCount)")
     }
 
     // MARK: - ViewDetailLogging
