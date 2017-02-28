@@ -66,6 +66,8 @@
 		2DB15D631E64E60D0042DE7E /* ViewDetailLoggingFake.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DB15D621E64E60D0042DE7E /* ViewDetailLoggingFake.swift */; };
 		2DB15D651E64F1760042DE7E /* SuperPropertyTracking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DB15D641E64F1760042DE7E /* SuperPropertyTracking.swift */; };
 		2DB15D671E64F47F0042DE7E /* SuperPropertyTrackingFake.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DB15D661E64F47F0042DE7E /* SuperPropertyTrackingFake.swift */; };
+		2DB15D691E64F6010042DE7E /* UserPropertyTracking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DB15D681E64F6010042DE7E /* UserPropertyTracking.swift */; };
+		2DB15D6B1E64F8470042DE7E /* UserPropertyTrackingFake.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DB15D6A1E64F8470042DE7E /* UserPropertyTrackingFake.swift */; };
 		59A60EFA736D92D64FAFFB74 /* Pods_Simcoe.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A4BAED5FDA700FDC89B8644 /* Pods_Simcoe.framework */; };
 		72897FE01C79E25800393482 /* SimcoeLoggingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72897FDF1C79E25800393482 /* SimcoeLoggingTests.swift */; };
 		72897FE21C79E25800393482 /* Simcoe.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F902ED121C68FA07007975F5 /* Simcoe.framework */; };
@@ -133,6 +135,8 @@
 		2DB15D621E64E60D0042DE7E /* ViewDetailLoggingFake.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewDetailLoggingFake.swift; sourceTree = "<group>"; };
 		2DB15D641E64F1760042DE7E /* SuperPropertyTracking.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SuperPropertyTracking.swift; sourceTree = "<group>"; };
 		2DB15D661E64F47F0042DE7E /* SuperPropertyTrackingFake.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SuperPropertyTrackingFake.swift; sourceTree = "<group>"; };
+		2DB15D681E64F6010042DE7E /* UserPropertyTracking.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserPropertyTracking.swift; sourceTree = "<group>"; };
+		2DB15D6A1E64F8470042DE7E /* UserPropertyTrackingFake.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserPropertyTrackingFake.swift; sourceTree = "<group>"; };
 		6FA69F4C737E782FBEFB8F74 /* Pods_Simcoe_SimcoeTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Simcoe_SimcoeTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		72897FDD1C79E25800393482 /* SimcoeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SimcoeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		72897FDF1C79E25800393482 /* SimcoeLoggingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimcoeLoggingTests.swift; sourceTree = "<group>"; };
@@ -197,7 +201,6 @@
 			isa = PBXGroup;
 			children = (
 				276A94721DE6590C00774D9E /* AnalyticsTracking.swift */,
-				2DB15D641E64F1760042DE7E /* SuperPropertyTracking.swift */,
 				276A94731DE6590C00774D9E /* CartLogging.swift */,
 				276A94741DE6590C00774D9E /* CheckoutTracking.swift */,
 				276A94751DE6590C00774D9E /* ErrorLogging.swift */,
@@ -207,9 +210,11 @@
 				276A94781DE6590C00774D9E /* LocationTracking.swift */,
 				276A94791DE6590C00774D9E /* PageViewTracking.swift */,
 				276A947A1DE6590C00774D9E /* PurchaseTracking.swift */,
-				276A947B1DE6590C00774D9E /* UserAttributeTracking.swift */,
-				276A947C1DE6590C00774D9E /* ViewDetailLogging.swift */,
+				2DB15D641E64F1760042DE7E /* SuperPropertyTracking.swift */,
 				2D5888D11E64B3A20035C73D /* TimedEventTracking.swift */,
+				276A947B1DE6590C00774D9E /* UserAttributeTracking.swift */,
+				2DB15D681E64F6010042DE7E /* UserPropertyTracking.swift */,
+				276A947C1DE6590C00774D9E /* ViewDetailLogging.swift */,
 			);
 			path = "Analytics Tracking Protocols";
 			sourceTree = "<group>";
@@ -264,6 +269,7 @@
 				2DB15D661E64F47F0042DE7E /* SuperPropertyTrackingFake.swift */,
 				2DB15D5E1E64E3D30042DE7E /* TimedEventTrackingFake.swift */,
 				276A94AF1DE659A700774D9E /* UserAttributesFake.swift */,
+				2DB15D6A1E64F8470042DE7E /* UserPropertyTrackingFake.swift */,
 				2DB15D621E64E60D0042DE7E /* ViewDetailLoggingFake.swift */,
 			);
 			path = Mocks;
@@ -551,6 +557,7 @@
 				2DB15D671E64F47F0042DE7E /* SuperPropertyTrackingFake.swift in Sources */,
 				2DB15D5F1E64E3D30042DE7E /* TimedEventTrackingFake.swift in Sources */,
 				2DB15D5D1E64DB380042DE7E /* LifetimeValueTrackingFake.swift in Sources */,
+				2DB15D6B1E64F8470042DE7E /* UserPropertyTrackingFake.swift in Sources */,
 				2DB15D631E64E60D0042DE7E /* ViewDetailLoggingFake.swift in Sources */,
 				276A94BA1DE659A700774D9E /* ProductFake.swift in Sources */,
 				276A94B01DE659A700774D9E /* CartLoggingFake.swift in Sources */,
@@ -601,6 +608,7 @@
 				276A94991DE6597700774D9E /* MPEventKeys.swift in Sources */,
 				276A93D71DE60AA800774D9E /* Simcoe.swift in Sources */,
 				276A94981DE6597700774D9E /* MPEventGenerationError.swift in Sources */,
+				2DB15D691E64F6010042DE7E /* UserPropertyTracking.swift in Sources */,
 				276A94951DE6597700774D9E /* MPCommerceEvent+Simcoe.swift in Sources */,
 				276A93D81DE60AA800774D9E /* Tracker.swift in Sources */,
 				276A949C1DE6597700774D9E /* MPTransactionAttributes+Simcoe.swift in Sources */,
