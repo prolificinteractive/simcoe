@@ -57,7 +57,7 @@ extension Adobe: LifetimeValueIncreasing {
     public func increaseLifetimeValue(byAmount amount: Double, forItem item: String?, withAdditionalProperties properties: Properties?) -> TrackingResult {
         var data = properties ?? Properties()
         if let item = item {
-            data[item] = "" as String
+            data[item] = ""
         }
 
         ADBMobile.trackLifetimeValueIncrease(1, data: data)

@@ -151,7 +151,7 @@ extension mParticle: EventTracking {
             return .error(message: "Cannot track an event without valid properties.")
         }
 
-        properties[MPEventKeys.name.rawValue] = event as String
+        properties[MPEventKeys.name.rawValue] = event
 
         let event: MPEvent
         do {

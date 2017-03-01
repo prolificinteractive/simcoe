@@ -14,8 +14,8 @@ class MPEventTests: XCTestCase {
 
     func test_that_MPEvent_created_with_name_and_type() {
         var properties = Properties()
-        properties[MPEventKeys.name.rawValue] = "Event" as String
-        properties[MPEventKeys.eventType.rawValue] = MPEventType.other.rawValue as UInt
+        properties[MPEventKeys.name.rawValue] = "Event"
+        properties[MPEventKeys.eventType.rawValue] = MPEventType.other.rawValue
 
         let event: MPEvent?
         let eventError: Error?
@@ -36,7 +36,7 @@ class MPEventTests: XCTestCase {
 
     func test_that_name_error_thrown_when_missing() {
         var properties = Properties()
-        properties[MPEventKeys.eventType.rawValue] = MPEventType.other.rawValue as UInt
+        properties[MPEventKeys.eventType.rawValue] = MPEventType.other.rawValue
 
         let expected = MPEventGenerationError.nameMissing
         let event: MPEvent?
@@ -58,7 +58,7 @@ class MPEventTests: XCTestCase {
 
     func test_that_type_error_thrown_when_missing() {
         var properties = Properties()
-        properties[MPEventKeys.name.rawValue] = "Test" as String
+        properties[MPEventKeys.name.rawValue] = "Test"
 
         let expected = MPEventGenerationError.typeMissing
         let event: MPEvent?

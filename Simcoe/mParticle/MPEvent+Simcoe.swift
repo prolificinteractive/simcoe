@@ -36,23 +36,23 @@ extension MPEvent {
                                info: Properties? = nil) -> Properties {
         var properties = Properties()
 
-        properties[MPEventKeys.eventType.rawValue] = type.rawValue as UInt
-        properties[MPEventKeys.name.rawValue] = name as String
+        properties[MPEventKeys.eventType.rawValue] = type.rawValue
+        properties[MPEventKeys.name.rawValue] = name
 
         if let category = category {
-            properties[MPEventKeys.category.rawValue] = category as String
+            properties[MPEventKeys.category.rawValue] = category
         }
 
         if let duration = duration {
-            properties[MPEventKeys.duration.rawValue] = duration as Float
+            properties[MPEventKeys.duration.rawValue] = duration
         }
 
         if let startTime = startTime {
-            properties[MPEventKeys.startTime.rawValue] = startTime as Date
+            properties[MPEventKeys.startTime.rawValue] = startTime
         }
 
         if let endTime = endTime {
-            properties[MPEventKeys.endTime.rawValue] = endTime as Date
+            properties[MPEventKeys.endTime.rawValue] = endTime
         }
 
         if let customFlags = customFlags {
