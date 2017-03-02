@@ -56,7 +56,7 @@ extension MPEvent {
         }
 
         if let customFlags = customFlags {
-            properties[MPEventKeys.customFlags.rawValue] = customFlags as [String: [String]]
+            properties[MPEventKeys.customFlags.rawValue] = customFlags
         }
 
         if let info = info {

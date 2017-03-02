@@ -60,7 +60,7 @@ extension Adobe: LifetimeValueIncreasing {
             data[item] = ""
         }
 
-        ADBMobile.trackLifetimeValueIncrease(1, data: data)
+        ADBMobile.trackLifetimeValueIncrease(NSDecimalNumber(value: amount), data: data)
         return .success
     }
 
