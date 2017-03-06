@@ -6,9 +6,7 @@
 //  Copyright © 2016 Prolific Interactive. All rights reserved.
 //
 
-/**
- A Simcoe Event.
- */
+/// A Simcoe Event.
 internal struct Event {
 
     /// The write actions that occurred in this event.

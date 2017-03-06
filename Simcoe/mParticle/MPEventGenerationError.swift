@@ -8,9 +8,9 @@
 
 /// The MPEvent generation error types.
 ///
-/// - NameMissing:     The name missing error.
-/// - TypeMissing:     The type missing error.
-/// - EventInitFailed: The event init failed error.
+/// - nameMissing: The name missing error.
+/// - typeMissing: The type missing error.
+/// - eventInitFailed: The event init failed error.
 internal enum MPEventGenerationError: Error {
 
     case nameMissing

@@ -6,18 +6,15 @@
 //  Copyright © 2016 Prolific Interactive. All rights reserved.
 //
 
-/**
- Defines functionality for tracking page views.
- */
+/// Defines functionality for tracking page views.
 public protocol PageViewTracking: AnalyticsTracking {
 
-    /**
-     Tracks the page view.
-
-     - parameter pageView: The page view to track.
-
-     - returns: A tracking result.
-     */
+    /// Tracks the page view.
+    ///
+    /// - Parameters:
+    ///   - pageView: The page view to track.
+    ///   - properties: The optional additional properties.
+    /// - Returns: A tracking result.
     func track(pageView: String, withAdditionalProperties properties: Properties?) -> TrackingResult
 
 }

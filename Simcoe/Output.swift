@@ -6,9 +6,7 @@
 //  Copyright © 2016 Prolific Interactive. All rights reserved.
 //
 
-/**
- Defines an object as an output source.
- */
+/// Defines an object as an output source.
 internal protocol Output {
 
     /// Prints a message to the output source.

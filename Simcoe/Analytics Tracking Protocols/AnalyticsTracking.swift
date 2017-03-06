@@ -6,10 +6,8 @@
 //  Copyright © 2016 Prolific Interactive. All rights reserved.
 //
 
-/**
- Default protocol for an object being trackable for analytics. All analytics items that wish to
- be tracked must, at least, implement this protocol.
- */
+/// Default protocol for an object being trackable for analytics. All analytics items that wish to
+/// be tracked must, at least, implement this protocol.
 public protocol AnalyticsTracking {
 
     /// The name of the tracker. This is used for debugging purposes only, but should
@@ -18,26 +16,23 @@ public protocol AnalyticsTracking {
     /// return "Adobe Omniture".
     var name: String { get }
 
-    /**
-     Starts tracking analytics. This is called on all providers passed to `Simcoe.run`.
-     Your analytics tracker should start tracking lifecycle data or setup anything else
-     that needs to run for the duration of the analytics lifecycle.
 
-     This is an optional value and is implemented by default in an extension to do nothing.
-     */
+    /// Starts tracking analytics. This is called on all providers passed to `Simcoe.run`.
+    /// Your analytics tracker should start tracking lifecycle data or setup anything else
+    /// that needs to run for the duration of the analytics lifecycle.
+    ///
+    /// This is an optional value and is implemented by default in an extension to do nothing.
     func start()
 
 }
 
 public extension AnalyticsTracking {
 
-    /**
-     Starts tracking analytics. This is called on all providers passed to `Simcoe.run`.
-     Your analytics tracker should start tracking lifecycle data or setup anything else
-     that needs to run for the duration of the analytics lifecycle.
-
-     This is an optional value and is implemented by default in an extension to do nothing.
-     */
+    /// Starts tracking analytics. This is called on all providers passed to `Simcoe.run`.
+    /// Your analytics tracker should start tracking lifecycle data or setup anything else
+    /// that needs to run for the duration of the analytics lifecycle.
+    ///
+    /// This is an optional value and is implemented by default in an extension to do nothing.
     func start() {
 
     }

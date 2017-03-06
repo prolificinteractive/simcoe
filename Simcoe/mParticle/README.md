@@ -43,9 +43,9 @@ For `EventTracking` and `LocationTracking`, mParticle expects an `MPEvent` objec
 
 ```swift
 public func eventData(type type: MPEventType, name: String, category: String? = nil,
-    duration: Float? = nil, startTime: NSDate? = nil,
-    endTime: NSDate? = nil, customFlags: [String: [String]]? = nil,
-    info: [String: AnyObject]? = nil) -> [String: AnyObject]
+    duration: Float? = nil, startTime: Date? = nil,
+    endTime: Date? = nil, customFlags: [String: [String]]? = nil,
+    info: Properties? = nil) -> Properties
 ```
 
 The two mandatory items for every `MPEvent` object are `type` and `name`, both of which are non-optional parameters. All other items of `MPEvent` are optional

@@ -25,15 +25,15 @@ extension MPTransactionAttributes {
         }
 
         if let revenue = properties[MPTransactionAttributesKeys.revenue.rawValue] as? Double {
-            self.revenue = revenue as NSNumber
+            self.revenue = NSNumber(value: revenue)
         }
 
         if let shipping = properties[MPTransactionAttributesKeys.shipping.rawValue] as? Double {
-            self.shipping = shipping as NSNumber
+            self.shipping = NSNumber(value: shipping)
         }
 
         if let tax = properties[MPTransactionAttributesKeys.tax.rawValue] as? Double {
-            self.tax = tax as NSNumber
+            self.tax = NSNumber(value: tax)
         }
 
         if let transactionId = properties[MPTransactionAttributesKeys.transactionId.rawValue] as? String {

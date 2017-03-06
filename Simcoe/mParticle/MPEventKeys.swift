@@ -8,13 +8,13 @@
 
 /// The MPEvent keys.
 ///
-/// - EventType:    The event type.
-/// - Category:     The category.
-/// - Duration:     The duration.
-/// - StartTime:    The start time.
-/// - EndTime:      The end time.
-/// - Name:         The name.
-/// - CustomFlags:  The custom flags.
+/// - eventType: The event type.
+/// - category: The category.
+/// - duration: The duration.
+/// - startTime: The start time.
+/// - endTime: The end time.
+/// - name: The name.
+/// - customFlags: The custom flags.
 public enum MPEventKeys: String, EnumerationListable {
 
     case eventType = "SimcoeInternalMPEventType"
