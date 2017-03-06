@@ -14,9 +14,9 @@ internal final class ErrorLoggingFake: ErrorLogging {
     
     var errorLoggingCallCount = 0
     
-    func logError(error: String, withAdditionalProperties properties: Properties?) -> TrackingResult {
+    func log(error: String, withAdditionalProperties properties: Properties?) -> TrackingResult {
         errorLoggingCallCount += 1
-        return .Success
+        return .success
     }
     
 }

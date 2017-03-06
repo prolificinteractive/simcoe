@@ -6,17 +6,15 @@
 //  Copyright © 2016 Prolific Interactive. All rights reserved.
 //
 
-/**
- *  Defines functionality for logging view detail actions.
- */
+/// Defines functionality for logging view detail actions.
 public protocol ViewDetailLogging: AnalyticsTracking {
 
     /// Logs the action of viewing a product's details.
     ///
-    /// - parameter product: The SimcoeProductConvertible instance.
-    /// - parameter eventProperties: The event properties.
-    ///
-    /// - returns: A tracking result.
-    func logViewDetail<T: SimcoeProductConvertible>(product: T, eventProperties: Properties?) -> TrackingResult
+    /// - Parameters:
+    ///   - product: The SimcoeProductConvertible instance.
+    ///   - eventProperties: The event properties.
+    /// - Returns: A tracking result.
+    func logViewDetail<T: SimcoeProductConvertible>(_ product: T, eventProperties: Properties?) -> TrackingResult
 
 }

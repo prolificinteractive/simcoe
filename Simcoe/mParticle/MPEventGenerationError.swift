@@ -8,14 +8,14 @@
 
 /// The MPEvent generation error types.
 ///
-/// - NameMissing:     The name missing error.
-/// - TypeMissing:     The type missing error.
-/// - EventInitFailed: The event init failed error.
-internal enum MPEventGenerationError: ErrorType {
+/// - nameMissing: The name missing error.
+/// - typeMissing: The type missing error.
+/// - eventInitFailed: The event init failed error.
+internal enum MPEventGenerationError: Error {
 
-    case NameMissing
-    case TypeMissing
-    case EventInitFailed
+    case nameMissing
+    case typeMissing
+    case eventInitFailed
 
 }
 
@@ -24,11 +24,11 @@ extension MPEventGenerationError: CustomStringConvertible {
     /// The error description.
     var description: String {
         switch self {
-        case .NameMissing:
+        case .nameMissing:
             return "A name is required in order to generate this event."
-        case .TypeMissing:
+        case .typeMissing:
             return "A MPEventType is required in order to generate this event."
-        case .EventInitFailed:
+        case .eventInitFailed:
             return "Failed to initialize the MPEvent. Check that you have a valid event name and type and try again. Names must not be an empty string."
         }
     }

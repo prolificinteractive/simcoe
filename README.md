@@ -70,18 +70,18 @@ provider changes, simply update your `run()` call with the providers and that's 
 
 To facilitate debugging when using multiple providers, Simcoe contains a few options for updating the information logged in the console:
 
-* Verbose
-* Simple
-* None
+* verbose
+* simple
+* none
 
-By default, Simcoe will log all console outputs in detail (*Verbose*) providing one line per item for **each** provider that was specified. *Simple* will output one line per item regardless of how many providers were specified while *None* will disable all console logging. To update the *outputOption,* simply call (update this property after the `run()` command): 
+By default, Simcoe will log all console outputs in detail (*verbose*) providing one line per item for **each** provider that was specified. *simple* will output one line per item regardless of how many providers were specified while *none* will disable all console logging. To update the *outputOption,* simply call (update this property after the `run()` command): 
 
-`Simcoe.engine.tracker.outputOption = .Simple`
+`Simcoe.engine.tracker.outputOption = .simple`
 
 Simcoe providers a base function call for each major analytics action right out of the gate, giving a consistent API to all of your analytics tracking. For instance, to track page views:
 
 ``
-Simcoe.trackPageView("Home Screen")
+Simcoe.track(pageView: "Home Screen")
 ``
 
 That's it! Simcoe will automatically call all of your analytics providers and request that they log that page view. This same method is uniform and consistent, no matter what providers you are using.
@@ -109,19 +109,6 @@ While simply implementing this protocol is all you need for your object to be a 
 * `ViewDetailLogging`
 
 So for your analytics provider to be able to handle page views in the Simcoe framework, your provider should implement the `PageViewTracking` protocol. This plug-and-play API allows you to define what you want your provider to handle at a very granular level. If your provider only needs to implement location tracking and nothing else, then you need only implement the `LocationTracking` protocol (as well as the `AnalyticsTracking` protocol, of course); all other protocols are optional. This allows you full customization as to how your objects respond to Simcoe.
-
-Each provider type defined above maps directly to a Simcoe function that will call that method. These are, respectively:
-
-* `logAddToCart`, `logRemoveFromCart`
-* `trackCheckoutEvent`
-* `logError`
-* `trackEvent`
-* `increaseLifetimeValue`
-* `trackLocation`
-* `trackPageView`
-* `trackPurchaseEvent`
-* `setUserAttribute`
-* `logViewDetail`
 
 #### Additional Tracking
 

@@ -9,12 +9,10 @@
 /// The default console output.
 internal final class ConsoleOutput: Output {
 
-    /**
-     Prints a message to the standard output.
-
-     - parameter message: The message to print.
-     */
-    func print(message: String) {
+    /// Prints a message to the standard output.
+    ///
+    /// - Parameter message: The message to print.
+    func print(_ message: String) {
         Swift.print(message)
     }
 

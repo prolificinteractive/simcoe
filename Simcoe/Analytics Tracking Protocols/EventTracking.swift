@@ -6,9 +6,7 @@
 //  Copyright © 2016 Prolific Interactive. All rights reserved.
 //
 
-/**
- Defines methods for tracking analytics events.
- */
+/// Defines methods for tracking analytics events.
 public protocol EventTracking: AnalyticsTracking {
 
     /// Tracks the given event with optional additional properties.
@@ -17,6 +15,6 @@ public protocol EventTracking: AnalyticsTracking {
     ///   - event: The event to track.
     ///   - properties: The optional additional properties.
     /// - Returns: A tracking result.
-    func trackEvent(event: String, withAdditionalProperties properties: Properties?) -> TrackingResult
+    func track(event: String, withAdditionalProperties properties: Properties?) -> TrackingResult
 
 }

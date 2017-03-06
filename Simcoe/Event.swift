@@ -6,9 +6,7 @@
 //  Copyright © 2016 Prolific Interactive. All rights reserved.
 //
 
-/**
- A Simcoe Event.
- */
+/// A Simcoe Event.
 internal struct Event {
 
     /// The write actions that occurred in this event.
@@ -18,6 +16,6 @@ internal struct Event {
     let description: String
 
     /// The event's timestamp. Defaults to the current date and time.
-    let timestamp = NSDate()
+    let timestamp = Date()
 
 }

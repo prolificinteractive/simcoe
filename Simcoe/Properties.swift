@@ -7,4 +7,4 @@
 //
 
 /// The properties.
-public typealias Properties = [String: AnyObject]
+public typealias Properties = [String: Any]

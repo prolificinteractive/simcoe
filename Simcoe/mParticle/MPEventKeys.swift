@@ -8,23 +8,23 @@
 
 /// The MPEvent keys.
 ///
-/// - EventType:    The event type.
-/// - Category:     The category.
-/// - Duration:     The duration.
-/// - StartTime:    The start time.
-/// - EndTime:      The end time.
-/// - Name:         The name.
-/// - CustomFlags:  The custom flags.
+/// - eventType: The event type.
+/// - category: The category.
+/// - duration: The duration.
+/// - startTime: The start time.
+/// - endTime: The end time.
+/// - name: The name.
+/// - customFlags: The custom flags.
 public enum MPEventKeys: String, EnumerationListable {
 
-    case EventType = "SimcoeInternalMPEventType"
-    case Category = "SimcoeInternalMPCategory"
-    case Duration = "SimcoeInternalMPDuration"
-    case StartTime = "SimcoeInternalMPStartTime"
-    case EndTime = "SimcoeInternalMPEndTime"
-    case Name = "SimcoeInternalName"
-    case CustomFlags = "SimcoeInternalCustomFlags"
+    case eventType = "SimcoeInternalMPEventType"
+    case category = "SimcoeInternalMPCategory"
+    case duration = "SimcoeInternalMPDuration"
+    case startTime = "SimcoeInternalMPStartTime"
+    case endTime = "SimcoeInternalMPEndTime"
+    case name = "SimcoeInternalName"
+    case customFlags = "SimcoeInternalCustomFlags"
 
-    static let allKeys: [MPEventKeys] = [.EventType, .Category, .Duration, .StartTime, .EndTime, .Name, .CustomFlags]
+    static let allKeys: [MPEventKeys] = [.eventType, .category, .duration, .startTime, .endTime, .name, .customFlags]
     
 }

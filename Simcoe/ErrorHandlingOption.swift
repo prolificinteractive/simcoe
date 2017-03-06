@@ -6,17 +6,15 @@
 //  Copyright © 2016 Prolific Interactive. All rights reserved.
 //
 
-/**
- The various options for handling errors.
-
- - Suppress: Suppresses errors; basically any error is ignored.
- - Default:  Default error handling; errors are logged to the output log.
- - Strict:   Strict error handling; any errors encountered will trigger a fatalError().
- */
+/// The various options for handling errors.
+///
+/// - suppress: Suppresses errors; basically any error is ignored.
+/// - `default`: Default error handling; errors are logged to the output log.
+/// - strict: Strict error handling; any errors encountered will trigger a fatalError().
 public enum ErrorHandlingOption {
 
-    case Suppress
-    case Default
-    case Strict
+    case suppress
+    case `default`
+    case strict
 
 }

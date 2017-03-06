@@ -24,7 +24,7 @@ class TrackerTests: XCTestCase {
         simcoe.providers = [tracker]
         let expectation = 1
 
-        simcoe.trackPageView("1234")
+        simcoe.track(pageView: "1234")
 
         XCTAssertEqual(expectation, simcoe.tracker.events.count,
             "Expected result = \(expectation); got \(simcoe.tracker.events.count)")
@@ -32,10 +32,10 @@ class TrackerTests: XCTestCase {
 
     func test_that_it_does_not_write_when_option_none() {
         simcoe.providers = [PageViewTrackingFake(), PageViewTrackingFake(), PageViewTrackingFake()]
-        simcoe.tracker.outputOption = .None
+        simcoe.tracker.outputOption = .none
         let expectation = 0
 
-        simcoe.trackPageView("1234")
+        simcoe.track(pageView: "1234")
 
         XCTAssertEqual(expectation, outputSource.printCallCount,
             "Expected result = \(expectation); got \(outputSource.printCallCount)")
@@ -43,10 +43,10 @@ class TrackerTests: XCTestCase {
 
     func test_that_it_writes_to_output_once_when_option_simple() {
         simcoe.providers = [PageViewTrackingFake(), PageViewTrackingFake(), PageViewTrackingFake()]
-        simcoe.tracker.outputOption = .Simple
+        simcoe.tracker.outputOption = .simple
         let expectation = 1
 
-        simcoe.trackPageView("1234")
+        simcoe.track(pageView: "1234")
 
         XCTAssertEqual(expectation, outputSource.printCallCount,
             "Expected result = \(expectation); got \(outputSource.printCallCount)")
@@ -54,10 +54,10 @@ class TrackerTests: XCTestCase {
 
     func test_that_it_writes_to_output_for_each_provider_when_option_verbose() {
         simcoe.providers = [PageViewTrackingFake(), PageViewTrackingFake(), PageViewTrackingFake()]
-        simcoe.tracker.outputOption = .Verbose
+        simcoe.tracker.outputOption = .verbose
         let expectation = simcoe.providers.count
 
-        simcoe.trackPageView("1234")
+        simcoe.track(pageView: "1234")
 
         XCTAssertEqual(expectation, outputSource.printCallCount,
             "Expected result = \(expectation); got \(outputSource.printCallCount)")
@@ -67,10 +67,10 @@ class TrackerTests: XCTestCase {
         let pageViewTracker = PageViewTrackingFake()
         pageViewTracker.shouldFail = true
         simcoe.providers = [pageViewTracker]
-        simcoe.tracker.errorOption = .Suppress
+        simcoe.tracker.errorOption = .suppress
         let expectation = 0
 
-        simcoe.trackPageView("page view test")
+        simcoe.track(pageView: "page view test")
 
         XCTAssertEqual(expectation, outputSource.printCallCount,
             "Expected result = \(expectation); got \(outputSource.printCallCount)")
@@ -81,10 +81,10 @@ class TrackerTests: XCTestCase {
         pageViewTracker.shouldFail = true
 
         simcoe.providers = [pageViewTracker]
-        simcoe.tracker.errorOption = .Default
+        simcoe.tracker.errorOption = .default
         let expectation = 1
 
-        simcoe.trackPageView("1234")
+        simcoe.track(pageView: "1234")
 
         XCTAssertEqual(expectation, outputSource.printCallCount,
              "Expected result = \(expectation); got \(outputSource.printCallCount)")
@@ -97,10 +97,10 @@ class TrackerTests: XCTestCase {
         }
 
         simcoe.providers = pageViewTrackers.map({ $0 as AnalyticsTracking }) // Cast fixes weird array assignment crash
-        simcoe.tracker.errorOption = .Default
+        simcoe.tracker.errorOption = .default
         let expectation = pageViewTrackers.count
 
-        simcoe.trackPageView("1234")
+        simcoe.track(pageView: "1234")
 
         XCTAssertEqual(expectation, outputSource.printCallCount,
             "Expected result = \(expectation); got \(outputSource.printCallCount)")

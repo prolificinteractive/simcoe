@@ -8,18 +8,16 @@
 
 import Foundation
 
-/**
- *  A remote output source.
- */
+/// A remote output source.
 internal struct RemoteOutput: Output {
 
     /// The token.
     let token: String
 
-    private let baseUrl = NSURL(string: "https://panalytics.herokuapp.com/")!
+    fileprivate let baseUrl = URL(string: "https://panalytics.herokuapp.com/")!
 
-    private var url: NSURL {
-        return NSURL(string: token, relativeToURL: baseUrl)!
+    fileprivate var url: URL {
+        return URL(string: token, relativeTo: baseUrl)!
     }
 
     /// The default initializer.
@@ -34,16 +32,16 @@ internal struct RemoteOutput: Output {
     /// Prints a message.
     ///
     /// - Parameter message: The message.
-    func print(message: String) {
-        let request = NSMutableURLRequest(URL: url)
-        request.HTTPMethod = "POST"
+    func print(_ message: String) {
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
 
-        let data = try! NSJSONSerialization.dataWithJSONObject(["analytics": message], options: NSJSONWritingOptions(rawValue: 0))
-        request.HTTPBody = data
+        let data = try! JSONSerialization.data(withJSONObject: ["analytics": message], options: JSONSerialization.WritingOptions(rawValue: 0))
+        request.httpBody = data
 
-        NSURLSession(configuration: NSURLSessionConfiguration.defaultSessionConfiguration())
-            .dataTaskWithRequest(request)
+        URLSession(configuration: URLSessionConfiguration.default)
+            .dataTask(with: request)
             .resume()
     }
 

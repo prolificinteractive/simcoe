@@ -16,14 +16,14 @@ internal final class CheckoutTrackingFake: CheckoutTracking, Failable {
 
     var checkoutEventCount = 0
 
-    func trackCheckoutEvent<T : SimcoeProductConvertible>(products: [T], eventProperties: Properties?) -> TrackingResult {
+    func trackCheckoutEvent<T : SimcoeProductConvertible>(_ products: [T], eventProperties: Properties?) -> TrackingResult {
         checkoutEventCount += 1
 
         if shouldFail {
-            return .Error(message: "Error")
+            return .error(message: "Error")
         }
 
-        return .Success
+        return .success
     }
 
 }

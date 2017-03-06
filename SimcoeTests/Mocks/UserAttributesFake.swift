@@ -14,9 +14,9 @@ internal final class UserAttributesFake: UserAttributeTracking {
     
     var attributesCallCount = 0
     
-    func setUserAttribute(key: String, value: AnyObject) -> TrackingResult {
+    func setUserAttribute(_ key: String, value: Any) -> TrackingResult {
         attributesCallCount += 1
-        return .Success
+        return .success
     }
     
 }

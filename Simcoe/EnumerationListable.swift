@@ -17,25 +17,23 @@ extension EnumerationListable where Self: RawRepresentable {
 
     /// The unfound keys in the provided Properties.
     ///
-    /// - parameter properties: The properties.
-    ///
-    /// - returns: The unfound keys.
-    private static func unfoundKeys(properties: Properties) -> [String] {
+    /// - Parameter properties: The properties.
+    /// - Returns: The unfound keys.
+    fileprivate static func unfoundKeys(_ properties: Properties) -> [String] {
         let allKeyRawValues: [String] = Self.allKeys.flatMap { $0.rawValue as? String }
         let allKeyRawValuesSet = Set(allKeyRawValues)
         let allPropertiesKeysSet = Set(properties.keys)
 
-        let results: Set<String> = allPropertiesKeysSet.subtract(allKeyRawValuesSet)
+        let results: Set<String> = allPropertiesKeysSet.subtracting(allKeyRawValuesSet)
 
         return results.map { $0 }
     }
 
     /// The remaining properties.
     ///
-    /// - parameter properties: The properties.
-    ///
-    /// - returns: The remaining properties.
-    static func remainingProperties(properties: Properties) -> Properties {
+    /// - Parameter properties: The properties.
+    /// - Returns: The remaining properties.
+    static func remaining(properties: Properties) -> Properties {
         let unfoundKeys = Self.unfoundKeys(properties)
         var additionalProperties = Properties()
 

@@ -8,21 +8,21 @@
 
 /// The MPTransactionAttributes keys available.
 ///
-/// - Affiliation: The affiliation.
-/// - CouponCode: The coupon code.
-/// - Revenue: The revenue amount.
-/// - Shipping: The shipping amount.
-/// - Tax: The tax amount.
-/// - TransactionId: The transaction Id.
+/// - affiliation: The affiliation.
+/// - couponCode: The coupon code.
+/// - revenue: The revenue amount.
+/// - shipping: The shipping amount.
+/// - tax: The tax amount.
+/// - transactionId: The transaction Id.
 public enum MPTransactionAttributesKeys: String, EnumerationListable {
 
-    case Affiliation = "affiliation"
-    case CouponCode = "couponCode"
-    case Revenue = "revenue"
-    case Shipping = "shipping"
-    case Tax = "tax"
-    case TransactionId = "transactionId"
+    case affiliation = "affiliation"
+    case couponCode = "couponCode"
+    case revenue = "revenue"
+    case shipping = "shipping"
+    case tax = "tax"
+    case transactionId = "transactionId"
 
-    static let allKeys: [MPTransactionAttributesKeys] = [.Affiliation, .CouponCode, .Revenue, .Shipping, .Tax, .TransactionId]
+    static let allKeys: [MPTransactionAttributesKeys] = [.affiliation, .couponCode, .revenue, .shipping, .tax, .transactionId]
 
 }

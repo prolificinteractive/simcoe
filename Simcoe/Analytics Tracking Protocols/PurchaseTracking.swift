@@ -6,17 +6,15 @@
 //  Copyright © 2016 Prolific Interactive. All rights reserved.
 //
 
-/**
- *  Defines functionality for tracking purchase actions.
- */
+/// Defines functionality for tracking purchase actions.
 public protocol PurchaseTracking: AnalyticsTracking {
 
     /// Tracks a purchase event.
     ///
-    /// - parameter products:        The products.
-    /// - parameter eventProperties: The event properties
-    ///
-    /// - returns: A tracking result.
-    func trackPurchaseEvent<T: SimcoeProductConvertible>(products: [T], eventProperties: Properties?) -> TrackingResult
+    /// - Parameters:
+    ///   - products: The products.
+    ///   - eventProperties: The event properties
+    /// - Returns: A tracking result.
+    func trackPurchaseEvent<T: SimcoeProductConvertible>(_ products: [T], eventProperties: Properties?) -> TrackingResult
 
 }
