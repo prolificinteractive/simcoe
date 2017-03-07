@@ -5,11 +5,11 @@ PODS:
   - mParticle-Apple-SDK (6.11.1):
     - mParticle-Apple-SDK/mParticle (= 6.11.1)
   - mParticle-Apple-SDK/mParticle (6.11.1)
-  - Simcoe/Adobe (0.5.1):
+  - Simcoe/Adobe (1.0.0):
     - AdobeMobileSDK (~> 4.13)
     - Simcoe/Core
-  - Simcoe/Core (0.5.1)
-  - Simcoe/mParticle (0.5.1):
+  - Simcoe/Core (1.0.0)
+  - Simcoe/mParticle (1.0.0):
     - mParticle-Apple-SDK (~> 6)
     - Simcoe/Core
 
@@ -26,7 +26,7 @@ EXTERNAL SOURCES:
 SPEC CHECKSUMS:
   AdobeMobileSDK: 52c3fbf43b5b054132393b1486ecbefca0ba01db
   mParticle-Apple-SDK: 8c7dfc195459870aa33be634f006342cb37d6a24
-  Simcoe: 11fe674388e2f4c5b3f90090f165f5150b8aabb8
+  Simcoe: 16d83bedf09ba7699471c61caf76aef29d0dc2e9
 
 PODFILE CHECKSUM: eca652a10d5483dbc0b33408738dd00362f29b2c
 
