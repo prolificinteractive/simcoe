@@ -13,13 +13,13 @@ import CoreLocation
 public class Adobe {
 
     /// The name of the tracker.
-    open let name = "Adobe Omniture"
+    public let name = "Adobe Omniture"
 
     /// The default initializer.
     public init() { }
 
     /// Starts tracking analytics.
-    open func start() {
+    public func start() {
         ADBMobile.collectLifecycleData()
     }
 

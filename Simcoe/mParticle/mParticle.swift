@@ -14,7 +14,7 @@ public class mParticle {
     fileprivate static let unknownErrorMessage = "An unknown error occurred."
 
     /// The name of the tracker.
-    open let name = "mParticle"
+    public let name = "mParticle"
 
     /// Initializes and starts the SDK with the input key and secret.
     ///
