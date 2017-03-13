@@ -105,6 +105,7 @@ public final class Simcoe {
     /// - Parameters:
     ///   - product: The SimcoeProductConvertible instance.
     ///   - eventProperties: The event properties.
+    ///   - providers: The providers.
     func logAddToCart<T: SimcoeProductConvertible>(_ product: T,
                       eventProperties: Properties?, providers: [AnalyticsTracking] = Simcoe.engine.providers) {
         let providers: [CartLogging] = findProviders(providers)
@@ -135,6 +136,7 @@ public final class Simcoe {
     /// - Parameters:
     ///   - product: The SimcoeProductConvertible instance.
     ///   - eventProperties: The event properties.
+    ///   - providers: The providers.
     func logRemoveFromCart<T: SimcoeProductConvertible>(_ product: T,
                            eventProperties: Properties?, providers: [AnalyticsTracking] = Simcoe.engine.providers) {
         let providers: [CartLogging] = findProviders(providers)
@@ -167,6 +169,7 @@ public final class Simcoe {
     /// - Parameters:
     ///   - products: The products.
     ///   - eventProperties: The event properties.
+    ///   - providers: The providers.
     func trackCheckoutEvent<T: SimcoeProductConvertible>(_ products: [T],
                             eventProperties: Properties?, providers: [AnalyticsTracking] = Simcoe.engine.providers) {
         let providers: [CheckoutTracking] = findProviders(providers)
@@ -199,6 +202,7 @@ public final class Simcoe {
     /// - Parameters:
     ///   - error: The error to log.
     ///   - properties: The optional additional properties.
+    ///   - providers: The providers.
     func log(error: String, withAdditionalProperties properties: Properties? = nil,
              providers: [AnalyticsTracking] = Simcoe.engine.providers) {
         let providers: [ErrorLogging] = findProviders(providers)
@@ -225,6 +229,7 @@ public final class Simcoe {
     /// - Parameters:
     ///   - event: The event to track.
     ///   - properties: The optional additional properties.
+    ///   - providers: The providers.
     func track(event: String, withAdditionalProperties properties: Properties? = nil,
                providers: [AnalyticsTracking] = Simcoe.engine.providers) {
         let providers: [EventTracking] = findProviders(providers)
@@ -251,6 +256,7 @@ public final class Simcoe {
     /// - Parameters:
     ///   - key: The lifetime value's identifier.
     ///   - value: The lifetime value.
+    ///   - providers: The providers.
     func trackLifetimeValue(_ key: String, value: Any, withAdditionalProperties properties: Properties?) {
         let providers: [LifetimeValueTracking] = findProviders()
 
@@ -268,7 +274,9 @@ public final class Simcoe {
 
     /// Track the lifetime values.
     ///
-    /// - Parameter attributes: The lifetime attribute values.
+    /// - Parameters:
+    ///   - attributes: The lifetime attribute values.
+    ///   - providers: The providers.
     func trackLifetimeValues(_ attributes: Properties, withAdditionalProperties properties: Properties?) {
         let providers: [LifetimeValueTracking] = findProviders()
 
@@ -295,6 +303,7 @@ public final class Simcoe {
     /// - Parameters:
     ///   - location: The location to track.
     ///   - properties: The optional additional properties.
+    ///   - providers: The providers.
     func track(location: CLLocation, withAdditionalProperties properties: Properties?,
                providers: [AnalyticsTracking] = Simcoe.engine.providers) {
         let providers: [LocationTracking] = findProviders(providers)
@@ -320,6 +329,7 @@ public final class Simcoe {
     /// - Parameters:
     ///   - pageView: The page view to track.
     ///   - properties: The optional additional properties.
+    ///   - providers: The providers.
     func track(pageView: String, withAdditionalProperties properties: Properties? = nil,
                providers: [AnalyticsTracking] = Simcoe.engine.providers) {
         let providers: [PageViewTracking] = findProviders(providers)
@@ -345,6 +355,7 @@ public final class Simcoe {
     /// - Parameters:
     ///   - products: The products.
     ///   - eventProperties: The event properties
+    ///   - providers: The providers.
     func trackPurchaseEvent<T: SimcoeProductConvertible>(_ products: [T], eventProperties: Properties?,
                             providers: [AnalyticsTracking] = Simcoe.engine.providers) {
         let providers: [PurchaseTracking] = findProviders(providers)
@@ -437,7 +448,8 @@ public final class Simcoe {
     ///   - event: The event name.
     ///   - eventProperties: The event properties.
     ///   - providers: The providers.
-    func start(timedEvent event: String, withAdditionalProperties properties: Properties?, providers: [AnalyticsTracking] = Simcoe.engine.providers) {
+    func start(timedEvent event: String, withAdditionalProperties properties: Properties?,
+               providers: [AnalyticsTracking] = Simcoe.engine.providers) {
         let providers: [TimedEventTracking] = findProviders(providers)
 
         let propertiesString = properties != nil ? "=> \(properties!.description)" : ""
@@ -461,7 +473,8 @@ public final class Simcoe {
     ///   - event: The event name.
     ///   - eventProperties: The event properties.
     ///   - providers: The providers.
-    func end(timedEvent event: String, withAdditionalProperties properties: Properties?, providers: [AnalyticsTracking] = Simcoe.engine.providers) {
+    func end(timedEvent event: String, withAdditionalProperties properties: Properties?,
+             providers: [AnalyticsTracking] = Simcoe.engine.providers) {
         let providers: [TimedEventTracking] = findProviders(providers)
 
         let propertiesString = properties != nil ? "=> \(properties!.description)" : ""
@@ -536,6 +549,7 @@ public final class Simcoe {
     /// - Parameters:
     ///   - product: The SimcoeProductConvertible instance.
     ///   - eventProperties: The event properties.
+    ///   - providers: The providers.
     func logViewDetail<T: SimcoeProductConvertible>(_ product: T, eventProperties: Properties?,
                        providers: [AnalyticsTracking] = Simcoe.engine.providers) {
         let providers: [ViewDetailLogging] = findProviders(providers)
