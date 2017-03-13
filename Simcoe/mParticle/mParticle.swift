@@ -281,6 +281,8 @@ extension mParticle: PurchaseTracking {
 
 }
 
+// MARK: - TimedEventTracking
+
 extension mParticle: TimedEventTracking {
 
     /// Starts the timed event.

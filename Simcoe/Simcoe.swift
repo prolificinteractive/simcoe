@@ -412,7 +412,6 @@ public final class Simcoe {
     /// Sets the super properties.
     ///
     /// - Parameter properties: The super properties.
-
     public static func set(superProperties: Properties) {
         engine.set(superProperties: superProperties)
     }
