@@ -93,14 +93,24 @@ extension EmptyProvider: EventTracking {
 
 extension EmptyProvider: LifetimeValueIncreasing {
 
-    /// Increases the lifetime value of the key by the specified amount.
+    /// Increments the property.
     ///
     /// - Parameters:
-    ///   - amount: The amount to increase that lifetime value for.
-    ///   - item: The optional item to extend.
+    ///   - property: The property.
+    ///   - value: The amount to increment the property by.
     ///   - properties: The optional additional properties.
     /// - Returns: A tracking result.
-    func increaseLifetimeValue(byAmount amount: Double, forItem item: String?, withAdditionalProperties properties: Properties?) -> TrackingResult {
+    func increment(property: String?, value: Double, withAdditionalProperties properties: Properties?) -> TrackingResult {
+        return .success
+    }
+
+    /// Increments the properties.
+    ///
+    /// - Parameters:
+    ///   - properties: The properties.
+    ///   - data: The optional additional properties.
+    /// - Returns: A tracking result.
+    func increment(properties: Properties, withAdditionalProperties data: Properties?) -> TrackingResult {
         return .success
     }
 
@@ -176,6 +186,59 @@ extension EmptyProvider: PurchaseTracking {
         return .success
     }
     
+}
+
+// MARK: - SuperPropertyTracking
+
+extension EmptyProvider: SuperPropertyTracking {
+
+    /// Sets the super properties.
+    ///
+    /// - Parameter properties: The super properties.
+    /// - Returns: A tracking result.
+    func set(superProperties properties: Properties) -> TrackingResult {
+        return .success
+    }
+
+    /// Unsets the super property.
+    ///
+    /// - Parameter superProperty: The super property.
+    /// - Returns: A tracking result.
+    func unset(superProperty: String) -> TrackingResult {
+        return .success
+    }
+
+    /// Clears all currently set super properties.
+    ///
+    /// - Returns: A tracking result.
+    func clearSuperProperties() -> TrackingResult {
+        return .success
+    }
+
+}
+
+extension EmptyProvider: TimedEventTracking {
+
+    /// Starts the timed event.
+    ///
+    /// - Parameters:
+    ///   - event: The event name.
+    ///   - eventProperties: The event properties.
+    /// - Returns: A tracking result.
+    func start(timedEvent event: String, withAdditionalProperties properties: Properties?) -> TrackingResult {
+        return .success
+    }
+
+    /// Stops the timed event.
+    ///
+    /// - Parameters:
+    ///   - event: The event name.
+    ///   - eventProperties: The event properties.
+    /// - Returns: A tracking result.
+    func stop(timedEvent event: String, withAdditionalProperties properties: Properties?) -> TrackingResult {
+        return .success
+    }
+
 }
 
 // MARK: - UserAttributeTracking

@@ -232,30 +232,55 @@ public final class Simcoe {
 
     // MARK: - LifetimeValueIncreasing
 
-    /// Tracks the lifetime value increase.
+    /// Increments the property.
     ///
     /// - Parameters:
-    ///   - amount: The amount to increase that lifetime value for.
-    ///   - item: The optional item to extend.
+    ///   - property: The property.
+    ///   - value: The amount to increment the property by.
     ///   - properties: The optional additional properties.
-    public static func trackLifetimeIncrease(byAmount amount: Double = 1, forItem item: String? = nil,
-                                                      withAdditionalProperties properties: Properties? = nil) {
-        engine.trackLifetimeIncrease(byAmount: amount, forItem: item, withAdditionalProperties: properties)
+    public static func increment(property: String?, value: Double, withAdditionalProperties properties: Properties?) {
+        engine.increment(property: property, value: value, withAdditionalProperties: properties)
     }
 
-    /// Tracks the lifetime value increase.
+    /// Increments the property.
     ///
     /// - Parameters:
-    ///   - amount: The amount to increase that lifetime value for.
-    ///   - item: The optional item to extend.
+    ///   - property: The property.
+    ///   - value: The amount to increment the property by.
     ///   - properties: The optional additional properties.
-    func trackLifetimeIncrease(byAmount amount: Double = 1, forItem item: String? = nil,
-                                        withAdditionalProperties properties: Properties? = nil) {
+    func increment(property: String?, value: Double, withAdditionalProperties properties: Properties?) {
         let providers: [LifetimeValueIncreasing] = findProviders()
 
-        write(toProviders: providers, description: "Lifetime Value increased by \(amount) for \(item ?? "")") { lifeTimeValueIncreaser in
-            return lifeTimeValueIncreaser
-                .increaseLifetimeValue(byAmount: amount, forItem: item, withAdditionalProperties: properties)
+        write(toProviders: providers, description: "Lifetime Value increased by \(value) for \(property ?? "")") { lifetimeValueIncreaser in
+            return lifetimeValueIncreaser.increment(property: property, value: value, withAdditionalProperties: properties)
+        }
+    }
+
+    /// Increments the properties.
+    ///
+    /// - Parameters:
+    ///   - properties: The properties.
+    ///   - data: The optional additional properties.
+    public static func increment(properties: Properties, withAdditionalProperties data: Properties?) {
+        engine.increment(properties: properties, withAdditionalProperties: data)
+    }
+
+    /// Increments the properties.
+    ///
+    /// - Parameters:
+    ///   - properties: The properties.
+    ///   - data: The optional additional properties.
+    func increment(properties: Properties, withAdditionalProperties data: Properties?) {
+        let providers: [LifetimeValueIncreasing] = findProviders()
+
+        var description = ""
+
+        properties.forEach {
+            description += "Lifetime Value increased by \($1) for \($0)\n"
+        }
+
+        write(toProviders: providers, description: description) { lifetimeValueIncreaser in
+            return lifetimeValueIncreaser.increment(properties: properties, withAdditionalProperties: data)
         }
     }
 
@@ -387,40 +412,53 @@ public final class Simcoe {
     /// Sets the super properties.
     ///
     /// - Parameter properties: The super properties.
-    public static func set(superProperties properties: Properties) {
-        engine.set(superProperties: properties)
+
+    public static func set(superProperties: Properties) {
+        engine.set(superProperties: superProperties)
     }
 
     /// Sets the super properties.
     ///
     /// - Parameter properties: The super properties.
-    func set(superProperties properties: Properties) {
+    func set(superProperties: Properties) {
         let providers: [SuperPropertyTracking] = findProviders()
 
-        write(toProviders: providers, description: "Setting super properties: \(properties)") { superPropertyTracker in
-            return superPropertyTracker.set(superProperties: properties)
+        write(toProviders: providers, description: "Setting super properties: \(superProperties)") { superPropertyTracker in
+            return superPropertyTracker.set(superProperties: superProperties)
         }
     }
 
-    /// Increments the super property.
+    /// Unsets the super property.
     ///
-    /// - Parameters:
-    ///   - property: The super property.
-    ///   - value: The amount to increment the super property by.
-    public static func increment(superProperty property: String, value: Double) {
-        engine.increment(superProperty: property, value: value)
+    /// - Parameter superProperty: The super property.
+    public static func unset(superProperty: String) {
+        engine.unset(superProperty: superProperty)
     }
 
-    /// Increments the super property.
+    /// Unsets the super property.
     ///
-    /// - Parameters:
-    ///   - property: The super property.
-    ///   - value: The amount to increment the super property by.
-    func increment(superProperty property: String, value: Double) {
+    /// - Parameter superProperty: The super property.
+    func unset(superProperty: String) {
         let providers: [SuperPropertyTracking] = findProviders()
 
-        write(toProviders: providers, description: "Incremented super property: \(property) by \(value)") { superPropertyTracker in
-            return superPropertyTracker.increment(superProperty: property, value: value)
+        write(toProviders: providers, description: "Unsetting super property: \(superProperty)") { superPropertyTracker in
+            return superPropertyTracker.unset(superProperty: superProperty)
+        }
+    }
+
+    /// Clears all currently set super properties.
+    ///
+    public static func clearSuperProperties() {
+        engine.clearSuperProperties()
+    }
+
+    /// Clears all currently set super properties.
+    ///
+    func clearSuperProperties() {
+        let providers: [SuperPropertyTracking] = findProviders()
+
+        write(toProviders: providers, description: "Clearing all super properties.") { superPropertyTracker in
+            return superPropertyTracker.clearSuperProperties()
         }
     }
 
@@ -431,8 +469,8 @@ public final class Simcoe {
     /// - Parameters:
     ///   - event: The event name.
     ///   - eventProperties: The event properties.
-    public static func start(timedEvent event: String, eventProperties: Properties?) {
-        engine.start(timedEvent: event, eventProperties: eventProperties)
+    public static func start(timedEvent event: String, withAddtionalProperties properties: Properties?) {
+        engine.start(timedEvent: event, withAdditionalProperties: properties)
     }
 
     /// Starts the timed event.
@@ -440,12 +478,12 @@ public final class Simcoe {
     /// - Parameters:
     ///   - event: The event name.
     ///   - eventProperties: The event properties.
-    func start(timedEvent event: String, eventProperties: Properties?) {
+    func start(timedEvent event: String, withAdditionalProperties properties: Properties?) {
         let providers: [TimedEventTracking] = findProviders()
 
-        let propertiesString = eventProperties != nil ? "=> \(eventProperties!.description)" : ""
+        let propertiesString = properties != nil ? "=> \(properties!.description)" : ""
         write(toProviders: providers, description: "Starting Timed Event: \(event) \(propertiesString)") { timedEventTracker in
-            return timedEventTracker.start(timedEvent: event, eventProperties: eventProperties)
+            return timedEventTracker.start(timedEvent: event, withAdditionalProperties: properties)
         }
     }
 
@@ -454,8 +492,8 @@ public final class Simcoe {
     /// - Parameters:
     ///   - event: The event name.
     ///   - eventProperties: The event properties.
-    public static func end(timedEvent event: String, eventProperties: Properties?) {
-        engine.end(timedEvent: event, eventProperties: eventProperties)
+    public static func end(timedEvent event: String, withAdditionalProperties properties: Properties?) {
+        engine.end(timedEvent: event, withAdditionalProperties: properties)
     }
 
     /// Stops the timed event.
@@ -463,12 +501,12 @@ public final class Simcoe {
     /// - Parameters:
     ///   - event: The event name.
     ///   - eventProperties: The event properties.
-    func end(timedEvent event: String, eventProperties: Properties?) {
+    func end(timedEvent event: String, withAdditionalProperties properties: Properties?) {
         let providers: [TimedEventTracking] = findProviders()
 
-        let propertiesString = eventProperties != nil ? "=> \(eventProperties!.description)" : ""
+        let propertiesString = properties != nil ? "=> \(properties!.description)" : ""
         write(toProviders: providers, description: "Ending Timed Event: \(event) \(propertiesString)") { timedEventTracker in
-            return timedEventTracker.start(timedEvent: event, eventProperties: eventProperties)
+            return timedEventTracker.start(timedEvent: event, withAdditionalProperties: properties)
         }
     }
 
@@ -509,70 +547,13 @@ public final class Simcoe {
     func setUserAttributes(_ attributes: Properties) {
         let providers: [UserAttributeTracking] = findProviders()
 
-        attributes.forEach { (key, value) in
-            write(toProviders: providers, description: "Setting user attribute with key: \(key) value: \(value)") { attributeSetter in
-                return attributeSetter.setUserAttribute(key, value: value)
-            }
+        var description = ""
+        attributes.forEach {
+            description += "Setting user attribute with key: \($0) value: \($1)\n"
         }
-    }
 
-    // MARK: - UserPropertyTracking
-
-    /// Sets the user properties.
-    ///
-    /// - Parameter properties: The user properties.
-    public static func set(userProperties properties: Properties) {
-        engine.set(userProperties: properties)
-    }
-
-    /// Sets the user properties.
-    ///
-    /// - Parameter properties: The user properties.
-    func set(userProperties properties: Properties) {
-        let providers: [UserPropertyTracking] = findProviders()
-
-        write(toProviders: providers, description: "Setting user properties: \(properties)") { userPropertyTracker in
-            return userPropertyTracker.set(userProperties: properties)
-        }
-    }
-
-    /// Sets the user alias.
-    ///
-    /// - Parameter userId: The user alias.
-    public static func set(userAlias userId: String) {
-        engine.set(userAlias: userId)
-    }
-
-    /// Sets the user alias.
-    ///
-    /// - Parameter userId: The user alias.
-    func set(userAlias userId: String) {
-        let providers: [UserPropertyTracking] = findProviders()
-
-        write(toProviders: providers, description: "Setting user alias: \(userId)") { userPropertyTracker in
-            return userPropertyTracker.set(userAlias: userId)
-        }
-    }
-
-    /// Increments the user property.
-    ///
-    /// - Parameters:
-    ///   - property: The user property.
-    ///   - value: The amonut to increment the user property by.
-    public static func increment(userProperty property: String, value: Double) {
-        engine.increment(userProperty: property, value: value)
-    }
-
-    /// Increments the user property.
-    ///
-    /// - Parameters:
-    ///   - property: The user property.
-    ///   - value: The amonut to increment the user property by.
-    func increment(userProperty property: String, value: Double) {
-        let providers: [UserPropertyTracking] = findProviders()
-
-        write(toProviders: providers, description: "Incremented user property: \(property) by \(value)") { userPropertyTracker in
-            return userPropertyTracker.increment(userProperty: property, value: value)
+        write(toProviders: providers, description: description) { attributeSetter in
+            return attributeSetter.setUserAttributes(attributes)
         }
     }
 

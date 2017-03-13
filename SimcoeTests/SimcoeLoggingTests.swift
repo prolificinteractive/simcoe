@@ -94,14 +94,31 @@ internal final class SimcoeLoggingTests: XCTestCase {
 
     // MARK: - LifetimeValueIncreasing
 
-    func test_that_it_logs_lifetime_events_to_providers() {
+    func test_that_it_logs_property_increment_to_providers() {
         let lifetimeValueIncreaser = LifetimeValueIncreasingFake()
         simcoe.providers = [lifetimeValueIncreaser]
         let expectation = 1
 
-        simcoe.trackLifetimeIncrease(byAmount: 1, forItem: nil, withAdditionalProperties: nil)
+        simcoe.increment(property: nil, value: 0, withAdditionalProperties: nil)
 
-        XCTAssertEqual(expectation, lifetimeValueIncreaser.lifetimeValueCallCount,
+        XCTAssertEqual(lifetimeValueIncreaser.lifetimeValueCallCount, expectation,
+                       "Expected result = Called \(expectation) times; got \(lifetimeValueIncreaser.lifetimeValueCallCount)")
+    }
+
+    func test_that_it_logs_properties_increment_to_providers() {
+        let lifetimeValueIncreaser = LifetimeValueIncreasingFake()
+        simcoe.providers = [lifetimeValueIncreaser]
+        let expectation = 3
+
+        let attributes = [
+            "foo": 1,
+            "bar": 2,
+            "yes": 3
+        ]
+
+        simcoe.increment(properties: attributes, withAdditionalProperties: nil)
+
+        XCTAssertEqual(lifetimeValueIncreaser.lifetimeValueCallCount, expectation,
                        "Expected result = Called \(expectation) times; got \(lifetimeValueIncreaser.lifetimeValueCallCount)")
     }
 
@@ -180,7 +197,7 @@ internal final class SimcoeLoggingTests: XCTestCase {
 
     // MARK: - SuperPropertyTracking
 
-    func test_that_it_logs_super_properties_to_providers() {
+    func test_that_it_logs_setting_properties_to_providers() {
         let superPropertyTracker = SuperPropertyTrackingFake()
         simcoe.providers = [superPropertyTracker]
         let expectation = 1
@@ -193,15 +210,27 @@ internal final class SimcoeLoggingTests: XCTestCase {
                        "Expected result = Called \(expectation) times; got \(superPropertyTracker.superPropertyEventCount)")
     }
 
-    func test_that_it_logs_super_property_increment_to_providers() {
+    func test_that_it_logs_unsetting_properties_to_providers() {
         let superPropertyTracker = SuperPropertyTrackingFake()
         simcoe.providers = [superPropertyTracker]
         let expectation = 1
 
-        simcoe.increment(superProperty: "test", value: 1)
+        simcoe.unset(superProperty: "")
 
         XCTAssertEqual(superPropertyTracker.superPropertyEventCount, expectation,
                        "Expected result = Called \(expectation) times; got \(superPropertyTracker.superPropertyEventCount)")
+    }
+
+    func test_that_it_logs_unsetting_all_properties_to_providers() {
+        let superPropertyTracker = SuperPropertyTrackingFake()
+        simcoe.providers = [superPropertyTracker]
+        let expectation = 1
+
+        simcoe.clearSuperProperties()
+
+        XCTAssertEqual(superPropertyTracker.superPropertyEventCount, expectation,
+                       "Expected result = Called \(expectation) times; got \(superPropertyTracker.superPropertyEventCount)")
+
     }
 
     // MARK: - TimedEventTracking
@@ -211,7 +240,7 @@ internal final class SimcoeLoggingTests: XCTestCase {
         simcoe.providers = [timedEventTracker]
         let expectation = 1
 
-        simcoe.start(timedEvent: "test", eventProperties: nil)
+        simcoe.start(timedEvent: "test", withAdditionalProperties: nil)
 
         XCTAssertEqual(timedEventTracker.trackTimedEventCallCount, expectation,
                        "Expected result = Called \(expectation) times; got \(timedEventTracker.trackTimedEventCallCount)")
@@ -222,7 +251,7 @@ internal final class SimcoeLoggingTests: XCTestCase {
         simcoe.providers = [timedEventTracker]
         let expectation = 1
 
-        simcoe.end(timedEvent: "test", eventProperties: nil)
+        simcoe.end(timedEvent: "test", withAdditionalProperties: nil)
 
         XCTAssertEqual(timedEventTracker.trackTimedEventCallCount, expectation,
                        "Expected result = Called \(expectation) times; got \(timedEventTracker.trackTimedEventCallCount)")
@@ -256,43 +285,6 @@ internal final class SimcoeLoggingTests: XCTestCase {
 
         XCTAssertEqual(attributesSetter.attributesCallCount, expectation,
                        "Expected result = Called \(expectation) times; got \(attributesSetter.attributesCallCount)")
-    }
-
-    // MARK: - UserPropertyTracking
-
-    func test_that_it_logs_user_properties_to_providers() {
-        let userPropertyTracker = UserPropertyTrackingFake()
-        simcoe.providers = [userPropertyTracker]
-        let expectation = 1
-
-        let properties = ["foo": "bar"]
-
-        simcoe.set(userProperties: properties)
-
-        XCTAssertEqual(userPropertyTracker.userPropertyCallCount, expectation,
-                       "Expected result = Called \(expectation) times; got \(userPropertyTracker.userPropertyCallCount)")
-    }
-
-    func test_that_it_logs_user_alias_to_providers() {
-        let userPropertyTracker = UserPropertyTrackingFake()
-        simcoe.providers = [userPropertyTracker]
-        let expectation = 1
-
-        simcoe.set(userAlias: "test")
-
-        XCTAssertEqual(userPropertyTracker.userPropertyCallCount, expectation,
-                       "Expected result = Called \(expectation) times; got \(userPropertyTracker.userPropertyCallCount)")
-    }
-
-    func test_that_it_logs_user_property_increment_to_providers() {
-        let userPropertyTracker = UserPropertyTrackingFake()
-        simcoe.providers = [userPropertyTracker]
-        let expectation = 1
-
-        simcoe.increment(userProperty: "test", value: 1)
-
-        XCTAssertEqual(userPropertyTracker.userPropertyCallCount, expectation,
-                       "Expected result = Called \(expectation) times; got \(userPropertyTracker.userPropertyCallCount)")
     }
 
     // MARK: - ViewDetailLogging

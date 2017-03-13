@@ -173,16 +173,29 @@ extension mParticle: EventTracking {
 
 extension mParticle: LifetimeValueIncreasing {
 
-    /// Increases the lifetime value of the key by the specified amount.
+    /// Increments the property.
     ///
     /// - Parameters:
-    ///   - amount: The amount to increase that lifetime value for.
-    ///   - item: The optional item to extend.
+    ///   - property: The property.
+    ///   - value: The amount to increment the property by.
     ///   - properties: The optional additional properties.
     /// - Returns: A tracking result.
-    public func increaseLifetimeValue(byAmount amount: Double, forItem item: String?,
-                                    withAdditionalProperties properties: Properties?) -> TrackingResult {
-        MParticle.sharedInstance().logLTVIncrease(amount, eventName: (item ?? ""), eventInfo: properties)
+    public func increment(property: String?, value: Double, withAdditionalProperties properties: Properties?) -> TrackingResult {
+        MParticle.sharedInstance().logLTVIncrease(value, eventName: property ?? "", eventInfo: properties)
+
+        return .success
+    }
+
+    /// Increments the properties
+    ///
+    /// - Parameters:
+    ///   - properties: The properties.
+    ///   - data: The optional additional properties.
+    /// - Returns: A tracking result.
+    public func increment(properties: Properties, withAdditionalProperties data: Properties?) -> TrackingResult {
+        properties.forEach {
+            MParticle.sharedInstance().logLTVIncrease($0.value as? Double ?? 0, eventName: $0.key, eventInfo: data)
+        }
 
         return .success
     }
@@ -262,6 +275,64 @@ extension mParticle: PurchaseTracking {
                                     eventProperties: eventProperties)
 
         MParticle.sharedInstance().logCommerceEvent(event)
+
+        return .success
+    }
+
+}
+
+extension mParticle: TimedEventTracking {
+
+    /// Starts the timed event.
+    ///
+    /// - Parameters:
+    ///   - event: The event name.
+    ///   - properties: The event properties.
+    /// - Returns: A tracking result.
+    public func start(timedEvent event: String, withAdditionalProperties properties: Properties?) -> TrackingResult {
+        guard var properties = properties else {
+            return .error(message: "Cannot track a timed event without valid properties.")
+        }
+
+        properties[MPEventKeys.name.rawValue] = event as String
+
+        let event: MPEvent
+        do {
+            event = try MPEvent.toEvent(usingData: properties)
+        } catch let error as MPEventGenerationError {
+            return .error(message: error.description)
+        } catch {
+            return .error(message: mParticle.unknownErrorMessage)
+        }
+
+        MParticle.sharedInstance().beginTimedEvent(event)
+
+        return .success
+    }
+
+    /// Stops the timed event.
+    ///
+    /// - Parameters:
+    ///   - event: The event name.
+    ///   - properties: The event properties.
+    /// - Returns: A tracking result.
+    public func stop(timedEvent event: String, withAdditionalProperties properties: Properties?) -> TrackingResult {
+        guard var properties = properties else {
+            return .error(message: "Cannot track a timed event without valid properties.")
+        }
+
+        properties[MPEventKeys.name.rawValue] = event as String
+
+        let event: MPEvent
+        do {
+            event = try MPEvent.toEvent(usingData: properties)
+        } catch let error as MPEventGenerationError {
+            return .error(message: error.description)
+        } catch {
+            return .error(message: mParticle.unknownErrorMessage)
+        }
+
+        MParticle.sharedInstance().endTimedEvent(event)
 
         return .success
     }

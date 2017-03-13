@@ -14,12 +14,17 @@ internal final class SuperPropertyTrackingFake: SuperPropertyTracking {
 
     var superPropertyEventCount = 0
 
-    func set(superProperties properties: Properties) -> TrackingResult {
+    func set(superProperties: Properties) -> TrackingResult {
         superPropertyEventCount += 1
         return .success
     }
 
-    func increment(superProperty property: String, value: Double) -> TrackingResult {
+    func unset(superProperty: String) -> TrackingResult {
+        superPropertyEventCount += 1
+        return .success
+    }
+
+    func clearSuperProperties() -> TrackingResult {
         superPropertyEventCount += 1
         return .success
     }

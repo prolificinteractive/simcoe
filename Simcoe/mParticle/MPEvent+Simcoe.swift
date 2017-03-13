@@ -47,14 +47,6 @@ extension MPEvent {
             properties[MPEventKeys.duration.rawValue] = duration
         }
 
-        if let startTime = startTime {
-            properties[MPEventKeys.startTime.rawValue] = startTime
-        }
-
-        if let endTime = endTime {
-            properties[MPEventKeys.endTime.rawValue] = endTime
-        }
-
         if let customFlags = customFlags {
             properties[MPEventKeys.customFlags.rawValue] = customFlags
         }
@@ -93,14 +85,6 @@ extension MPEvent {
 
         if let duration = data[MPEventKeys.duration.rawValue] as? Float {
             event.duration = NSNumber(value: duration)
-        }
-
-        if let startTime = data[MPEventKeys.startTime.rawValue] as? Date {
-            event.startTime = startTime
-        }
-
-        if let endTime = data[MPEventKeys.endTime.rawValue] as? Date {
-            event.endTime = endTime
         }
 
         if let flags = data[MPEventKeys.customFlags.rawValue] as? [String: [String]] {
