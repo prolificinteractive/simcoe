@@ -193,10 +193,9 @@ internal final class SimcoeLoggingTests: XCTestCase {
 
     func test_that_it_logs_unsetting_all_properties_to_providers() {
         let superPropertyTracker = SuperPropertyTrackingFake()
-        simcoe.providers = [superPropertyTracker]
         let expectation = 1
 
-        simcoe.clearSuperProperties()
+        simcoe.clearSuperProperties(providers: [superPropertyTracker])
 
         XCTAssertEqual(superPropertyTracker.superPropertyEventCount, expectation,
                        "Expected result = Called \(expectation) times; got \(superPropertyTracker.superPropertyEventCount)")
@@ -280,7 +279,7 @@ internal final class SimcoeLoggingTests: XCTestCase {
         simcoe.providers = [pageViewTracker, eventTracker]
         let expectation = 0
 
-        simcoe.track(pageView: "page view test", withAdditionalProperties: nil)
+        simcoe.track(pageView: "page view test", withAdditionalProperties: nil, providers: [pageViewTracker, eventTracker])
         
         XCTAssertEqual(eventTracker.trackEventCallCount, expectation,
                        "Expected result = \(expectation); got \(eventTracker.trackEventCallCount)")
