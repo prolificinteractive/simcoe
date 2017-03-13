@@ -9,15 +9,21 @@
 /// Defines methods for increasing a lifetime value of an analytics key.
 public protocol LifetimeValueIncreasing: AnalyticsTracking {
 
-    /// Increases the lifetime value of the key by the specified amount.
+    /// Increments the property.
     ///
     /// - Parameters:
-    ///   - amount: The amount to increase that lifetime value for.
-    ///   - item: The optional item to extend.
+    ///   - property: The property.
+    ///   - value: The amount to increment the property by.
     ///   - properties: The optional additional properties.
     /// - Returns: A tracking result.
-    func increaseLifetimeValue(byAmount amount: Double,
-                                        forItem item: String?,
-                                                withAdditionalProperties properties: Properties?) -> TrackingResult
+    func increment(property: String?, value: Double, withAdditionalProperties properties: Properties?) -> TrackingResult
+
+    /// Increments the properties.
+    ///
+    /// - Parameters:
+    ///   - properties: The properties.
+    ///   - data: The optional additional properties.
+    /// - Returns: A tracking result.
+    func increment(properties: Properties, withAdditionalProperties data: Properties?) -> TrackingResult
 
 }

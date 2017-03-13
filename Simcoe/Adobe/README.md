@@ -29,12 +29,6 @@ Adobe automatically implements the following protocols:
 - `LifetimeValueIncreasing`
 - `LocationTracking`
 
-Adobe automatically implements dummy functions for the following protocols:
-
-- `ErrorLogging`
-- `UserAttributeTracking`
-
 ## Subclassing
 
-The `Adobe` class is able to be subclassed. If you are overriding any Simcoe methods, it is advised that you do _not_ call `super` on them
-as you may make analytics calls more than once.
+As Simcoe moves toward more composition over inheritance, the `Adobe` class is not subclassable.

@@ -15,7 +15,7 @@ public protocol TimedEventTracking: AnalyticsTracking {
     ///   - event: The event name.
     ///   - eventProperties: The event properties.
     /// - Returns: A tracking result.
-    func start(timedEvent event: String, eventProperties: Properties?) -> TrackingResult
+    func start(timedEvent event: String, withAdditionalProperties properties: Properties?) -> TrackingResult
 
     /// Stops the timed event.
     ///
@@ -23,6 +23,6 @@ public protocol TimedEventTracking: AnalyticsTracking {
     ///   - event: The event name.
     ///   - eventProperties: The event properties.
     /// - Returns: A tracking result.
-    func stop(timedEvent event: String, eventProperties: Properties?) -> TrackingResult
+    func stop(timedEvent event: String, withAdditionalProperties properties: Properties?) -> TrackingResult
 
 }

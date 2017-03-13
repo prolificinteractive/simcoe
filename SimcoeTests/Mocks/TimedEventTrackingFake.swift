@@ -14,12 +14,12 @@ internal final class TimedEventTrackingFake: TimedEventTracking {
 
     var trackTimedEventCallCount = 0
 
-    func start(timedEvent event: String, eventProperties: Properties?) -> TrackingResult {
+    func start(timedEvent event: String, withAdditionalProperties properties: Properties?) -> TrackingResult {
         trackTimedEventCallCount += 1
         return .success
     }
 
-    func stop(timedEvent event: String, eventProperties: Properties?) -> TrackingResult {
+    func stop(timedEvent event: String, withAdditionalProperties properties: Properties?) -> TrackingResult {
         trackTimedEventCallCount += 1
         return .success
     }

@@ -14,10 +14,18 @@ internal final class LifetimeValueIncreasingFake: LifetimeValueIncreasing {
 
     var lifetimeValueCallCount = 0
 
-    func increaseLifetimeValue(byAmount amount: Double,
-        forItem item: String?, withAdditionalProperties properties: Properties?) -> TrackingResult {
+    func increment(property: String?, value: Double, withAdditionalProperties properties: Properties?) -> TrackingResult {
+        lifetimeValueCallCount += 1
+
+        return .success
+    }
+
+    func increment(properties: Properties, withAdditionalProperties data: Properties?) -> TrackingResult {
+        properties.forEach { _ in
             lifetimeValueCallCount += 1
-            return .success
+        }
+
+        return .success
     }
 
 }

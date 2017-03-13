@@ -13,15 +13,17 @@ public protocol SuperPropertyTracking: AnalyticsTracking {
     ///
     /// - Parameter properties: The super properties.
     /// - Returns: A tracking result.
-    func set(superProperties properties: Properties) -> TrackingResult
+    func set(superProperties: Properties) -> TrackingResult
 
-
-    /// Increments the super property.
+    /// Unsets the super property.
     ///
-    /// - Parameters:
-    ///   - property: The super property.
-    ///   - value: The amount to increment the super property by.
+    /// - Parameter superProperty: The super property.
     /// - Returns: A tracking result.
-    func increment(superProperty property: String, value: Double) -> TrackingResult
+    func unset(superProperty: String) -> TrackingResult
+
+    /// Clears all currently set super properties.
+    ///
+    /// - Returns: A tracking result.
+    func clearSuperProperties() -> TrackingResult
 
 }

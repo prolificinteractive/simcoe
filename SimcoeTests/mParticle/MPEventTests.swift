@@ -138,26 +138,6 @@ class MPEventTests: XCTestCase {
             "Expected result = \(duration); got \(result.duration)")
     }
 
-    func test_that_MPEvent_has_startTime() {
-        let startTime = Date(timeIntervalSinceReferenceDate: 1000)
-
-        let data = MPEvent.eventData(type: .other, name: "Start Time", startTime: startTime)
-        let result = try! MPEvent.toEvent(usingData: data)
-
-        XCTAssertEqual(startTime.timeIntervalSinceReferenceDate, result.startTime?.timeIntervalSinceReferenceDate,
-            "Expected result = \(startTime.timeIntervalSinceReferenceDate); got \(result.startTime?.timeIntervalSinceReferenceDate)")
-    }
-
-    func test_that_MPEvent_has_endTime() {
-        let endTime = Date(timeIntervalSinceReferenceDate: 1424)
-
-        let data = MPEvent.eventData(type: .other, name: "End Time", endTime: endTime)
-        let result = try! MPEvent.toEvent(usingData: data)
-
-        XCTAssertEqual(endTime.timeIntervalSinceReferenceDate, result.endTime?.timeIntervalSinceReferenceDate,
-        "Expected result = \(endTime.timeIntervalSinceReferenceDate); got \(result.endTime?.timeIntervalSinceReferenceDate)")
-    }
-
     func test_that_MPEvent_has_customFlags() {
         let key = "Party Time"
         let values = ["Excellent", "Tubular"]

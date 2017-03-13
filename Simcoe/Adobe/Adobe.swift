@@ -38,6 +38,7 @@ extension Adobe: EventTracking {
     public func track(event: String,
                     withAdditionalProperties properties: Properties?) -> TrackingResult {
         ADBMobile.trackAction(event, data: properties)
+
         return .success
     }
 
@@ -47,20 +48,40 @@ extension Adobe: EventTracking {
 
 extension Adobe: LifetimeValueIncreasing {
 
-    /// Increases the lifetime value of the key by the specified amount.
+    /// Increments the property.
     ///
     /// - Parameters:
-    ///   - amount: The amount to increase that lifetime value for.
-    ///   - item: The optional item to extend.
+    ///   - property: The property.
+    ///   - value: The amount to increment the property by.
     ///   - properties: The optional additional properties.
     /// - Returns: A tracking result.
-    public func increaseLifetimeValue(byAmount amount: Double, forItem item: String?, withAdditionalProperties properties: Properties?) -> TrackingResult {
+    public func increment(property: String?, value: Double, withAdditionalProperties properties: Properties?) -> TrackingResult {
         var data = properties ?? Properties()
-        if let item = item {
-            data[item] = ""
+
+        if let property = property {
+            data[property] = ""
         }
 
-        ADBMobile.trackLifetimeValueIncrease(NSDecimalNumber(value: amount), data: data)
+        ADBMobile.trackLifetimeValueIncrease(NSDecimalNumber(value: value), data: data)
+
+        return .success
+    }
+
+    /// Increments the properties.
+    ///
+    /// - Parameters:
+    ///   - properties: The properties.
+    ///   - data: The optional additional properties.
+    /// - Returns: A tracking result.
+    public func increment(properties: Properties, withAdditionalProperties data: Properties?) -> TrackingResult {
+        properties.forEach {
+            var data = data ?? Properties()
+            data [$0.key] = ""
+            let value = $0.value as? Double ?? 0
+
+            ADBMobile.trackLifetimeValueIncrease(NSDecimalNumber(value: value), data: data)
+        }
+
         return .success
     }
 
@@ -79,6 +100,7 @@ extension Adobe: LocationTracking {
     public func track(location: CLLocation,
                     withAdditionalProperties properties: Properties?) -> TrackingResult {
         ADBMobile.trackLocation(location, data: properties)
+
         return .success
     }
 
@@ -96,6 +118,7 @@ extension Adobe: PageViewTracking {
     /// - Returns: A tracking result.
     public func track(pageView: String, withAdditionalProperties properties: Properties?) -> TrackingResult {
         ADBMobile.trackState(pageView, data: properties)
+
         return .success
     }
 
