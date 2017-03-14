@@ -86,7 +86,7 @@ public final class Simcoe {
     fileprivate func findProviders<T>(_ providers: [AnalyticsTracking]) -> [T] {
         return providers
             .map { provider in return provider as? T }
-            .flatMap { $0}
+            .flatMap { $0 }
     }
 
     // MARK: - CartLogging
