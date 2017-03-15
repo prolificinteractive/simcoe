@@ -77,11 +77,11 @@ class TrackerTests: XCTestCase {
     }
 
     func test_that_it_writes_to_output_for_each_provider_when_option_verbose() {
-        let providers = [PageViewTrackingFake(), PageViewTrackingFake(), PageViewTrackingFake()]
+        simcoe.providers = [PageViewTrackingFake(), PageViewTrackingFake(), PageViewTrackingFake()]
         simcoe.tracker.outputOption = .verbose
-        let expectation = providers.count
+        let expectation = simcoe.providers.count
 
-        simcoe.track(pageView: "1234", providers: providers)
+        simcoe.track(pageView: "1234")
 
         XCTAssertEqual(expectation, outputSource.printCallCount,
             "Expected result = \(expectation); got \(outputSource.printCallCount)")
@@ -103,27 +103,32 @@ class TrackerTests: XCTestCase {
     func test_that_it_logs_errors_when_option_default() {
         let pageViewTracker = PageViewTrackingFake()
         pageViewTracker.shouldFail = true
+        simcoe.providers = [pageViewTracker]
         simcoe.tracker.errorOption = .default
 
         let expectation = 1
 
-        simcoe.track(pageView: "1234", providers: [pageViewTracker])
+        simcoe.track(pageView: "1234")
 
         XCTAssertEqual(expectation, outputSource.printCallCount,
              "Expected result = \(expectation); got \(outputSource.printCallCount)")
     }
 
     func test_that_it_logs_one_error_per_provider_when_option_default() {
-        let providers = [PageViewTrackingFake(), PageViewTrackingFake(), PageViewTrackingFake()]
-        let mappedProviders = providers.map { $0 as AnalyticsTracking } // Cast fixes weird array assignment crash
-        for tracker in providers {
+        let pageViewTrackers = [PageViewTrackingFake(), PageViewTrackingFake(), PageViewTrackingFake()]
+
+        for tracker in pageViewTrackers {
             tracker.shouldFail = true
         }
 
-        simcoe.tracker.errorOption = .default
-        let expectation = providers.count
+        simcoe.providers = pageViewTrackers.map {
+            $0 as AnalyticsTracking /// Cast fixes weird array assignment crash
+        }
 
-        simcoe.track(pageView: "1234", providers: mappedProviders)
+        simcoe.tracker.errorOption = .default
+        let expectation = pageViewTrackers.count
+
+        simcoe.track(pageView: "1234")
 
         XCTAssertEqual(expectation, outputSource.printCallCount,
             "Expected result = \(expectation); got \(outputSource.printCallCount)")
