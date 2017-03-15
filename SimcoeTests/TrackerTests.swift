@@ -120,8 +120,7 @@ class TrackerTests: XCTestCase {
             tracker.shouldFail = true
         }
 
-        simcoe.providers = pageViewTrackers.map({ $0 as AnalyticsTracking
-        }) // Cast fixes weird array assignment crash
+        simcoe.providers = pageViewTrackers.map({ $0 as AnalyticsTracking }) // Cast fixes weird array assignment crash
 
         simcoe.tracker.errorOption = .default
         let expectation = pageViewTrackers.count
