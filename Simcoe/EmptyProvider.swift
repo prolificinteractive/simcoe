@@ -100,7 +100,7 @@ extension EmptyProvider: LifetimeValueIncreasing {
     ///   - value: The amount to increment the property by.
     ///   - properties: The optional additional properties.
     /// - Returns: A tracking result.
-    func increment(property: String?, value: Double, withAdditionalProperties properties: Properties?) -> TrackingResult {
+    func increment(property: String?, by value: Double, withAdditionalProperties properties: Properties?) -> TrackingResult {
         return .success
     }
 
@@ -126,7 +126,7 @@ extension EmptyProvider: LifetimeValueTracking {
     ///   - key: The lifetime value's identifier.
     ///   - value: The lifetime value.
     /// - Returns: A tracking result.
-    func trackLifetimeValue(_ key: String, value: Any) -> TrackingResult {
+    func trackLifetimeValue(_ key: String, value: Any, withAdditionalProperties properties: Properties?) -> TrackingResult {
         return .success
     }
 
@@ -134,7 +134,7 @@ extension EmptyProvider: LifetimeValueTracking {
     ///
     /// - Parameter attributes: The lifetime attribute values.
     /// - Returns: A tracking result.
-    func trackLifetimeValues(_ attributes: Properties) -> TrackingResult {
+    func trackLifetimeValues(_ attributes: Properties, withAdditionalProperties properties: Properties?) -> TrackingResult {
         return .success
     }
 

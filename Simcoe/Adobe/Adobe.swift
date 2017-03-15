@@ -55,7 +55,7 @@ extension Adobe: LifetimeValueIncreasing {
     ///   - value: The amount to increment the property by.
     ///   - properties: The optional additional properties.
     /// - Returns: A tracking result.
-    public func increment(property: String?, value: Double, withAdditionalProperties properties: Properties?) -> TrackingResult {
+    public func increment(property: String?, by value: Double, withAdditionalProperties properties: Properties?) -> TrackingResult {
         var data = properties ?? Properties()
 
         if let property = property {

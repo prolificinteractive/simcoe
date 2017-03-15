@@ -14,7 +14,7 @@ internal final class LifetimeValueIncreasingFake: LifetimeValueIncreasing {
 
     var lifetimeValueCallCount = 0
 
-    func increment(property: String?, value: Double, withAdditionalProperties properties: Properties?) -> TrackingResult {
+    func increment(property: String?, by value: Double, withAdditionalProperties properties: Properties?) -> TrackingResult {
         lifetimeValueCallCount += 1
 
         return .success

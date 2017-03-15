@@ -99,7 +99,7 @@ internal final class SimcoeLoggingTests: XCTestCase {
         simcoe.providers = [lifetimeValueIncreaser]
         let expectation = 1
 
-        simcoe.increment(property: nil, value: 0, withAdditionalProperties: nil)
+        simcoe.increment(property: nil, by: 0, withAdditionalProperties: nil)
 
         XCTAssertEqual(lifetimeValueIncreaser.lifetimeValueCallCount, expectation,
                        "Expected result = Called \(expectation) times; got \(lifetimeValueIncreaser.lifetimeValueCallCount)")
@@ -129,7 +129,7 @@ internal final class SimcoeLoggingTests: XCTestCase {
         simcoe.providers = [lifetimeValueTracker]
         let expectation = 1
 
-        simcoe.trackLifetimeValue("test", value: 1)
+        simcoe.trackLifetimeValue("test", value: 1, withAdditionalProperties: nil)
 
         XCTAssertEqual(expectation, lifetimeValueTracker.lifetimeValueCallCount,
                        "Expected result = Called \(expectation) times; got \(lifetimeValueTracker.lifetimeValueCallCount)")
@@ -146,7 +146,7 @@ internal final class SimcoeLoggingTests: XCTestCase {
             "yes": 3
         ]
 
-        simcoe.trackLifetimeValues(attributes)
+        simcoe.trackLifetimeValues(attributes, withAdditionalProperties: nil)
 
         XCTAssertEqual(lifetimeValueTracker.lifetimeValueCallCount, expectation,
                        "Expected result = Called \(expectation) times; got \(lifetimeValueTracker.lifetimeValueCallCount)")

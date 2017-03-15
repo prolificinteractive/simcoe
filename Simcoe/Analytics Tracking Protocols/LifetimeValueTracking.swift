@@ -14,13 +14,16 @@ public protocol LifetimeValueTracking: AnalyticsTracking {
     /// - Parameters:
     ///   - key: The lifetime value's identifier.
     ///   - value: The lifetime value.
+    ///   - properties: The optional additional properties.
     /// - Returns: A tracking result.
-    func trackLifetimeValue(_ key: String, value: Any) -> TrackingResult
+    func trackLifetimeValue(_ key: String, value: Any, withAdditionalProperties properties: Properties?) -> TrackingResult
 
     /// Track the lifetime values.
     ///
-    /// - Parameter attributes: The lifetime attribute values.
+    /// - Parameter:
+    ///   - attributes: The lifetime attribute values.
+    ///   - properties: The optional additional properties.
     /// - Returns: A tracking result.
-    func trackLifetimeValues(_ attributes: Properties) -> TrackingResult
+    func trackLifetimeValues(_ attributes: Properties, withAdditionalProperties properties: Properties?) -> TrackingResult
 
 }

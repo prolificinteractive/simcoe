@@ -14,12 +14,12 @@ internal final class LifetimeValueTrackingFake: LifetimeValueTracking {
 
     var lifetimeValueCallCount = 0
 
-    func trackLifetimeValue(_ key: String, value: Any) -> TrackingResult {
+    func trackLifetimeValue(_ key: String, value: Any, withAdditionalProperties properties: Properties?) -> TrackingResult {
         lifetimeValueCallCount += 1
         return .success
     }
 
-    func trackLifetimeValues(_ attributes: Properties) -> TrackingResult {
+    func trackLifetimeValues(_ attributes: Properties, withAdditionalProperties properties: Properties?) -> TrackingResult {
         attributes.forEach { _ in
             lifetimeValueCallCount += 1
         }

@@ -238,8 +238,8 @@ public final class Simcoe {
     ///   - property: The property.
     ///   - value: The amount to increment the property by.
     ///   - properties: The optional additional properties.
-    public static func increment(property: String?, value: Double, withAdditionalProperties properties: Properties?) {
-        engine.increment(property: property, value: value, withAdditionalProperties: properties)
+    public static func increment(property: String?, by value: Double, withAdditionalProperties properties: Properties?) {
+        engine.increment(property: property, by: value, withAdditionalProperties: properties)
     }
 
     /// Increments the property.
@@ -248,11 +248,11 @@ public final class Simcoe {
     ///   - property: The property.
     ///   - value: The amount to increment the property by.
     ///   - properties: The optional additional properties.
-    func increment(property: String?, value: Double, withAdditionalProperties properties: Properties?) {
+    func increment(property: String?, by value: Double, withAdditionalProperties properties: Properties?) {
         let providers: [LifetimeValueIncreasing] = findProviders()
 
         write(toProviders: providers, description: "Lifetime Value increased by \(value) for \(property ?? "")") { lifetimeValueIncreaser in
-            return lifetimeValueIncreaser.increment(property: property, value: value, withAdditionalProperties: properties)
+            return lifetimeValueIncreaser.increment(property: property, by: value, withAdditionalProperties: properties)
         }
     }
 
@@ -291,8 +291,8 @@ public final class Simcoe {
     /// - Parameters:
     ///   - key: The lifetime value's identifier.
     ///   - value: The lifetime value.
-    public static func trackLifetimeValue(_ key: String, value: Any) {
-        engine.trackLifetimeValue(key, value: value)
+    public static func trackLifetimeValue(_ key: String, value: Any, withAdditionalProperties properties: Properties?) {
+        engine.trackLifetimeValue(key, value: value, withAdditionalProperties: properties)
     }
 
     /// Tracks the lifetime value.
@@ -300,30 +300,30 @@ public final class Simcoe {
     /// - Parameters:
     ///   - key: The lifetime value's identifier.
     ///   - value: The lifetime value.
-    func trackLifetimeValue(_ key: String, value: Any) {
+    func trackLifetimeValue(_ key: String, value: Any, withAdditionalProperties properties: Properties?) {
         let providers: [LifetimeValueTracking] = findProviders()
 
         write(toProviders: providers, description: "Tracking lifetime value with key: \(key) value: \(value)") { lifetimeValueTracker in
-            return lifetimeValueTracker.trackLifetimeValue(key, value: value)
+            return lifetimeValueTracker.trackLifetimeValue(key, value: value, withAdditionalProperties: properties)
         }
     }
 
     /// Track the lifetime values.
     ///
     /// - Parameter attributes: The lifetime attribute values.
-    public static func trackLifetimeValues(_ attributes: Properties) {
-        engine.trackLifetimeValues(attributes)
+    public static func trackLifetimeValues(_ attributes: Properties, withAdditionalProperties properties: Properties?) {
+        engine.trackLifetimeValues(attributes, withAdditionalProperties: properties)
     }
 
     /// Track the lifetime values.
     ///
     /// - Parameter attributes: The lifetime attribute values.
-    func trackLifetimeValues(_ attributes: Properties) {
+    func trackLifetimeValues(_ attributes: Properties, withAdditionalProperties properties: Properties?) {
         let providers: [LifetimeValueTracking] = findProviders()
 
         attributes.forEach { (key, value) in
             write(toProviders: providers, description: "Tracking lifetime value with key: \(key) value: \(value)") { lifetimeValueTracker in
-                return lifetimeValueTracker.trackLifetimeValue(key, value: value)
+                return lifetimeValueTracker.trackLifetimeValue(key, value: value, withAdditionalProperties: properties)
             }
         }
     }
