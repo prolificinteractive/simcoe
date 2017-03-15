@@ -19,6 +19,30 @@ class TrackerTests: XCTestCase {
         simcoe = Simcoe(tracker: Tracker(outputSources: [outputSource]))
     }
 
+    func test_recording_to_default_providers() {
+        let tracker = PageViewTrackingFake()
+        simcoe.providers = [tracker]
+        let expectation = 1
+
+        simcoe.track(pageView: "test", withAdditionalProperties: nil, providers: nil)
+
+        XCTAssertEqual(expectation, simcoe.tracker.events.count,
+                       "Expected result = \(expectation); got \(simcoe.tracker.events.count)")
+    }
+
+    func test_recording_to_input_providers() {
+        let trackerOne = PageViewTrackingFake()
+        simcoe.providers = [trackerOne]
+        let expectation = 3
+
+        simcoe.track(pageView: "test", withAdditionalProperties: nil,
+                     providers: [trackerOne, PageViewTrackingFake(), PageViewTrackingFake()])
+
+        XCTAssertEqual(expectation, outputSource.printCallCount,
+                       "Expected result = \(expectation); got \(outputSource.printCallCount)")
+
+    }
+
     func test_that_it_records_events() {
         let tracker = PageViewTrackingFake()
         simcoe.providers = [tracker]
