@@ -14,7 +14,7 @@ typealias MixpanelProperties = [String: MixpanelType]
 public class MixpanelPlaceholder {
 
     /// The name of the tracker.
-    open let name = "Mixpanel"
+    public let name = "Mixpanel"
 
     /// Initializes an API object with the input token.
     ///
@@ -35,7 +35,7 @@ public class MixpanelPlaceholder {
 
 
     /// Force uploading of queued data to the Mixpanel server.
-    open func stop() {
+    public func stop() {
         Mixpanel.mainInstance().flush()
     }
 

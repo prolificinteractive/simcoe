@@ -88,7 +88,7 @@ public final class Simcoe {
 
         return activeProviders
             .map { provider in return provider as? T }
-            .flatMap { $0}
+            .flatMap { $0 }
     }
 
     // MARK: - CartLogging
