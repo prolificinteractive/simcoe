@@ -83,8 +83,10 @@ public final class Simcoe {
         tracker.track(event: event)
     }
 
-    fileprivate func findProviders<T>(_ providers: [AnalyticsTracking]) -> [T] {
-        return providers
+    fileprivate func find<T>(_ providers: [AnalyticsTracking]?) -> [T] {
+        let activeProviders = providers != nil ? providers! : self.providers
+
+        return activeProviders
             .map { provider in return provider as? T }
             .flatMap { $0 }
     }
@@ -107,8 +109,8 @@ public final class Simcoe {
     ///   - eventProperties: The event properties.
     ///   - providers: The providers.
     func logAddToCart<T: SimcoeProductConvertible>(_ product: T,
-                      eventProperties: Properties?, providers: [AnalyticsTracking] = Simcoe.engine.providers) {
-        let providers: [CartLogging] = findProviders(providers)
+                      eventProperties: Properties?, providers: [AnalyticsTracking]? = nil) {
+        let providers: [CartLogging] = find(providers)
         let simcoeProduct = product.toSimcoeProduct()
         let propertiesString = eventProperties != nil ? "=> \(eventProperties!.description)" : ""
         let productPrice = String(format: "%.2f", Double(simcoeProduct.price ?? 0.0))
@@ -138,8 +140,8 @@ public final class Simcoe {
     ///   - eventProperties: The event properties.
     ///   - providers: The providers.
     func logRemoveFromCart<T: SimcoeProductConvertible>(_ product: T,
-                           eventProperties: Properties?, providers: [AnalyticsTracking] = Simcoe.engine.providers) {
-        let providers: [CartLogging] = findProviders(providers)
+                           eventProperties: Properties?, providers: [AnalyticsTracking]? = nil) {
+        let providers: [CartLogging] = find(providers)
         let simcoeProduct = product.toSimcoeProduct()
         let propertiesString = eventProperties != nil ? "=> \(eventProperties!.description)" : ""
         let productPrice = String(format: "%.2f", Double(simcoeProduct.price ?? 0.0))
@@ -171,8 +173,8 @@ public final class Simcoe {
     ///   - eventProperties: The event properties.
     ///   - providers: The providers.
     func trackCheckoutEvent<T: SimcoeProductConvertible>(_ products: [T],
-                            eventProperties: Properties?, providers: [AnalyticsTracking] = Simcoe.engine.providers) {
-        let providers: [CheckoutTracking] = findProviders(providers)
+                            eventProperties: Properties?, providers: [AnalyticsTracking]? = nil) {
+        let providers: [CheckoutTracking] = find(providers)
         let propertiesString = eventProperties != nil ? "=> \(eventProperties!.description)" : ""
 
         let productsList = products.map { $0.toSimcoeProduct().productName }.joined(separator: ", ")
@@ -204,8 +206,8 @@ public final class Simcoe {
     ///   - properties: The optional additional properties.
     ///   - providers: The providers.
     func log(error: String, withAdditionalProperties properties: Properties? = nil,
-             providers: [AnalyticsTracking] = Simcoe.engine.providers) {
-        let providers: [ErrorLogging] = findProviders(providers)
+             providers: [AnalyticsTracking]? = nil) {
+        let providers: [ErrorLogging] = find(providers)
 
         let propertiesString = properties != nil ? "=> \(properties!.description)" : ""
         write(toProviders: providers, description: "Error: \(error) \(propertiesString)") { errorLogger in
@@ -231,8 +233,8 @@ public final class Simcoe {
     ///   - properties: The optional additional properties.
     ///   - providers: The providers.
     func track(event: String, withAdditionalProperties properties: Properties? = nil,
-               providers: [AnalyticsTracking] = Simcoe.engine.providers) {
-        let providers: [EventTracking] = findProviders(providers)
+               providers: [AnalyticsTracking]? = nil) {
+        let providers: [EventTracking] = find(providers)
 
         let propertiesString = properties != nil ? "=> \(properties!.description)" : ""
         write(toProviders: providers, description: "Event: \(event) \(propertiesString)") { eventTracker in
@@ -257,8 +259,8 @@ public final class Simcoe {
     ///   - key: The lifetime value's identifier.
     ///   - value: The lifetime value.
     ///   - providers: The providers.
-    func trackLifetimeValue(_ key: String, value: Any, withAdditionalProperties properties: Properties?) {
-        let providers: [LifetimeValueTracking] = findProviders()
+    func trackLifetimeValue(_ key: String, value: Any, withAdditionalProperties properties: Properties?, providers: [AnalyticsTracking]? = nil) {
+        let providers: [LifetimeValueTracking] = find(providers)
 
         write(toProviders: providers, description: "Tracking lifetime value with key: \(key) value: \(value)") { lifetimeValueTracker in
             return lifetimeValueTracker.trackLifetimeValue(key, value: value, withAdditionalProperties: properties)
@@ -277,8 +279,8 @@ public final class Simcoe {
     /// - Parameters:
     ///   - attributes: The lifetime attribute values.
     ///   - providers: The providers.
-    func trackLifetimeValues(_ attributes: Properties, withAdditionalProperties properties: Properties?) {
-        let providers: [LifetimeValueTracking] = findProviders()
+    func trackLifetimeValues(_ attributes: Properties, withAdditionalProperties properties: Properties?, providers: [AnalyticsTracking]? = nil) {
+        let providers: [LifetimeValueTracking] = find(providers)
 
         attributes.forEach { (key, value) in
             write(toProviders: providers, description: "Tracking lifetime value with key: \(key) value: \(value)") { lifetimeValueTracker in
@@ -305,8 +307,8 @@ public final class Simcoe {
     ///   - properties: The optional additional properties.
     ///   - providers: The providers.
     func track(location: CLLocation, withAdditionalProperties properties: Properties?,
-               providers: [AnalyticsTracking] = Simcoe.engine.providers) {
-        let providers: [LocationTracking] = findProviders(providers)
+               providers: [AnalyticsTracking]? = nil) {
+        let providers: [LocationTracking] = find(providers)
 
         write(toProviders: providers, description: "User's Location") { locationTracker in
             return locationTracker.track(location: location, withAdditionalProperties: properties)
@@ -331,8 +333,8 @@ public final class Simcoe {
     ///   - properties: The optional additional properties.
     ///   - providers: The providers.
     func track(pageView: String, withAdditionalProperties properties: Properties? = nil,
-               providers: [AnalyticsTracking] = Simcoe.engine.providers) {
-        let providers: [PageViewTracking] = findProviders(providers)
+               providers: [AnalyticsTracking]? = nil) {
+        let providers: [PageViewTracking] = find(providers)
 
         write(toProviders: providers, description: "Page View: \(pageView)") { (provider: PageViewTracking) in
             return provider.track(pageView: pageView, withAdditionalProperties: properties)
@@ -357,8 +359,8 @@ public final class Simcoe {
     ///   - eventProperties: The event properties
     ///   - providers: The providers.
     func trackPurchaseEvent<T: SimcoeProductConvertible>(_ products: [T], eventProperties: Properties?,
-                            providers: [AnalyticsTracking] = Simcoe.engine.providers) {
-        let providers: [PurchaseTracking] = findProviders(providers)
+                            providers: [AnalyticsTracking]? = nil) {
+        let providers: [PurchaseTracking] = find(providers)
         let propertiesString = eventProperties != nil ? "=> \(eventProperties!.description)" : ""
 
         let productsList = products.map { $0.toSimcoeProduct().productName }.joined(separator: ", ")
@@ -386,8 +388,8 @@ public final class Simcoe {
     /// - Parameters:
     ///   - superProperties: The super properties.
     ///   - providers: The providers.
-    func set(superProperties: Properties, providers: [AnalyticsTracking] = Simcoe.engine.providers) {
-        let providers: [SuperPropertyTracking] = findProviders(providers)
+    func set(superProperties: Properties, providers: [AnalyticsTracking]? = nil) {
+        let providers: [SuperPropertyTracking] = find(providers)
 
         write(toProviders: providers, description: "Setting super properties: \(superProperties)") { superPropertyTracker in
             return superPropertyTracker.set(superProperties: superProperties)
@@ -406,8 +408,8 @@ public final class Simcoe {
     /// - Parameters:
     ///   - superProperty: The super property.
     ///   - providers: The providers.
-    func unset(superProperty: String, providers: [AnalyticsTracking] = Simcoe.engine.providers) {
-        let providers: [SuperPropertyTracking] = findProviders(providers)
+    func unset(superProperty: String, providers: [AnalyticsTracking]? = nil) {
+        let providers: [SuperPropertyTracking] = find(providers)
 
         write(toProviders: providers, description: "Unsetting super property: \(superProperty)") { superPropertyTracker in
             return superPropertyTracker.unset(superProperty: superProperty)
@@ -423,8 +425,8 @@ public final class Simcoe {
     /// Clears all currently set super properties.
     ///
     /// - Parameter providers: The providers.
-    func clearSuperProperties(providers: [AnalyticsTracking] = Simcoe.engine.providers) {
-        let providers: [SuperPropertyTracking] = findProviders(providers)
+    func clearSuperProperties(providers: [AnalyticsTracking]? = nil) {
+        let providers: [SuperPropertyTracking] = find(providers)
 
         write(toProviders: providers, description: "Clearing all super properties.") { superPropertyTracker in
             return superPropertyTracker.clearSuperProperties()
@@ -449,8 +451,8 @@ public final class Simcoe {
     ///   - eventProperties: The event properties.
     ///   - providers: The providers.
     func start(timedEvent event: String, withAdditionalProperties properties: Properties?,
-               providers: [AnalyticsTracking] = Simcoe.engine.providers) {
-        let providers: [TimedEventTracking] = findProviders(providers)
+               providers: [AnalyticsTracking]? = nil) {
+        let providers: [TimedEventTracking] = find(providers)
 
         let propertiesString = properties != nil ? "=> \(properties!.description)" : ""
         write(toProviders: providers, description: "Starting Timed Event: \(event) \(propertiesString)") { timedEventTracker in
@@ -474,8 +476,8 @@ public final class Simcoe {
     ///   - eventProperties: The event properties.
     ///   - providers: The providers.
     func end(timedEvent event: String, withAdditionalProperties properties: Properties?,
-             providers: [AnalyticsTracking] = Simcoe.engine.providers) {
-        let providers: [TimedEventTracking] = findProviders(providers)
+             providers: [AnalyticsTracking]? = nil) {
+        let providers: [TimedEventTracking] = find(providers)
 
         let propertiesString = properties != nil ? "=> \(properties!.description)" : ""
         write(toProviders: providers, description: "Ending Timed Event: \(event) \(propertiesString)") { timedEventTracker in
@@ -500,8 +502,8 @@ public final class Simcoe {
     ///   - key: The attribute key to log.
     ///   - value: The attribute value to log.
     ///   - providers: The providers.
-    func setUserAttribute(_ key: String, value: Any, providers: [AnalyticsTracking] = Simcoe.engine.providers) {
-        let providers: [UserAttributeTracking] = findProviders(providers)
+    func setUserAttribute(_ key: String, value: Any, providers: [AnalyticsTracking]? = nil) {
+        let providers: [UserAttributeTracking] = find(providers)
         
         write(toProviders: providers, description: "Setting user attribute with key: \(key) value: \(value)") { attributeSetter in
             return attributeSetter.setUserAttribute(key, value: value)
@@ -520,8 +522,8 @@ public final class Simcoe {
     /// - Parameters:
     ///   - attributes: The attribute values to log.
     ///   - providers: The providers.
-    func setUserAttributes(_ attributes: Properties, providers: [AnalyticsTracking] = Simcoe.engine.providers) {
-        let providers: [UserAttributeTracking] = findProviders(providers)
+    func setUserAttributes(_ attributes: Properties, providers: [AnalyticsTracking]? = nil) {
+        let providers: [UserAttributeTracking] = find(providers)
 
         var description = ""
         attributes.forEach {
@@ -551,8 +553,8 @@ public final class Simcoe {
     ///   - eventProperties: The event properties.
     ///   - providers: The providers.
     func logViewDetail<T: SimcoeProductConvertible>(_ product: T, eventProperties: Properties?,
-                       providers: [AnalyticsTracking] = Simcoe.engine.providers) {
-        let providers: [ViewDetailLogging] = findProviders(providers)
+                       providers: [AnalyticsTracking]? = nil) {
+        let providers: [ViewDetailLogging] = find(providers)
         let simcoeProduct = product.toSimcoeProduct()
         let propertiesString = eventProperties != nil ? "=> \(eventProperties!.description)" : ""
 
