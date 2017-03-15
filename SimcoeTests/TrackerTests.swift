@@ -103,9 +103,9 @@ class TrackerTests: XCTestCase {
     func test_that_it_logs_errors_when_option_default() {
         let pageViewTracker = PageViewTrackingFake()
         pageViewTracker.shouldFail = true
+
         simcoe.providers = [pageViewTracker]
         simcoe.tracker.errorOption = .default
-
         let expectation = 1
 
         simcoe.track(pageView: "1234")
@@ -116,14 +116,12 @@ class TrackerTests: XCTestCase {
 
     func test_that_it_logs_one_error_per_provider_when_option_default() {
         let pageViewTrackers = [PageViewTrackingFake(), PageViewTrackingFake(), PageViewTrackingFake()]
-
         for tracker in pageViewTrackers {
             tracker.shouldFail = true
         }
 
-        simcoe.providers = pageViewTrackers.map {
-            $0 as AnalyticsTracking /// Cast fixes weird array assignment crash
-        }
+        simcoe.providers = pageViewTrackers.map({ $0 as AnalyticsTracking
+        }) // Cast fixes weird array assignment crash
 
         simcoe.tracker.errorOption = .default
         let expectation = pageViewTrackers.count
