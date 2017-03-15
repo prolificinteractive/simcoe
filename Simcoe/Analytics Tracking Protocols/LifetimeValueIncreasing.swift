@@ -16,7 +16,7 @@ public protocol LifetimeValueIncreasing: AnalyticsTracking {
     ///   - value: The amount to increment the property by.
     ///   - properties: The optional additional properties.
     /// - Returns: A tracking result.
-    func increment(property: String?, value: Double, withAdditionalProperties properties: Properties?) -> TrackingResult
+    func increment(property: String?, by value: Double, withAdditionalProperties properties: Properties?) -> TrackingResult
 
     /// Increments the properties.
     ///
