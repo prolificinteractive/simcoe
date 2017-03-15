@@ -277,7 +277,6 @@ internal final class SimcoeLoggingTests: XCTestCase {
     func test_that_it_does_not_log_to_other_providers() {
         let pageViewTracker = PageViewTrackingFake()
         let eventTracker = EventTrackingFake()
-        simcoe.providers = [pageViewTracker, eventTracker]
         let expectation = 0
         simcoe.providers = [pageViewTracker, eventTracker]
 
