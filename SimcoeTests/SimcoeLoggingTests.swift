@@ -200,7 +200,6 @@ internal final class SimcoeLoggingTests: XCTestCase {
 
         XCTAssertEqual(superPropertyTracker.superPropertyEventCount, expectation,
                        "Expected result = Called \(expectation) times; got \(superPropertyTracker.superPropertyEventCount)")
-
     }
 
     // MARK: - TimedEventTracking
@@ -278,8 +277,8 @@ internal final class SimcoeLoggingTests: XCTestCase {
     func test_that_it_does_not_log_to_other_providers() {
         let pageViewTracker = PageViewTrackingFake()
         let eventTracker = EventTrackingFake()
-        let expectation = 0
         simcoe.providers = [pageViewTracker, eventTracker]
+        let expectation = 0
 
         simcoe.track(pageView: "page view test", withAdditionalProperties: nil)
         

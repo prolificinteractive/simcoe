@@ -11,7 +11,7 @@ public protocol SuperPropertyTracking: AnalyticsTracking {
 
     /// Sets the super properties.
     ///
-    /// - Parameter properties: The super properties.
+    /// - Parameter superProperties: The super properties.
     /// - Returns: A tracking result.
     func set(superProperties: Properties) -> TrackingResult
 

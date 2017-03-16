@@ -190,6 +190,8 @@ extension EmptyProvider: SuperPropertyTracking {
 
 }
 
+// MARK: - TimedEventTracking
+
 extension EmptyProvider: TimedEventTracking {
 
     /// Starts the timed event.
