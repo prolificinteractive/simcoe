@@ -169,32 +169,32 @@ extension mParticle: EventTracking {
 
 }
 
-// MARK: - LifetimeValueIncreasing
+// MARK: - LifetimeValueTracking
 
-extension mParticle: LifetimeValueIncreasing {
+extension mParticle: LifetimeValueTracking {
 
-    /// Increments the property.
+    /// Tracks the lifetime value.
     ///
     /// - Parameters:
-    ///   - property: The property.
-    ///   - value: The amount to increment the property by.
+    ///   - key: The lifetime value's identifier.
+    ///   - value: The lifetime value.
     ///   - properties: The optional additional properties.
     /// - Returns: A tracking result.
-    public func increment(property: String?, by value: Double, withAdditionalProperties properties: Properties?) -> TrackingResult {
-        MParticle.sharedInstance().logLTVIncrease(value, eventName: property ?? "", eventInfo: properties)
+    public func trackLifetimeValue(_ key: String, value: Any, withAdditionalProperties properties: Properties?) -> TrackingResult {
+        MParticle.sharedInstance().logLTVIncrease(value as? Double ?? 0, eventName: key, eventInfo: properties)
 
         return .success
     }
 
-    /// Increments the properties
+    /// Track the lifetime values.
     ///
-    /// - Parameters:
-    ///   - properties: The properties.
-    ///   - data: The optional additional properties.
+    /// - Parameter:
+    ///   - attributes: The lifetime attribute values.
+    ///   - properties: The optional additional properties.
     /// - Returns: A tracking result.
-    public func increment(properties: Properties, withAdditionalProperties data: Properties?) -> TrackingResult {
-        properties.forEach {
-            MParticle.sharedInstance().logLTVIncrease($0.value as? Double ?? 0, eventName: $0.key, eventInfo: data)
+    public func trackLifetimeValues(_ attributes: Properties, withAdditionalProperties properties: Properties?) -> TrackingResult {
+        attributes.forEach { (key, value) in
+            _ = trackLifetimeValue(key, value: value, withAdditionalProperties: properties)
         }
 
         return .success

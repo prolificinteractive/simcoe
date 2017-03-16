@@ -101,7 +101,6 @@ While simply implementing this protocol is all you need for your object to be a 
 * `CheckoutTracking`
 * `ErrorLogging`
 * `EventTracking`
-* `LifetimeValueIncreasing`
 * `LifetimeValueTracking`
 * `LocationTracking`
 * `PageViewTracking`

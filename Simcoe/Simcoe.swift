@@ -230,60 +230,6 @@ public final class Simcoe {
         }
     }
 
-    // MARK: - LifetimeValueIncreasing
-
-    /// Increments the property.
-    ///
-    /// - Parameters:
-    ///   - property: The property.
-    ///   - value: The amount to increment the property by.
-    ///   - properties: The optional additional properties.
-    public static func increment(property: String?, by value: Double, withAdditionalProperties properties: Properties?) {
-        engine.increment(property: property, by: value, withAdditionalProperties: properties)
-    }
-
-    /// Increments the property.
-    ///
-    /// - Parameters:
-    ///   - property: The property.
-    ///   - value: The amount to increment the property by.
-    ///   - properties: The optional additional properties.
-    func increment(property: String?, by value: Double, withAdditionalProperties properties: Properties?) {
-        let providers: [LifetimeValueIncreasing] = findProviders()
-
-        write(toProviders: providers, description: "Lifetime Value increased by \(value) for \(property ?? "")") { lifetimeValueIncreaser in
-            return lifetimeValueIncreaser.increment(property: property, by: value, withAdditionalProperties: properties)
-        }
-    }
-
-    /// Increments the properties.
-    ///
-    /// - Parameters:
-    ///   - properties: The properties.
-    ///   - data: The optional additional properties.
-    public static func increment(properties: Properties, withAdditionalProperties data: Properties?) {
-        engine.increment(properties: properties, withAdditionalProperties: data)
-    }
-
-    /// Increments the properties.
-    ///
-    /// - Parameters:
-    ///   - properties: The properties.
-    ///   - data: The optional additional properties.
-    func increment(properties: Properties, withAdditionalProperties data: Properties?) {
-        let providers: [LifetimeValueIncreasing] = findProviders()
-
-        var description = ""
-
-        properties.forEach {
-            description += "Lifetime Value increased by \($1) for \($0)\n"
-        }
-
-        write(toProviders: providers, description: description) { lifetimeValueIncreaser in
-            return lifetimeValueIncreaser.increment(properties: properties, withAdditionalProperties: data)
-        }
-    }
-
     // MARK: - LifetimeValueTracking
 
     /// Tracks the lifetime value.

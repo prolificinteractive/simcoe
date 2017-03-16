@@ -6,6 +6,7 @@
 //  Copyright © 2016 Prolific Interactive. All rights reserved.
 //
 
+@available(*, deprecated, message: "Use LifetimeValueTracking instead", renamed: "LifetimeValueTracking")
 /// Defines methods for increasing a lifetime value of an analytics key.
 public protocol LifetimeValueIncreasing: AnalyticsTracking {
 
