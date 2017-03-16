@@ -63,35 +63,35 @@ extension MixpanelPlaceholder: EventTracking {
 
 }
 
-// MARK: - LifetimeValueIncreasing
+// MARK: - LifetimeValueTracking
 
-extension MixpanelPlaceholder: LifetimeValueIncreasing {
+extension MixpanelPlaceholder: LifetimeValueTracking {
 
-    /// Increments the user property.
+    /// Tracks the lifetime value.
     ///
     /// - Parameters:
-    ///   - property: The user property.
-    ///   - value: The amonut to increment the user property by.
+    ///   - key: The lifetime value's identifier.
+    ///   - value: The lifetime value.
+    ///   - properties: The optional additional properties.
     /// - Returns: A tracking result.
-    public func increment(property: String?, value: Double,
-                          withAdditionalProperties properties: Properties? = nil) -> TrackingResult {
-        Mixpanel.mainInstance().people.increment(property: property ?? "", by: value)
+    public func trackLifetimeValue(_ key: String, value: Any, withAdditionalProperties properties: Properties?) -> TrackingResult {
+        Mixpanel.mainInstance().people.increment(property: key, by: value as? Double ?? 0)
 
         return .success
     }
 
-    /// Increments the user properties.
-    /// All values must be number objects.
+    /// Track the lifetime values.
     ///
-    /// - Parameter userProperties: The user properties.
+    /// - Parameter:
+    ///   - attributes: The lifetime attribute values.
+    ///   - properties: The optional additional properties.
     /// - Returns: A tracking result.
-    public func increment(properties: Properties,
-                          withAdditionalProperties data: Properties? = nil) -> TrackingResult {
-        guard let properties = properties as? MixpanelProperties else {
+    public func trackLifetimeValues(_ attributes: Properties, withAdditionalProperties properties: Properties?) -> TrackingResult {
+        guard let attributes = attributes as? MixpanelProperties else {
             return .error(message: "All values must map to MixpanelType")
         }
 
-        Mixpanel.mainInstance().people.increment(properties: properties)
+        Mixpanel.mainInstance().people.increment(properties: attributes)
 
         return .success
     }
