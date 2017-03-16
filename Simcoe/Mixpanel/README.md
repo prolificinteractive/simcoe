@@ -25,7 +25,7 @@ Mixpanel automatically implements the following protocols:
 
 - `AnalyticsTracking`
 - `EventTracking`
-- `LifetimeValueIncreasing`
+- `LifetimeValueTracking`
 - `SuperPropertyTracking`
 - `UserAttributeTracking`
 
