@@ -26,7 +26,7 @@ Adobe automatically implements the following protocols:
 - `AnalyticsTracking`
 - `PageViewTracking`
 - `EventTracking`
-- `LifetimeValueIncreasing`
+- `LifetimeValueTracking`
 - `LocationTracking`
 
 ## Subclassing

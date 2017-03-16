@@ -89,33 +89,6 @@ extension EmptyProvider: EventTracking {
 
 }
 
-// MARK: - LifetimeValueIncreasing
-
-extension EmptyProvider: LifetimeValueIncreasing {
-
-    /// Increments the property.
-    ///
-    /// - Parameters:
-    ///   - property: The property.
-    ///   - value: The amount to increment the property by.
-    ///   - properties: The optional additional properties.
-    /// - Returns: A tracking result.
-    func increment(property: String?, by value: Double, withAdditionalProperties properties: Properties?) -> TrackingResult {
-        return .success
-    }
-
-    /// Increments the properties.
-    ///
-    /// - Parameters:
-    ///   - properties: The properties.
-    ///   - data: The optional additional properties.
-    /// - Returns: A tracking result.
-    func increment(properties: Properties, withAdditionalProperties data: Properties?) -> TrackingResult {
-        return .success
-    }
-
-}
-
 // MARK: - LifetimeValueTracking
 
 extension EmptyProvider: LifetimeValueTracking {

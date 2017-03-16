@@ -92,36 +92,6 @@ internal final class SimcoeLoggingTests: XCTestCase {
                        "Expected result = Called \(expectation) times; got \(eventTracker.trackEventCallCount)")
     }
 
-    // MARK: - LifetimeValueIncreasing
-
-    func test_that_it_logs_property_increment_to_providers() {
-        let lifetimeValueIncreaser = LifetimeValueIncreasingFake()
-        simcoe.providers = [lifetimeValueIncreaser]
-        let expectation = 1
-
-        simcoe.increment(property: nil, by: 0, withAdditionalProperties: nil)
-
-        XCTAssertEqual(lifetimeValueIncreaser.lifetimeValueCallCount, expectation,
-                       "Expected result = Called \(expectation) times; got \(lifetimeValueIncreaser.lifetimeValueCallCount)")
-    }
-
-    func test_that_it_logs_properties_increment_to_providers() {
-        let lifetimeValueIncreaser = LifetimeValueIncreasingFake()
-        simcoe.providers = [lifetimeValueIncreaser]
-        let expectation = 3
-
-        let attributes = [
-            "foo": 1,
-            "bar": 2,
-            "yes": 3
-        ]
-
-        simcoe.increment(properties: attributes, withAdditionalProperties: nil)
-
-        XCTAssertEqual(lifetimeValueIncreaser.lifetimeValueCallCount, expectation,
-                       "Expected result = Called \(expectation) times; got \(lifetimeValueIncreaser.lifetimeValueCallCount)")
-    }
-
     // MARK: - LifetimeValueTracking
 
     func test_that_it_logs_lifetime_value_to_providers() {

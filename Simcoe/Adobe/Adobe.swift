@@ -44,42 +44,35 @@ extension Adobe: EventTracking {
 
 }
 
-// MARK: - LifetimeValueIncreasing
+// MARK: - LifetimeValueTracking
 
-extension Adobe: LifetimeValueIncreasing {
+extension Adobe: LifetimeValueTracking {
 
-    /// Increments the property.
+    /// Tracks the lifetime value.
     ///
     /// - Parameters:
-    ///   - property: The property.
-    ///   - value: The amount to increment the property by.
+    ///   - key: The lifetime value's identifier.
+    ///   - value: The lifetime value.
     ///   - properties: The optional additional properties.
     /// - Returns: A tracking result.
-    public func increment(property: String?, by value: Double, withAdditionalProperties properties: Properties?) -> TrackingResult {
-        var data = properties ?? Properties()
+    public func trackLifetimeValue(_ key: String, value: Any, withAdditionalProperties properties: Properties?) -> TrackingResult {
+        var properties = properties ?? Properties()
+        properties[key] = ""
 
-        if let property = property {
-            data[property] = ""
-        }
-
-        ADBMobile.trackLifetimeValueIncrease(NSDecimalNumber(value: value), data: data)
+        ADBMobile.trackLifetimeValueIncrease(NSDecimalNumber(value: value as? Double ?? 0), data: properties)
 
         return .success
     }
 
-    /// Increments the properties.
+    /// Track the lifetime values.
     ///
-    /// - Parameters:
-    ///   - properties: The properties.
-    ///   - data: The optional additional properties.
+    /// - Parameter:
+    ///   - attributes: The lifetime attribute values.
+    ///   - properties: The optional additional properties.
     /// - Returns: A tracking result.
-    public func increment(properties: Properties, withAdditionalProperties data: Properties?) -> TrackingResult {
-        properties.forEach {
-            var data = data ?? Properties()
-            data [$0.key] = ""
-            let value = $0.value as? Double ?? 0
-
-            ADBMobile.trackLifetimeValueIncrease(NSDecimalNumber(value: value), data: data)
+    public func trackLifetimeValues(_ attributes: Properties, withAdditionalProperties properties: Properties?) -> TrackingResult {
+        attributes.forEach { (key, value) in
+            _ = trackLifetimeValue(key, value: value, withAdditionalProperties: properties)
         }
 
         return .success
