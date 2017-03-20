@@ -139,7 +139,7 @@ internal final class SimcoeLoggingTests: XCTestCase {
         simcoe.providers = [attributesSetter]
         let expectation = 1
 
-        simcoe.setUserAttribute("foo", value: "bar" as AnyObject)
+        simcoe.setUserAttribute("foo", value: "bar" as String)
 
         XCTAssertEqual(attributesSetter.attributesCallCount, expectation,
                        "Expected result = Called \(expectation) times; got \(attributesSetter.attributesCallCount)")

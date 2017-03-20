@@ -8,15 +8,15 @@
 
 /// The MPCommerceEvent keys available to use with eventProperties.
 ///
-/// - CheckoutOptions:       The checkout options.
-/// - CheckoutStep:          The checkout step.
-/// - Currency:              The currency.
-/// - NonInteractive:        The non interactive flag.
-/// - PromotionContainer:    The promotion container.
-/// - ProductListName:       The product list name.
-/// - ProductListSource:     The product list source.
-/// - ScreenName:            The screen name.
-/// - TransactionAttributes: The transactions attributes.
+/// - checkoutOptions: The checkout options.
+/// - checkoutStep: The checkout step.
+/// - currency: The currency.
+/// - nonInteractive: The non interactive flag.
+/// - promotionContainer: The promotion container.
+/// - productListName: The product list name.
+/// - productListSource: The product list source.
+/// - screenName: The screen name.
+/// - transactionAttributes: The transactions attributes.
 public enum MPCommerceEventKeys: String, EnumerationListable {
 
     case checkoutOptions = "checkoutOptions"

@@ -6,7 +6,7 @@
 //  Copyright © 2016 Prolific Interactive. All rights reserved.
 //
 
-/// A recorder for SimcoeEvents
+/// A recorder for SimcoeEvents.
 public final class Tracker {
 
     /// The output option for the recorder. Defaults to .Verbose.
@@ -20,21 +20,17 @@ public final class Tracker {
 
     fileprivate let outputSources: [Output]
 
-    /**
-     Initializes a new instance using the specified source as its output. By default, this is the
-     standard output console.
-
-     - parameter outputSource: The source to use for general output.
-     */
+    /// Initializes a new instance using the specified source as its output. By default, this is the
+    /// standard output console.
+    ///
+    /// - Parameter outputSources: The source to use for general output.
     init(outputSources: [Output] = [ConsoleOutput(), RemoteOutput(token: Simcoe.session)]) {
         self.outputSources = outputSources
     }
 
-    /**
-     Records the event.
-
-     - parameter event: The event to record.
-     */
+    /// Records the event.
+    ///
+    /// - Parameter event: The event to record.
     func track(event: Event) {
         events.append(event)
         parseEvent(event)

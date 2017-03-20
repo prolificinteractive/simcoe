@@ -8,12 +8,12 @@
 
 /// The MPProduct keys available for use with additionalProperties.
 ///
-/// - Brand:      The product brand.
-/// - Category:   A category to which the product belongs.
-/// - CouponCode: The coupon associated with the product.
-/// - Sku:        The sku of the product.
-/// - Position:   The position of the product on the screen or impression list.
-/// - Variant:    The variant.
+/// - brand: The product brand.
+/// - category: A category to which the product belongs.
+/// - couponCode: The coupon associated with the product.
+/// - sku: The sku of the product.
+/// - position: The position of the product on the screen or impression list.
+/// - variant: The variant.
 public enum MPProductKeys: String, EnumerationListable {
 
     case brand = "brand"
