@@ -12,11 +12,10 @@ extension MPCommerceEvent {
 
     /// A convenience initializer for MPCommerceEvent.
     ///
-    /// - parameter eventType:       The event type.
-    /// - parameter products:        The products.
-    /// - parameter eventProperties: The event properties.
-    ///
-    /// - returns: A MPCommerceEvent instance.
+    /// - Parameters:
+    ///   - eventType: The event type.
+    ///   - products: The products.
+    ///   - eventProperties: The event properties.
     internal convenience init(eventType: MPCommerceEventAction,
                               products: [MPProduct],
                               eventProperties: Properties?) {

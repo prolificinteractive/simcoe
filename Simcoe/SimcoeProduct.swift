@@ -8,6 +8,7 @@
 
 /// The product.
 public struct SimcoeProduct {
+
     /// The product name.
     public let productName: String
 
@@ -25,13 +26,12 @@ public struct SimcoeProduct {
 
     /// The default initializer.
     ///
-    /// - parameter productName: The product name.
-    /// - parameter productId:   The product Id.
-    /// - parameter quantity:    The quantity.
-    /// - parameter price:       The price.
-    /// - parameter properties:  The properties.
-    ///
-    /// - returns: A Product instance.
+    /// - Parameters:
+    ///   - productName: The product name.
+    ///   - productId: The product Id.
+    ///   - quantity: The quantity.
+    ///   - price: The price.
+    ///   - properties: The properties.
     public init(productName: String,
                 productId: String,
                 quantity: Int,

@@ -110,19 +110,6 @@ While simply implementing this protocol is all you need for your object to be a 
 
 So for your analytics provider to be able to handle page views in the Simcoe framework, your provider should implement the `PageViewTracking` protocol. This plug-and-play API allows you to define what you want your provider to handle at a very granular level. If your provider only needs to implement location tracking and nothing else, then you need only implement the `LocationTracking` protocol (as well as the `AnalyticsTracking` protocol, of course); all other protocols are optional. This allows you full customization as to how your objects respond to Simcoe.
 
-Each provider type defined above maps directly to a Simcoe function that will call that method. These are, respectively:
-
-* `logAddToCart`, `logRemoveFromCart`
-* `trackCheckoutEvent`
-* `logError`
-* `trackEvent`
-* `increaseLifetimeValue`
-* `trackLocation`
-* `trackPageView`
-* `trackPurchaseEvent`
-* `setUserAttribute`
-* `logViewDetail`
-
 #### Additional Tracking
 
 Each analytics implementation is different, and Simcoe doesn't expect to be the be-all, end-all of analytics implementations. What if you need to track something that is not included in the base SDK?

@@ -8,12 +8,12 @@
 
 /// The MPTransactionAttributes keys available.
 ///
-/// - Affiliation: The affiliation.
-/// - CouponCode: The coupon code.
-/// - Revenue: The revenue amount.
-/// - Shipping: The shipping amount.
-/// - Tax: The tax amount.
-/// - TransactionId: The transaction Id.
+/// - affiliation: The affiliation.
+/// - couponCode: The coupon code.
+/// - revenue: The revenue amount.
+/// - shipping: The shipping amount.
+/// - tax: The tax amount.
+/// - transactionId: The transaction Id.
 public enum MPTransactionAttributesKeys: String, EnumerationListable {
 
     case affiliation = "affiliation"

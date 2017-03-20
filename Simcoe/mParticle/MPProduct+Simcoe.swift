@@ -12,9 +12,7 @@ extension MPProduct {
 
     /// A convenience initializer.
     ///
-    /// - parameter product: A SimcoeProductConvertible instance.
-    ///
-    /// - returns: A MPProduct.
+    /// - Parameter product: A SimcoeProductConvertible instance.
     internal convenience init(product: SimcoeProductConvertible) {
         let simcoeProduct = product.toSimcoeProduct()
         self.init(name: simcoeProduct.productName,

@@ -8,19 +8,15 @@
 
 import CoreLocation
 
-/**
- Defines methods for tracking a user's location data.
- */
+/// Defines methods for tracking a user's location data.
 public protocol LocationTracking: AnalyticsTracking {
 
-    /**
-     Tracks location.
-
-     - parameter location:   The location to track.
-     - parameter properties: The optional additional properties.
-
-     - returns: A tracking result.
-     */
+    /// Tracks location.
+    ///
+    /// - Parameters:
+    ///   - location: The location to track.
+    ///   - properties: The optional additional properties.
+    /// - Returns: A tracking result.
     func track(location: CLLocation, withAdditionalProperties properties: Properties?) -> TrackingResult
 
 }
