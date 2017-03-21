@@ -75,7 +75,11 @@ extension MixpanelPlaceholder: LifetimeValueTracking {
     ///   - properties: The optional additional properties.
     /// - Returns: A tracking result.
     public func trackLifetimeValue(_ key: String, value: Any, withAdditionalProperties properties: Properties?) -> TrackingResult {
-        Mixpanel.mainInstance().people.increment(property: key, by: value as? Double ?? 0)
+        guard let value = value as? Double else {
+            return .error(message: "Value must map to a Double")
+        }
+
+        Mixpanel.mainInstance().people.increment(property: key, by: value)
 
         return .success
     }
