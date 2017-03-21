@@ -84,7 +84,7 @@ public final class Simcoe {
     }
 
     fileprivate func find<T>(_ providers: [AnalyticsTracking]?) -> [T] {
-        let activeProviders = providers != nil ? providers! : self.providers
+        let activeProviders = providers ?? self.providers
 
         return activeProviders
             .map { provider in return provider as? T }
@@ -177,7 +177,8 @@ public final class Simcoe {
         let providers: [CheckoutTracking] = find(providers)
         let propertiesString = eventProperties != nil ? "=> \(eventProperties!.description)" : ""
 
-        let productsList = products.map { $0.toSimcoeProduct().productName }.joined(separator: ", ")
+        let productsList = products.map { $0.toSimcoeProduct().productName }
+                                   .joined(separator: ", ")
 
         let checkoutEventDescription
             = "Checkout: \(productsList). \(propertiesString)"
@@ -363,7 +364,8 @@ public final class Simcoe {
         let providers: [PurchaseTracking] = find(providers)
         let propertiesString = eventProperties != nil ? "=> \(eventProperties!.description)" : ""
 
-        let productsList = products.map { $0.toSimcoeProduct().productName }.joined(separator: ", ")
+        let productsList = products.map { $0.toSimcoeProduct().productName }
+                                   .joined(separator: ", ")
 
         let purchaseEventDescription
             = "Purchase: \(productsList). \(propertiesString)"
