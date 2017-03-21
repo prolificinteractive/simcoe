@@ -26,8 +26,8 @@ class TrackerTests: XCTestCase {
 
         simcoe.track(pageView: "test", withAdditionalProperties: nil, providers: nil)
 
-        XCTAssertEqual(expectation, simcoe.tracker.events.count,
-                       "Expected result = \(expectation); got \(simcoe.tracker.events.count)")
+        XCTAssertEqual(expectation, outputSource.printCallCount,
+                       "Expected result = \(expectation); got \(outputSource.printCallCount)")
     }
 
     func test_recording_to_input_providers() {
@@ -50,8 +50,8 @@ class TrackerTests: XCTestCase {
 
         simcoe.track(pageView: "1234")
 
-        XCTAssertEqual(expectation, simcoe.tracker.events.count,
-            "Expected result = \(expectation); got \(simcoe.tracker.events.count)")
+        XCTAssertEqual(expectation, outputSource.printCallCount,
+            "Expected result = \(expectation); got \(outputSource.printCallCount)")
     }
 
     func test_that_it_does_not_write_when_option_none() {
