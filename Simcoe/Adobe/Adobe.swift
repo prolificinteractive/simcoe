@@ -59,7 +59,11 @@ extension Adobe: LifetimeValueTracking {
         var properties = properties ?? Properties()
         properties[key] = ""
 
-        ADBMobile.trackLifetimeValueIncrease(NSDecimalNumber(value: value as? Double ?? 0), data: properties)
+        guard let value = value as? Double else {
+            return .error(message: "Value must map to a Double")
+        }
+
+        ADBMobile.trackLifetimeValueIncrease(NSDecimalNumber(value: value), data: properties)
 
         return .success
     }
