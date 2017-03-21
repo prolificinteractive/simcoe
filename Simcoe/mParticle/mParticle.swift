@@ -181,7 +181,11 @@ extension mParticle: LifetimeValueTracking {
     ///   - properties: The optional additional properties.
     /// - Returns: A tracking result.
     public func trackLifetimeValue(_ key: String, value: Any, withAdditionalProperties properties: Properties?) -> TrackingResult {
-        MParticle.sharedInstance().logLTVIncrease(value as? Double ?? 0, eventName: key, eventInfo: properties)
+        guard let value = value as? Double else {
+            return .error(message: "Value must map to a Double")
+        }
+
+        MParticle.sharedInstance().logLTVIncrease(value, eventName: key, eventInfo: properties)
 
         return .success
     }
