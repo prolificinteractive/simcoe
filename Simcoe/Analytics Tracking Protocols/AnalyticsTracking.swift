@@ -24,13 +24,13 @@ public protocol AnalyticsTracking {
     /// This is an optional value and is implemented by default in an extension to do nothing.
     func start()
 
-    /// Stops tracking analytics. This should be called before the application terminates or
-    /// enters the background. Some providers suggest that a stop event should be called to
-    /// make sure events are fired before the application dismisses; else they may fire at the
-    /// next start of the app.
+    /// Force push all tracking events. This should be called before the application terminates or 
+    /// enters the background. Some providers suggest that a flush event should be called to make
+    /// sure events are fired before the application dismisses; else they may fire at the next
+    /// start of the app.
     ///
     /// This is an optional value and is implemented by default in an extension to do nothing.
-    func stop()
+    func flush()
 
 }
 
@@ -45,13 +45,13 @@ public extension AnalyticsTracking {
 
     }
 
-    /// Stops tracking analytics. This should be called before the application terminates or
-    /// enters the background. Some providers suggest that a stop event should be called to
-    /// make sure events are fired before the application dismisses; else they may fire at the
-    /// next start of the app.
+    /// Force push all tracking events. This should be called before the application terminates or
+    /// enters the background. Some providers suggest that a flush event should be called to make
+    /// sure events are fired before the application dismisses; else they may fire at the next
+    /// start of the app.
     ///
     /// This is an optional value and is implemented by default in an extension to do nothing.
-    func stop() {
+    func flush() {
 
     }
 

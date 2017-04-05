@@ -60,10 +60,10 @@ public final class Simcoe {
         engine.providers = analyticsProviders
     }
 
-    /// Stops analytics tracking on all providers.
-    public static func stop() {
+    /// Force uploads all pending events.
+    public static func flush() {
         engine.providers.forEach {
-            $0.stop()
+            $0.flush()
         }
     }
 
