@@ -35,7 +35,7 @@ public class MixpanelPlaceholder {
 
 
     /// Force uploading of queued data to the Mixpanel server.
-    public func stop() {
+    public func flush() {
         Mixpanel.mainInstance().flush()
     }
 
