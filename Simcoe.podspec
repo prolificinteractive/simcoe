@@ -43,6 +43,7 @@ Pod::Spec.new do |s|
   	# Define a Cocoapods subspec
   	s.subspec spec[:name] do |sp|
 		sp.source_files = "Simcoe/#{spec[:name]}/*"
+    sp.exclude_files = "Simcoe/#{spec[:name]}/README.md"
 		sp.dependency "Simcoe/Core"
 
         if spec[:dependency] && spec[:version]
