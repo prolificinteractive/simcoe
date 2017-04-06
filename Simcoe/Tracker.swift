@@ -15,9 +15,6 @@ public final class Tracker {
     /// The error option for the recorder. Defaults to .Default.
     public var errorOption: ErrorHandlingOption = .default
 
-    /// The list of events to track.
-    var events = [Event]()
-
     fileprivate let outputSources: [Output]
 
     /// Initializes a new instance using the specified source as its output. By default, this is the
@@ -32,11 +29,6 @@ public final class Tracker {
     ///
     /// - Parameter event: The event to record.
     func track(event: Event) {
-        events.append(event)
-        parseEvent(event)
-    }
-
-    fileprivate func parseEvent(_ event: Event) {
         let successfulProviders = event.writeEvents.map { writeEvent -> AnalyticsTracking? in
             switch writeEvent.trackingResult {
             case .success:
