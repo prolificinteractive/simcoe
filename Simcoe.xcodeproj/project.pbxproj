@@ -65,6 +65,7 @@
 		2DB15D631E64E60D0042DE7E /* ViewDetailLoggingFake.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DB15D621E64E60D0042DE7E /* ViewDetailLoggingFake.swift */; };
 		2DB15D651E64F1760042DE7E /* SuperPropertyTracking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DB15D641E64F1760042DE7E /* SuperPropertyTracking.swift */; };
 		2DB15D671E64F47F0042DE7E /* SuperPropertyTrackingFake.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DB15D661E64F47F0042DE7E /* SuperPropertyTrackingFake.swift */; };
+		2DB15D6E1E65B9F20042DE7E /* Mixpanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DB15D6D1E65B9F20042DE7E /* Mixpanel.swift */; };
 		59A60EFA736D92D64FAFFB74 /* Pods_Simcoe.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A4BAED5FDA700FDC89B8644 /* Pods_Simcoe.framework */; };
 		72897FE01C79E25800393482 /* SimcoeLoggingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72897FDF1C79E25800393482 /* SimcoeLoggingTests.swift */; };
 		72897FE21C79E25800393482 /* Simcoe.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F902ED121C68FA07007975F5 /* Simcoe.framework */; };
@@ -131,6 +132,8 @@
 		2DB15D621E64E60D0042DE7E /* ViewDetailLoggingFake.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewDetailLoggingFake.swift; sourceTree = "<group>"; };
 		2DB15D641E64F1760042DE7E /* SuperPropertyTracking.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SuperPropertyTracking.swift; sourceTree = "<group>"; };
 		2DB15D661E64F47F0042DE7E /* SuperPropertyTrackingFake.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SuperPropertyTrackingFake.swift; sourceTree = "<group>"; };
+		2DB15D6D1E65B9F20042DE7E /* Mixpanel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Mixpanel.swift; sourceTree = "<group>"; };
+		2DB6080F1E65CB9B00A997FB /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		6FA69F4C737E782FBEFB8F74 /* Pods_Simcoe_SimcoeTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Simcoe_SimcoeTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		72897FDD1C79E25800393482 /* SimcoeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SimcoeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		72897FDF1C79E25800393482 /* SimcoeLoggingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimcoeLoggingTests.swift; sourceTree = "<group>"; };
@@ -218,6 +221,15 @@
 				2792AE2D1DA4606900FB1E28 /* MPEventTests.swift */,
 			);
 			name = mParticle;
+			sourceTree = "<group>";
+		};
+		2DB15D6C1E64FAEC0042DE7E /* Mixpanel */ = {
+			isa = PBXGroup;
+			children = (
+				2DB15D6D1E65B9F20042DE7E /* Mixpanel.swift */,
+				2DB6080F1E65CB9B00A997FB /* README.md */,
+			);
+			path = Mixpanel;
 			sourceTree = "<group>";
 		};
 		6EC9CA1862EB4824462A8FA3 /* Pods */ = {
@@ -310,6 +322,7 @@
 		F93DF03C1C6E7E0D007B3928 /* Simcoe */ = {
 			isa = PBXGroup;
 			children = (
+				2DB15D6C1E64FAEC0042DE7E /* Mixpanel */,
 				F94E7CCC1C725D89007E7873 /* Adobe */,
 				276A93A41DE608EB00774D9E /* Analytics Tracking Protocols */,
 				F90E8BD01C7B9131009556F4 /* ConsoleOutput.swift */,
@@ -607,6 +620,7 @@
 				276A947E1DE6590C00774D9E /* CartLogging.swift in Sources */,
 				276A93D91DE60AA800774D9E /* TrackingResult.swift in Sources */,
 				276A93DA1DE60AA800774D9E /* WriteEvent.swift in Sources */,
+				2DB15D6E1E65B9F20042DE7E /* Mixpanel.swift in Sources */,
 				2D5888D01E64B27B0035C73D /* LifetimeValueTracking.swift in Sources */,
 				2DB15D651E64F1760042DE7E /* SuperPropertyTracking.swift in Sources */,
 				276A94821DE6590C00774D9E /* LifetimeValueIncreasing.swift in Sources */,

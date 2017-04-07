@@ -102,7 +102,8 @@ public final class Simcoe {
         engine.logAddToCart(product, eventProperties: eventProperties)
     }
 
-    /// Logs the addition of a product to the cart.
+    /// Logs the addition of a product to the cart. Will default to providers
+    /// associated with the current instance of Simcoe if none are provided.
     ///
     /// - Parameters:
     ///   - product: The SimcoeProductConvertible instance.
@@ -133,7 +134,8 @@ public final class Simcoe {
         engine.logRemoveFromCart(product, eventProperties: eventProperties)
     }
 
-    /// Logs the removal of a product from the cart.
+    /// Logs the removal of a product from the cart. Will default to providers
+    /// associated with the current instance of Simcoe if none are provided.
     ///
     /// - Parameters:
     ///   - product: The SimcoeProductConvertible instance.
@@ -166,7 +168,8 @@ public final class Simcoe {
         engine.trackCheckoutEvent(products, eventProperties: eventProperties)
     }
 
-    /// Tracks a checkout event.
+    /// Tracks a checkout event. Will default to providers
+    /// associated with the current instance of Simcoe if none are provided.
     ///
     /// - Parameters:
     ///   - products: The products.
@@ -200,7 +203,8 @@ public final class Simcoe {
         engine.log(error: error, withAdditionalProperties: properties)
     }
 
-    /// Logs the error with optional additional properties.
+    /// Logs the error with optional additional properties. Will default to providers
+    /// associated with the current instance of Simcoe if none are provided.
     ///
     /// - Parameters:
     ///   - error: The error to log.
@@ -227,7 +231,8 @@ public final class Simcoe {
         engine.track(event: event, withAdditionalProperties: properties)
     }
 
-    /// Tracks the event.
+    /// Tracks the event. Will default to providers associated with the current 
+    /// instance of Simcoe if none are provided.
     ///
     /// - Parameters:
     ///   - event: The event to track.
@@ -254,7 +259,8 @@ public final class Simcoe {
         engine.trackLifetimeValue(key, value: value, withAdditionalProperties: properties)
     }
 
-    /// Tracks the lifetime value.
+    /// Tracks the lifetime value. Will default to providers associated with the current 
+    /// instance of Simcoe if none are provided.
     ///
     /// - Parameters:
     ///   - key: The lifetime value's identifier.
@@ -275,7 +281,8 @@ public final class Simcoe {
         engine.trackLifetimeValues(attributes, withAdditionalProperties: properties)
     }
 
-    /// Track the lifetime values.
+    /// Track the lifetime values. Will default to providers associated with the current 
+    /// instance of Simcoe if none are provided.
     ///
     /// - Parameters:
     ///   - attributes: The lifetime attribute values.
@@ -301,7 +308,8 @@ public final class Simcoe {
         engine.track(location: location, withAdditionalProperties: properties)
     }
 
-    /// Tracks location.
+    /// Tracks location. Will default to providers associated with the current 
+    /// instance of Simcoe if none are provided.
     ///
     /// - Parameters:
     ///   - location: The location to track.
@@ -327,7 +335,8 @@ public final class Simcoe {
         engine.track(pageView: pageView, withAdditionalProperties: properties)
     }
 
-    /// Tracks the page view.
+    /// Tracks the page view. Will default to providers associated with the current 
+    /// instance of Simcoe if none are provided.
     ///
     /// - Parameters:
     ///   - pageView: The page view to track.
@@ -353,7 +362,8 @@ public final class Simcoe {
         engine.trackPurchaseEvent(products, eventProperties: eventProperties)
     }
 
-    /// Tracks a purchase event.
+    /// Tracks a purchase event. Will default to providers associated with the current 
+    /// instance of Simcoe if none are provided.
     ///
     /// - Parameters:
     ///   - products: The products.
@@ -385,7 +395,8 @@ public final class Simcoe {
         engine.set(superProperties: superProperties)
     }
 
-    /// Sets the super properties.
+    /// Sets the super properties. Will default to providers associated with the current 
+    /// instance of Simcoe if none are provided.
     ///
     /// - Parameters:
     ///   - superProperties: The super properties.
@@ -405,7 +416,8 @@ public final class Simcoe {
         engine.unset(superProperty: superProperty)
     }
 
-    /// Unsets the super property.
+    /// Unsets the super property. Will default to providers associated with the current 
+    /// instance of Simcoe if none are provided.
     ///
     /// - Parameters:
     ///   - superProperty: The super property.
@@ -424,7 +436,8 @@ public final class Simcoe {
         engine.clearSuperProperties()
     }
 
-    /// Clears all currently set super properties.
+    /// Clears all currently set super properties. Will default to providers
+    /// associated with the current instance of Simcoe if none are provided.
     ///
     /// - Parameter providers: The providers.
     func clearSuperProperties(providers: [AnalyticsTracking]? = nil) {
@@ -446,7 +459,8 @@ public final class Simcoe {
         engine.start(timedEvent: event, withAdditionalProperties: properties)
     }
 
-    /// Starts the timed event.
+    /// Starts the timed event. Will default to providers associated with the 
+    /// current instance of Simcoe if none are provided.
     ///
     /// - Parameters:
     ///   - event: The event name.
@@ -471,7 +485,8 @@ public final class Simcoe {
         engine.end(timedEvent: event, withAdditionalProperties: properties)
     }
 
-    /// Stops the timed event.
+    /// Stops the timed event. Will default to providers associated with the current 
+    /// instance of Simcoe if none are provided.
     ///
     /// - Parameters:
     ///   - event: The event name.
@@ -498,7 +513,8 @@ public final class Simcoe {
         engine.setUserAttribute(key, value: value)
     }
 
-    /// Sets the User Attribute.
+    /// Sets the User Attribute. Will default to providers
+    /// associated with the current instance of Simcoe if none are provided.
     ///
     /// - Parameters:
     ///   - key: The attribute key to log.
@@ -519,7 +535,8 @@ public final class Simcoe {
         engine.setUserAttributes(attributes)
     }
 
-    /// Sets the User Attributes.
+    /// Sets the User Attributes. Will default to providers
+    /// associated with the current instance of Simcoe if none are provided.
     ///
     /// - Parameters:
     ///   - attributes: The attribute values to log.
@@ -548,7 +565,8 @@ public final class Simcoe {
         engine.logViewDetail(product, eventProperties: eventProperties)
     }
 
-    /// Logs the action of viewing a product's details.
+    /// Logs the action of viewing a product's details. Will default to providers
+    /// associated with the current instance of Simcoe if none are provided.
     ///
     /// - Parameters:
     ///   - product: The SimcoeProductConvertible instance.
