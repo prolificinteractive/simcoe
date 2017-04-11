@@ -8,6 +8,7 @@
 
 import Mixpanel
 
+/// The definition of MixpanelProperties
 typealias MixpanelProperties = [String: MixpanelType]
 
 /// The Mixpanel analytics provider.
