@@ -53,6 +53,7 @@ Simcoe comes with default implementations for a wide-variety of providers right 
 
 * [Adobe](Simcoe/Adobe/README.md)
 * [mParticle](Simcoe/mParticle/README.md)
+* [Mixpanel](Simcoe/Mixpanel/README.md)
 
 
 ## Usage
