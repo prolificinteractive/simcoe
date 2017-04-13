@@ -9,7 +9,7 @@
 /// The write event.
 internal struct WriteEvent {
 
-    /// The provider
+    /// The provider.
     let provider: AnalyticsTracking
 
     /// The tracking result.

@@ -19,6 +19,30 @@ class TrackerTests: XCTestCase {
         simcoe = Simcoe(tracker: Tracker(outputSources: [outputSource]))
     }
 
+    func test_recording_to_default_providers() {
+        let tracker = PageViewTrackingFake()
+        simcoe.providers = [tracker]
+        let expectation = 1
+
+        simcoe.track(pageView: "test", withAdditionalProperties: nil, providers: nil)
+
+        XCTAssertEqual(expectation, outputSource.printCallCount,
+                       "Expected result = \(expectation); got \(outputSource.printCallCount)")
+    }
+
+    func test_recording_to_input_providers() {
+        let trackerOne = PageViewTrackingFake()
+        simcoe.providers = [trackerOne]
+        let expectation = 3
+
+        simcoe.track(pageView: "test", withAdditionalProperties: nil,
+                     providers: [trackerOne, PageViewTrackingFake(), PageViewTrackingFake()])
+
+        XCTAssertEqual(expectation, outputSource.printCallCount,
+                       "Expected result = \(expectation); got \(outputSource.printCallCount)")
+
+    }
+
     func test_that_it_records_events() {
         let tracker = PageViewTrackingFake()
         simcoe.providers = [tracker]
@@ -26,8 +50,8 @@ class TrackerTests: XCTestCase {
 
         simcoe.track(pageView: "1234")
 
-        XCTAssertEqual(expectation, simcoe.tracker.events.count,
-            "Expected result = \(expectation); got \(simcoe.tracker.events.count)")
+        XCTAssertEqual(expectation, outputSource.printCallCount,
+            "Expected result = \(expectation); got \(outputSource.printCallCount)")
     }
 
     func test_that_it_does_not_write_when_option_none() {
@@ -105,7 +129,5 @@ class TrackerTests: XCTestCase {
         XCTAssertEqual(expectation, outputSource.printCallCount,
             "Expected result = \(expectation); got \(outputSource.printCallCount)")
     }
-
-
 
 }
