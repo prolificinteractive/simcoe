@@ -13,13 +13,13 @@ import CoreLocation
 public class Adobe {
 
     /// The name of the tracker.
-    open let name = "Adobe Omniture"
+    public let name = "Adobe Omniture"
 
     /// The default initializer.
     public init() { }
 
     /// Starts tracking analytics.
-    open func start() {
+    public func start() {
         ADBMobile.collectLifecycleData()
     }
 
@@ -38,29 +38,47 @@ extension Adobe: EventTracking {
     public func track(event: String,
                     withAdditionalProperties properties: Properties?) -> TrackingResult {
         ADBMobile.trackAction(event, data: properties)
+
         return .success
     }
 
 }
 
-// MARK: - LifetimeValueIncreasing
+// MARK: - LifetimeValueTracking
 
-extension Adobe: LifetimeValueIncreasing {
+extension Adobe: LifetimeValueTracking {
 
-    /// Increases the lifetime value of the key by the specified amount.
+    /// Tracks the lifetime value.
     ///
     /// - Parameters:
-    ///   - amount: The amount to increase that lifetime value for.
-    ///   - item: The optional item to extend.
+    ///   - key: The lifetime value's identifier.
+    ///   - value: The lifetime value.
     ///   - properties: The optional additional properties.
     /// - Returns: A tracking result.
-    public func increaseLifetimeValue(byAmount amount: Double, forItem item: String?, withAdditionalProperties properties: Properties?) -> TrackingResult {
-        var data = properties ?? Properties()
-        if let item = item {
-            data[item] = ""
+    public func trackLifetimeValue(_ key: String, value: Any, withAdditionalProperties properties: Properties?) -> TrackingResult {
+        var properties = properties ?? Properties()
+        properties[key] = ""
+
+        guard let value = value as? Double else {
+            return .error(message: "Value must map to a Double")
         }
 
-        ADBMobile.trackLifetimeValueIncrease(NSDecimalNumber(value: amount), data: data)
+        ADBMobile.trackLifetimeValueIncrease(NSDecimalNumber(value: value), data: properties)
+
+        return .success
+    }
+
+    /// Track the lifetime values.
+    ///
+    /// - Parameter:
+    ///   - attributes: The lifetime attribute values.
+    ///   - properties: The optional additional properties.
+    /// - Returns: A tracking result.
+    public func trackLifetimeValues(_ attributes: Properties, withAdditionalProperties properties: Properties?) -> TrackingResult {
+        attributes.forEach { (key, value) in
+            _ = trackLifetimeValue(key, value: value, withAdditionalProperties: properties)
+        }
+
         return .success
     }
 
@@ -79,6 +97,7 @@ extension Adobe: LocationTracking {
     public func track(location: CLLocation,
                     withAdditionalProperties properties: Properties?) -> TrackingResult {
         ADBMobile.trackLocation(location, data: properties)
+
         return .success
     }
 
@@ -96,6 +115,7 @@ extension Adobe: PageViewTracking {
     /// - Returns: A tracking result.
     public func track(pageView: String, withAdditionalProperties properties: Properties?) -> TrackingResult {
         ADBMobile.trackState(pageView, data: properties)
+
         return .success
     }
 

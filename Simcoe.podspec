@@ -35,14 +35,15 @@ Pod::Spec.new do |s|
 
   adobe		=   { :name => "Adobe",           :dependency => "AdobeMobileSDK", :version => '~> 4.13' }
   mParticle =   { :name => "mParticle",       :dependency => "mParticle-Apple-SDK", :version => '~> 6' }
+  mixpanel  =   { :name => "Mixpanel",        :dependency => "Mixpanel-swift", :version => '~> 2.1.3' }
 
-  all_specs = [adobe, mParticle]
+  all_specs = [adobe, mParticle, mixpanel]
 
   all_specs.each do |spec|
 
   	# Define a Cocoapods subspec
   	s.subspec spec[:name] do |sp|
-		sp.source_files = "Simcoe/#{spec[:name]}/*"
+		sp.source_files = "Simcoe/#{spec[:name]}/*.swift"
 		sp.dependency "Simcoe/Core"
 
         if spec[:dependency] && spec[:version]

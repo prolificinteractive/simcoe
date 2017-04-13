@@ -14,7 +14,7 @@ public class mParticle {
     fileprivate static let unknownErrorMessage = "An unknown error occurred."
 
     /// The name of the tracker.
-    open let name = "mParticle"
+    public let name = "mParticle"
 
     /// Initializes and starts the SDK with the input key and secret.
     ///
@@ -169,20 +169,37 @@ extension mParticle: EventTracking {
 
 }
 
-// MARK: - LifetimeValueIncreasing
+// MARK: - LifetimeValueTracking
 
-extension mParticle: LifetimeValueIncreasing {
+extension mParticle: LifetimeValueTracking {
 
-    /// Increases the lifetime value of the key by the specified amount.
+    /// Tracks the lifetime value.
     ///
     /// - Parameters:
-    ///   - amount: The amount to increase that lifetime value for.
-    ///   - item: The optional item to extend.
+    ///   - key: The lifetime value's identifier.
+    ///   - value: The lifetime value.
     ///   - properties: The optional additional properties.
     /// - Returns: A tracking result.
-    public func increaseLifetimeValue(byAmount amount: Double, forItem item: String?,
-                                    withAdditionalProperties properties: Properties?) -> TrackingResult {
-        MParticle.sharedInstance().logLTVIncrease(amount, eventName: (item ?? ""), eventInfo: properties)
+    public func trackLifetimeValue(_ key: String, value: Any, withAdditionalProperties properties: Properties?) -> TrackingResult {
+        guard let value = value as? Double else {
+            return .error(message: "Value must map to a Double")
+        }
+
+        MParticle.sharedInstance().logLTVIncrease(value, eventName: key, eventInfo: properties)
+
+        return .success
+    }
+
+    /// Track the lifetime values.
+    ///
+    /// - Parameter:
+    ///   - attributes: The lifetime attribute values.
+    ///   - properties: The optional additional properties.
+    /// - Returns: A tracking result.
+    public func trackLifetimeValues(_ attributes: Properties, withAdditionalProperties properties: Properties?) -> TrackingResult {
+        attributes.forEach { (key, value) in
+            _ = trackLifetimeValue(key, value: value, withAdditionalProperties: properties)
+        }
 
         return .success
     }
@@ -268,6 +285,66 @@ extension mParticle: PurchaseTracking {
 
 }
 
+// MARK: - TimedEventTracking
+
+extension mParticle: TimedEventTracking {
+
+    /// Starts the timed event.
+    ///
+    /// - Parameters:
+    ///   - event: The event name.
+    ///   - properties: The event properties.
+    /// - Returns: A tracking result.
+    public func start(timedEvent event: String, withAdditionalProperties properties: Properties?) -> TrackingResult {
+        guard var properties = properties else {
+            return .error(message: "Cannot track a timed event without valid properties.")
+        }
+
+        properties[MPEventKeys.name.rawValue] = event as String
+
+        let event: MPEvent
+        do {
+            event = try MPEvent.toEvent(usingData: properties)
+        } catch let error as MPEventGenerationError {
+            return .error(message: error.description)
+        } catch {
+            return .error(message: mParticle.unknownErrorMessage)
+        }
+
+        MParticle.sharedInstance().beginTimedEvent(event)
+
+        return .success
+    }
+
+    /// Stops the timed event.
+    ///
+    /// - Parameters:
+    ///   - event: The event name.
+    ///   - properties: The event properties.
+    /// - Returns: A tracking result.
+    public func stop(timedEvent event: String, withAdditionalProperties properties: Properties?) -> TrackingResult {
+        guard var properties = properties else {
+            return .error(message: "Cannot track a timed event without valid properties.")
+        }
+
+        properties[MPEventKeys.name.rawValue] = event as String
+
+        let event: MPEvent
+        do {
+            event = try MPEvent.toEvent(usingData: properties)
+        } catch let error as MPEventGenerationError {
+            return .error(message: error.description)
+        } catch {
+            return .error(message: mParticle.unknownErrorMessage)
+        }
+
+        MParticle.sharedInstance().endTimedEvent(event)
+
+        return .success
+    }
+
+}
+
 // MARK: - UserAttributeTracking
 
 extension mParticle: UserAttributeTracking {
@@ -280,6 +357,18 @@ extension mParticle: UserAttributeTracking {
     /// - Returns: A tracking result.
     public func setUserAttribute(_ key: String, value: Any) -> TrackingResult {
         MParticle.sharedInstance().setUserAttribute(key, value: value)
+
+        return .success
+    }
+
+    /// Sets the User Attributes.
+    ///
+    /// - Parameter attributes: The attribute values to log.
+    /// - Returns: A tracking result.
+    public func setUserAttributes(_ attributes: Properties) -> TrackingResult {
+        attributes.forEach {
+            MParticle.sharedInstance().setUserAttribute($0, value: $1)
+        }
 
         return .success
     }

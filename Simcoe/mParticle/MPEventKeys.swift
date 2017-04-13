@@ -20,11 +20,9 @@ public enum MPEventKeys: String, EnumerationListable {
     case eventType = "SimcoeInternalMPEventType"
     case category = "SimcoeInternalMPCategory"
     case duration = "SimcoeInternalMPDuration"
-    case startTime = "SimcoeInternalMPStartTime"
-    case endTime = "SimcoeInternalMPEndTime"
     case name = "SimcoeInternalName"
     case customFlags = "SimcoeInternalCustomFlags"
 
-    static let allKeys: [MPEventKeys] = [.eventType, .category, .duration, .startTime, .endTime, .name, .customFlags]
+    static let allKeys: [MPEventKeys] = [.eventType, .category, .duration, .name, .customFlags]
     
 }

@@ -53,6 +53,7 @@ Simcoe comes with default implementations for a wide-variety of providers right 
 
 * [Adobe](Simcoe/Adobe/README.md)
 * [mParticle](Simcoe/mParticle/README.md)
+* [Mixpanel](Simcoe/Mixpanel/README.md)
 
 
 ## Usage
@@ -101,10 +102,12 @@ While simply implementing this protocol is all you need for your object to be a 
 * `CheckoutTracking`
 * `ErrorLogging`
 * `EventTracking`
-* `LifetimeValueIncreasing`
+* `LifetimeValueTracking`
 * `LocationTracking`
 * `PageViewTracking`
 * `PurchaseTracking`
+* `SuperPropertyTracking`
+* `TimedEventTracking`
 * `UserAttributeTracking`
 * `ViewDetailLogging`
 
@@ -143,7 +146,7 @@ If you wish to contribute to the project, fork this repo and submit a pull reque
 
 ![prolific](https://s3.amazonaws.com/prolificsitestaging/logos/Prolific_Logo_Full_Color.png)
 
-Copyright (c) 2016 Prolific Interactive
+Copyright (c) 2017 Prolific Interactive
 
 Simcoe is maintained and sponsored by Prolific Interactive. It may be redistributed under the terms specified in the [LICENSE] file.
 
