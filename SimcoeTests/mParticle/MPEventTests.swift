@@ -98,16 +98,6 @@ class MPEventTests: XCTestCase {
             "Expected result = \(expected); got \(eventError)")
     }
 
-    func test_that_MPEvent_has_type() {
-        let type = MPEventType.media
-
-        let data = MPEvent.eventData(type: type, name: "Event Type")
-        let result = try! MPEvent.toEvent(usingData: data)
-
-        XCTAssertEqual(result.type, type,
-            "Expected result = \(type); got \(result.type)")
-    }
-
     func test_that_MPEvent_has_name() {
         let name = "Hello, World"
 
