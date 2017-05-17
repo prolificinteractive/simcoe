@@ -2,7 +2,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "Simcoe"
-  s.version      = "1.0.0"
+  s.version      = "1.1.0"
   s.summary      = "An analytics framework that provides a base layer of simple APIs for managing analytics frameworks."
   s.description  = <<-DESC
                     Simcoe is an analytics framework that aims to provide a simple, extensible API for managing and handling various analytics frameworks. It makes very few assumptions about your analytics implementations, allowing the implementer to customize it to their needs.
@@ -12,7 +12,7 @@ Pod::Spec.new do |s|
                     Simcoe also provides a wealth of debugging options, including the ability to track errors as well as log and debug analytics calls right from Xcode.
                 DESC
   s.license      = "MIT"
-  s.author       = { "Christopher Jones" => "c.jones@prolificinteractive.com" }
+  s.author       = { "Prolific Interactive" => "info@prolificinteractive.com" }
   s.homepage     = "https://github.com/prolificinteractive/simcoe"
 
   #  When using multiple platforms
@@ -33,7 +33,7 @@ Pod::Spec.new do |s|
   # Subspecs
   # Each subspec represents an analytics library implemented using Simcoe.
 
-  adobe		=   { :name => "Adobe",           :dependency => "AdobeMobileSDK", :version => '~> 4.13' }
+  adobe		  =   { :name => "Adobe",           :dependency => "AdobeMobileSDK", :version => '~> 4.13' }
   mParticle =   { :name => "mParticle",       :dependency => "mParticle-Apple-SDK", :version => '~> 6' }
   mixpanel  =   { :name => "Mixpanel",        :dependency => "Mixpanel-swift", :version => '~> 2.1.3' }
 
