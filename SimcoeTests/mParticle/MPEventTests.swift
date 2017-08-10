@@ -29,9 +29,9 @@ class MPEventTests: XCTestCase {
         }
 
         XCTAssertNil(eventError,
-            "Expected error to be nil; got \(eventError)")
+                     "Expected error to be nil; got \(String(describing: eventError))")
         XCTAssertNotNil(event,
-            "Expected event to not be nil; got nil")
+                        "Expected event to not be nil; got nil")
     }
 
     func test_that_name_error_thrown_when_missing() {
@@ -51,9 +51,9 @@ class MPEventTests: XCTestCase {
         }
 
         XCTAssertNil(event,
-            "Expected event to fail initialization and return nil; got \(event).")
+                     "Expected event to fail initialization and return nil; got \(String(describing: event)).")
         XCTAssertEqual(expected, eventError as? MPEventGenerationError,
-            "Expected result = \(expected); got \(eventError)")
+                       "Expected result = \(expected); got \(String(describing: eventError))")
     }
 
     func test_that_type_error_thrown_when_missing() {
@@ -73,9 +73,9 @@ class MPEventTests: XCTestCase {
         }
 
         XCTAssertNil(event,
-            "Expected event to be nil; got \(event)")
+                     "Expected event to be nil; got \(String(describing: event))")
         XCTAssertEqual(expected, eventError as? MPEventGenerationError,
-            "Expected result = \(expected); got \(eventError)")
+                       "Expected result = \(expected); got \(String(describing: eventError))")
     }
 
     func test_that_init_error_thrown_when_bad_data_input() {
@@ -95,11 +95,11 @@ class MPEventTests: XCTestCase {
         XCTAssertNil(event,
             "Expected result = event is nil; got not-nil.")
         XCTAssertEqual(expected, eventError,
-            "Expected result = \(expected); got \(eventError)")
+                       "Expected result = \(expected); got \(String(describing: eventError))")
     }
 
     func test_that_MPEvent_has_type() {
-        let type = MPEventType.media
+        let type = MPEventType.social
 
         let data = MPEvent.eventData(type: type, name: "Event Type")
         let result = try! MPEvent.toEvent(usingData: data)
@@ -125,7 +125,7 @@ class MPEventTests: XCTestCase {
         let result = try! MPEvent.toEvent(usingData: data)
 
         XCTAssertEqual(category, result.category,
-            "Expected result = \(category); got \(result.category)")
+                       "Expected result = \(category); got \(String(describing: result.category))")
     }
 
     func test_that_MPEvent_has_duration() {
@@ -135,7 +135,7 @@ class MPEventTests: XCTestCase {
         let result = try! MPEvent.toEvent(usingData: data)
 
         XCTAssertEqual(duration, result.duration as! Float,
-            "Expected result = \(duration); got \(result.duration)")
+                       "Expected result = \(duration); got \(String(describing: result.duration))")
     }
 
     func test_that_MPEvent_has_customFlags() {
