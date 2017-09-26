@@ -35,7 +35,7 @@ Pod::Spec.new do |s|
 
   adobe		  =   { :name => "Adobe",           :dependency => "AdobeMobileSDK", :version => '~> 4.13' }
   mParticle =   { :name => "mParticle",       :dependency => "mParticle-Apple-SDK", :version => '~> 6' }
-  mixpanel  =   { :name => "Mixpanel",        :dependency => "Mixpanel-swift", :version => '~> 2.1.3' }
+  mixpanel  =   { :name => "Mixpanel",        :dependency => "Mixpanel-swift", :version => '~> 2.2.0' }
 
   all_specs = [adobe, mParticle, mixpanel]
 
