@@ -20,39 +20,26 @@ extension MPProduct {
                   sku: simcoeProduct.productId,
                   quantity: NSNumber(value: simcoeProduct.quantity),
                   price: NSNumber(value: simcoeProduct.price ?? 0))
+        self.brand = simcoeProduct.brand
+        self.category = simcoeProduct.category
+        self.couponCode = simcoeProduct.couponCode
+        self.variant = simcoeProduct.variant
+
+        if let position = simcoeProduct.position {
+            self.position = position
+        }
 
         guard let properties = simcoeProduct.properties else {
             return
         }
 
-        if let brand = properties[MPProductKeys.brand.rawValue] as? String {
-            self.brand = brand
-        }
-
-        if let category = properties[MPProductKeys.category.rawValue] as? String {
-            self.category = category
-        }
-
-        if let couponCode = properties[MPProductKeys.couponCode.rawValue] as? String {
-            self.couponCode = couponCode
-        }
-
-        if let sku = properties[MPProductKeys.sku.rawValue] as? String {
-            // INTENTIONAL: In MPProduct: The variant of the product
-            self.variant = sku
-        }
-
-        if let position = properties[MPProductKeys.position.rawValue] as? UInt {
-            self.position = position
-        }
-        
         let remaining = MPProductKeys.remaining(properties: properties)
-        
+
         for (key, value) in remaining {
             if let value = value as? String {
                 self[key] = value
             }
         }
     }
-    
+
 }
