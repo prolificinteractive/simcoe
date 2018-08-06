@@ -3,8 +3,8 @@
 # # * https://github.com/supermarin/xcpretty#usage
 #
 
-language: objective-c
-osx_image: xcode9
+language: swift
+osx_image: xcode9.3
 cache: cocoapods
 podfile: Podfile
 before_install:
@@ -12,8 +12,7 @@ before_install:
 - rvm use $(cat .ruby-version)
 - gem install bundler
 - bundle install
-- pod repo update --silent
-- pod install
+- pod install --repo-update
 script:
 - set -o pipefail && xcodebuild test -workspace Simcoe.xcworkspace -scheme SimcoeTests -destination 'platform=iOS Simulator,name=iPhone 7,OS=latest' | xcpretty
 - pod lib lint

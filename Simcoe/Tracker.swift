@@ -39,7 +39,7 @@ public final class Tracker {
             }
         }
 
-        write(event.description, forProviders: successfulProviders.flatMap { $0 })
+        write(event.description, forProviders: successfulProviders.compactMap { $0 })
     }
 
     fileprivate func handleError(usingMessage message: String, inProvider provider: AnalyticsTracking) {
