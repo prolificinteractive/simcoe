@@ -13,27 +13,18 @@ public class mParticle {
 
     fileprivate static let unknownErrorMessage = "An unknown error occurred."
 
+    fileprivate var currentUser: MParticleUser? {
+        return MParticle.sharedInstance().identity.currentUser
+    }
+
     /// The name of the tracker.
     public let name = "mParticle"
 
-    /// Initializes and starts the SDK with the input key and secret.
+    /// Initializes and starts the SDK with the input options.
     ///
-    /// - Parameters:
-    ///   - key: The key.
-    ///   - secret: The secret.
-    ///   - installationType: The installation type.
-    ///   - environment: The environment.
-    ///   - proxyAppDelegate: Determines if app delegate proxy should be used.
-    public init(key: String,
-                secret: String,
-                installationType: MPInstallationType = .autodetect,
-                environment: MPEnvironment = .autoDetect,
-                proxyAppDelegate: Bool = true) {
-        MParticle.sharedInstance().start(withKey: key,
-                                                secret:secret,
-                                                installationType: installationType,
-                                                environment: environment,
-                                                proxyAppDelegate: proxyAppDelegate)
+    /// - Parameter options: The mParticle SDK options.
+    public init(options: MParticleOptions) {
+        MParticle.sharedInstance().start(with: options)
     }
 
     /// Starts the mParticle SDK with the api_key and api_secret saved in MParticleConfig.plist.
@@ -356,7 +347,7 @@ extension mParticle: UserAttributeTracking {
     ///   - value: The attribute value to log.
     /// - Returns: A tracking result.
     public func setUserAttribute(_ key: String, value: Any) -> TrackingResult {
-        MParticle.sharedInstance().setUserAttribute(key, value: value)
+        currentUser?.setUserAttribute(key, value: value)
 
         return .success
     }
@@ -367,7 +358,7 @@ extension mParticle: UserAttributeTracking {
     /// - Returns: A tracking result.
     public func setUserAttributes(_ attributes: Properties) -> TrackingResult {
         attributes.forEach {
-            MParticle.sharedInstance().setUserAttribute($0, value: $1)
+            currentUser?.setUserAttribute($0, value: $1)
         }
 
         return .success
