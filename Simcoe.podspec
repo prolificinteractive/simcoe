@@ -2,7 +2,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "Simcoe"
-  s.version      = "1.2.0"
+  s.version      = "2.0.0"
   s.summary      = "An analytics framework that provides a base layer of simple APIs for managing analytics frameworks."
   s.description  = <<-DESC
                     Simcoe is an analytics framework that aims to provide a simple, extensible API for managing and handling various analytics frameworks. It makes very few assumptions about your analytics implementations, allowing the implementer to customize it to their needs.
