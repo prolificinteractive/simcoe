@@ -2,7 +2,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "Simcoe"
-  s.version      = "2.0.1"
+  s.version      = "2.0.2"
   s.summary      = "An analytics framework that provides a base layer of simple APIs for managing analytics frameworks."
   s.description  = <<-DESC
                     Simcoe is an analytics framework that aims to provide a simple, extensible API for managing and handling various analytics frameworks. It makes very few assumptions about your analytics implementations, allowing the implementer to customize it to their needs.
@@ -34,7 +34,7 @@ Pod::Spec.new do |s|
   # Each subspec represents an analytics library implemented using Simcoe.
 
   adobe		  =   { :name => "Adobe",           :dependency => "AdobeMobileSDK", :version => '~> 4.13' }
-  mParticle =   { :name => "mParticle",       :dependency => "mParticle-Apple-SDK", :version => '7.5.4' }
+  mParticle =   { :name => "mParticle",       :dependency => "mParticle-Apple-SDK", :version => '7.5.6' }
   mixpanel  =   { :name => "Mixpanel",        :dependency => "Mixpanel-swift", :version => '~> 2.4.4' }
 
   all_specs = [adobe, mParticle, mixpanel]
