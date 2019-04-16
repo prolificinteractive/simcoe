@@ -5,24 +5,24 @@ PODS:
   - Mixpanel-swift (2.4.4):
     - Mixpanel-swift/Complete (= 2.4.4)
   - Mixpanel-swift/Complete (2.4.4)
-  - mParticle-Apple-SDK (7.5.4):
-    - mParticle-Apple-SDK/mParticle (= 7.5.4)
-  - mParticle-Apple-SDK/mParticle (7.5.4)
-  - Simcoe/Adobe (2.0.0):
+  - mParticle-Apple-SDK (7.9.0):
+    - mParticle-Apple-SDK/mParticle (= 7.9.0)
+  - mParticle-Apple-SDK/mParticle (7.9.0)
+  - Simcoe/Adobe (2.0.2):
     - AdobeMobileSDK (~> 4.13)
     - Simcoe/Core
-  - Simcoe/Core (2.0.0)
-  - Simcoe/Mixpanel (2.0.0):
+  - Simcoe/Core (2.0.2)
+  - Simcoe/Mixpanel (2.0.2):
     - Mixpanel-swift (~> 2.4.4)
     - Simcoe/Core
-  - Simcoe/mParticle (2.0.0):
-    - mParticle-Apple-SDK (= 7.5.4)
+  - Simcoe/mParticle (2.0.2):
+    - mParticle-Apple-SDK (= 7.9.0)
     - Simcoe/Core
 
 DEPENDENCIES:
   - AdobeMobileSDK (~> 4.13)
   - Mixpanel-swift (~> 2.4.4)
-  - mParticle-Apple-SDK (= 7.5.4)
+  - mParticle-Apple-SDK (= 7.9.0)
   - Simcoe/Adobe (from `./`)
   - Simcoe/Mixpanel (from `./`)
   - Simcoe/mParticle (from `./`)
@@ -34,8 +34,8 @@ EXTERNAL SOURCES:
 SPEC CHECKSUMS:
   AdobeMobileSDK: de79920972a9abcf4e27b141fb79d0262fe9ee11
   Mixpanel-swift: 1908db7a972b362fcab1a0c3b37ec6087b95d8d9
-  mParticle-Apple-SDK: 9ab63c0a4e6c87df727866455f8b633fdef54873
-  Simcoe: 0156f91dfdd147ffdc0786d675209228e78489f2
+  mParticle-Apple-SDK: b4862191012694acd634695aaef09bfd4f3d052f
+  Simcoe: 84d267a085517e5386efc23d8ce87c903f9a1ac5
 
 PODFILE CHECKSUM: 8d8a42d64db1433bbfb67a53162f9258ec0d74fb
 
