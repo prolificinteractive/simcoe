@@ -21,7 +21,7 @@ public final class Tracker {
     /// standard output console.
     ///
     /// - Parameter outputSources: The source to use for general output.
-    init(outputSources: [Output] = [ConsoleOutput(), RemoteOutput(token: Simcoe.session)]) {
+    init(outputSources: [Output] = [ConsoleOutput()]) {
         self.outputSources = outputSources
     }
 
